@@ -39,6 +39,10 @@ java -jar share-0.0.1-SNAPSHOT.jar
 
 https://github.com/PuZhiweizuishuai/Share/releases/tag/v1.6
 
+找个大陆下载加速
+
+https://gitee.com/puzhiweizuishuai/Share/releases/v1.6.1
+
 ## 注意
 
 文件上传服务我设置的最大文件大小为100M，过大的文件这么传没有意义，直接用FTP或其它文件传输协议就好
