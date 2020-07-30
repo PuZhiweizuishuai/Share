@@ -1,0 +1,21 @@
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.0.100:3306/LAN_share?useUnicode=true&characterEncoding=UTF-8
+    username: root
+    password: pzw123456
+  servlet:
+    multipart:
+      enabled: true
+      max-file-size: 100MB
+      max-request-size: 10240000MB
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+server:
+  http2:
+    enabled: true
+  port: 8081
