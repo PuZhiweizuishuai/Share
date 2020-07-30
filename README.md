@@ -35,6 +35,10 @@ mvn clean package
 java -jar share-0.0.1-SNAPSHOT.jar
 ```
 
+你也可以直接下载运行
+
+https://github.com/PuZhiweizuishuai/Share/releases/tag/v1.6
+
 ## 注意
 
 文件上传服务我设置的最大文件大小为100M，过大的文件这么传没有意义，直接用FTP或其它文件传输协议就好
