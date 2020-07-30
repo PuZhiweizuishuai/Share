@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://192.168.0.100:3306/LAN_share?useUnicode=true&characterEncoding=UTF-8
     username: root
-    password: pzw123456
+    password: 123456
   servlet:
     multipart:
       enabled: true
