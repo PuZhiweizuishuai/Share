@@ -38,6 +38,8 @@ java -jar share-0.0.1-SNAPSHOT.jar
 你也可以直接下载运行
 
 https://github.com/PuZhiweizuishuai/Share/releases
+
+
 中国大陆下载加速
 
 https://gitee.com/puzhiweizuishuai/Share/releases
