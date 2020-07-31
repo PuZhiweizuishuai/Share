@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <br>
-        <span>共找到 {{ total }} 条结果</span>
+        <span>共找到 {{ total }} 条有关<strong> {{ key }}</strong> 的结果</span>
       </v-col>
     </v-row>
 
