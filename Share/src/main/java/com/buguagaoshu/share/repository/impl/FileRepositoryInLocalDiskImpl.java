@@ -135,6 +135,7 @@ public class FileRepositoryInLocalDiskImpl implements FileRepository {
             return ReturnCodeEnum.ERROR_FILE_ID;
         }
         Optional<FileMessage> sysFile = fileMessageRepository.findById(fileMessage.getId());
+        long size = sysFile.get().getSize();
         fileMessageRepository.delete(fileMessage);
         try {
 
@@ -142,8 +143,8 @@ public class FileRepositoryInLocalDiskImpl implements FileRepository {
             Path path = location.resolve(filePath);
             Files.delete(path);
             Optional<DiskMessage> byId = diskMessageRepository.findById(1);
-            byId.get().setAvailableDisk(byId.get().getAvailableDisk() + sysFile.get().getSize());
-            byId.get().setUserDisk(byId.get().getUserDisk() - sysFile.get().getSize());
+            byId.get().setAvailableDisk(byId.get().getAvailableDisk() + size);
+            byId.get().setUserDisk(byId.get().getUserDisk() - size);
             diskMessageRepository.save(byId.get());
             // 删除空文件夹
             path = location.resolve(sysFile.get().getDate());

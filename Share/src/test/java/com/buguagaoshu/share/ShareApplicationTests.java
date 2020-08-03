@@ -35,9 +35,12 @@ class ShareApplicationTests {
 //        diskMessage.setAvailableDisk(0L);
 //        diskMessageRepository.save(diskMessage);
 
-
-        File diskPartition = new File("/");
-        System.out.println(diskPartition.getFreeSpace()/1024/1024/1024);
+        long size = 0;
+        Iterable<FileMessage> all = fileMessageRepository.findAll();
+        for (FileMessage fileMessage : all) {
+            size += fileMessage.getSize();
+        }
+        System.out.println(size);
     }
 
 }
