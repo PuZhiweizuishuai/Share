@@ -120,6 +120,7 @@ export default {
     items: [
       { icon: 'mdi-share', text: '分享列表', link: '/' },
       { icon: 'mdi-file', text: '文件列表', link: '/file' },
+      { icon: 'mdi-text', text: '二维码分享', link: '/qrcode' },
       { icon: 'mdi-help', text: '关于', link: '/about' }
     ]
   }),

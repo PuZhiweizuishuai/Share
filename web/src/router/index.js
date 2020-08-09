@@ -39,6 +39,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/views/search.vue')
       },
       {
+        path: '/qrcode',
+        name: 'QrCode',
+        meta: { title: '二维码分享' },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/qr-code.vue')
+      },
+      {
         path: '*',
         name: 'error',
         meta: { title: '404' },

@@ -121,13 +121,23 @@ export default {
   mounted() {
     this.contentEditor = new Vditor(this.idName, {
       height: 550,
+      icon: 'material',
       toolbarConfig: {
         pin: false,
         hide: this.hideBar
       },
       hint: {
         emojiPath: '/emoji',
-        emoji: this.emojis
+        emoji: this.emojis,
+        at: (value) => {
+          console.log(value)
+          return [
+            {
+              value: '@Vanessa',
+              html: '<img src="https://avatars0.githubusercontent.com/u/970828?s=60&v=4"/> Vanessa'
+            }
+          ]
+        }
       },
       cache: {
         enable: this.cacheEnable,

@@ -1,10 +1,22 @@
 
+# spring:
+#   datasource:
+#     driver-class-name: com.mysql.cj.jdbc.Driver
+#     url: jdbc:mysql://192.168.0.100:3306/LAN_share?useUnicode=true&characterEncoding=UTF-8
+#     username: root
+#     password: 123456
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://192.168.0.100:3306/LAN_share?useUnicode=true&characterEncoding=UTF-8
-    username: root
-    password: pzw123456
+    url: jdbc:h2:~/share
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 123456
+  # h2:
+  #   console:
+  #     settings:
+  #       web-allow-others: true
+  #     path: /h2-console
+  #     enabled: true
   servlet:
     multipart:
       enabled: true
