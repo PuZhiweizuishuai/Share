@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <br>
-        <span>当前共有 {{ total }} 条分享</span>
+        <span>当前共有 {{ total }} 条分享，当前页：{{ page }} </span>
       </v-col>
       <v-col>
         <v-switch

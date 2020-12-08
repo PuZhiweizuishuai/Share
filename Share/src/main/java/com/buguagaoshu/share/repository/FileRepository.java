@@ -28,4 +28,6 @@ public interface FileRepository {
     DiskMessage diskMessage();
 
     ReturnCodeEnum rename(FileMessage fileMessage);
+
+    String uploadFileMax(DiskMessage diskMessage);
 }

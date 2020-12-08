@@ -52,6 +52,7 @@ export default {
       minHeight: this.height,
       hideBar: this.hide,
       contentEditor: '',
+      fileMax: 100,
       defaultPlaceholder: '请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。',
       emojis: {
         '0': '😀',
@@ -119,54 +120,68 @@ export default {
     }
   },
   mounted() {
-    this.contentEditor = new Vditor(this.idName, {
-      height: 550,
-      icon: 'material',
-      toolbarConfig: {
-        pin: false,
-        hide: this.hideBar
+    fetch('/api/upload/disk', {
+      headers: {
+        'Content-Type': 'application/json; charset=UTF-8',
+        'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
       },
-      hint: {
-        emojiPath: '/emoji',
-        emoji: this.emojis,
-        at: (value) => {
-          console.log(value)
-          return [
-            {
-              value: '@Vanessa',
-              html: '<img src="https://avatars0.githubusercontent.com/u/970828?s=60&v=4"/> Vanessa'
+      method: 'GET',
+      credentials: 'include'
+    }).then(response => response.json())
+      .then(json => {
+        this.fileMax = json.data.uploadFileMax
+        this.contentEditor = new Vditor(this.idName, {
+          height: 550,
+          icon: 'material',
+          toolbarConfig: {
+            pin: false,
+            hide: this.hideBar
+          },
+          hint: {
+            emojiPath: '/emoji',
+            emoji: this.emojis,
+            at: (value) => {
+              console.log(value)
+              return [
+                {
+                  value: '@Vanessa',
+                  html: '<img src="https://avatars0.githubusercontent.com/u/970828?s=60&v=4"/> Vanessa'
+                }
+              ]
             }
-          ]
-        }
-      },
-      cache: {
-        enable: this.cacheEnable,
-        id: this.cacheId
-      },
-      minHeight: this.minHeight,
-      placeholder: this.placeholder, // '请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。',
-      upload: {
-        max: 100 * 1024 * 1024,
-        withCredentials: true,
-        headers: {
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        // accept: 'image/*, .wav, .mp4, .zip, .rar, .7z, .docx, .dox, .ppt, .pptx, .xls, .xlsx, .pdf, .apk, .mp3, .txt',
-        url: this.uploadurl,
-        linkToImgUrl: this.uploadurl,
-        filename(name) {
-          return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '')
-            .replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '')
-            .replace('/\\s/g', '')
-        }
-      },
-      after: () => {
-        this.contentEditor.setValue(this.markdownStr)
-      },
-      blur: (input) => {
-        this.$emit('vditor-input', this.contentEditor.getValue())
-      }
-    })
+          },
+          cache: {
+            enable: this.cacheEnable,
+            id: this.cacheId
+          },
+          minHeight: this.minHeight,
+          placeholder: this.placeholder, // '请自觉遵守互联网相关的政策法规，严禁发布色情、暴力、反动的言论。',
+          upload: {
+            max: this.fileMax * 1024 * 1024,
+            withCredentials: true,
+            headers: {
+              'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
+            },
+            // accept: 'image/*, .wav, .mp4, .zip, .rar, .7z, .docx, .dox, .ppt, .pptx, .xls, .xlsx, .pdf, .apk, .mp3, .txt',
+            url: this.uploadurl,
+            linkToImgUrl: this.uploadurl,
+            filename(name) {
+              return name.replace(/[^(a-zA-Z0-9\u4e00-\u9fa5\.)]/g, '')
+                .replace(/[\?\\/:|<>\*\[\]\(\)\$%\{\}@~]/g, '')
+                .replace('/\\s/g', '')
+            }
+          },
+          after: () => {
+            this.contentEditor.setValue(this.markdownStr)
+          },
+          blur: (input) => {
+            this.$emit('vditor-input', this.contentEditor.getValue())
+          }
+        })
+      })
+      .catch(e => {
+        return null
+      })
   },
   methods: {
     clean() {

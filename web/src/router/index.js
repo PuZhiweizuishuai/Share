@@ -45,6 +45,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/views/qr-code.vue')
       },
       {
+        path: '/setting',
+        name: 'Setting',
+        meta: { title: '设置' },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/setting.vue')
+      },
+      {
         path: '*',
         name: 'error',
         meta: { title: '404' },

@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.MultipartConfigElement;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -38,10 +39,13 @@ public class FileRepositoryInLocalDiskImpl implements FileRepository {
 
     private final DiskMessageRepository diskMessageRepository;
 
+    private final MultipartConfigElement multipartConfigElement;
+
     @Autowired
-    public FileRepositoryInLocalDiskImpl(FileMessageRepository fileMessageRepository, DiskMessageRepository diskMessageRepository) throws IOException {
+    public FileRepositoryInLocalDiskImpl(FileMessageRepository fileMessageRepository, DiskMessageRepository diskMessageRepository, MultipartConfigElement multipartConfigElement) throws IOException {
         this.fileMessageRepository = fileMessageRepository;
         this.diskMessageRepository = diskMessageRepository;
+        this.multipartConfigElement = multipartConfigElement;
         this.location = Paths.get(FilePathUtils.ROOT);
         if (Files.notExists(this.location)) {
             Files.createDirectories(this.location);
@@ -183,5 +187,26 @@ public class FileRepositoryInLocalDiskImpl implements FileRepository {
         } else {
             return ReturnCodeEnum.ERROR_FILE_ID;
         }
+    }
+
+    @Override
+    public String uploadFileMax(DiskMessage diskMessage) {
+
+        Long max = null;
+        try {
+            max = diskMessage.getUploadFileMax();
+            if (max <= 0) {
+                return "文件大小限制不能小于 0, 修改失败！";
+            }
+            if (max > multipartConfigElement.getMaxFileSize() / 1024 / 1024) {
+                return "超过后台设置最大值！修改失败！";
+            }
+        } catch (Exception e) {
+            return "提交数据错误，请检查后重试！";
+        }
+        Optional<DiskMessage> byId = diskMessageRepository.findById(1);
+        byId.get().setUploadFileMax(max);
+        diskMessageRepository.save(byId.get());
+        return "修改成功！";
     }
 }

@@ -7,6 +7,8 @@ import com.buguagaoshu.share.repository.FileMessageRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.unit.DataSize;
+import org.springframework.util.unit.DataUnit;
 
 import java.io.File;
 import java.util.List;
@@ -22,25 +24,7 @@ class ShareApplicationTests {
 
     @Test
     void contextLoads() {
-//        Iterable<FileMessage> all = fileMessageRepository.findAll();
-//        long size = 0;
-//        for (FileMessage f : all) {
-//            size += f.getSize();
-//        }
-//        System.out.println(size);
-        // 25071616
-//        DiskMessage diskMessage = new DiskMessage();
-//        diskMessage.setUserDisk(25071616L);
-//        diskMessage.setId(1);
-//        diskMessage.setAvailableDisk(0L);
-//        diskMessageRepository.save(diskMessage);
-
-        long size = 0;
-        Iterable<FileMessage> all = fileMessageRepository.findAll();
-        for (FileMessage fileMessage : all) {
-            size += fileMessage.getSize();
-        }
-        System.out.println(size);
+        System.out.println(DataSize.parse("100", DataUnit.MEGABYTES).toMegabytes());
     }
 
 }

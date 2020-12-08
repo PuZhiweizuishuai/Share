@@ -1,5 +1,6 @@
 package com.buguagaoshu.share.controller;
 
+import com.buguagaoshu.share.domain.DiskMessage;
 import com.buguagaoshu.share.domain.FileMessage;
 import com.buguagaoshu.share.domain.ResponseDetails;
 import com.buguagaoshu.share.domain.VditorFiles;
@@ -34,6 +35,11 @@ public class FileController {
     @GetMapping("/api/upload/disk")
     public ResponseDetails diskMessage() {
         return ResponseDetails.ok().put("data", fileRepository.diskMessage());
+    }
+
+    @PostMapping("/api/upload/setting/filemax")
+    public ResponseDetails uploadFileMax(@RequestBody DiskMessage diskMessage) {
+        return ResponseDetails.ok(fileRepository.uploadFileMax(diskMessage));
     }
 
     @PostMapping("/api/upload")

@@ -21,6 +21,21 @@
 
           </v-list-item>
         </router-link>
+        <a href="/unlock-music/index.html" target="_blank">
+          <v-list-item
+            link
+          >
+            <v-list-item-action>
+              <v-icon>mdi-music</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+              <v-list-item-title>
+                音乐解密
+              </v-list-item-title>
+            </v-list-item-content>
+
+          </v-list-item>
+        </a>
       </v-list>
     </v-navigation-drawer>
 
@@ -121,6 +136,7 @@ export default {
       { icon: 'mdi-share', text: '分享列表', link: '/' },
       { icon: 'mdi-file', text: '文件列表', link: '/file' },
       { icon: 'mdi-text', text: '二维码分享', link: '/qrcode' },
+      { icon: 'mdi-wrench', text: '设置', link: '/setting' },
       { icon: 'mdi-help', text: '关于', link: '/about' }
     ]
   }),

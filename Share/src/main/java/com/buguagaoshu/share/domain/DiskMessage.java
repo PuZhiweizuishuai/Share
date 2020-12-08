@@ -18,4 +18,6 @@ public class DiskMessage {
     private Long userDisk;
 
     private Long availableDisk;
+
+    private Long uploadFileMax;
 }
