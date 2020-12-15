@@ -16,15 +16,10 @@ import java.util.List;
 @SpringBootTest
 class ShareApplicationTests {
 
-    @Autowired
-    FileMessageRepository fileMessageRepository;
-
-    @Autowired
-    DiskMessageRepository diskMessageRepository;
 
     @Test
     void contextLoads() {
-        System.out.println(DataSize.parse("100", DataUnit.MEGABYTES).toMegabytes());
+
     }
 
 }
