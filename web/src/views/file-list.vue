@@ -25,12 +25,12 @@
         </v-toolbar>
       </template>
       <template v-slot:item.path="{ item }">
-        <a :href="`${item.path}?filename=${item.uploadFilename}&type=inline`" target="_blank">
+        <a :href="`${item.path}?filename=${encodeURIComponent(item.uploadFilename)}&type=inline`" target="_blank">
           {{ item.path }}
         </a>
       </template>
       <template v-slot:item.actions="{ item }">
-        <a :href="`${item.path}?filename=${item.uploadFilename}&type=attachment`" target="_blank">
+        <a :href="`${item.path}?filename=${encodeURIComponent(item.uploadFilename)}&type=attachment`" target="_blank">
           <v-icon
             class="mr-2"
             @click="downloadItem(item)"

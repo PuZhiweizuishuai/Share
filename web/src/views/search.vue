@@ -3,7 +3,7 @@
     <v-row>
       <v-col>
         <br>
-        <span>共找到 {{ total }} 条有关<strong> {{ key }}</strong> 的结果</span>
+        <span>共找到 {{ total }} 条有关<strong> {{ decodeURIComponent(key) }}</strong> 的结果</span>
       </v-col>
     </v-row>
 
@@ -55,10 +55,9 @@ export default {
   methods: {
     setKey(key) {
       this.key = key
-      console.log(key)
     },
     getShareList() {
-      fetch(`/api/share/list?key=${this.key}`, {
+      fetch(`/api/share/list?key=${encodeURIComponent(this.key)}`, {
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
           'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
