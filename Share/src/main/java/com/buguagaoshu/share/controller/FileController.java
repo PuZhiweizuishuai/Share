@@ -43,7 +43,7 @@ public class FileController {
     }
 
     @PostMapping("/api/upload")
-    public VditorFiles save(@RequestParam(value = "file[]") MultipartFile[] files) {
+    public VditorFiles save(@RequestParam(value = "files") MultipartFile[] files) {
         return fileRepository.save(files);
     }
 

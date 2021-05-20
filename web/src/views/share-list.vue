@@ -119,6 +119,14 @@ export default {
     }
   },
   created() {
+    const page = parseInt(this.$route.query.page)
+    if (!isNaN(page)) {
+      if (page <= 0) {
+        this.page = 1
+      } else {
+        this.page = page
+      }
+    }
     this.getShareList()
   },
   methods: {
@@ -132,8 +140,6 @@ export default {
       }
     },
     deleteShare() {
-      console.log(this.deleteData)
-
       fetch(`/api/share/delete`, {
         headers: {
           'Content-Type': 'application/json; charset=UTF-8',
@@ -189,6 +195,10 @@ export default {
     },
     pageChange(page) {
       this.page = page
+      this.$router.push({
+        path: this.$router.path,
+        query: { page: page }
+      })
 
       this.getShareList()
       document.querySelector('#share-top').scrollIntoView()

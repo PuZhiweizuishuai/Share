@@ -46,8 +46,6 @@ export default {
           emojiPath: '/emoji',
           anchor: this.anchorNum,
           markdown: {
-
-            linkBase: 'http://link.buguagaoshu.com/link?url='
           }
         })
     }

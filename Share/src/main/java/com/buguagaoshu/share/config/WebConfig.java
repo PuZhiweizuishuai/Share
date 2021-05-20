@@ -15,6 +15,8 @@ import org.springframework.util.unit.DataSize;
 
 
 import java.io.File;
+import java.net.*;
+import java.util.Enumeration;
 import java.util.Optional;
 
 /**
@@ -47,6 +49,35 @@ public class WebConfig {
         };
     }
 
+    public static String getIpAddress() {
+        try {
+            Enumeration<NetworkInterface> allNetInterfaces = NetworkInterface.getNetworkInterfaces();
+            InetAddress ip = null;
+            StringBuilder ipStr = new StringBuilder();
+            while (allNetInterfaces.hasMoreElements()) {
+                NetworkInterface netInterface = (NetworkInterface) allNetInterfaces.nextElement();
+                if (netInterface.isLoopback() || netInterface.isVirtual() || !netInterface.isUp()) {
+                    continue;
+                } else {
+                    Enumeration<InetAddress> addresses = netInterface.getInetAddresses();
+
+                    while (addresses.hasMoreElements()) {
+                        ip = addresses.nextElement();
+
+//                        if (ip != null && ip instanceof Inet4Address) {
+//                            ip.getHostAddress();
+//                        }
+                        ipStr.append(ip.getHostAddress()).append("\n");
+                    }
+                }
+            }
+            return ipStr.toString();
+        } catch (Exception e) {
+            System.err.println("IP地址获取失败" + e.getMessage());
+            return "";
+        }
+    }
+
     @Bean
     public CommandLineRunner dataLoader(DiskMessageRepository disk) {
         System.out.println(multipartProperties.getMaxFileSize());
@@ -54,7 +85,8 @@ public class WebConfig {
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {
-
+                // 获取当前系统IP并显示
+                System.out.println("当前系统IP为：" + getIpAddress());
                 File diskPartition = new File("/");
                 Optional<DiskMessage> id = disk.findById(1);
                 if (id.isPresent()) {

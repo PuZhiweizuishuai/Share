@@ -10,7 +10,7 @@
   "dependencies": {
     "core-js": "^3.8.1",
     "qrcode": "^1.4.4",
-    "vditor": "^3.7.1",
+    "vditor": "^3.8.5",
     "vue": "^2.6.12",
     "vue-cookies": "^1.7.4",
     "vue-router": "^3.4.9",

@@ -139,16 +139,7 @@ export default {
           },
           hint: {
             emojiPath: '/emoji',
-            emoji: this.emojis,
-            at: (value) => {
-              console.log(value)
-              return [
-                {
-                  value: '@Vanessa',
-                  html: '<img src="https://avatars0.githubusercontent.com/u/970828?s=60&v=4"/> Vanessa'
-                }
-              ]
-            }
+            emoji: this.emojis
           },
           cache: {
             enable: this.cacheEnable,
@@ -159,6 +150,7 @@ export default {
           upload: {
             max: this.fileMax * 1024 * 1024,
             withCredentials: true,
+            fieldName: 'files',
             headers: {
               'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
             },

@@ -183,12 +183,24 @@ export default {
     newName: ''
   }),
   created() {
+    const page = parseInt(this.$route.query.page)
+    if (!isNaN(page)) {
+      if (page <= 0) {
+        this.page = 1
+      } else {
+        this.page = page
+      }
+    }
     this.initialize()
     this.getDiskMessage()
   },
   methods: {
     pageChange(page) {
       this.page = page
+      this.$router.push({
+        path: this.$router.path,
+        query: { page: page }
+      })
       this.initialize()
     },
     getDiskMessage() {

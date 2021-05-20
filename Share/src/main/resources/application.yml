@@ -6,11 +6,11 @@
 #     username: root
 #     password: pzw123456
 spring:
- datasource:
-   url: jdbc:h2:~/share
-   driver-class-name: org.h2.Driver
-   username: sa
-   password: 123456
+  datasource:
+    url: jdbc:h2:~/share
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 123456
   # h2:
   #   console:
   #     settings:
@@ -25,7 +25,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    show-sql: true
+    show-sql: false
 
 server:
   http2:
