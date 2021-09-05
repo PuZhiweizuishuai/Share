@@ -20,4 +20,6 @@ public class Share {
     private String data;
 
     private Long createTime;
+
+    private Integer tag;
 }
