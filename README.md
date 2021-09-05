@@ -1,5 +1,5 @@
 <div align="center">
-<img src="http://p.ananas.chaoxing.com/star3/origin/59f04f31a33f78205298f5a1d4600471.png" alt="logo" title="logo" width="50%" style="text-align:center;">
+<img src="/img/logo.png" alt="logo" title="logo" width="50%" style="text-align:center;">
 </div>
 
 # 分享点啥 Share
@@ -15,11 +15,11 @@
 
 ## 截图 screenshot
 
-![分享列表](http://p.ananas.chaoxing.com/star3/origin/75c50b740f4c406a9dbe3b8d34f7edc8.png "分享列表")
+![分享列表](/img/sharelist.png "分享列表")
 
-![文件管理](http://p.ananas.chaoxing.com/star3/origin/9ca68f8922183ab69cac1ecfd5c16623.png "文件管理")
+![文件管理](/img/filelist.png "文件管理")
 
-![分享](http://p.ananas.chaoxing.com/star3/origin/d3bc5beab83edd7c1445b49faf279f84.png "分享")
+![分享](/img/share.png "分享")
 
 ## 快速运行
 
