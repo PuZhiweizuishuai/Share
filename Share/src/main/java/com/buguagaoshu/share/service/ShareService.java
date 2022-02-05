@@ -13,8 +13,9 @@ import org.springframework.data.domain.Page;
 public interface ShareService {
     Page<Share> findShareList(Integer page, Integer size, String key);
 
-
     void save(Share share);
 
     ReturnCodeEnum delete(Share share);
+
+    void update(Share share);
 }

@@ -136,6 +136,7 @@ export default {
       { icon: 'mdi-share', text: '分享列表', link: '/' },
       { icon: 'mdi-file', text: '文件列表', link: '/file' },
       { icon: 'mdi-text', text: '二维码分享', link: '/qrcode' },
+      { icon: 'mdi-lock', text: '加密解密', link: '/aes' },
       { icon: 'mdi-wrench', text: '设置', link: '/setting' },
       { icon: 'mdi-help', text: '关于', link: '/about' }
     ]

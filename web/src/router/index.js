@@ -45,6 +45,12 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/views/qr-code.vue')
       },
       {
+        path: '/aes',
+        name: 'AES',
+        meta: { title: '加密解密' },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/aes.vue')
+      },
+      {
         path: '/setting',
         name: 'Setting',
         meta: { title: '设置' },

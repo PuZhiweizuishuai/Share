@@ -21,5 +21,5 @@ public class Share {
 
     private Long createTime;
 
-    private Integer tag;
+    // private Integer tag;
 }

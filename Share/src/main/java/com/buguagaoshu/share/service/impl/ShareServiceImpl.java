@@ -40,7 +40,7 @@ public class ShareServiceImpl implements ShareService {
         if (size == null) {
             size = 20;
         }
-        if (!StringUtils.isEmpty(key)) {
+        if (StringUtils.hasLength(key)) {
             List<Share> shares = shareRepository.findByDataLike("%" + key + "%");
             Collections.reverse(shares);
             int length = shares.size();
@@ -136,6 +136,9 @@ public class ShareServiceImpl implements ShareService {
 
     @Override
     public void save(Share share) {
+        if (share.getId() != null) {
+            throw new RuntimeException("保存失败！");
+        }
         share.setCreateTime(System.currentTimeMillis());
         shareRepository.save(share);
     }
@@ -147,5 +150,10 @@ public class ShareServiceImpl implements ShareService {
         }
         shareRepository.delete(share);
         return ReturnCodeEnum.SUCCESS;
+    }
+
+    @Override
+    public void update(Share share) {
+        return;
     }
 }

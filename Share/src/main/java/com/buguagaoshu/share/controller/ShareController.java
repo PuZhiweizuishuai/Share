@@ -27,11 +27,10 @@ public class ShareController {
                                 @RequestParam(value = "size", required = false) Integer size,
                                 @RequestParam(value = "key", required = false) String key) {
         Page<Share> shareList = shareService.findShareList(page, size, key);
-        if (StringUtils.isEmpty(key)) {
-            return ResponseDetails.ok().put("page", shareList);
+        if (StringUtils.hasLength(key)) {
+            return ResponseDetails.ok().put("page", shareList.getContent());
         }
-        return ResponseDetails.ok().put("page", shareList.getContent());
-
+        return ResponseDetails.ok().put("page", shareList);
     }
 
 
@@ -44,5 +43,13 @@ public class ShareController {
     @DeleteMapping("/api/share/delete")
     public ResponseDetails delete(@RequestBody Share share) {
         return ResponseDetails.ok(shareService.delete(share));
+    }
+
+    /**
+     * TODO 待完成
+     * */
+    @PostMapping("/api/share/update")
+    public ResponseDetails update(@RequestBody Share share) {
+        return ResponseDetails.ok();
     }
 }
