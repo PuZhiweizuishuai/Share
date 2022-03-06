@@ -87,7 +87,6 @@ export default {
   },
   created() {
     this.$vuetify.goTo(0)
-    this.testDecode()
   },
   methods: {
     decode() {

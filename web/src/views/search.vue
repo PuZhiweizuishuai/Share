@@ -1,43 +1,34 @@
 <template>
   <v-container>
+    <div id="share-top" />
     <v-row>
       <v-col>
         <br>
-        <span>共找到 {{ total }} 条有关<strong> {{ decodeURIComponent(key) }}</strong> 的结果</span>
+        <span>共找到 {{ total }} 条有关<strong> {{ decodeURIComponent(key) }}</strong> 的结果， 当前页：{{ page }}</span>
       </v-col>
     </v-row>
 
     <v-divider />
-    <v-row>
-      <div id="share-top" />
-      <v-col
-        v-for="item in shareList"
-        :key="item.id"
-        cols="12"
-      >
 
-        <v-card outlined>
-          <v-card-actions>
-            <v-list-item-content>
-              <v-list-item-title>创建时间： <span v-text="formateTimeToChinese(item.createTime)" /> </v-list-item-title>
-            </v-list-item-content>
-          </v-card-actions>
-          <v-divider />
-          <v-card-subtitle>
-            <ShowMarkdown :markdown="item.data" :speech="false" />
-          </v-card-subtitle>
+    <ShareListCom :share-list="shareList" @delete="deleteShare" />
 
-        </v-card>
-      </v-col>
-    </v-row>
+    <div class="text-center">
+      <v-pagination
+        v-model="page"
+        :length="length"
+        :total-visible="10"
+        circle
+        @input="pageChange"
+      />
+    </div>
   </v-container>
 </template>
 
 <script>
-import ShowMarkdown from '@/components/vditor/show-markdown.vue'
+import ShareListCom from '@/components/share-list.vue'
 export default {
   name: 'Search',
-  components: { ShowMarkdown },
+  components: { ShareListCom },
   data() {
     return {
       shareList: [],
@@ -49,48 +40,43 @@ export default {
     }
   },
   created() {
+    const page = parseInt(this.$route.query.page)
+    if (!isNaN(page)) {
+      if (page <= 0) {
+        this.page = 1
+      } else {
+        this.page = page
+      }
+    }
     this.key = this.$route.query.key
     this.getShareList()
   },
   methods: {
     setKey(key) {
+      this.page = 1
       this.key = key
     },
-    getShareList() {
-      fetch(`/api/share/list?key=${encodeURIComponent(this.key)}`, {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        method: 'GET',
-        credentials: 'include'
-      }).then(response => response.json())
-        .then(json => {
-          this.shareList = json.page
-          this.total = json.page.length
-        })
-        .catch(e => {
-          return null
-        })
-    },
-    formateTimeToChinese(date) {
-      if (date === '' || date == null) {
-        return ''
+    deleteShare(status) {
+      if (status) {
+        this.getShareList()
       }
-      const da = new Date(date)
-      return da.getFullYear() + '年' + (da.getMonth() + 1) + '月' + da.getDate() + '日 ' + da.getHours() + '时' + da.getMinutes() + '分'
+    },
+    getShareList() {
+      this.httpGet(`/share/list?page=${this.page}&size=${this.size}&key=${encodeURIComponent(this.key)}`, (json) => {
+        this.shareList = json.page.content
+        this.total = json.page.totalElements
+        this.length = json.page.totalPages
+      })
     },
     pageChange(page) {
       this.page = page
+      this.$router.push({
+        path: this.$router.path,
+        query: { page: page, key: this.key }
+      })
 
       this.getShareList()
       document.querySelector('#share-top').scrollIntoView()
-    },
-    subString() {
-      if (this.deleteData.data.length > 30) {
-        return this.deleteData.data.substring(0, 30) + '......'
-      }
-      return this.deleteData.data
     }
   }
 }

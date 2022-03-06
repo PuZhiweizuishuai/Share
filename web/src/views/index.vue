@@ -50,7 +50,9 @@
         style="width: 150px"
         class="ml-0 pl-4"
       >
-        <span class="hidden-sm-and-down">分享点啥</span>
+        <router-link style="color: #fff" :to="'/'">
+          <span class="hidden-sm-and-down">分享点啥</span>
+        </router-link>
       </v-toolbar-title>
       <v-text-field
         v-model="searchText"
@@ -147,14 +149,16 @@ export default {
         if (this.searchText === '') {
           return
         }
-        console.log(this.$route.path)
+
         if (this.$route.path === '/search') {
+          this.$router.push({
+            path: this.$router.path,
+            query: { key: this.searchText }
+          })
           this.$refs.shareListView.setKey(this.searchText)
           this.$refs.shareListView.getShareList()
         } else {
           this.$router.push({ path: '/search', query: { key: this.searchText }})
-          // this.$refs.shareListView.setKey(this.searchText)
-          // this.$refs.shareListView.getShareList()
         }
 
         this.searchText = ''
@@ -167,33 +171,22 @@ export default {
       const data = {
         'data': this.shareData
       }
-      fetch('/api/share/save', {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(data)
-      }).then(response => response.json())
-        .then(json => {
-          if (json.status === 200) {
-            this.message = '分享成功!'
-            this.color = 'success'
-            this.snackbar = true
-            this.showShare = false
-            this.shareData = ''
-            this.$refs.childvditor.clean()
-          } else {
-            this.message = '分享失败！' + json.message
-            this.color = 'error'
-            this.snackbar = true
-          }
-          this.$refs.shareListView.getShareList()
-        })
-        .catch(e => {
-          return null
-        })
+
+      this.httpPost('/share/save', data, (json) => {
+        if (json.status === 200) {
+          this.message = '分享成功!'
+          this.color = 'success'
+          this.snackbar = true
+          this.showShare = false
+          this.shareData = ''
+          this.$refs.childvditor.clean()
+        } else {
+          this.message = '分享失败！' + json.message
+          this.color = 'error'
+          this.snackbar = true
+        }
+        this.$refs.shareListView.getShareList()
+      })
     },
     getShareData(value) {
       this.shareData = value

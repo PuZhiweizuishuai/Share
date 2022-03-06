@@ -4,8 +4,6 @@ import com.buguagaoshu.share.domain.ResponseDetails;
 import com.buguagaoshu.share.domain.Share;
 import com.buguagaoshu.share.service.ShareService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,11 +24,7 @@ public class ShareController {
     public ResponseDetails list(@RequestParam(value = "page", required = false) Integer page,
                                 @RequestParam(value = "size", required = false) Integer size,
                                 @RequestParam(value = "key", required = false) String key) {
-        Page<Share> shareList = shareService.findShareList(page, size, key);
-        if (StringUtils.hasLength(key)) {
-            return ResponseDetails.ok().put("page", shareList.getContent());
-        }
-        return ResponseDetails.ok().put("page", shareList);
+        return ResponseDetails.ok().put("page", shareService.findShareList(page, size, key));
     }
 
 
@@ -40,7 +34,7 @@ public class ShareController {
         return ResponseDetails.ok();
     }
 
-    @DeleteMapping("/api/share/delete")
+    @PostMapping("/api/share/delete")
     public ResponseDetails delete(@RequestBody Share share) {
         return ResponseDetails.ok(shareService.delete(share));
     }
