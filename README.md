@@ -15,11 +15,27 @@
 
 ## 截图 screenshot
 
-![分享列表](/img/sharelist.png "分享列表")
+### 分享列表
+
+![分享列表](/img/share.png "分享列表")
+
+### 文件列表
+
 
 ![文件管理](/img/filelist.png "文件管理")
 
-![分享](/img/share.png "分享")
+
+### Vditor Markdown 编辑器
+
+![vditor](/img/vditor.png "vditor")
+
+### wangeditor HTML 编辑器
+
+![wangeditor](/img/wangeditor.png "wangeditor")
+
+### 编辑器切换设置
+
+![setting](/img/setting.png "setting")
 
 ## 快速运行
 
