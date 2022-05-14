@@ -20,7 +20,9 @@
           </v-card-actions>
           <v-divider />
           <v-card-subtitle>
-            <ShowMarkdown :markdown="item.data" :speech="false" />
+            <ShowHtml v-if="item.editType == 1" :text="item.data" />
+            <ShowMarkdown v-else :markdown="item.data" :speech="false" />
+
           </v-card-subtitle>
 
         </v-card>
@@ -73,9 +75,10 @@
 
 <script>
 import ShowMarkdown from '@/components/vditor/show-markdown.vue'
+import ShowHtml from '@/components/wangeditor/show-html.vue'
 export default {
   name: 'ShareList',
-  components: { ShowMarkdown },
+  components: { ShowMarkdown, ShowHtml },
   props: {
     shareList: {
       type: Array,

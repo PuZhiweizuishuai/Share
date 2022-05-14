@@ -36,7 +36,7 @@ export default {
     },
     height: {
       type: Number,
-      default: 500
+      default: 450
     },
     hide: {
       type: Boolean,
@@ -131,6 +131,10 @@ export default {
       .then(json => {
         this.fileMax = json.data.uploadFileMax
         this.contentEditor = new Vditor(this.idName, {
+          cdn: '/vditor',
+          theme: {
+            path: '/vditor/dist/css/content-theme'
+          },
           height: 550,
           icon: 'material',
           toolbarConfig: {

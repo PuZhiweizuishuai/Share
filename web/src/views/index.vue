@@ -84,7 +84,13 @@
     </v-main>
     <v-bottom-sheet v-model="showShare">
       <v-sheet height="700">
-        <Vditor ref="childvditor" :placeholder="'写点什么分享吧'" :uploadurl="'/api/upload'" :markdown="shareData" @vditor-input="getShareData" />
+        <Vditor v-if="editType == 0" ref="childvditor" :placeholder="'写点什么分享吧'" :uploadurl="'/api/upload'" :markdown="shareData" @vditor-input="getShareData" />
+
+        <v-row v-if="editType == 1" justify="center">
+          <v-col cols="11" style="padding-top: 0px;">
+            <Editor ref="wangeditor" @edit-value="getShareData" />
+          </v-col>
+        </v-row>
 
         <div class="text-center">
           <v-btn
@@ -123,8 +129,9 @@
 <script>
 import BackToTop from '@/components/back-to-top.vue'
 import Vditor from '@/components/vditor/vditor.vue'
+import Editor from '@/components/wangeditor/wang-editor.vue'
 export default {
-  components: { BackToTop, Vditor },
+  components: { BackToTop, Vditor, Editor },
   data: () => ({
     showShare: false,
     dialog: false,
@@ -141,9 +148,18 @@ export default {
       { icon: 'mdi-lock', text: '加密解密', link: '/aes' },
       { icon: 'mdi-wrench', text: '设置', link: '/setting' },
       { icon: 'mdi-help', text: '关于', link: '/about' }
-    ]
+    ],
+    editType: 0
   }),
+  created() {
+    this.setEditType()
+  },
   methods: {
+    setEditType() {
+      this.httpGet('/upload/disk', (json) => {
+        this.editType = json.data.editType
+      })
+    },
     search(e) {
       if (e.key === 'Enter') {
         if (this.searchText === '') {
@@ -169,7 +185,8 @@ export default {
         return
       }
       const data = {
-        'data': this.shareData
+        'data': this.shareData,
+        'editType': this.editType
       }
 
       this.httpPost('/share/save', data, (json) => {
@@ -179,7 +196,11 @@ export default {
           this.snackbar = true
           this.showShare = false
           this.shareData = ''
-          this.$refs.childvditor.clean()
+          if (this.editType === 0) {
+            this.$refs.childvditor.clean()
+          } else {
+            this.$refs.wangeditor.clean()
+          }
         } else {
           this.message = '分享失败！' + json.message
           this.color = 'error'

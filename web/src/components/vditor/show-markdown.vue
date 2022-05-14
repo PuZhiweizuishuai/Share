@@ -40,6 +40,10 @@ export default {
     previevMarkdown() {
       Vditor.preview(this.$refs.markdownView,
         this.markdownText, {
+          cdn: '/vditor',
+          theme: {
+            path: '/vditor/dist/css/content-theme'
+          },
           speech: {
             enable: this.speech
           },

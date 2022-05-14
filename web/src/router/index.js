@@ -51,10 +51,22 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/views/aes.vue')
       },
       {
+        path: '/rsa',
+        name: 'RSA',
+        meta: { title: '加密解密' },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/rsa.vue')
+      },
+      {
         path: '/setting',
         name: 'Setting',
         meta: { title: '设置' },
         component: () => import(/* webpackChunkName: "about" */ '@/views/setting.vue')
+      },
+      {
+        path: '/test',
+        name: 'Test',
+        meta: { title: 'Test' },
+        component: () => import(/* webpackChunkName: "about" */ '@/views/test.vue')
       },
       {
         path: '*',

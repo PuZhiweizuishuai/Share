@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.UrlResource;
 import org.springframework.http.*;
-import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -17,6 +16,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Pu Zhiwei {@literal puzhiweipuzhiwei@foxmail.com}
@@ -42,9 +43,37 @@ public class FileController {
         return ResponseDetails.ok(fileRepository.uploadFileMax(diskMessage));
     }
 
+    /**
+     * @param type 自定义返回数据格式
+     *   type = 1时
+     *             {
+     *     "errno": 0, // 注意：值是数字，不能是字符串
+     *     "data": {
+     *         "url": "xxx", // 图片 src ，必须
+     *         "alt": "yyy", // 图片描述文字，非必须
+     *         "href": "zzz" // 图片的链接，非必须
+     *     }
+     *    }
+     * */
     @PostMapping("/api/upload")
-    public VditorFiles save(@RequestParam(value = "files") MultipartFile[] files) {
-        return fileRepository.save(files);
+    public Object save(@RequestParam(value = "files") MultipartFile[] files, @RequestParam("type") Integer type) {
+        VditorFiles vditorFiles = fileRepository.save(files);
+        if (type == 1) {
+            HashMap<String, Object> map = new HashMap<>(2);
+            map.put("errno", 0);
+            HashMap<String, String> data = new HashMap<>(3);
+            HashMap<String, String> succMap = (HashMap<String, String>) vditorFiles.getData().get("succMap");
+            for(String name : succMap.keySet()) {
+                String url = succMap.get(name);
+                data.put("url", url);
+                data.put("alt", name);
+                data.put("href", url);
+            }
+            map.put("data", data);
+            return map;
+        } else {
+            return vditorFiles;
+        }
     }
 
     @GetMapping("/api/file/list")

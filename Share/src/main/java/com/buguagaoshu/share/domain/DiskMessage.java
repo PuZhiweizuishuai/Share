@@ -20,4 +20,6 @@ public class DiskMessage {
     private Long availableDisk;
 
     private Long uploadFileMax;
+
+    private Integer editType;
 }

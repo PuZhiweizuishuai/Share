@@ -12,7 +12,7 @@
             </v-col>
           </v-row>
           <v-divider />
-
+          <v-col />
           <v-row justify="center">
             <v-col cols="8">
               <v-text-field
@@ -28,7 +28,20 @@
             </v-col>
           </v-row>
           <v-row justify="center">
+            <v-col cols="8">
+              <v-select
+                v-model="editType"
+                :items="items"
+                label="编辑器选择"
+              />
+            </v-col>
+            <v-col cols="2">
+              <v-btn color="primary" @click="settingFileMax()">修改</v-btn>
+            </v-col>
+          </v-row>
+          <v-row justify="center">
             <v-col cols="10">
+              wangEditor(HTML) 编辑器的上传功能目前还不够成熟，有待更新！
               注意：修改完成后请刷新浏览器
             </v-col>
           </v-row>
@@ -51,7 +64,12 @@ export default {
     return {
       fileMax: 0,
       snackbar: false,
-      message: ''
+      message: '',
+      editType: 0,
+      items: [
+        { text: 'Vditor(Markdown)', value: 0 },
+        { text: 'wangEditor(HTML)', value: 1 }
+      ]
     }
   },
   created() {
@@ -69,6 +87,7 @@ export default {
       }).then(response => response.json())
         .then(json => {
           this.fileMax = json.data.uploadFileMax
+          this.editType = json.data.editType
         })
         .catch(e => {
           return null
@@ -84,6 +103,7 @@ export default {
       return true
     },
     settingFileMax() {
+      console.log(this.editType)
       if (this.checkNumber()) {
         fetch(`/api/upload/setting/filemax`, {
           headers: {
@@ -94,7 +114,8 @@ export default {
           credentials: 'include',
           body: JSON.stringify(
             {
-              'uploadFileMax': this.fileMax
+              'uploadFileMax': this.fileMax,
+              'editType': this.editType
             }
           )
         }).then(response => response.json())

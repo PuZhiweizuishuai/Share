@@ -55,7 +55,7 @@ public class FileRepositoryInLocalDiskImpl implements FileRepository {
     @Override
     public VditorFiles save(MultipartFile[] files) {
         VditorFiles vditorFiles = new VditorFiles();
-        Map<String, Object> succMap = new HashMap<>(2);
+        Map<String, String> succMap = new HashMap<>(2);
         List<String> errFiles = new ArrayList<>();
         for (MultipartFile file : files) {
             String path = FilePathUtils.filePath();
@@ -204,8 +204,13 @@ public class FileRepositoryInLocalDiskImpl implements FileRepository {
         } catch (Exception e) {
             return "提交数据错误，请检查后重试！";
         }
+
+        if (!(diskMessage.getEditType() == 1 || diskMessage.getEditType() == 0)) {
+            return "提交编辑器格式错误，请检查后重试！";
+        }
         Optional<DiskMessage> byId = diskMessageRepository.findById(1);
         byId.get().setUploadFileMax(max);
+        byId.get().setEditType(diskMessage.getEditType());
         diskMessageRepository.save(byId.get());
         return "修改成功！";
     }

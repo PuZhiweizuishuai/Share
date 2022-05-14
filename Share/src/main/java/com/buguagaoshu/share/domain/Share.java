@@ -21,5 +21,20 @@ public class Share {
 
     private Long createTime;
 
-    // private Integer tag;
+    private Long tagId;
+
+    private Boolean lock;
+
+    private String key;
+
+    /**
+     * 编辑器类型
+     * 默认为 0
+     * 0 Vditor https://ld246.com/article/1549638745630
+     * 1 wangEditor https://www.wangeditor.com/
+     * */
+    private Integer editType;
+
+    @Transient
+    private Tag tag;
 }
