@@ -2,7 +2,7 @@
   <div style="border: 1px solid #ccc;">
     <Toolbar
       v-if="showEdit"
-      style="border-bottom: 1px solid #ccc"
+      style="border-bottom: 1px solid #ccc;"
       :editor="editor"
       :default-config="toolbarConfig"
       :mode="mode"
@@ -41,7 +41,11 @@ export default {
       editor: null,
       html: '',
       filemax: 1024 * 1024,
-      toolbarConfig: { },
+      toolbarConfig: {
+        excludeKeys: [
+          'fullScreen'
+        ]
+      },
       showEdit: false,
       editorConfig: {
         placeholder: '请输入内容...',
@@ -51,7 +55,7 @@ export default {
             server: '/api/upload?type=1',
             maxFileSize: 1024 * 1024 * 1024, // 1M
             maxNumberOfFiles: 9,
-            allowedFileTypes: [],
+            // allowedFileTypes: [],
             headers: {
               'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
             },
@@ -60,6 +64,7 @@ export default {
               console.log(`${file.name} 上传成功`, res)
             },
             onError(file, err, res) {
+              alert(`${file.name} 上传出错`, err, res)
               console.log(`${file.name} 上传出错`, err, res)
             }
             // customInsert(res, insertFn) {
@@ -81,7 +86,7 @@ export default {
             server: '/api/upload?type=1',
             maxFileSize: 1024 * 1024 * 1024, // 1M
             maxNumberOfFiles: 9,
-            allowedFileTypes: [],
+            // allowedFileTypes: [],
             headers: {
               'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
             },
@@ -90,6 +95,7 @@ export default {
               console.log(`${file.name} 上传成功`, res)
             },
             onError(file, err, res) {
+              alert(`${file.name} 上传出错`, err, res)
               console.log(`${file.name} 上传出错`, err, res)
             }
           }

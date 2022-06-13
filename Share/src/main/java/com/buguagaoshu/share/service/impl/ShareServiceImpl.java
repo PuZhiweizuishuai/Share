@@ -50,8 +50,12 @@ public class ShareServiceImpl implements ShareService {
         if (share.getId() != null) {
             throw new RuntimeException("保存失败！");
         }
-        share.setCreateTime(System.currentTimeMillis());
-        shareRepository.save(share);
+        if (share.getEditType() == 1 || share.getEditType() == 0) {
+            share.setCreateTime(System.currentTimeMillis());
+            shareRepository.save(share);
+        } else {
+            throw new RuntimeException("编辑器格式设置错误！");
+        }
     }
 
     @Override
