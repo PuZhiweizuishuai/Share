@@ -56,11 +56,8 @@ public class FileController {
      *    }
      * */
     @PostMapping("/api/upload")
-    public Object save(@RequestParam(value = "files") MultipartFile[] files, @RequestParam(value = "type", required = false) Integer type) {
+    public Object save(@RequestParam(value = "files") MultipartFile[] files, @RequestParam(value = "type", defaultValue = "0") Integer type) {
         VditorFiles vditorFiles = fileRepository.save(files);
-        if (type == null) {
-            type = 0;
-        }
         if (type == 1) {
             HashMap<String, Object> map = new HashMap<>(2);
             map.put("errno", 0);
