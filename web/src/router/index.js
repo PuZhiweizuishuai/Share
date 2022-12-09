@@ -14,7 +14,7 @@ const routes = [
       {
         path: '/',
         name: 'Home',
-        component: () => import('@/views/create_pc_rsa.vue'),
+        component: () => import('@/views/share-list.vue'),
         meta: { title: '分享点啥 - 首页' }
       },
       {
