@@ -1,9 +1,8 @@
 package com.buguagaoshu.share.domain;
 
+import jakarta.persistence.Entity;
 import lombok.Data;
-
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import jakarta.persistence.Id;
 
 /**
  * @author Pu Zhiwei {@literal puzhiweipuzhiwei@foxmail.com}

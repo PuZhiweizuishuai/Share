@@ -7,6 +7,7 @@ function resolve(dir) {
 const name = '局域网文本共享'
 
 module.exports = {
+  publicPath: './',
   productionSourceMap: false,
   // options...
   devServer: {

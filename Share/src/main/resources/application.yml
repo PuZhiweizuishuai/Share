@@ -7,7 +7,7 @@
 #    password: pzw123456
 spring:
   datasource:
-    url: jdbc:h2:~/share
+    url: jdbc:h2:~/share;NON_KEYWORDS=KEY
     driver-class-name: org.h2.Driver
     username: sa
     password: 123456

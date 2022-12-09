@@ -6,6 +6,7 @@ import com.buguagaoshu.share.domain.Share;
 import com.buguagaoshu.share.repository.FileMessageRepository;
 import com.buguagaoshu.share.repository.ShareRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,7 +19,7 @@ import java.util.List;
  * create          2021-05-22 18:15
  * 数据迁移接口
  */
-//@RestController
+@RestController
 public class MoveController {
     @Autowired
     ShareRepository shareRepository;
