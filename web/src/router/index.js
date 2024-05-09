@@ -63,10 +63,10 @@ const routes = [
         component: () => import(/* webpackChunkName: "about" */ '@/views/setting.vue')
       },
       {
-        path: '/test',
-        name: 'Test',
-        meta: { title: 'Test' },
-        component: () => import(/* webpackChunkName: "about" */ '@/views/test.vue')
+        path: '/sysinfo',
+        name: 'SysInfo',
+        meta: { title: 'SysInfo' },
+        component: () => import('@/views/sysinfo.vue')
       },
       {
         path: '*',

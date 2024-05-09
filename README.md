@@ -68,6 +68,14 @@ https://gitee.com/puzhiweizuishuai/Share/releases
 
 ## 更新
 
+### 2024-05-09
+
+升级前端为Vue3与Vuetify3，重新构建全新前端
+
+升级后端Java版本为Java17
+
+增加安全访问控制选项
+
 ### 2020-12-8
 
 优化文件上传大小设置，更新依赖，添加音乐解密模块

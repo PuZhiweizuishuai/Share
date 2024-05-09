@@ -1,5 +1,5 @@
 /// <reference types="./types" />
-import "./assets/scss/index.scss";
+import "./assets/less/index.less";
 import VditorMethod from "./method";
 declare class Vditor extends VditorMethod {
     readonly version: string;
@@ -9,6 +9,7 @@ declare class Vditor extends VditorMethod {
      * @param options Vditor 参数
      */
     constructor(id: string | HTMLElement, options?: IOptions);
+    private showErrorTip;
     /** 设置主题 */
     setTheme(theme: "dark" | "classic", contentTheme?: string, codeTheme?: string, contentThemePath?: string): void;
     /** 获取 Markdown 内容 */

@@ -1,8 +1,12 @@
 package com.buguagaoshu.share.config;
 
 import com.buguagaoshu.share.domain.DiskMessage;
+import com.buguagaoshu.share.domain.User;
 import com.buguagaoshu.share.repository.DiskMessageRepository;
+import com.buguagaoshu.share.repository.IpRepository;
 import com.buguagaoshu.share.repository.TagCacheRepository;
+import com.buguagaoshu.share.repository.impl.InMemoryIpCache;
+import com.buguagaoshu.share.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartProperties;
@@ -12,6 +16,8 @@ import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 
 import java.io.File;
@@ -24,22 +30,34 @@ import java.util.Optional;
  * create          2020-07-03 18:49
  */
 @Configuration
-public class WebConfig {
+public class WebConfig implements WebMvcConfigurer {
 
     private final MultipartProperties multipartProperties;
+    private final SecurityInterceptor securityInterceptor;
+    public final InMemoryIpCache inMemoryIpCache;
+    public final UserService userService;
+    private final LoginInterceptor loginInterceptor;
+
 
     @Autowired
-    public WebConfig(MultipartProperties multipartProperties) {
+    public WebConfig(MultipartProperties multipartProperties, SecurityInterceptor securityInterceptor, InMemoryIpCache inMemoryIpCache, UserService userService, LoginInterceptor loginInterceptor) {
         this.multipartProperties = multipartProperties;
+        this.securityInterceptor = securityInterceptor;
+        this.inMemoryIpCache = inMemoryIpCache;
+        this.userService = userService;
+        this.loginInterceptor = loginInterceptor;
     }
 
-//    @Bean
-//    public MultipartConfigElement multipartConfigFactory() {
-//        MultipartConfigFactory multipartConfigFactory = new MultipartConfigFactory();
-//        multipartConfigFactory.setMaxFileSize(multipartProperties.getMaxFileSize());
-//        multipartConfigFactory.setMaxRequestSize(multipartProperties.getMaxRequestSize());
-//        return multipartConfigFactory.createMultipartConfig();
-//    }
+
+
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+        registry.addInterceptor(securityInterceptor)
+                .addPathPatterns("/api/**")
+                        .excludePathPatterns("/api/login", "/api/ip");
+        registry.addInterceptor(loginInterceptor)
+                .addPathPatterns("/api/admin/**");
+    }
 
     @Bean
     public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer(){
@@ -83,7 +101,16 @@ public class WebConfig {
                 // 初始化标签缓存
                 tagCacheRepository.initTagMap();
                 tagCacheRepository.initTagList();
-
+                // 初始化ip白名单
+                inMemoryIpCache.init();
+                // 初始化管理员账号
+                User admin = userService.findByUsername("admin");
+                if (admin == null) {
+                    User user = new User();
+                    user.setUsername("admin");
+                    user.setPassword("123456");
+                    userService.save(user);
+                }
                 // 获取当前系统IP并显示
                 System.out.println("当前系统IP为：" + getIpAddress());
                 File diskPartition = new File("/");

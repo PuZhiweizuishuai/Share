@@ -12,6 +12,7 @@ export declare abstract class Constants {
     static readonly CDN: string;
     static readonly MARKDOWN_OPTIONS: {
         autoSpace: boolean;
+        gfmAutoLink: boolean;
         codeBlockPreview: boolean;
         fixTermTypo: boolean;
         footnotes: boolean;
@@ -27,6 +28,7 @@ export declare abstract class Constants {
     static readonly HLJS_OPTIONS: {
         enable: boolean;
         lineNumber: boolean;
+        defaultLang: string;
         style: string;
     };
     static readonly MATH_OPTIONS: IMath;

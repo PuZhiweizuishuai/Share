@@ -5,7 +5,7 @@
 
 <script>
 import Vditor from 'vditor'
-import 'vditor/src/assets/scss/index.scss'
+import '~vditor/src/assets/less/index'
 
 export default {
   name: 'Vditor',

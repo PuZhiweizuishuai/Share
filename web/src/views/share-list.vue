@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fill-height>
     <div id="share-top" />
     <v-row>
       <v-col>
