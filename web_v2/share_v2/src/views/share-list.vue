@@ -1,6 +1,5 @@
 <template>
   <v-container fluid>
-    <div id="share-top" />
     <v-row>
       <v-col>
         <br />

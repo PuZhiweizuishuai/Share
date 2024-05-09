@@ -36,3 +36,8 @@
     </p>
   </v-container>
 </template>
+<style scoped>
+a {
+  color: #2196f3;
+}
+</style>

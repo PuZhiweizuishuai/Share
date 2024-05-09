@@ -1,6 +1,6 @@
 {
   "name": "share_v2",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -21,7 +21,7 @@
     "vue": "^3.4.21",
     "vue-cookies": "^1.8.4",
     "vue-router": "^4.3.0",
-    "vuetify": "^3.6.0"
+    "vuetify": "^3.6.4"
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",

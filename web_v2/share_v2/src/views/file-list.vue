@@ -19,11 +19,28 @@
           >
           <v-divider class="mx-4" inset vertical />
           <v-spacer />
-          <v-btn color="primary" dark class="mb-2" @click="initialize">刷新文件列表</v-btn>
+          <v-btn color="primary" @click="initialize">刷新文件列表</v-btn>
         </v-toolbar>
+      </template>
+      <template v-slot:item.uploadFilename="{ item }">
+        <v-tooltip
+          v-if="item.uploadFilename.length >= 40"
+          location="top"
+          :text="item.uploadFilename"
+        >
+          <template v-slot:activator="{ props }">
+            <span v-bind="props">
+              {{ showFileName(item.uploadFilename) }}
+            </span>
+          </template>
+        </v-tooltip>
+        <span v-else>
+          {{ showFileName(item.uploadFilename) }}
+        </span>
       </template>
       <template v-slot:item.path="{ item }">
         <a
+          class="overflow-auto"
           :href="`${item.path}?filename=${encodeURIComponent(item.uploadFilename)}&type=inline`"
           target="_blank"
         >
@@ -31,25 +48,48 @@
         </a>
       </template>
       <template v-slot:item.actions="{ item }">
-        <a
+        <!-- <a
           :href="`${item.path}?filename=${encodeURIComponent(item.uploadFilename)}&type=attachment`"
           target="_blank"
         >
           <v-icon class="mr-2" density="compact" @click="downloadItem(item)" icon="mdi-download">
           </v-icon>
-        </a>
+        </a> -->
+        <v-tooltip location="start" text="下载">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              class="mr-2"
+              icon="mdi-download"
+              density="compact"
+              color="success"
+              v-bind="props"
+              target="_blank"
+              :href="`${item.path}?filename=${encodeURIComponent(
+                item.uploadFilename
+              )}&type=attachment`"
+            >
+            </v-btn>
+          </template>
+        </v-tooltip>
         <v-tooltip location="start" text="重命名">
           <template v-slot:activator="{ props }">
-            <v-btn icon="mdi-pencil" density="compact" v-bind="props" @click="editItem(item)">
+            <v-btn
+              class="mr-2"
+              icon="mdi-pencil"
+              density="compact"
+              v-bind="props"
+              @click="editItem(item)"
+            >
             </v-btn>
           </template>
         </v-tooltip>
         <v-tooltip location="start" text="删除文件">
           <template v-slot:activator="{ props }">
             <v-btn
+              class="mr-2"
               density="compact"
               icon="mdi-delete"
-              class="mr-2"
+              color="error"
               v-bind="props"
               @click="deleteItem(item)"
             >
@@ -170,6 +210,12 @@ export default {
     this.getDiskMessage()
   },
   methods: {
+    showFileName(name) {
+      if (name.length >= 40) {
+        return name.substr(0, 15) + '...' + name.substr(name.length - 10, 10)
+      }
+      return name
+    },
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight }
       if (this.windowSize.x <= 600) {
