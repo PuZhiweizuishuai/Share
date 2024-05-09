@@ -19,7 +19,7 @@
         color="blue"
         v-model="page"
         :length="length"
-        :total-visible="7"
+        :total-visible="5"
         rounded="circle"
         @update:modelValue="pageChange"
       />

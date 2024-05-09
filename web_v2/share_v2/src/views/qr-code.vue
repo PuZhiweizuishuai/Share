@@ -14,7 +14,7 @@
 
     <v-row>
       <v-col cols="12">
-        <v-textarea v-model="text" min-width="900" variant="underlined" label="请输入文字内容" />
+        <v-textarea v-model="text" variant="underlined" label="请输入文字内容" />
       </v-col>
     </v-row>
     <v-row>

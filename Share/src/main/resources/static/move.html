@@ -1,60 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
-<div>
-  <input id="share"/>
-  <button onclick="submitShare()">share</button>
-</div>
-<div>
-  <input id="file"/>
-  <button onclick="submitFile()">file</button>
-</div>
-<script>
-  function submitShare() {
-    let data = document.querySelector("#share").value;
-    let jsonData = JSON.parse(data)
-    let s = jsonData.share
-    fetch(`/api/admin/move/share/save`, {
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
-      },
-      method: 'POST',
-      body: JSON.stringify(s)
-    }).then(response => response.json())
-            .then(json => {
+  <div>
+    <input id="share" />
+    <button onclick="submitShare()">share</button>
+  </div>
+  <div>
+    <input id="file" />
+    <button onclick="submitFile()">file</button>
+  </div>
+  <script>
+    function submitShare() {
+      let data = document.querySelector("#share").value;
+      let jsonData = JSON.parse(data)
+      let s = jsonData.share
+      fetch(`/api/admin/move/share/svae`, {
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        method: 'POST',
+        body: JSON.stringify(s)
+      }).then(response => response.json())
+        .then(json => {
 
-            })
-            .catch(e => {
+        })
+        .catch(e => {
 
-              return null
-            })
-  }
+          return null
+        })
+    }
 
-  function submitFile() {
-    let data = document.querySelector("#file").value;
-    let jsonData = JSON.parse(data)
-    let s = jsonData.file
-    fetch(`/api/admin/move/file/save`, {
-      headers: {
-        'Content-Type': 'application/json; charset=UTF-8'
-      },
-      method: 'POST',
-      body: JSON.stringify(s)
-    }).then(response => response.json())
-            .then(json => {
+    function submitFile() {
+      let data = document.querySelector("#file").value;
+      let jsonData = JSON.parse(data)
+      let s = jsonData.file
+      fetch(`/api/admin/move/file/save`, {
+        headers: {
+          'Content-Type': 'application/json; charset=UTF-8'
+        },
+        method: 'POST',
+        body: JSON.stringify(s)
+      }).then(response => response.json())
+        .then(json => {
 
-            })
-            .catch(e => {
+        })
+        .catch(e => {
 
-              return null
-            })
-  }
-</script>
+          return null
+        })
+    }
+  </script>
 </body>
+
 </html>

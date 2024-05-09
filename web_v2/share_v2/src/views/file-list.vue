@@ -65,7 +65,7 @@
           <v-pagination
             v-model="page"
             color="blue"
-            :total-visible="6"
+            :total-visible="5"
             :length="pageCount"
             rounded="circle"
           ></v-pagination>

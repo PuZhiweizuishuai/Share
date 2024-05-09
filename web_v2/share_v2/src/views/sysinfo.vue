@@ -199,6 +199,7 @@ export default {
       this.httpPost('/admin/change/password', this.user, (json) => {
         if (json.data != null && json.data != '') {
           this.loginUserInfo = json.data
+          this.showSysInfo = false
         } else {
           this.message = '修改失败'
           this.snackbar = true

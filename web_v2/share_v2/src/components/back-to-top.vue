@@ -3,11 +3,11 @@
     density="compact"
     icon="mdi-chevron-up"
     size="x-large"
-    v-show="fab"
-    v-scroll="onScroll"
+    width="56"
+    height="56"
     color="pink"
     @click="toTop"
-    style="position: absolute; right: 0; bottom: 84px"
+    style="position: fixed; z-index: 9999; right: 64px; bottom: 64px"
   >
   </v-btn>
 </template>
@@ -18,7 +18,7 @@ export default {
   name: 'BackToTop',
   data() {
     return {
-      fab: false
+      fab: true
     }
   },
   setup() {
@@ -26,14 +26,6 @@ export default {
     return { goTo }
   },
   methods: {
-    onScroll(e) {
-      if (typeof window === 'undefined') return
-      const top = window.pageYOffset || e.target.scrollTop || 0
-      this.fab = top > 200
-      //   if (window.pageYOffset > 100) {
-      //     this.fab = true
-      //   }
-    },
     toTop() {
       this.goTo(0, 0)
       //this.$vuetify.goTo(0)

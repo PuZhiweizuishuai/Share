@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <v-container fluid v-scroll.self="onScroll">
     <v-app-bar color="primary">
       <v-app-bar-nav-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
 
@@ -86,7 +86,7 @@
     <v-snackbar v-model="snackbar" :color="color" :timeout="3000" :top="true">
       {{ message }}
     </v-snackbar>
-    <BackToTop />
+    <BackToTop v-show="fab" />
     <v-footer class="font-weight-medium">
       <v-col class="text-center" cols="12">
         <a href="https://www.buguagaoshu.com" target="_blank"><strong>不挂高数</strong></a> ©2020 -
@@ -94,7 +94,7 @@
         <a href="https://vuetifyjs.com/" target="_blank"><strong>Vuetify</strong></a>
       </v-col>
     </v-footer>
-  </div>
+  </v-container>
 </template>
 
 
@@ -105,6 +105,7 @@ import Editor from '@/components/wangeditor/wang-editor.vue'
 export default {
   components: { BackToTop, Vditor, Editor },
   data: () => ({
+    fab: false,
     drawer: false,
     group: null,
     items: [
@@ -132,8 +133,16 @@ export default {
   },
   created() {
     this.setEditType()
+    window.addEventListener('scroll', this.onScroll, true)
   },
   methods: {
+    onScroll() {
+      if (document.documentElement.scrollTop > 250) {
+        this.fab = true
+      } else {
+        this.fab = false
+      }
+    },
     getShareData(value) {
       this.shareData = value
     },
