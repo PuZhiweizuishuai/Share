@@ -22,7 +22,7 @@ import java.util.Optional;
  * create          2021-05-22 18:15
  * 数据迁移接口
  */
-@RestController("/api/admin")
+@RestController()
 public class MoveController {
     @Autowired
     ShareRepository shareRepository;
@@ -32,24 +32,24 @@ public class MoveController {
     @Autowired
     private DiskMessageRepository diskMessageRepository;
 
-    @GetMapping("/move/share")
+    @GetMapping("/api/admin/move/share")
     public ResponseDetails moveShare() {
         return ResponseDetails.ok().put("share", shareRepository.findAll());
     }
 
-    @GetMapping("/move/file")
+    @GetMapping("/api/admin/move/file")
     public ResponseDetails moveFile() {
         return ResponseDetails.ok().put("file", fileMessageRepository.findAll());
     }
 
 
-    @PostMapping("/move/share")
+    @PostMapping("/api/admin/move/share/save")
     public ResponseDetails saveShare(@RequestBody List<Share> shares) {
         shareRepository.saveAll(shares);
         return ResponseDetails.ok();
     }
 
-    @PostMapping("/move/file")
+    @PostMapping("/api/admin/move/file/save")
     public ResponseDetails saveFile(@RequestBody List<FileMessage> messages) {
         fileMessageRepository.saveAll(messages);
         Iterable<FileMessage> all = fileMessageRepository.findAll();

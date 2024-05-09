@@ -25,7 +25,8 @@ public class Share {
 
     private Boolean lock;
 
-    private String key;
+
+    private String password;
 
     /**
      * 编辑器类型

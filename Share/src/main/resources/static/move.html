@@ -20,7 +20,7 @@
     let data = document.querySelector("#share").value;
     let jsonData = JSON.parse(data)
     let s = jsonData.share
-    fetch(`/api/admin/move/share`, {
+    fetch(`/api/admin/move/share/save`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8'
       },
@@ -40,7 +40,7 @@
     let data = document.querySelector("#file").value;
     let jsonData = JSON.parse(data)
     let s = jsonData.file
-    fetch(`/api/admin/move/file`, {
+    fetch(`/api/admin/move/file/save`, {
       headers: {
         'Content-Type': 'application/json; charset=UTF-8'
       },
