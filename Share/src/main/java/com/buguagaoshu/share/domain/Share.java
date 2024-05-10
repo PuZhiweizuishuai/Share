@@ -36,6 +36,22 @@ public class Share {
      * */
     private Integer editType;
 
+    /**
+     * 是否公开分享
+     * */
+    private Boolean publicUser;
+
+    /**
+     * url
+     * */
+    private String url;
+    /**
+     * 公开访问密码
+     * */
+    private boolean haveUserSeeKey;
+    private String userSeeKey;
+    private Long createPublicShareUserId;
+
     @Transient
     private Tag tag;
 }

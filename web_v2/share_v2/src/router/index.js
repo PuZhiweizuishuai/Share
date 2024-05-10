@@ -59,6 +59,18 @@ const router = createRouter({
           meta: { title: '系统信息' }
         },
         {
+          path: '/share/share/:id',
+          name: 'ShareText',
+          component: () => import('../views/share-text.vue'),
+          meta: { title: '分享给你的' }
+        },
+        {
+          path: '/share/file/:id',
+          name: 'ShareFile',
+          component: () => import('../views/share-file.vue'),
+          meta: { title: '分享给你的文件' }
+        },
+        {
           path: '/test',
           name: 'test',
           component: () => import('../views/test.vue'),

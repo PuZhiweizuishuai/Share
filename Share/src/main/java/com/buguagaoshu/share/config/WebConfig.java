@@ -7,7 +7,9 @@ import com.buguagaoshu.share.repository.IpRepository;
 import com.buguagaoshu.share.repository.TagCacheRepository;
 import com.buguagaoshu.share.repository.impl.InMemoryIpCache;
 import com.buguagaoshu.share.service.UserService;
+import com.buguagaoshu.share.utils.IpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.autoconfigure.web.servlet.MultipartProperties;
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
@@ -49,18 +51,22 @@ public class WebConfig implements WebMvcConfigurer {
     }
 
 
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(securityInterceptor)
-                .addPathPatterns("/api/**")
-                        .excludePathPatterns("/api/login", "/api/ip");
+                .addPathPatterns("/api/**", "/api/file/list", "/api/upload/setting/filemax")
+                .excludePathPatterns("/api/login"
+                        , "/api/ip"
+                        , "/api/upload/disk"
+                        , "/api/upload/file/**"
+                        , "/api/public/**"
+                        , "/api/login/check");
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/api/admin/**");
     }
 
     @Bean
-    public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer(){
+    public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
         return factory -> {
             ErrorPage error404Page = new ErrorPage(HttpStatus.NOT_FOUND, "/index.html");
             factory.addErrorPages(error404Page);
@@ -93,8 +99,6 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Bean
     public CommandLineRunner dataLoader(DiskMessageRepository disk, TagCacheRepository tagCacheRepository) {
-        System.out.println(multipartProperties.getMaxFileSize());
-
         return new CommandLineRunner() {
             @Override
             public void run(String... args) throws Exception {

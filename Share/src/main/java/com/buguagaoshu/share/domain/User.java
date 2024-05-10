@@ -23,6 +23,8 @@ public class User {
 
     private String email;
 
+    private Long createTime;
+
     @Transient
     private String oldPassword;
 }

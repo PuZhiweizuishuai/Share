@@ -5,6 +5,13 @@
 #    url: jdbc:mysql://192.168.0.100:3306/LAN_share?useUnicode=true&characterEncoding=UTF-8
 #    username: root
 #    password: pzw123456
+
+share:
+  # 是否配置代理访问，如果前置配置了nginx等代理服务器，则需要将此配置修改为true，不然为false，防止用户ip伪造
+  # 默认 false
+  is-the-proxy-configured: false
+  max-login-count: 3
+
 spring:
   datasource:
     url: jdbc:h2:~/share;NON_KEYWORDS=KEY

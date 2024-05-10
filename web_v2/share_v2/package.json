@@ -13,7 +13,9 @@
   "dependencies": {
     "@wangeditor/editor": "^5.1.23",
     "@wangeditor/editor-for-vue": "^5.1.12",
+    "aplayer": "^1.10.1",
     "crypto-js": "^4.2.0",
+    "dplayer": "^1.27.1",
     "pinia": "^2.1.7",
     "qrcode": "^1.5.3",
     "vditor": "^3.10.4",

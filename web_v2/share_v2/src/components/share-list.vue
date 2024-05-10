@@ -22,6 +22,17 @@
                   <v-icon icon="mdi-delete"></v-icon>
                   删除
                 </v-btn>
+                <v-btn
+                  @click="showShareInfo(item)"
+                  style="float: right"
+                  end
+                  text
+                  small
+                  color="blue"
+                >
+                  <v-icon icon="mdi-share"></v-icon>
+                  分享
+                </v-btn>
               </v-col>
             </v-row>
           </v-card-actions>
@@ -33,13 +44,13 @@
         </v-card>
       </v-col>
     </v-row>
-
+    <!-- 删除弹框 -->
     <v-dialog v-model="showDelete" max-width="490">
       <v-card>
         <v-card-title class="headline">你确定要删除这条分享吗？</v-card-title>
 
         <v-card-text>
-          <span v-text="subString()" /> <br /><br />
+          <span v-text="subString(deleteData.data)" /> <br /><br />
           删除后将无法恢复，请谨慎操作！！！
         </v-card-text>
 
@@ -50,6 +61,59 @@
 
           <v-btn color="error" text @click="deleteShare()"> 确认 </v-btn>
         </v-card-actions>
+      </v-card>
+    </v-dialog>
+    <!-- 分享弹框 -->
+    <v-dialog v-model="showShareDialog" max-width="490">
+      <v-card>
+        <v-card-title class="headline">你要将这条分享出去吗？</v-card-title>
+
+        <v-card-text>
+          <p>
+            <span v-text="subString(shareItem.data)" /><br />
+            分享后在任何人均可查看
+          </p>
+          <p>
+            <v-row justify="center">
+              <v-col>
+                <v-switch
+                  v-model="shareItem.haveUserSeeKey"
+                  color="blue"
+                  label="是否启用密码"
+                ></v-switch>
+              </v-col>
+            </v-row>
+            <v-row justify="center" v-show="shareItem.haveUserSeeKey">
+              <v-col>
+                <v-text-field
+                  v-model="shareItem.userSeeKey"
+                  placeholder="密码"
+                  label="密码"
+                  clearable
+                  variant="underlined"
+                />
+              </v-col>
+            </v-row>
+          </p>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer />
+
+          <v-btn color="green darken-1" text @click="showShareDialog = false"> 放弃 </v-btn>
+
+          <v-btn color="error" text @click="sendSaveShare()"> 确认 </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <!-- 分享成功弹窗 -->
+    <v-dialog v-model="showseccussShareDialog" max-width="490">
+      <v-card>
+        <v-card-title class="headline">分享成功，复制下面内容给你的好友吧！</v-card-title>
+        <v-card-text>
+          {{ successShareInfo }}
+        </v-card-text>
       </v-card>
     </v-dialog>
     <v-snackbar v-model="snackbar" :color="'success'" :timeout="3000" :top="true">
@@ -88,11 +152,37 @@ export default {
       key: '',
       interval: () => {
         return null
-      }
+      },
+      showShareDialog: false,
+      shareItem: {
+        haveUserSeeKey: false,
+        userSeeKey: ''
+      },
+      showseccussShareDialog: false,
+      successShareInfo: ''
     }
   },
   created() {},
   methods: {
+    showShareInfo(item) {
+      this.showShareDialog = true
+      this.shareItem = item
+    },
+    sendSaveShare() {
+      this.httpPost(`/public/share`, this.shareItem, (json) => {
+        if (json.data != null) {
+          this.successShareInfo = `链接：${location.href}share/share/${json.data.url}`
+          if (this.shareItem.haveUserSeeKey) {
+            this.successShareInfo += `\n密码：${this.shareItem.userSeeKey}`
+          }
+          this.showseccussShareDialog = true
+          this.showShareDialog = false
+        } else {
+          this.message = json.message
+          this.snackbar = true
+        }
+      })
+    },
     deleteShare() {
       this.httpPost(`/share/delete`, this.deleteData, (json) => {
         if (json.status === 200) {
@@ -130,11 +220,11 @@ export default {
         '分'
       )
     },
-    subString() {
-      if (this.deleteData.data.length > 30) {
-        return this.deleteData.data.substring(0, 30) + '......'
+    subString(data) {
+      if (data.length > 30) {
+        return data.substring(0, 30) + '......'
       }
-      return this.deleteData.data
+      return data
     }
   }
 }

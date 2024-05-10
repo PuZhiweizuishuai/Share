@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row justify="center" align="center">
+    <v-row v-show="showLogin" justify="center" align="center">
       <v-col>
         <v-card class="mx-auto" outlined>
           <v-row justify="center">
@@ -152,6 +152,34 @@
         </v-card>
       </v-col>
     </v-row>
+    <v-row justify="center" align="center" v-if="showSysInfo">
+      <v-col>
+        <v-card class="mx-auto" outlined>
+          <v-row justify="center">
+            <v-col cols="10">
+              <h2>上传文件大小配置</h2>
+            </v-col>
+          </v-row>
+          <v-divider />
+          <v-col />
+          <v-row justify="center">
+            <v-col cols="8">
+              <v-text-field
+                variant="underlined"
+                v-model="fileMax"
+                placeholder="上传文件最大大小（单位：M）"
+                label="上传文件最大大小（单位：M）"
+                clearable
+                :rules="[() => checkNumber() || '必须是数字且不为空']"
+              />
+            </v-col>
+            <v-col cols="2">
+              <v-btn color="primary" @click="settingFileMax()">修改</v-btn>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+    </v-row>
     <v-snackbar v-model="snackbar" :timeout="3000" :top="true">
       {{ message }}
     </v-snackbar>
@@ -179,16 +207,25 @@ export default {
         { createUser: 'mdi-help', ip: '关于' }
       ],
       loginUserInfo: {},
-      showSysInfo: false
+      showSysInfo: false,
+      showLogin: true,
+      fileMax: 0
     }
   },
   methods: {
+    checkLogin() {
+      this.httpGet('/api/login/check', (json) => {
+        console.log(json)
+      })
+    },
     userLogin() {
       this.httpPost('/login', this.user, (json) => {
         if (json.data != null && json.data != '') {
           this.loginUserInfo = json.data
           this.showSysInfo = true
+          this.showLogin = false
           this.getWhitelist()
+          this.getFileMax()
         } else {
           this.message = '登录失败'
           this.snackbar = true
@@ -200,6 +237,7 @@ export default {
         if (json.data != null && json.data != '') {
           this.loginUserInfo = json.data
           this.showSysInfo = false
+          this.showLogin = true
         } else {
           this.message = '修改失败'
           this.snackbar = true
@@ -223,6 +261,32 @@ export default {
       this.httpPost('/admin/whitelist/delete', item, (json) => {
         //
         this.getWhitelist()
+      })
+    },
+    checkNumber() {
+      if (this.fileMax == null) {
+        return false
+      }
+      if (isNaN(parseInt(this.fileMax))) {
+        return false
+      }
+      return true
+    },
+    settingFileMax() {
+      if (this.checkNumber()) {
+        this.httpPost(
+          `/upload/setting/filemax?type=sysinfo`,
+          { uploadFileMax: this.fileMax },
+          (json) => {
+            this.message = json.message
+            this.snackbar = true
+          }
+        )
+      }
+    },
+    getFileMax() {
+      this.httpGet('/upload/disk', (json) => {
+        this.fileMax = json.data.uploadFileMax
       })
     }
   }

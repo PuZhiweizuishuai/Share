@@ -9,5 +9,5 @@ import org.springframework.data.repository.PagingAndSortingRepository;
  * create          2020-07-03 16:05
  */
 public interface FileMessageRepository extends PagingAndSortingRepository<FileMessage, Long>, CrudRepository<FileMessage, Long> {
-
+    FileMessage findByUrl(String url);
 }

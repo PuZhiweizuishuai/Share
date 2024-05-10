@@ -60,4 +60,17 @@ public class UserServiceImpl implements UserService {
         }
         return null;
     }
+
+    @Override
+    public User addUser(User user) {
+        if (user.getUsername() != null
+                && !user.getUsername().isEmpty()
+                && user.getPassword() != null
+                && user.getPassword().isEmpty()) {
+            user.setCreateTime(System.currentTimeMillis());
+            user.setPassword(PasswordUtil.encode(user.getPassword()));
+            userRepository.save(user);
+        }
+        return null;
+    }
 }

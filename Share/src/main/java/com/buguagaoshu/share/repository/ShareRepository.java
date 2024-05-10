@@ -15,5 +15,7 @@ import org.springframework.data.repository.PagingAndSortingRepository;
 public interface ShareRepository extends PagingAndSortingRepository<Share, Long>, CrudRepository<Share, Long> {
     Page<Share> findByDataLike(String key, Pageable pageable);
 
+    Share findByUrl(String url);
+
 
 }

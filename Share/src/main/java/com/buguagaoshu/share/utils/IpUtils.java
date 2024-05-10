@@ -1,5 +1,6 @@
 package com.buguagaoshu.share.utils;
 
+import com.buguagaoshu.share.config.WebConfig;
 import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.util.StringUtils;
 
@@ -11,10 +12,24 @@ import java.net.UnknownHostException;
  * @create 2024-05-08
  */
 public class IpUtils {
+    private Boolean isTheProxyConfigured = false;
+
+
+    public IpUtils(boolean isTheProxyConfigured) {
+        this.isTheProxyConfigured = isTheProxyConfigured;
+    }
+
+    public String getIpAddr(HttpServletRequest request) {
+        if (isTheProxyConfigured) {
+            return getProxyIpAddr(request);
+        }
+        return request.getRemoteAddr();
+    }
+
     /**
      * 获取用户登陆IP
      * */
-    public static String getIpAddr(HttpServletRequest request) {
+    public String getProxyIpAddr(HttpServletRequest request) {
         String ipAddress = null;
         try {
             ipAddress = request.getHeader("x-forwarded-for");

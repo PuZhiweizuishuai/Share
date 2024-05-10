@@ -71,6 +71,19 @@
             </v-btn>
           </template>
         </v-tooltip>
+        <v-tooltip location="start" text="分享">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              @click="showShareFileDilog(item)"
+              class="mr-2"
+              icon="mdi-share"
+              density="compact"
+              color="blue"
+              v-bind="props"
+            >
+            </v-btn>
+          </template>
+        </v-tooltip>
         <v-tooltip location="start" text="重命名">
           <template v-slot:activator="{ props }">
             <v-btn
@@ -112,13 +125,6 @@
         </div>
       </template>
     </v-data-table-server>
-    <!-- <v-pagination
-      v-model="page"
-      :length="pageCount"
-      circle
-      :total-visible="10"
-      @input="pageChange"
-    /> -->
 
     <v-dialog v-model="showDelete" max-width="490">
       <v-card>
@@ -149,6 +155,60 @@
           <v-btn color="green darken-1" text @click="showRename = false"> 放弃 </v-btn>
           <v-btn color="error" text @click="reNameOk"> 确认 </v-btn>
         </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <!-- 分享弹框 -->
+    <v-dialog v-model="showShareDialog" max-width="490">
+      <v-card>
+        <v-card-title class="headline">你要将这份文件分享出去吗？</v-card-title>
+
+        <v-card-text>
+          <p>
+            <span v-text="shareItem.uploadFilename" /><br />
+            分享后在任何人均可查看
+          </p>
+          <p>
+            <v-row justify="center">
+              <v-col>
+                <v-switch
+                  v-model="shareItem.haveUserSeeKey"
+                  color="blue"
+                  label="是否启用密码"
+                ></v-switch>
+              </v-col>
+            </v-row>
+            <v-row justify="center" v-show="shareItem.haveUserSeeKey">
+              <v-col>
+                <v-text-field
+                  v-model="shareItem.userSeeKey"
+                  placeholder="密码"
+                  label="密码"
+                  clearable
+                  variant="underlined"
+                />
+              </v-col>
+            </v-row>
+          </p>
+        </v-card-text>
+
+        <v-card-actions>
+          <v-spacer />
+
+          <v-btn color="green darken-1" text @click="showShareDialog = false"> 放弃 </v-btn>
+
+          <v-btn color="error" text @click="sendSaveShare()"> 确认 </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
+    <!-- 分享成功弹窗 -->
+    <v-dialog v-model="showseccussShareDialog" max-width="490">
+      <v-card>
+        <v-card-title class="headline">分享成功，复制下面内容给你的好友吧！</v-card-title>
+        <v-card-text>
+          {{ successShareInfo }}
+        </v-card-text>
       </v-card>
     </v-dialog>
     <v-snackbar v-model="snackbar" :color="color" :timeout="3000" :top="true">
@@ -195,7 +255,14 @@ export default {
     newName: '',
     loading: true,
     windowSize: { x: window.innerWidth, y: window.innerHeight },
-    mobileStatus: false
+    mobileStatus: false,
+    showShareDialog: false,
+    shareItem: {
+      haveUserSeeKey: false,
+      userSeeKey: ''
+    },
+    showseccussShareDialog: false,
+    successShareInfo: ''
   }),
   created() {
     const page = parseInt(this.$route.query.page)
@@ -210,6 +277,27 @@ export default {
     this.getDiskMessage()
   },
   methods: {
+    showShareFileDilog(item) {
+      this.shareItem = item
+      this.showShareDialog = true
+    },
+    sendSaveShare() {
+      this.shareItem.size = 0
+      this.shareItem.createTime = 0
+      this.httpPost(`/public/file`, this.shareItem, (json) => {
+        if (json.data != null) {
+          this.successShareInfo = `链接：${location.origin}/share/file/${json.data.url}`
+          if (this.shareItem.haveUserSeeKey) {
+            this.successShareInfo += `\n密码：${this.shareItem.userSeeKey}`
+          }
+          this.showseccussShareDialog = true
+          this.showShareDialog = false
+        } else {
+          this.message = json.message
+          this.snackbar = true
+        }
+      })
+    },
     showFileName(name) {
       if (name.length >= 40) {
         return name.substr(0, 15) + '...' + name.substr(name.length - 10, 10)
@@ -218,7 +306,7 @@ export default {
     },
     onResize() {
       this.windowSize = { x: window.innerWidth, y: window.innerHeight }
-      if (this.windowSize.x <= 600) {
+      if (this.windowSize.x <= 800) {
         this.mobileStatus = true
       } else {
         this.mobileStatus = false

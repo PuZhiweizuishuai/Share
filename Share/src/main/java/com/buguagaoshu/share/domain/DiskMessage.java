@@ -21,4 +21,5 @@ public class DiskMessage {
     private Long uploadFileMax;
 
     private Integer editType;
+
 }

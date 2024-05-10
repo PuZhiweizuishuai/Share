@@ -20,20 +20,24 @@ import org.springframework.web.servlet.HandlerInterceptor;
 public class SecurityInterceptor implements HandlerInterceptor {
     private final InMemoryIpCache inMemoryIpCache;
 
-    public SecurityInterceptor(InMemoryIpCache inMemoryIpCache) {
+    private final IpUtils ipUtils;
+
+    public SecurityInterceptor(InMemoryIpCache inMemoryIpCache, IpUtils ipUtil) {
         this.inMemoryIpCache = inMemoryIpCache;
+        this.ipUtils = ipUtil;
     }
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         // 只允许白名单内的IP无账号密码访问
 
-        String ip = IpUtils.getIpAddr(request);
+        String ip = ipUtils.getIpAddr(request);
+
         IpData ipData = inMemoryIpCache.getWhitelistIpMap().get(ip);
 
         // 对非白名单IP进行鉴权
         if (ipData == null) {
-            User user = (User) request.getSession().getAttribute("user");
+            User user = (User) request.getSession().getAttribute(WebConstant.LOGIN_USER);
             return user != null;
         }
 

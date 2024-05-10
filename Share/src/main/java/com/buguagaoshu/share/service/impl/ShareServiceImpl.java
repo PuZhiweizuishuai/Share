@@ -46,6 +46,16 @@ public class ShareServiceImpl implements ShareService {
     }
 
     @Override
+    public Share getShareById(long id) {
+        return shareRepository.findById(id).get();
+    }
+
+    @Override
+    public Share getShareByUrl(String url) {
+        return shareRepository.findByUrl(url);
+    }
+
+    @Override
     public void save(Share share) {
         if (share.getId() != null) {
             throw new RuntimeException("保存失败！");
@@ -69,6 +79,6 @@ public class ShareServiceImpl implements ShareService {
 
     @Override
     public void update(Share share) {
-        return;
+        shareRepository.save(share);
     }
 }

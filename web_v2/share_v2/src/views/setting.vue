@@ -10,7 +10,7 @@
           </v-row>
           <v-divider />
           <v-col />
-          <v-row justify="center">
+          <!-- <v-row justify="center">
             <v-col cols="8">
               <v-text-field
                 variant="underlined"
@@ -24,7 +24,7 @@
             <v-col cols="2">
               <v-btn color="primary" @click="settingFileMax()">修改</v-btn>
             </v-col>
-          </v-row>
+          </v-row> -->
           <v-row justify="center">
             <v-col cols="8">
               <v-select
@@ -103,7 +103,7 @@ export default {
     settingFileMax() {
       console.log(this.editType)
       if (this.checkNumber()) {
-        fetch(`/api/upload/setting/filemax`, {
+        fetch(`/api/upload/setting/filemax?type=setting`, {
           headers: {
             'Content-Type': 'application/json; charset=UTF-8',
             'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')

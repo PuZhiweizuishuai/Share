@@ -40,4 +40,18 @@ public class FileMessage {
 
 
     private Long createTime;
+
+
+    /**
+     * 是否公开分享
+     * */
+    private Boolean publicUser;
+    private String url;
+
+    /**
+     * 公开访问密码
+     * */
+    private String userSeeKey;
+    private boolean haveUserSeeKey;
+    private Long createPublicShareUserId;
 }
