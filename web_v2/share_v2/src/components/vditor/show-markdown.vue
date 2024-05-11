@@ -46,7 +46,11 @@ export default {
         },
         emojiPath: '/emoji',
         anchor: this.anchorNum,
-        markdown: {}
+        markdown: {},
+
+        parse: () => {
+          console.log('after')
+        }
       })
     }
   }

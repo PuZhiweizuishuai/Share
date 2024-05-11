@@ -47,15 +47,20 @@ public class LoginAndWhitelistController {
 
     @PostMapping("/api/login")
     public ResponseDetails login(@RequestBody User user, HttpServletRequest request, HttpSession session) {
-        if (!loginCountRepository.checkLoginCount(ipUtils.getIpAddr(request))) {
+        String ip = ipUtils.getIpAddr(request);
+        if (!loginCountRepository.checkLoginCount(ip)) {
             return ResponseDetails.ok(400, "登录错误次数超限，请稍后再试");
         }
+
         User login = userService.login(user);
         if (login != null) {
             session.setAttribute(WebConstant.LOGIN_USER, login);
+            // 登录次数归零
+            loginCountRepository.deleteLoginCount(ip);
             return ResponseDetails.ok().put("data", login);
         } else {
-            loginCountRepository.addLoginCount(ipUtils.getIpAddr(request));
+
+            loginCountRepository.addLoginCount(ip);
             return ResponseDetails.ok(400, "账号或密码错误");
         }
     }

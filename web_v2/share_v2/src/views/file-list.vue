@@ -47,14 +47,26 @@
           {{ item.path }}
         </a>
       </template>
+      <!-- 分享状态 -->
+      <template v-slot:item.status="{ item }">
+        <v-tooltip v-if="item.publicUser" location="start" text="已共享，点击查看信息！">
+          <template v-slot:activator="{ props }">
+            <v-btn
+              class="mr-2"
+              variant="outlined"
+              density="compact"
+              color="deep-purple"
+              v-bind="props"
+              @click="showShareStatus(item)"
+            >
+              已共享
+            </v-btn>
+          </template>
+        </v-tooltip>
+      </template>
+
+      <!-- 操作 -->
       <template v-slot:item.actions="{ item }">
-        <!-- <a
-          :href="`${item.path}?filename=${encodeURIComponent(item.uploadFilename)}&type=attachment`"
-          target="_blank"
-        >
-          <v-icon class="mr-2" density="compact" @click="downloadItem(item)" icon="mdi-download">
-          </v-icon>
-        </a> -->
         <v-tooltip location="start" text="下载">
           <template v-slot:activator="{ props }">
             <v-btn
@@ -71,7 +83,7 @@
             </v-btn>
           </template>
         </v-tooltip>
-        <v-tooltip location="start" text="分享">
+        <v-tooltip v-if="showShareBtn" location="start" text="分享">
           <template v-slot:activator="{ props }">
             <v-btn
               @click="showShareFileDilog(item)"
@@ -211,6 +223,25 @@
         </v-card-text>
       </v-card>
     </v-dialog>
+
+    <!-- 查看取消分享弹窗 -->
+    <v-dialog v-model="showSeeShareStatusDialog" max-width="490">
+      <v-card>
+        <v-card-title class="headline">分享</v-card-title>
+        <v-card-text>
+          {{ successShareInfo }}
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+
+          <v-btn color="green darken-1" text @click="showSeeShareStatusDialog = false">
+            关闭
+          </v-btn>
+
+          <v-btn color="error" v-if="showShareBtn" text @click="cancelShare()"> 取消分享 </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-snackbar v-model="snackbar" :color="color" :timeout="3000" :top="true">
       {{ message }}
     </v-snackbar>
@@ -232,6 +263,7 @@ export default {
       { title: '文件名', sortable: false, key: 'uploadFilename' },
       { title: '路径', sortable: false, key: 'path' },
       { title: '大小', sortable: false, key: 'size' },
+      { title: '状态', sortable: false, key: 'status' },
       { title: '操作', key: 'actions', sortable: false }
     ],
     fileList: [],
@@ -262,7 +294,11 @@ export default {
       userSeeKey: ''
     },
     showseccussShareDialog: false,
-    successShareInfo: ''
+    successShareInfo: '',
+    showShareBtn: false,
+    //
+    showSeeShareStatusDialog: false,
+    showShareStatusItme: {}
   }),
   created() {
     const page = parseInt(this.$route.query.page)
@@ -275,8 +311,43 @@ export default {
     }
     this.initialize()
     this.getDiskMessage()
+    this.checkLogin()
   },
   methods: {
+    cancelShare() {
+      this.showShareStatusItme.createTime = 0
+      this.showShareStatusItme.size = 0
+      this.httpPost('/public/file/cancel', this.showShareStatusItme, (json) => {
+        if (json.data) {
+          this.message = '取消成功'
+          this.snackbar = true
+          this.initialize()
+          this.showSeeShareStatusDialog = false
+        } else {
+          this.message = '取消失败'
+          this.snackbar = true
+          this.showSeeShareStatusDialog = false
+        }
+      })
+    },
+    showShareStatus(item) {
+      this.showShareStatusItme = item
+      this.successShareInfo = `链接：${location.origin}/share/file/${this.showShareStatusItme.url}`
+      if (this.showShareStatusItme.haveUserSeeKey) {
+        this.successShareInfo += `\n密码：${this.showShareStatusItme.userSeeKey}`
+      }
+
+      this.showSeeShareStatusDialog = true
+    },
+    checkLogin() {
+      this.httpGet('/login/check', (json) => {
+        if (json.status == 200) {
+          this.showShareBtn = true
+        } else {
+          this.showShareBtn = false
+        }
+      })
+    },
     showShareFileDilog(item) {
       this.shareItem = item
       this.showShareDialog = true

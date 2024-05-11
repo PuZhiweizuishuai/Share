@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.buguagaoshu</groupId>
     <artifactId>share</artifactId>
-    <version>3.0.1</version>
+    <version>3.1.0</version>
     <name>share</name>
     <description>局域网文本共享服务</description>
 

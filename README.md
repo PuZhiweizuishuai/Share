@@ -68,6 +68,10 @@ https://gitee.com/puzhiweizuishuai/Share/releases
 
 ## 更新
 
+### 2024-05-11
+
+增加对外分享功能
+
 ### 2024-05-09
 
 升级前端为Vue3与Vuetify3，重新构建全新前端

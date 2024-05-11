@@ -28,7 +28,7 @@ public class InMemoryLoginCountRepositoryImpl implements LoginCountRepository {
         LoginCount count = loginCountMap.get(loginIp);
         if (count == null) {
             LoginCount newCount = new LoginCount();
-            newCount.setCount(0);
+            newCount.setCount(1);
             newCount.setIp(loginIp);
             newCount.setStartTime(System.currentTimeMillis());
             loginCountMap.put(loginIp, newCount);
@@ -43,18 +43,23 @@ public class InMemoryLoginCountRepositoryImpl implements LoginCountRepository {
     @Override
     public int getLoginCount(String loginIp) {
         LoginCount count = loginCountMap.get(loginIp);
-        int n = 0;
         if (count != null) {
-            n++;
+            return count.getCount();
         }
-        return n;
+        return 1;
     }
 
     @Override
     public Boolean checkLoginCount(String loginIp) {
-        if (getLoginCount(loginIp) > myConfigProperties.getMaxLoginCount()) {
+        if (getLoginCount(loginIp) >= myConfigProperties.getMaxLoginCount()) {
             return false;
         }
+        return true;
+    }
+
+    @Override
+    public Boolean deleteLoginCount(String loginIp) {
+        loginCountMap.remove(loginIp);
         return true;
     }
 

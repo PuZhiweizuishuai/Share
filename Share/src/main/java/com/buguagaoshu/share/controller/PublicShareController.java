@@ -51,6 +51,25 @@ public class PublicShareController {
         return ResponseDetails.ok().put("data", publicShareService.publicFile(fileMessage, user));
     }
 
+
+    @PostMapping("/api/public/share/cancel")
+    public ResponseDetails cancelPublicShare(@RequestBody Share share, HttpSession session) {
+        User user = (User) session.getAttribute(WebConstant.LOGIN_USER);
+        if (user == null) {
+            return ResponseDetails.ok(400, "no power");
+        }
+        return ResponseDetails.ok().put("data", publicShareService.cancelpublicShare(share, user));
+    }
+
+    @PostMapping("/api/public/file/cancel")
+    public ResponseDetails cancelPublicFile(@RequestBody FileMessage fileMessage, HttpSession session) {
+        User user = (User) session.getAttribute(WebConstant.LOGIN_USER);
+        if (user == null) {
+            return ResponseDetails.ok(400, "no power");
+        }
+        return ResponseDetails.ok().put("data", publicShareService.cancelpublicFile(fileMessage, user));
+    }
+
     @PostMapping("/api/public/share/get")
     public ResponseDetails getShare(@RequestBody Share share, HttpServletRequest request) {
         return ResponseDetails.ok().put("data", publicShareService.getPublicShare(share.getUrl(), share.getUserSeeKey(), ipUtils.getIpAddr(request)));

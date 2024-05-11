@@ -11,5 +11,8 @@ public interface LoginCountRepository {
 
     Boolean checkLoginCount(String loginIp);
 
+    Boolean deleteLoginCount(String loginIp);
+
+
     void clean();
 }

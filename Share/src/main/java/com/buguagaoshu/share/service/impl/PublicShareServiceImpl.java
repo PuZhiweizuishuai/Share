@@ -36,7 +36,6 @@ public class PublicShareServiceImpl implements PublicShareService {
         shareById.setCreatePublicShareUserId(user.getId());
         shareById.setPublicUser(true);
 
-        System.out.println(share.getUserSeeKey());
 
         if (share.isHaveUserSeeKey()) {
             shareById.setUserSeeKey(share.getUserSeeKey());
@@ -76,10 +75,12 @@ public class PublicShareServiceImpl implements PublicShareService {
         Share shareByUrl = shareService.getShareByUrl(url);
         if (shareByUrl != null) {
             if (shareByUrl.getPublicUser()) {
+                shareByUrl.setId(null);
                 if (shareByUrl.isHaveUserSeeKey()) {
                     if (shareByUrl.getUserSeeKey().equals(password)) {
                         String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
                         shareByUrl.setUserSeeKey(key);
+
                         return shareByUrl;
                     }
                 } else {
@@ -98,6 +99,7 @@ public class PublicShareServiceImpl implements PublicShareService {
         FileMessage file = fileMessageRepository.findByUrl(url);
         if (file != null) {
             if (file.getPublicUser()) {
+                file.setId(null);
                 if (file.isHaveUserSeeKey()) {
                     if (password.equals(file.getUserSeeKey())) {
                         String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
@@ -135,5 +137,35 @@ public class PublicShareServiceImpl implements PublicShareService {
             }
         }
         return null;
+    }
+
+    @Override
+    public Boolean cancelpublicShare(Share share, User user) {
+        Share shareById = shareService.getShareById(share.getId());
+        if (shareById == null) {
+            return false;
+        }
+        shareById.setPublicUser(false);
+        shareById.setUrl("");
+        shareById.setHaveUserSeeKey(false);
+        shareById.setCreatePublicShareUserId(user.getId());
+        shareById.setUserSeeKey("");
+        shareService.update(shareById);
+        return true;
+    }
+
+    @Override
+    public Boolean cancelpublicFile(FileMessage fileMessage, User user) {
+        FileMessage file = fileMessageRepository.findById(fileMessage.getId()).get();
+        if (file == null) {
+            return false;
+        }
+        file.setPublicUser(false);
+        file.setUrl("");
+        file.setHaveUserSeeKey(false);
+        file.setCreatePublicShareUserId(user.getId());
+        file.setUserSeeKey("");
+        fileMessageRepository.save(file);
+        return true;
     }
 }

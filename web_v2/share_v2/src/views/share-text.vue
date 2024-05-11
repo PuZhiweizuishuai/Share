@@ -1,15 +1,17 @@
 <template>
   <v-container>
+    <v-col></v-col>
+    <v-row justify="center">
+      <v-tooltip text="为保护媒体资源，如果视频或图片不显示，请点击此按钮">
+        <template v-slot:activator="{ props }">
+          <v-btn @click="addLinkKey()" color="blue" v-bind="props"> 加载 </v-btn>
+        </template>
+      </v-tooltip>
+    </v-row>
+    <v-col></v-col>
     <v-card v-if="showShareRes">
       <!--  -->
       <v-card-text>
-        <v-row justify="center">
-          <v-tooltip text="为保护媒体资源，如果视频或图片不显示，请点击此按钮">
-            <template v-slot:activator="{ props }">
-              <v-btn @click="addLinkKey()" color="blue" v-bind="props"> 加载 </v-btn>
-            </template>
-          </v-tooltip>
-        </v-row>
         <ShowHtml v-if="item.editType == 1" :text="item.data" :key="editKey" />
         <ShowMarkdown
           v-if="item.editType == 0"

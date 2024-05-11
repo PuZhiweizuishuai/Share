@@ -23,6 +23,7 @@
                   删除
                 </v-btn>
                 <v-btn
+                  v-if="showShareBtn && (item.publicUser == false || item.publicUser == null)"
                   @click="showShareInfo(item)"
                   style="float: right"
                   end
@@ -33,6 +34,21 @@
                   <v-icon icon="mdi-share"></v-icon>
                   分享
                 </v-btn>
+
+                <v-tooltip v-if="item.publicUser" location="top" text="点击查看共享状态">
+                  <template v-slot:activator="{ props }">
+                    <v-btn
+                      v-bind="props"
+                      @click="showShareStatus(item)"
+                      style="float: right"
+                      small
+                      color="deep-purple"
+                    >
+                      <v-icon icon="mdi-information-slab-symbol"></v-icon>
+                      已共享
+                    </v-btn>
+                  </template>
+                </v-tooltip>
               </v-col>
             </v-row>
           </v-card-actions>
@@ -116,6 +132,22 @@
         </v-card-text>
       </v-card>
     </v-dialog>
+    <!-- 取消分享 -->
+    <v-dialog v-model="showShareStatusDilog" max-width="490">
+      <v-card>
+        <v-card-title class="headline">分享状态</v-card-title>
+        <v-card-text>
+          {{ successShareInfo }}
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+
+          <v-btn color="green darken-1" text @click="showShareStatusDilog = false"> 关闭 </v-btn>
+
+          <v-btn color="error" v-if="showShareBtn" text @click="cancelShare()"> 取消分享 </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
     <v-snackbar v-model="snackbar" :color="'success'" :timeout="3000" :top="true">
       {{ message }}
     </v-snackbar>
@@ -159,15 +191,56 @@ export default {
         userSeeKey: ''
       },
       showseccussShareDialog: false,
-      successShareInfo: ''
+      successShareInfo: '',
+      showShareBtn: false,
+      //
+      showShareStatusDilog: false,
+      showShareStatusItem: {}
     }
   },
-  created() {},
+  created() {
+    this.checkLogin()
+  },
   methods: {
+    cancelShare() {
+      this.showShareStatusItem.data = ''
+      this.httpPost('/public/share/cancel', this.showShareStatusItem, (json) => {
+        if (json.data) {
+          this.message = '取消成功'
+          this.snackbar = true
+          this.showShareStatusItem.publicUser = false
+          this.showShareStatusDilog = false
+        } else {
+          this.message = '取消失败'
+          this.snackbar = true
+          this.showShareStatusDilog = false
+        }
+      })
+    },
+    showShareStatus(item) {
+      this.showShareStatusItem = item
+
+      this.successShareInfo = `链接：${location.origin}/share/share/${this.showShareStatusItem.url}`
+      if (this.showShareStatusItem.haveUserSeeKey) {
+        this.successShareInfo += `\n密码：${this.showShareStatusItem.userSeeKey}`
+      }
+
+      this.showShareStatusDilog = true
+    },
+    checkLogin() {
+      this.httpGet('/login/check', (json) => {
+        if (json.status == 200) {
+          this.showShareBtn = true
+        } else {
+          this.showShareBtn = false
+        }
+      })
+    },
     showShareInfo(item) {
       this.showShareDialog = true
       this.shareItem = item
     },
+
     sendSaveShare() {
       this.httpPost(`/public/share`, this.shareItem, (json) => {
         if (json.data != null) {

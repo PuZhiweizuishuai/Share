@@ -20,4 +20,8 @@ public interface PublicShareService {
     Share checkShare(String url);
 
     FileMessage checkFile(String url);
+
+    Boolean cancelpublicShare(Share share, User user);
+
+    Boolean cancelpublicFile(FileMessage fileMessage, User user);
 }

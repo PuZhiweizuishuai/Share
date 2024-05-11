@@ -212,10 +212,21 @@ export default {
       fileMax: 0
     }
   },
+  created() {
+    this.checkLogin()
+  },
   methods: {
     checkLogin() {
-      this.httpGet('/api/login/check', (json) => {
-        console.log(json)
+      this.httpGet('/login/check', (json) => {
+        if (json.status == 200) {
+          this.showSysInfo = true
+          this.showLogin = false
+          this.getWhitelist()
+          this.getFileMax()
+        } else {
+          this.showSysInfo = false
+          this.showLogin = true
+        }
       })
     },
     userLogin() {
