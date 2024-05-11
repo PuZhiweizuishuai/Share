@@ -34,7 +34,7 @@
           :key="i"
           :value="item"
           color="primary"
-          :href="item.link"
+          :href="`#${item.link}`"
         >
           <template v-slot:prepend>
             <v-icon :icon="item.icon"></v-icon>
@@ -77,7 +77,7 @@
       </v-sheet>
     </v-bottom-sheet>
 
-    <v-main style="padding-top: 40px">
+    <v-main>
       <router-view v-slot="{ Component }">
         <component :is="Component" ref="child" />
       </router-view>

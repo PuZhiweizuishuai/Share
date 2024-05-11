@@ -1,9 +1,9 @@
 <template>
-  <v-container fluid>
+  <v-container fluid style="width: 100%">
     <v-data-table-server
-      density="compact"
       :headers="headers"
       :items="fileList"
+      hide-default-footer
       v-model:page="page"
       item-value="createTime"
       v-model:items-per-page="size"
@@ -122,9 +122,9 @@
           </template>
         </v-tooltip>
       </template>
-      <template v-slot:no-data>
+      <!-- <template v-slot:no-data>
         <v-btn color="primary" @click="initialize">Reset</v-btn>
-      </template>
+      </template> -->
       <template v-slot:bottom>
         <div class="text-center pt-2">
           <v-pagination
@@ -255,7 +255,6 @@ export default {
     dialog: false,
     headers: [
       {
-        align: 'start',
         title: '上传日期',
         sortable: false,
         key: 'createTime'
@@ -268,7 +267,7 @@ export default {
     ],
     fileList: [],
     page: 1,
-    size: 20,
+    size: 15,
     pageCount: 0,
     total: 0,
     deleteItemDate: {
@@ -332,7 +331,7 @@ export default {
     },
     showShareStatus(item) {
       this.showShareStatusItme = item
-      this.successShareInfo = `链接：${location.origin}/share/file/${this.showShareStatusItme.url}`
+      this.successShareInfo = `链接：${location.origin}/#/share/file/${this.showShareStatusItme.url}`
       if (this.showShareStatusItme.haveUserSeeKey) {
         this.successShareInfo += `\n密码：${this.showShareStatusItme.userSeeKey}`
       }
@@ -357,7 +356,7 @@ export default {
       this.shareItem.createTime = 0
       this.httpPost(`/public/file`, this.shareItem, (json) => {
         if (json.data != null) {
-          this.successShareInfo = `链接：${location.origin}/share/file/${json.data.url}`
+          this.successShareInfo = `链接：${location.origin}/#/share/file/${json.data.url}`
           if (this.shareItem.haveUserSeeKey) {
             this.successShareInfo += `\n密码：${this.shareItem.userSeeKey}`
           }

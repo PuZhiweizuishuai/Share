@@ -1,11 +1,12 @@
-<script setup>
-</script>
 
 <template >
   <v-app>
-    <RouterView />
+    <router-view />
   </v-app>
 </template>
 
 <style >
+a {
+  text-decoration: none;
+}
 </style>

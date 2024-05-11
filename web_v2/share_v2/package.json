@@ -23,7 +23,7 @@
     "vue": "^3.4.21",
     "vue-cookies": "^1.8.4",
     "vue-router": "^4.3.0",
-    "vuetify": "^3.6.4"
+    "vuetify": "^3.6.5"
   },
   "devDependencies": {
     "@mdi/font": "^7.4.47",
