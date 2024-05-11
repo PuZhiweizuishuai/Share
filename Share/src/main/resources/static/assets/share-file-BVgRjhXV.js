@@ -1,4 +1,4 @@
-import{s as kt,q as Yo,_ as In,o as se,h as rn,b as ln,c as an,w as $,r as ee,a as J,t as No,i as We,f as on}from"./index-BHqpIUYW.js";var Ct={exports:{}};(function(G,K){(function(M,I){G.exports=I()})(self,()=>(()=>{var M={916:(A,p,u)=>{var h=u(471);A.exports=function(m){var s,l="",f=(m=m||{}).video,v=m.options,y=h.$escape,w=m.tran,L=m.icons,C=m.index,T=h.$each;return m.$value,m.$index,l+=`<div class="dplayer-mask"></div>
+import{s as kt,q as Yo,_ as In,o as se,h as rn,b as ln,c as an,w as $,r as ee,a as J,t as No,i as We,f as on}from"./index-lJKHgFaS.js";var Ct={exports:{}};(function(G,K){(function(M,I){G.exports=I()})(self,()=>(()=>{var M={916:(A,p,u)=>{var h=u(471);A.exports=function(m){var s,l="",f=(m=m||{}).video,v=m.options,y=h.$escape,w=m.tran,L=m.icons,C=m.index,T=h.$each;return m.$value,m.$index,l+=`<div class="dplayer-mask"></div>
 <div class="dplayer-video-wrap">
     `,s=u(568)(f),l+=s,l+=`
     `,v.logo&&(l+=`

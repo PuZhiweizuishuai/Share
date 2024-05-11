@@ -363,6 +363,7 @@ export default {
           }
           this.showseccussShareDialog = true
           this.showShareDialog = false
+          this.initialize()
         } else {
           this.message = json.message
           this.snackbar = true
