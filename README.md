@@ -39,7 +39,7 @@
 
 ## 快速运行
 
-运行环境：Java 11
+运行环境：Java 17
 
 后端： Spring Boot + JPA
 
@@ -50,7 +50,7 @@
 ```
 cd Share
 mvn clean package
-java -jar share-0.0.1-SNAPSHOT.jar
+java -jar share-*.jar
 ```
 
 你也可以直接下载运行
@@ -61,6 +61,13 @@ https://github.com/PuZhiweizuishuai/Share/releases
 中国大陆下载加速
 
 https://gitee.com/puzhiweizuishuai/Share/releases
+
+## 使用
+
+初始账号admin，密码为123456
+
+第一次使用请到sysinfo目录下尽快更改
+
 
 ## 注意
 
