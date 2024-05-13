@@ -77,7 +77,7 @@
       </v-sheet>
     </v-bottom-sheet>
 
-    <v-main style="padding-top: 36px">
+    <v-main >
       <router-view v-slot="{ Component }">
         <component :is="Component" ref="child" />
       </router-view>

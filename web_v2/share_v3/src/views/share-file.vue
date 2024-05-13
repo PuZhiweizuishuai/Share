@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container >
     <div v-if="showShareRes">
       <v-row justify="center">
         <h2>{{ item.uploadFilename }}</h2>
@@ -7,7 +7,7 @@
 
       <v-col> <br /></v-col>
       <v-row>
-        <v-col>
+        <v-col >
           <v-img
             v-if="getFileType(item) == 1"
             :src="`${item.path}?filename=${encodeURIComponent(

@@ -244,7 +244,7 @@ export default {
     sendSaveShare() {
       this.httpPost(`/public/share`, this.shareItem, (json) => {
         if (json.data != null) {
-          this.successShareInfo = `链接：${location.href}/#/share/share/${json.data.url}`
+          this.successShareInfo = `链接：${location.origin}/#/share/share/${json.data.url}`
           if (this.shareItem.haveUserSeeKey) {
             this.successShareInfo += `\n密码：${this.shareItem.userSeeKey}`
           }

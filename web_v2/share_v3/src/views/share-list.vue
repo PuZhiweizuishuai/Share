@@ -1,13 +1,13 @@
 <template>
-  <v-container>
+  <v-container style="padding-top: 0px;">
     <div id="share-top"></div>
     <v-row>
-      <v-col>
+      <v-col style="padding-top: 0px;">
         <br />
         <span>当前共有 {{ total }} 条分享，当前页：{{ page }} </span>
       </v-col>
-      <v-col>
-        <v-switch v-model="auto" style="float: right" label="自动更新" @change="autoUpdate" />
+      <v-col style="padding-top: 0px;">
+        <v-switch v-model="auto" style="float: right" color="primary" label="自动更新" @change="autoUpdate" />
       </v-col>
     </v-row>
 
