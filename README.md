@@ -62,11 +62,13 @@ https://github.com/PuZhiweizuishuai/Share/releases
 
 https://gitee.com/puzhiweizuishuai/Share/releases
 
-## 使用
+##指南 使用
 
 初始账号admin，密码为123456
 
 第一次使用请到sysinfo目录下尽快更改
+
+第一次使用请到设置页面配置编辑器，不然可能出现不显示编辑器的问题
 
 
 ## 注意
