@@ -132,6 +132,7 @@ public class WebConfig implements WebMvcConfigurer {
                     DiskMessage diskMessage = new DiskMessage();
                     diskMessage.setUserDisk(0L);
                     diskMessage.setId(1);
+                    diskMessage.setEditType(0);
                     diskMessage.setAvailableDisk(diskPartition.getFreeSpace());
                     diskMessage.setUploadFileMax(multipartProperties.getMaxFileSize().toMegabytes());
                     disk.save(diskMessage);

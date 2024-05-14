@@ -33,6 +33,7 @@ public class SecurityInterceptor implements HandlerInterceptor {
 
         String ip = ipUtils.getIpAddr(request);
 
+        log.info("ip:{}", ip);
         IpData ipData = inMemoryIpCache.getWhitelistIpMap().get(ip);
 
         // 对非白名单IP进行鉴权

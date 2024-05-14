@@ -32,7 +32,10 @@ public class IpUtils {
     public String getProxyIpAddr(HttpServletRequest request) {
         String ipAddress = null;
         try {
-            ipAddress = request.getHeader("x-forwarded-for");
+            ipAddress = request.getHeader("X-Forwarded-Host");
+            if (ipAddress == null || ipAddress.isEmpty() || "unknown".equalsIgnoreCase(ipAddress)) {
+                ipAddress = request.getHeader("x-forwarded-for");
+            }
             if (ipAddress == null || ipAddress.isEmpty() || "unknown".equalsIgnoreCase(ipAddress)) {
                 ipAddress = request.getHeader("Proxy-Client-IP");
             }
