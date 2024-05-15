@@ -39,15 +39,17 @@ public class WebConfig implements WebMvcConfigurer {
     public final InMemoryIpCache inMemoryIpCache;
     public final UserService userService;
     private final LoginInterceptor loginInterceptor;
+    private final HttpHeaderInterceptor httpHeaderInterceptor;
 
 
     @Autowired
-    public WebConfig(MultipartProperties multipartProperties, SecurityInterceptor securityInterceptor, InMemoryIpCache inMemoryIpCache, UserService userService, LoginInterceptor loginInterceptor) {
+    public WebConfig(MultipartProperties multipartProperties, SecurityInterceptor securityInterceptor, InMemoryIpCache inMemoryIpCache, UserService userService, LoginInterceptor loginInterceptor, HttpHeaderInterceptor httpHeaderInterceptor) {
         this.multipartProperties = multipartProperties;
         this.securityInterceptor = securityInterceptor;
         this.inMemoryIpCache = inMemoryIpCache;
         this.userService = userService;
         this.loginInterceptor = loginInterceptor;
+        this.httpHeaderInterceptor = httpHeaderInterceptor;
     }
 
 
@@ -63,6 +65,7 @@ public class WebConfig implements WebMvcConfigurer {
                         , "/api/login/check");
         registry.addInterceptor(loginInterceptor)
                 .addPathPatterns("/api/admin/**");
+        registry.addInterceptor(httpHeaderInterceptor).addPathPatterns("/**");
     }
 
     @Bean
