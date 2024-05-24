@@ -37,7 +37,7 @@
       </v-row>
     </div>
     <!-- 密码输入弹框 -->
-    <v-dialog v-model="showShareDialog" max-width="490">
+    <v-dialog persistent v-model="showShareDialog" max-width="490">
       <v-card>
         <v-card-title class="headline">请输入密码</v-card-title>
         <v-card-text>

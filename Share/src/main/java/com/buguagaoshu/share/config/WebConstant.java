@@ -14,4 +14,8 @@ public class WebConstant {
     public final static long ONE_HOUR = 3600000;
 
     public final static String AES_KEY = UUID.randomUUID().toString().replaceAll("-", "");
+
+    public final static int VIEW_LOG_TYPE_SHARE = 0;
+
+    public final static int VIEW_LOG_TYPE_FILE = 1;
 }

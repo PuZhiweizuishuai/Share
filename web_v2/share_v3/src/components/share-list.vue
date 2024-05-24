@@ -7,7 +7,8 @@
             <v-row>
               <v-col style="padding-bottom: 0px; padding-top: 0px">
                 <v-list-item-title
-                  >创建时间： <span v-text="formateTimeToChinese(item.createTime)" />
+                  >创建时间：
+                  <span v-text="formateTimeToChinese(item.createTime)" />
                 </v-list-item-title>
               </v-col>
               <v-col style="padding-bottom: 0px; padding-top: 0px">
@@ -23,7 +24,10 @@
                   删除
                 </v-btn>
                 <v-btn
-                  v-if="showShareBtn && (item.publicUser == false || item.publicUser == null)"
+                  v-if="
+                    showShareBtn &&
+                    (item.publicUser == false || item.publicUser == null)
+                  "
                   @click="showShareInfo(item)"
                   style="float: right"
                   end
@@ -35,7 +39,11 @@
                   分享
                 </v-btn>
 
-                <v-tooltip v-if="item.publicUser" location="top" text="点击查看共享状态">
+                <v-tooltip
+                  v-if="item.publicUser"
+                  location="top"
+                  text="点击查看共享状态"
+                >
                   <template v-slot:activator="{ props }">
                     <v-btn
                       v-bind="props"
@@ -73,7 +81,9 @@
         <v-card-actions>
           <v-spacer />
 
-          <v-btn color="green darken-1" text @click="showDelete = false"> 放弃 </v-btn>
+          <v-btn color="green darken-1" text @click="showDelete = false">
+            放弃
+          </v-btn>
 
           <v-btn color="error" text @click="deleteShare()"> 确认 </v-btn>
         </v-card-actions>
@@ -116,7 +126,9 @@
         <v-card-actions>
           <v-spacer />
 
-          <v-btn color="green darken-1" text @click="showShareDialog = false"> 放弃 </v-btn>
+          <v-btn color="green darken-1" text @click="showShareDialog = false">
+            放弃
+          </v-btn>
 
           <v-btn color="error" text @click="sendSaveShare()"> 确认 </v-btn>
         </v-card-actions>
@@ -126,47 +138,85 @@
     <!-- 分享成功弹窗 -->
     <v-dialog v-model="showseccussShareDialog" max-width="490">
       <v-card>
-        <v-card-title class="headline">分享成功，复制下面内容给你的好友吧！</v-card-title>
+        <v-card-title class="headline"
+          >分享成功，复制下面内容给你的好友吧！</v-card-title
+        >
         <v-card-text>
-          {{ successShareInfo }}
+          <v-row>
+            <v-col>
+              {{ successShareInfo }}
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
+            </v-col>
+          </v-row>
         </v-card-text>
       </v-card>
     </v-dialog>
     <!-- 取消分享 -->
-    <v-dialog v-model="showShareStatusDilog" max-width="490">
+    <v-dialog v-model="showShareStatusDilog" max-width="1000">
       <v-card>
         <v-card-title class="headline">分享状态</v-card-title>
         <v-card-text>
-          {{ successShareInfo }}
+          <v-row>
+            <v-col>
+              {{ successShareInfo }}
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
+            </v-col>
+          </v-row>
+          <ViewLogTable
+            :target="showShareStatusItem.id"
+            :types="0"
+          ></ViewLogTable>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
 
-          <v-btn color="green darken-1" text @click="showShareStatusDilog = false"> 关闭 </v-btn>
+          <v-btn
+            color="green darken-1"
+            text
+            @click="showShareStatusDilog = false"
+          >
+            关闭
+          </v-btn>
 
-          <v-btn color="error" v-if="showShareBtn" text @click="cancelShare()"> 取消分享 </v-btn>
+          <v-btn color="error" v-if="showShareBtn" text @click="cancelShare()">
+            取消分享
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-snackbar v-model="snackbar" :color="'success'" :timeout="3000" :top="true">
+    <v-snackbar
+      v-model="snackbar"
+      :color="'success'"
+      :timeout="3000"
+      :top="true"
+    >
       {{ message }}
     </v-snackbar>
   </v-container>
 </template>
 
 <script>
-import ShowMarkdown from '@/components/vditor/show-markdown.vue'
-import ShowHtml from '@/components/wangeditor/show-html.vue'
+import ShowMarkdown from "@/components/vditor/show-markdown.vue";
+import ShowHtml from "@/components/wangeditor/show-html.vue";
+import ViewLogTable from "@/components/view-log-list.vue";
 export default {
-  name: 'ShareList',
-  components: { ShowMarkdown, ShowHtml },
+  name: "ShareList",
+  components: { ShowMarkdown, ShowHtml, ViewLogTable },
   props: {
     shareList: {
       type: Array,
       default: () => {
-        return []
-      }
-    }
+        return [];
+      },
+    },
   },
   data() {
     return {
@@ -176,129 +226,146 @@ export default {
       total: 0,
       showDelete: false,
       deleteData: {
-        data: ''
+        data: "",
       },
       auto: false,
       snackbar: false,
-      message: '删除成功',
-      key: '',
+      message: "删除成功",
+      key: "",
       interval: () => {
-        return null
+        return null;
       },
       showShareDialog: false,
       shareItem: {
         haveUserSeeKey: false,
-        userSeeKey: ''
+        userSeeKey: "",
       },
       showseccussShareDialog: false,
-      successShareInfo: '',
+      successShareInfo: "",
       showShareBtn: false,
       //
       showShareStatusDilog: false,
-      showShareStatusItem: {}
-    }
+      showShareStatusItem: {},
+    };
   },
   created() {
-    this.checkLogin()
+    this.checkLogin();
   },
   methods: {
+    copy() {
+      navigator.clipboard.writeText(this.successShareInfo)
+      // navigator.clipboard.writeText(this.successShareInfo).then(
+      //   function (message, snackbar) {
+      //     message = "复制成功";
+      //     snackbar = true;
+      //   },
+      //   function (message, snackbar) {
+      //     message = "复制失败，请手动复制";
+      //     snackbar = true;
+      //   }
+      // );
+    },
     cancelShare() {
-      this.showShareStatusItem.data = ''
-      this.httpPost('/public/share/cancel', this.showShareStatusItem, (json) => {
-        if (json.data) {
-          this.message = '取消成功'
-          this.snackbar = true
-          this.showShareStatusItem.publicUser = false
-          this.showShareStatusDilog = false
-        } else {
-          this.message = '取消失败'
-          this.snackbar = true
-          this.showShareStatusDilog = false
+      this.showShareStatusItem.data = "";
+      this.httpPost(
+        "/public/share/cancel",
+        this.showShareStatusItem,
+        (json) => {
+          if (json.data) {
+            this.message = "取消成功";
+            this.snackbar = true;
+            this.showShareStatusItem.publicUser = false;
+            this.showShareStatusDilog = false;
+          } else {
+            this.message = "取消失败";
+            this.snackbar = true;
+            this.showShareStatusDilog = false;
+          }
         }
-      })
+      );
     },
     showShareStatus(item) {
-      this.showShareStatusItem = item
+      this.showShareStatusItem = item;
 
-      this.successShareInfo = `链接：${location.origin}/#/share/share/${this.showShareStatusItem.url}`
+      this.successShareInfo = `链接：${location.origin}/#/share/share/${this.showShareStatusItem.url}`;
       if (this.showShareStatusItem.haveUserSeeKey) {
-        this.successShareInfo += `\n密码：${this.showShareStatusItem.userSeeKey}`
+        this.successShareInfo += `\n密码：${this.showShareStatusItem.userSeeKey}`;
       }
 
-      this.showShareStatusDilog = true
+      this.showShareStatusDilog = true;
     },
     checkLogin() {
-      this.httpGet('/login/check', (json) => {
+      this.httpGet("/login/check", (json) => {
         if (json.status == 200) {
-          this.showShareBtn = true
+          this.showShareBtn = true;
         } else {
-          this.showShareBtn = false
+          this.showShareBtn = false;
         }
-      })
+      });
     },
     showShareInfo(item) {
-      this.showShareDialog = true
-      this.shareItem = item
+      this.showShareDialog = true;
+      this.shareItem = item;
     },
 
     sendSaveShare() {
       this.httpPost(`/public/share`, this.shareItem, (json) => {
         if (json.data != null) {
-          this.successShareInfo = `链接：${location.origin}/#/share/share/${json.data.url}`
+          this.successShareInfo = `链接：${location.origin}/#/share/share/${json.data.url}`;
           if (this.shareItem.haveUserSeeKey) {
-            this.successShareInfo += `\n密码：${this.shareItem.userSeeKey}`
+            this.successShareInfo += `\n密码：${this.shareItem.userSeeKey}`;
           }
-          this.showseccussShareDialog = true
-          this.showShareDialog = false
+          this.showseccussShareDialog = true;
+          this.showShareDialog = false;
         } else {
-          this.message = json.message
-          this.snackbar = true
+          this.message = json.message;
+          this.snackbar = true;
         }
-      })
+      });
     },
     deleteShare() {
       this.httpPost(`/share/delete`, this.deleteData, (json) => {
         if (json.status === 200) {
-          this.message = '删除成功！'
-          this.snackbar = true
-          this.showDelete = false
+          this.message = "删除成功！";
+          this.snackbar = true;
+          this.showDelete = false;
           // this.getShareList()
-          this.$emit('delete', true)
+          this.$emit("delete", true);
         } else {
-          this.message = '删除失败！' + json.message
-          this.snackbar = true
-          this.$emit('delete', false)
+          this.message = "删除失败！" + json.message;
+          this.snackbar = true;
+          this.$emit("delete", false);
         }
-      })
+      });
     },
     showDeleteDialog(value) {
-      this.deleteData = value
-      this.showDelete = true
+      this.deleteData = value;
+      this.showDelete = true;
     },
     formateTimeToChinese(date) {
-      if (date === '' || date == null) {
-        return ''
+      if (date === "" || date == null) {
+        return "";
       }
-      const da = new Date(date)
+      const da = new Date(date);
       return (
         da.getFullYear() +
-        '年' +
+        "年" +
         (da.getMonth() + 1) +
-        '月' +
+        "月" +
         da.getDate() +
-        '日 ' +
+        "日 " +
         da.getHours() +
-        '时' +
+        "时" +
         da.getMinutes() +
-        '分'
-      )
+        "分"
+      );
     },
     subString(data) {
       if (data.length > 30) {
-        return data.substring(0, 30) + '......'
+        return data.substring(0, 30) + "......";
       }
-      return data
-    }
-  }
-}
+      return data;
+    },
+  },
+};
 </script>

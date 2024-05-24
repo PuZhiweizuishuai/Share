@@ -219,17 +219,39 @@
       <v-card>
         <v-card-title class="headline">分享成功，复制下面内容给你的好友吧！</v-card-title>
         <v-card-text>
-          {{ successShareInfo }}
+          <v-row>
+            <v-col>
+              {{ successShareInfo }}
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
+            </v-col>
+          </v-row>
         </v-card-text>
       </v-card>
     </v-dialog>
 
     <!-- 查看取消分享弹窗 -->
-    <v-dialog v-model="showSeeShareStatusDialog" max-width="490">
+    <v-dialog v-model="showSeeShareStatusDialog" max-width="1000">
       <v-card>
         <v-card-title class="headline">分享</v-card-title>
         <v-card-text>
-          {{ successShareInfo }}
+          <v-row>
+            <v-col>
+              {{ successShareInfo }}
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col>
+              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
+            </v-col>
+          </v-row>
+          <ViewLogTable
+            :target="showShareStatusItme.id"
+            :types="1"
+          ></ViewLogTable>
         </v-card-text>
         <v-card-actions>
           <v-spacer />
@@ -249,8 +271,10 @@
 </template>
 
 <script>
+import ViewLogTable from "@/components/view-log-list.vue";
 export default {
   name: 'File',
+  components: {  ViewLogTable },
   data: () => ({
     dialog: false,
     headers: [
@@ -313,6 +337,10 @@ export default {
     this.checkLogin()
   },
   methods: {
+    copy() {
+      navigator.clipboard.writeText(this.successShareInfo)
+
+    },
     cancelShare() {
       this.showShareStatusItme.createTime = 0
       this.showShareStatusItme.size = 0

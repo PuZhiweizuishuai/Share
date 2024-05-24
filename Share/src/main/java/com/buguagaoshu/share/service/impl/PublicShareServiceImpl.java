@@ -7,8 +7,8 @@ import com.buguagaoshu.share.domain.User;
 import com.buguagaoshu.share.repository.FileMessageRepository;
 import com.buguagaoshu.share.service.PublicShareService;
 import com.buguagaoshu.share.service.ShareService;
+import com.buguagaoshu.share.service.ViewCountService;
 import com.buguagaoshu.share.utils.AesUtil;
-import com.buguagaoshu.share.utils.PasswordUtil;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
@@ -21,10 +21,12 @@ import java.util.UUID;
 public class PublicShareServiceImpl implements PublicShareService {
     private final ShareService shareService;
     private final FileMessageRepository fileMessageRepository;
+    private final ViewCountService viewCountService;
 
-    public PublicShareServiceImpl(ShareService shareService, FileMessageRepository fileMessageRepository) {
+    public PublicShareServiceImpl(ShareService shareService, FileMessageRepository fileMessageRepository, ViewCountService viewCountService) {
         this.shareService = shareService;
         this.fileMessageRepository = fileMessageRepository;
+        this.viewCountService = viewCountService;
     }
 
     @Override
@@ -75,9 +77,12 @@ public class PublicShareServiceImpl implements PublicShareService {
         Share shareByUrl = shareService.getShareByUrl(url);
         if (shareByUrl != null) {
             if (shareByUrl.getPublicUser()) {
-                shareByUrl.setId(null);
+
                 if (shareByUrl.isHaveUserSeeKey()) {
                     if (shareByUrl.getUserSeeKey().equals(password)) {
+
+                        viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_SHARE, shareByUrl.getId(), ip);
+                        shareByUrl.setId(null);
                         String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
                         shareByUrl.setUserSeeKey(key);
 
@@ -85,7 +90,9 @@ public class PublicShareServiceImpl implements PublicShareService {
                     }
                 } else {
                     String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
+                    viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_SHARE, shareByUrl.getId(), ip);
                     shareByUrl.setUserSeeKey(key);
+                    shareByUrl.setId(null);
                     return shareByUrl;
                 }
             }
@@ -99,16 +106,21 @@ public class PublicShareServiceImpl implements PublicShareService {
         FileMessage file = fileMessageRepository.findByUrl(url);
         if (file != null) {
             if (file.getPublicUser()) {
-                file.setId(null);
+
                 if (file.isHaveUserSeeKey()) {
                     if (password.equals(file.getUserSeeKey())) {
+
                         String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
+                        viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_FILE, file.getId(), ip);
                         file.setUserSeeKey(key);
+                        file.setId(null);
                         return file;
                     }
                 } else {
                     String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
                     file.setUserSeeKey(key);
+                    viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_FILE, file.getId(), ip);
+                    file.setId(null);
                     return file;
                 }
             }

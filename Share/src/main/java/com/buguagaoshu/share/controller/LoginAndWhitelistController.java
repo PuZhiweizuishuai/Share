@@ -1,5 +1,6 @@
 package com.buguagaoshu.share.controller;
 
+import com.buguagaoshu.share.config.MyConfigProperties;
 import com.buguagaoshu.share.config.WebConstant;
 import com.buguagaoshu.share.domain.IpData;
 import com.buguagaoshu.share.domain.ResponseDetails;
@@ -10,7 +11,11 @@ import com.buguagaoshu.share.service.UserService;
 import com.buguagaoshu.share.utils.IpUtils;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpSession;
+import org.lionsoul.ip2region.xdb.Searcher;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Pu Zhiwei {@literal puzhiweipuzhiwei@foxmail.com}
@@ -22,17 +27,32 @@ public class LoginAndWhitelistController {
     private final UserService userService;
     private final IpUtils ipUtils;
     private final LoginCountRepository loginCountRepository;
+    private final MyConfigProperties myConfigProperties;
+    private final Searcher searcher;
 
-    public LoginAndWhitelistController(InMemoryIpCache inMemoryIpCache, UserService userService, IpUtils ipUtils, LoginCountRepository loginCountRepository) {
+
+    public LoginAndWhitelistController(InMemoryIpCache inMemoryIpCache, UserService userService, IpUtils ipUtils, LoginCountRepository loginCountRepository, MyConfigProperties myConfigProperties, Searcher searcher) {
         this.inMemoryIpCache = inMemoryIpCache;
         this.userService = userService;
         this.ipUtils = ipUtils;
         this.loginCountRepository = loginCountRepository;
+        this.myConfigProperties = myConfigProperties;
+        this.searcher = searcher;
     }
 
     @GetMapping("/api/ip")
     public ResponseDetails getIp(HttpServletRequest request) {
-        return ResponseDetails.ok().put("data", ipUtils.getIpAddr(request));
+        String ip = ipUtils.getIpAddr(request);
+        Map<String, String> map = new HashMap<>(2);
+        map.put("ip", ip);
+        if (myConfigProperties.getOpenIpAddress()) {
+            try {
+                map.put("address", searcher.search(ip));
+            } catch (Exception e) {
+                map.put("address", "未查询到具体地理位置！");
+            }
+        }
+        return ResponseDetails.ok().put("data", map);
     }
 
     @GetMapping("/api/login/check")

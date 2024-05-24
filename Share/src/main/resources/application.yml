@@ -11,6 +11,10 @@ share:
   # 默认 false
   is-the-proxy-configured: false
   max-login-count: 3
+  # 是否开启返回IP地理位置
+  open-ip-address: true
+  # IP地址数据库
+  ip-db-path: E:\\Spring\\Share\\Share\\ip2region.xdb
 
 spring:
   datasource:
