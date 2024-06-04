@@ -13,9 +13,9 @@ public interface PublicShareService {
 
     FileMessage publicFile(FileMessage file, User user);
 
-    Share getPublicShare(String url, String password, String ip);
+    Share getPublicShare(String url, String password, String ip, String ua);
 
-    FileMessage getPublicFile(String url, String password, String ip);
+    FileMessage getPublicFile(String url, String password, String ip, String ua);
 
     Share checkShare(String url);
 

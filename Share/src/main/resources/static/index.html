@@ -13,8 +13,8 @@
   <link rel="icon" href="/favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>分享点啥</title>
-  <script type="module" crossorigin src="/assets/index-BkN6O-Cq.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-DnXzJLlF.css">
+  <script type="module" crossorigin src="/assets/index-COnYe7Yr.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BtQbOpmS.css">
 </head>
 
 <body>
@@ -46,7 +46,7 @@ if (navigator.userAgent.includes('Chrome')) {
   var c = parseInt(b)
   if (c < 90) {
     if (window.confirm("检测到你的浏览器Chrome版本小于90，可能无法使用当前版本网页，是否跳转至旧版？但是因旧无法使用或查看公开分享等新功能，还是建议您尽快升级浏览器到最新版本。")) {
-      window.open("/v2/index.html" + location.hash , "Thanks for Visiting!");
+      window.open("/v2/index.html" + location.pathname + location.hash , "Thanks for Visiting!");
     }
   }
 }

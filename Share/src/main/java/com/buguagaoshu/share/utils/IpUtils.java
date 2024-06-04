@@ -68,14 +68,14 @@ public class IpUtils {
         return ipAddress;
     }
 
-    public static String getUa(HttpServletRequest request) {
+    public String getUa(HttpServletRequest request) {
         String ua = request.getHeader("user-agent");
         if (StringUtils.isEmpty(ua)) {
             return "未知设备";
         }
         // 避免 UA 过长插入失败
-        if(ua.length() > 255) {
-            return ua.substring(0, 254);
+        if(ua.length() > 500) {
+            return ua.substring(0, 499);
         }
         return ua;
     }

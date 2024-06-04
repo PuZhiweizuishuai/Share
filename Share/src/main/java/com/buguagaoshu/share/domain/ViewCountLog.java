@@ -26,6 +26,8 @@ public class ViewCountLog {
 
     private String city;
 
+    private String ua;
+
     /**
      * 文件或分享文本的ID
      * */

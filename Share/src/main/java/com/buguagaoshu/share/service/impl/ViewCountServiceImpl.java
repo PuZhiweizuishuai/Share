@@ -44,7 +44,7 @@ public class ViewCountServiceImpl implements ViewCountService {
     }
 
     @Override
-    public void addViewCountLog(int type, long shareOrFileId, String ip) {
+    public void addViewCountLog(int type, long shareOrFileId, String ip, String ua) {
         ViewCountLog viewCountLog = new ViewCountLog();
         viewCountLog.setTargetId(shareOrFileId);
         viewCountLog.setIp(ip);
@@ -55,6 +55,7 @@ public class ViewCountServiceImpl implements ViewCountService {
                 viewCountLog.setCity("");
             }
         }
+        viewCountLog.setUa(ua);
         viewCountLog.setType(type);
         viewCountLog.setViewTime(System.currentTimeMillis());
         viewCountRepository.save(viewCountLog);

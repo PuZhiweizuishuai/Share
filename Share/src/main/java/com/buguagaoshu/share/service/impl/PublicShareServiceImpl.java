@@ -73,7 +73,7 @@ public class PublicShareServiceImpl implements PublicShareService {
     }
 
     @Override
-    public Share getPublicShare(String url, String password, String ip) {
+    public Share getPublicShare(String url, String password, String ip, String ua) {
         Share shareByUrl = shareService.getShareByUrl(url);
         if (shareByUrl != null) {
             if (shareByUrl.getPublicUser()) {
@@ -81,7 +81,7 @@ public class PublicShareServiceImpl implements PublicShareService {
                 if (shareByUrl.isHaveUserSeeKey()) {
                     if (shareByUrl.getUserSeeKey().equals(password)) {
 
-                        viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_SHARE, shareByUrl.getId(), ip);
+                        viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_SHARE, shareByUrl.getId(), ip, ua);
                         shareByUrl.setId(null);
                         String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
                         shareByUrl.setUserSeeKey(key);
@@ -90,7 +90,7 @@ public class PublicShareServiceImpl implements PublicShareService {
                     }
                 } else {
                     String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
-                    viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_SHARE, shareByUrl.getId(), ip);
+                    viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_SHARE, shareByUrl.getId(), ip, ua);
                     shareByUrl.setUserSeeKey(key);
                     shareByUrl.setId(null);
                     return shareByUrl;
@@ -102,7 +102,7 @@ public class PublicShareServiceImpl implements PublicShareService {
     }
 
     @Override
-    public FileMessage getPublicFile(String url, String password, String ip) {
+    public FileMessage getPublicFile(String url, String password, String ip, String ua) {
         FileMessage file = fileMessageRepository.findByUrl(url);
         if (file != null) {
             if (file.getPublicUser()) {
@@ -111,7 +111,7 @@ public class PublicShareServiceImpl implements PublicShareService {
                     if (password.equals(file.getUserSeeKey())) {
 
                         String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
-                        viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_FILE, file.getId(), ip);
+                        viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_FILE, file.getId(), ip, ua);
                         file.setUserSeeKey(key);
                         file.setId(null);
                         return file;
@@ -119,7 +119,7 @@ public class PublicShareServiceImpl implements PublicShareService {
                 } else {
                     String key = AesUtil.encrypt(System.currentTimeMillis() + "#" + ip, WebConstant.AES_KEY);
                     file.setUserSeeKey(key);
-                    viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_FILE, file.getId(), ip);
+                    viewCountService.addViewCountLog(WebConstant.VIEW_LOG_TYPE_FILE, file.getId(), ip, ua);
                     file.setId(null);
                     return file;
                 }

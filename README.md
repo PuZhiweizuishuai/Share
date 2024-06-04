@@ -77,6 +77,10 @@ https://gitee.com/puzhiweizuishuai/Share/releases
 
 ## 更新
 
+### 2024-06-04
+
+新增访问日志增加设备信息记录
+
 ### 2024-05-25
 
 新增访问日志功能

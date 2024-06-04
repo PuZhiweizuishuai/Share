@@ -72,12 +72,12 @@ public class PublicShareController {
 
     @PostMapping("/api/public/share/get")
     public ResponseDetails getShare(@RequestBody Share share, HttpServletRequest request) {
-        return ResponseDetails.ok().put("data", publicShareService.getPublicShare(share.getUrl(), share.getUserSeeKey(), ipUtils.getIpAddr(request)));
+        return ResponseDetails.ok().put("data", publicShareService.getPublicShare(share.getUrl(), share.getUserSeeKey(), ipUtils.getIpAddr(request), ipUtils.getUa(request)));
     }
 
     @PostMapping("/api/public/file/get")
     public ResponseDetails getShare(@RequestBody FileMessage fileMessage, HttpServletRequest request) {
-        return ResponseDetails.ok().put("data", publicShareService.getPublicFile(fileMessage.getUrl(), fileMessage.getUserSeeKey(), ipUtils.getIpAddr(request)));
+        return ResponseDetails.ok().put("data", publicShareService.getPublicFile(fileMessage.getUrl(), fileMessage.getUserSeeKey(), ipUtils.getIpAddr(request), ipUtils.getUa(request)));
     }
 
     @GetMapping("/api/public/share/check")

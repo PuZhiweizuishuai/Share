@@ -11,5 +11,5 @@ import org.springframework.data.domain.Pageable;
 public interface ViewCountService {
     Page<ViewCountLog> findByShareViewLog(Long shareOrFileId, Integer type, Integer page, Integer size);
 
-    void addViewCountLog(int type, long shareOrFileId, String ip);
+    void addViewCountLog(int type, long shareOrFileId, String ip, String ua);
 }
