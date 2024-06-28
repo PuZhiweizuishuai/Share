@@ -18,4 +18,6 @@ public class WebConstant {
     public final static int VIEW_LOG_TYPE_SHARE = 0;
 
     public final static int VIEW_LOG_TYPE_FILE = 1;
+
+    public final static int VIEW_LOG_TYPE_AI = 2;
 }

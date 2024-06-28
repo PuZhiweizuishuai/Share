@@ -25,7 +25,7 @@ public class ViewCountLogController {
                                            @RequestParam(value = "size", required = false) Integer size,
                                            @RequestParam(value = "type") Integer type,
                                            @RequestParam(value = "targetId") Long targetId) {
-        if (type != WebConstant.VIEW_LOG_TYPE_FILE && type != WebConstant.VIEW_LOG_TYPE_SHARE) {
+        if (type != WebConstant.VIEW_LOG_TYPE_FILE && type != WebConstant.VIEW_LOG_TYPE_SHARE && type != WebConstant.VIEW_LOG_TYPE_AI) {
             return ResponseDetails.ok(404, "");
         }
         if (targetId == null) {

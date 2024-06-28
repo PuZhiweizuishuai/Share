@@ -180,6 +180,99 @@
         </v-card>
       </v-col>
     </v-row>
+
+    <!-- AI  配置-->
+    <v-row justify="center" align="center" v-if="showSysInfo">
+      <v-col>
+        <v-card class="mx-auto" outlined>
+          <v-row justify="center">
+            <v-col cols="10">
+              <h2>AI 配置</h2>
+            </v-col>
+          </v-row>
+          <v-divider />
+          <v-col />
+          <v-row justify="center">
+            <v-col cols="8">
+              <v-textarea
+                  label="配置"
+                  v-model="aiConfig"
+                  variant="underlined"
+                ></v-textarea>
+            </v-col>
+            <v-col cols="2">
+              <v-btn color="primary" @click="submitAiConfig()">配置</v-btn>
+            </v-col>
+          </v-row>
+
+          <v-row justify="center">
+            
+            <v-btn color="primary" @click="createCode()">生成邀请码</v-btn>
+        
+          </v-row>
+          <v-col></v-col>
+          <v-row justify="center">
+
+
+            <v-col cols="8">
+              <v-list density="compact">
+                <v-list-item v-for="(item, i) in invitationCodeList" :key="i" :value="item" color="primary">
+                  <v-list-item-title
+                    >{{ item.name }}
+                  </v-list-item-title>
+
+                  <template v-slot:prepend>
+                    <v-btn
+                      color="error"
+                      @click="deleteAICode(item)"
+                      style="margin-right: 32px"
+                      density="compact"
+                    >
+                      删除
+                    </v-btn>
+                    <v-btn
+                      color="error"
+                      @click="seeAiUserlog(item)"
+                      style="margin-right: 32px"
+                      density="compact"
+                    >
+                      查看使用日志
+                    </v-btn>
+                  </template>
+
+                </v-list-item>
+              </v-list>
+            </v-col>
+          </v-row>
+        </v-card>
+      </v-col>
+    </v-row>
+
+<!-- 邀请码使用记录 -->
+    <v-dialog v-model="showAiUserDialog" max-width="1000">
+      <v-card>
+        <v-card-title class="headline">邀请码使用记录</v-card-title>
+          <v-card-text>
+        <ViewLogTable
+            :target="nowInvitationCode.id"
+            :types="2"
+          ></ViewLogTable>
+
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer />
+
+          <v-btn
+            color="green darken-1"
+            text
+            @click="showAiUserDialog = false"
+          >
+            关闭
+          </v-btn>
+        </v-card-actions>
+      </v-card>
+    </v-dialog>
+
     <v-snackbar v-model="snackbar" :timeout="3000" :top="true">
       {{ message }}
     </v-snackbar>
@@ -187,9 +280,15 @@
 </template>
 
 <script>
+import ViewLogTable from "@/components/view-log-list.vue";
 export default {
+  components: { ViewLogTable },
   data() {
     return {
+      showAiUserDialog: false,
+      nowInvitationCode: {
+        id: 0
+      },
       user: {
         username: '',
         password: '',
@@ -209,13 +308,19 @@ export default {
       loginUserInfo: {},
       showSysInfo: false,
       showLogin: true,
-      fileMax: 0
+      fileMax: 0,
+      aiConfig: '',
+      invitationCodeList: []
     }
   },
   created() {
     this.checkLogin()
   },
   methods: {
+    seeAiUserlog(item) {
+      this.nowInvitationCode = item
+      this.showAiUserDialog = true
+    },
     checkLogin() {
       this.httpGet('/login/check', (json) => {
         if (json.status == 200) {
@@ -223,6 +328,8 @@ export default {
           this.showLogin = false
           this.getWhitelist()
           this.getFileMax()
+          this.getInvitationCode()
+          this.getAiConfig()
         } else {
           this.showSysInfo = false
           this.showLogin = true
@@ -237,6 +344,8 @@ export default {
           this.showLogin = false
           this.getWhitelist()
           this.getFileMax()
+          this.getInvitationCode()
+          this.getAiConfig()
         } else {
           this.message = '登录失败'
           this.snackbar = true
@@ -298,6 +407,38 @@ export default {
     getFileMax() {
       this.httpGet('/upload/disk', (json) => {
         this.fileMax = json.data.uploadFileMax
+      })
+    },
+    submitAiConfig() {
+      const data = {
+        configMessage: this.aiConfig
+      }
+      this.httpPost('/ai/save', data , (json)=> {
+        //
+        console.log(json)
+      })
+    },
+    getAiConfig() {
+      this.httpPost("/ai/config", {"invitationCode": ""}, (json) => {
+       
+        this.aiConfig = json.data.configMessage
+      })
+    },
+    createCode() {
+      this.httpPost("/ai/invitation", null, (json)=> {
+        
+        this.getInvitationCode()
+      })
+    },
+    getInvitationCode() {
+      this.httpGet("/ai/invitation/list", (json) => {
+        this.invitationCodeList = json.data
+      })
+    },
+    deleteAICode(item) {
+      this.httpPost("/ai/invitation/delete", item, (json) => {
+        console.log(json)
+        this.getInvitationCode()
       })
     }
   }

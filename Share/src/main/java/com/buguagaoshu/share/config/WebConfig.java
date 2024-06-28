@@ -62,9 +62,11 @@ public class WebConfig implements WebMvcConfigurer {
                         , "/api/upload/disk"
                         , "/api/upload/file/**"
                         , "/api/public/**"
-                        , "/api/login/check");
+                        , "/api/login/check",
+                        "/api/ai/config",
+                        "/api/ai/check");
         registry.addInterceptor(loginInterceptor)
-                .addPathPatterns("/api/admin/**");
+                .addPathPatterns("/api/admin/**", "/api/ai/invitation/**", "/api/ai/invitation", "/api/ai/save");
         registry.addInterceptor(httpHeaderInterceptor).addPathPatterns("/**");
     }
 

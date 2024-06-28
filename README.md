@@ -70,12 +70,198 @@ https://gitee.com/puzhiweizuishuai/Share/releases
 
 **第一次使用请到设置页面配置编辑器，不然可能出现不显示编辑器的问题**
 
+## AI 功能配置指南
+
+使用AI功能需要配置AI API接口，现在本项目使用的是 Cloudflare Workers 提供的 AI 调用能力，免费账户每天有一万次调用额度，非常够用
+
+使用的 Workers 代码如下
+
+```js
+  
+export default {
+  async fetch(request, env) {
+    /**
+     * 设置为自己的密钥
+     */
+    const secretKey = "";
+    /***
+     * 跨域配置
+     */
+    const corsHeaders = {
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Allow-Methods": "GET,HEAD,POST,OPTIONS",
+      "Access-Control-Max-Age": "86400",
+    };
+
+    async function handleOptions(request) {
+      if (
+        request.headers.get("Origin") !== null &&
+        request.headers.get("Access-Control-Request-Method") !== null &&
+        request.headers.get("Access-Control-Request-Headers") !== null
+      ) {
+        // Handle CORS preflight requests.
+        return new Response(null, {
+          headers: {
+            ...corsHeaders,
+            "Access-Control-Allow-Headers": request.headers.get(
+              "Access-Control-Request-Headers"
+            ),
+          },
+        });
+      } else {
+        // Handle standard OPTIONS request.
+        return new Response(null, {
+          headers: {
+            Allow: "GET, HEAD, POST, OPTIONS",
+          },
+        });
+      }
+    }
+    /**
+     * 文字转图片
+     */
+    async function text2Image(userInput) {
+      if (userInput.strength == null || userInput.strength == undefined) {
+        userInput.strength = 1
+      }
+      if (userInput.guidance == null || userInput.guidance == undefined) {
+        userInput.guidance = 7.5
+      }
+      const inputs = {
+        prompt: userInput.prompt,
+        guidance: userInput.guidance,
+        strength: userInput.strength
+      };
+      const response = await env.AI.run(
+        '@cf/stabilityai/stable-diffusion-xl-base-1.0',
+        inputs,
+      );
+      return response;
+    }
+
+    /**
+     * 翻译
+     * @param userInput 用户输入参数
+     */
+    async function fanyi(userInput) {
+      const inputs = {
+        text: userInput.text,
+        source_lang: userInput.sourceLang,
+        target_lang: userInput.targetLang,
+      }
+      const response = await env.AI.run('@cf/meta/m2m100-1.2b', inputs);
+      return { inputs, response }
+    }
+
+    /**
+     * 摘要生成
+     * 
+    */
+   async function bartText(userInput) {
+    const response = await env.AI.run("@cf/facebook/bart-large-cnn", {
+      input_text: userInput.inputText,
+      max_length: userInput.maxLength
+    });
+    return response;
+   }
+
+    // 具体逻辑
+    const url = new URL(request.url);
+    
+    if (request.method === 'OPTIONS') {
+      const headers = {
+        'Access-Control-Allow-Credentials': 'true',
+        'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS', // 允许的方法
+        'Access-Control-Max-Age': '86400', // 预检结果缓存时间，单位秒
+      };
+      // 根据请求来源设置允许访问的来源
+
+      headers['Access-Control-Allow-Origin'] = '*'; // 默认允许所有来源访问
+    
+  
+      // 返回预检响应
+      return new Response(null, {
+        headers: headers
+      });
+    }
+  
+
+
+    if (request.method === "POST") {
+      //headers.set('Access-Control-Allow-Origin', '*');
+      const contentType = request.headers.get("content-type");
+      if (contentType.includes("application/json")) {
+        // 读取用户请求
+        const userInput = await request.json();
+        // API认证
+        if (userInput.secretKey !== secretKey) {
+          return Response.json({ "msg" : "key error!" });
+        }
+        // 区分功能
+        // 文字转图片
+        if (url.pathname === '/api/text2image') {
+          const img = await text2Image(userInput);
+          return new Response(img, {
+            headers: {
+              'Access-Control-Allow-Credentials': 'true',
+              'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
+              'Access-Control-Allow-Origin':  '*',
+              'content-type': 'image/png',
+            },
+          });
+          // 翻译
+        } else if (url.pathname === '/api/fanyi') {
+          const res = await fanyi(userInput);
+          return new Response(JSON.stringify(res), {
+            headers: {
+              'Access-Control-Allow-Credentials': 'true',
+              'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
+              'Access-Control-Allow-Origin':  '*',
+              'content-type': 'application/json; charset=UTF-8',
+            },
+          })
+        } else if (url.pathname === '/api/bart') {
+          const res = await bartText(userInput)
+          return new Response(JSON.stringify(res), {
+            headers: {
+              'Access-Control-Allow-Credentials': 'true',
+              'Access-Control-Allow-Headers': 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers',
+              'Access-Control-Allow-Origin':  '*',
+              'content-type': 'application/json; charset=UTF-8',
+            }
+          })
+        }
+      }
+    }
+  },
+};
+
+```
+
+之后再sysinfo页面，配置相关API设置即可
+
+格式如下
+
+```json
+{
+      "text2Image": "https://*/api/text2image",
+      "fanyi": "https://*/api/fanyi",
+      "bart": "https://*/api/bart",
+      "secretKey": " "
+}
+```
+
 
 ## 注意
 
 文件上传服务默认最大上传文件大小为100M，如需扩大，可以进入设置进行修改
 
 ## 更新
+
+### 2024-06-28
+
+新增 AI 画图，翻译，摘要生成功能
 
 ### 2024-06-04
 

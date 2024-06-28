@@ -48,6 +48,12 @@ const router = createRouter({
           meta: { title: '分享点啥 - 设置' }
         },
         {
+          path: '/ai',
+          name: 'ai',
+          component: () => import('@/views/ai.vue'),
+          meta: { title: '分享点啥 - AI' }
+        },
+        {
           path: '/about',
           name: 'about',
           component: () => import('../views/About.vue'),
