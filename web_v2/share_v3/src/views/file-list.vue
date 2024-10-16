@@ -3,6 +3,7 @@
     <v-data-table-server
       :headers="headers"
       :items="fileList"
+      :itemsLength="nowCount"
       hide-default-footer
       v-model:page="page"
       item-value="createTime"
@@ -21,6 +22,12 @@
           <v-spacer />
           <v-btn color="primary" @click="initialize">刷新文件列表</v-btn>
         </v-toolbar>
+      </template>
+      <template v-slot:item.createTime="{ item }">
+        <span> {{ formateTimeToChinese(item.createTime) }} </span>
+      </template>
+      <template v-slot:item.size="{ item }">
+        <span> {{ showSize(item.size) }} </span>
       </template>
       <template v-slot:item.uploadFilename="{ item }">
         <v-tooltip
@@ -321,7 +328,8 @@ export default {
     showShareBtn: false,
     //
     showSeeShareStatusDialog: false,
-    showShareStatusItme: {}
+    showShareStatusItme: {},
+    nowCount: 20
   }),
   created() {
     const page = parseInt(this.$route.query.page)
@@ -459,12 +467,8 @@ export default {
       })
         .then((response) => response.json())
         .then((json) => {
-          for (var i = 0; i < json.page.content.length; i++) {
-            json.page.content[i].createTime = this.formateTimeToChinese(
-              json.page.content[i].createTime
-            )
-            json.page.content[i].size = this.showSize(json.page.content[i].size)
-          }
+
+          this.nowCount = json.page.size
           this.fileList = json.page.content
           this.total = json.page.totalElements
           this.pageCount = json.page.totalPages

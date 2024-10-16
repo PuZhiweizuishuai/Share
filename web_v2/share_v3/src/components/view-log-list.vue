@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-data-table-server :headers="headers" :items="viewList" hide-default-footer :loading="loading">
+    <v-data-table-server :itemsLength="nowCount" :headers="headers" :items="viewList" hide-default-footer :loading="loading">
       <template v-slot:top>
         <v-toolbar flat color="white">
           <v-toolbar-title
@@ -61,6 +61,7 @@ export default {
         { title: "地区", sortable: false, key: "city" },
         { title: "访问时间", sortable: false, key: "viewTime" },
       ],
+      nowCount: 15,
       viewList: [],
       page: 1,
       size: 15,
@@ -85,6 +86,7 @@ export default {
     getViewList() {
       this.httpGet(`/admin/viewlog/list?type=${this.type}&targetId=${this.targetId}&page=${this.page}&size=${this.size}`, (json)=>{
         if (json.status === 200) {
+          this.nowCount = json.data.size
           this.viewList = json.data.content
           this.total = json.data.totalElements
           this.pageCount = json.data.totalPages

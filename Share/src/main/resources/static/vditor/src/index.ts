@@ -14,7 +14,7 @@ import {Preview} from "./ts/preview/index";
 import {Resize} from "./ts/resize/index";
 import {Editor} from "./ts/sv/index";
 import {inputEvent} from "./ts/sv/inputEvent";
-import {processAfterRender as processSVAfterRender} from "./ts/sv/process";
+import {processAfterRender as processSVAfterRender, processPaste} from "./ts/sv/process";
 import {Tip} from "./ts/tip/index";
 import {Toolbar} from "./ts/toolbar/index";
 import {disableToolbar, hidePanel} from "./ts/toolbar/setToolbar";
@@ -30,11 +30,13 @@ import {addScript, addScriptSync} from "./ts/util/addScript";
 import {getSelectText} from "./ts/util/getSelectText";
 import {Options} from "./ts/util/Options";
 import {processCodeRender} from "./ts/util/processCode";
-import {getCursorPosition, getEditorRange} from "./ts/util/selection";
+import {getCursorPosition, getEditorRange, insertHTML} from "./ts/util/selection";
 import {afterRenderEvent} from "./ts/wysiwyg/afterRenderEvent";
 import {WYSIWYG} from "./ts/wysiwyg/index";
 import {input} from "./ts/wysiwyg/input";
 import {renderDomByMd} from "./ts/wysiwyg/renderDomByMd";
+import {execAfterRender} from "./ts/util/fixBrowserBehavior";
+import {accessLocalStorage} from "./ts/util/compatibility";
 
 class Vditor extends VditorMethod {
     public readonly version: string;
@@ -100,6 +102,10 @@ class Vditor extends VditorMethod {
         const tip = new Tip();
         document.body.appendChild(tip.element);
         tip.show(error, 0)
+    }
+
+    public updateToolbarConfig(options: IToolbarConfig) {
+        this.vditor.toolbar.updateConfig(this.vditor, options);
     }
 
     /** 设置主题 */
@@ -204,7 +210,9 @@ class Vditor extends VditorMethod {
 
     /** 清除缓存 */
     public clearCache() {
-        localStorage.removeItem(this.vditor.options.cache.id);
+        if (this.vditor.options.cache.enable && accessLocalStorage()) {
+            localStorage.removeItem(this.vditor.options.cache.id);
+        }
     }
 
     /** 禁用缓存 */
@@ -264,6 +272,8 @@ class Vditor extends VditorMethod {
     public insertValue(value: string, render = true) {
         const range = getEditorRange(this.vditor);
         range.collapse(true);
+        // https://github.com/Vanessa219/vditor/issues/716
+        // https://github.com/Vanessa219/vditor/issues/917
         const tmpElement = document.createElement("template");
         tmpElement.innerHTML = value;
         range.insertNode(tmpElement.content.cloneNode(true));
@@ -284,6 +294,20 @@ class Vditor extends VditorMethod {
                 irInput(this.vditor, getSelection().getRangeAt(0), true);
             }
         }
+    }
+
+    /** 在焦点处插入 Markdown */
+    public insertMD(md: string) {
+        // https://github.com/Vanessa219/vditor/issues/1640
+        if (this.vditor.currentMode === "ir") {
+            insertHTML(this.vditor.lute.Md2VditorIRDOM(md), this.vditor);
+        } else if (this.vditor.currentMode === "wysiwyg") {
+            insertHTML(this.vditor.lute.Md2VditorDOM(md), this.vditor);
+        } else {
+            processPaste(this.vditor, md);
+        }
+        this.vditor.outline.render(this.vditor);
+        execAfterRender(this.vditor);
     }
 
     /** 设置编辑器内容 */
