@@ -62,6 +62,8 @@ declare class Vditor extends VditorMethod {
     insertMD(md: string): void;
     /** 设置编辑器内容 */
     setValue(markdown: string, clearStack?: boolean): void;
+    /** 空块 */
+    insertEmptyBlock(position: InsertPosition): void;
     /** 清空 undo & redo 栈 */
     clearStack(): void;
     /** 销毁编辑器 */

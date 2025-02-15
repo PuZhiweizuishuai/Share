@@ -1,5 +1,5 @@
 /*!
- * Vditor v3.10.7 - A markdown editor written in TypeScript.
+ * Vditor v3.10.9 - A markdown editor written in TypeScript.
  *
  * MIT License
  *
@@ -38,14 +38,14 @@ return /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 793:
+/***/ 913:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "g": () => (/* binding */ Constants)
+/* harmony export */   Y: () => (/* binding */ Constants)
 /* harmony export */ });
 /* unused harmony export VDITOR_VERSION */
-var _VDITOR_VERSION = (/* unused pure expression or super */ null && ("3.10.7"));
+var _VDITOR_VERSION = (/* unused pure expression or super */ null && ("3.10.9"));
 
 var Constants = /** @class */ (function () {
     function Constants() {
@@ -93,7 +93,7 @@ var Constants = /** @class */ (function () {
         // 别名
         "js", "ts", "html", "toml", "c#", "bat"
     ];
-    Constants.CDN = "https://unpkg.com/vditor@".concat("3.10.7");
+    Constants.CDN = "https://unpkg.com/vditor@".concat("3.10.9");
     Constants.MARKDOWN_OPTIONS = {
         autoSpace: false,
         gfmAutoLink: true,
@@ -137,33 +137,33 @@ var Constants = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 474:
+/***/ 931:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "J": () => (/* binding */ SMILESRender)
+/* harmony export */   Y: () => (/* binding */ SMILESRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(446);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(933);
 
 
 
 
 var SMILESRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var SMILESElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.SMILESRenderAdapter.getElements(element);
     if (SMILESElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/smiles-drawer/smiles-drawer.min.js?v=2.1.7"), "vditorAbcjsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/smiles-drawer/smiles-drawer.min.js?v=2.1.7"), "vditorAbcjsScript").then(function () {
             var sd = new SmiDrawer({}, {});
             SMILESElements.forEach(function (item) {
                 var code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.SMILESRenderAdapter.getCode(item).trim();
                 if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
                     return;
                 }
-                var id = "smiles" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Wb)();
+                var id = "smiles" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Ee)();
                 item.innerHTML = "<svg id=\"".concat(id, "\"></svg>");
                 sd.draw(code, '#' + id, theme === "dark" ? "dark" : undefined);
                 item.setAttribute("data-processed", "true");
@@ -175,24 +175,24 @@ var SMILESRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 386:
+/***/ 288:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Q": () => (/* binding */ abcRender)
+/* harmony export */   $: () => (/* binding */ abcRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
 var abcRender = function (element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var abcElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.abcRenderAdapter.getElements(element);
     if (abcElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/abcjs/abcjs_basic.min.js"), "vditorAbcjsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/abcjs/abcjs_basic.min.js"), "vditorAbcjsScript").then(function () {
             abcElements.forEach(function (item) {
                 if (item.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                     item.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -212,21 +212,21 @@ var abcRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 781:
+/***/ 59:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "SMILESRenderAdapter": () => (/* binding */ SMILESRenderAdapter),
-/* harmony export */   "abcRenderAdapter": () => (/* binding */ abcRenderAdapter),
-/* harmony export */   "chartRenderAdapter": () => (/* binding */ chartRenderAdapter),
-/* harmony export */   "flowchartRenderAdapter": () => (/* binding */ flowchartRenderAdapter),
-/* harmony export */   "graphvizRenderAdapter": () => (/* binding */ graphvizRenderAdapter),
-/* harmony export */   "markmapRenderAdapter": () => (/* binding */ markmapRenderAdapter),
-/* harmony export */   "mathRenderAdapter": () => (/* binding */ mathRenderAdapter),
-/* harmony export */   "mermaidRenderAdapter": () => (/* binding */ mermaidRenderAdapter),
-/* harmony export */   "mindmapRenderAdapter": () => (/* binding */ mindmapRenderAdapter),
-/* harmony export */   "plantumlRenderAdapter": () => (/* binding */ plantumlRenderAdapter)
+/* harmony export */   SMILESRenderAdapter: () => (/* binding */ SMILESRenderAdapter),
+/* harmony export */   abcRenderAdapter: () => (/* binding */ abcRenderAdapter),
+/* harmony export */   chartRenderAdapter: () => (/* binding */ chartRenderAdapter),
+/* harmony export */   flowchartRenderAdapter: () => (/* binding */ flowchartRenderAdapter),
+/* harmony export */   graphvizRenderAdapter: () => (/* binding */ graphvizRenderAdapter),
+/* harmony export */   markmapRenderAdapter: () => (/* binding */ markmapRenderAdapter),
+/* harmony export */   mathRenderAdapter: () => (/* binding */ mathRenderAdapter),
+/* harmony export */   mermaidRenderAdapter: () => (/* binding */ mermaidRenderAdapter),
+/* harmony export */   mindmapRenderAdapter: () => (/* binding */ mindmapRenderAdapter),
+/* harmony export */   plantumlRenderAdapter: () => (/* binding */ plantumlRenderAdapter)
 /* harmony export */ });
 var mathRenderAdapter = {
     getCode: function (el) { return el.textContent; },
@@ -273,16 +273,16 @@ var plantumlRenderAdapter = {
 
 /***/ }),
 
-/***/ 379:
+/***/ 784:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "p": () => (/* binding */ chartRender)
+/* harmony export */   v: () => (/* binding */ chartRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(446);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(933);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -325,10 +325,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var chartRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var echartsElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.chartRenderAdapter.getElements(element);
     if (echartsElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
             echartsElements.forEach(function (e) { return __awaiter(void 0, void 0, void 0, function () {
                 var text, option, error_1;
                 return __generator(this, function (_a) {
@@ -348,7 +348,7 @@ var chartRender = function (element, cdn, theme) {
                             if (e.getAttribute("data-processed") === "true") {
                                 return [2 /*return*/];
                             }
-                            return [4 /*yield*/, (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .looseJsonParse */ .Qf)(text)];
+                            return [4 /*yield*/, (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .looseJsonParse */ .kY)(text)];
                         case 2:
                             option = _a.sent();
                             echarts.init(e, theme === "dark" ? "dark" : undefined).setOption(option);
@@ -370,14 +370,14 @@ var chartRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 895:
+/***/ 51:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "O": () => (/* binding */ codeRender)
+/* harmony export */   o: () => (/* binding */ codeRender)
 /* harmony export */ });
-/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(528);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
+/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(695);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
 
 
 var codeRender = function (element, option) {
@@ -422,7 +422,7 @@ var codeRender = function (element, option) {
         divElement.className = "vditor-copy";
         divElement.innerHTML = "<span aria-label=\"".concat(((_a = window.VditorI18n) === null || _a === void 0 ? void 0 : _a.copy) || "复制", "\"\nonmouseover=\"this.setAttribute('aria-label', '").concat(((_b = window.VditorI18n) === null || _b === void 0 ? void 0 : _b.copy) || "复制", "')\"\nclass=\"vditor-tooltipped vditor-tooltipped__w\"\nonclick=\"this.previousElementSibling.select();document.execCommand('copy');this.setAttribute('aria-label', '").concat(((_c = window.VditorI18n) === null || _c === void 0 ? void 0 : _c.copied) || "已复制", "');this.previousElementSibling.blur()\">").concat(iconHTML, "</span>");
         var textarea = document.createElement("textarea");
-        textarea.value = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_1__/* .code160to32 */ .X)(codeText);
+        textarea.value = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_1__/* .code160to32 */ .p)(codeText);
         divElement.insertAdjacentElement("afterbegin", textarea);
         if (option && option.renderMenu) {
             option.renderMenu(e, divElement);
@@ -430,32 +430,32 @@ var codeRender = function (element, option) {
         e.before(divElement);
         e.style.maxHeight = (window.outerHeight - 40) + "px";
         // https://github.com/Vanessa219/vditor/issues/1356
-        e.insertAdjacentHTML("afterend", "<span style=\"position: absolute\">".concat(_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.ZWSP */ .g.ZWSP, "</span>"));
+        e.insertAdjacentHTML("afterend", "<span style=\"position: absolute\">".concat(_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.ZWSP, "</span>"));
     });
 };
 
 
 /***/ }),
 
-/***/ 169:
+/***/ 500:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "P": () => (/* binding */ flowchartRender)
+/* harmony export */   D: () => (/* binding */ flowchartRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
 var flowchartRender = function (element, cdn) {
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var flowchartElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.flowchartRenderAdapter.getElements(element);
     if (flowchartElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/flowchart.js/flowchart.min.js"), "vditorFlowchartScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/flowchart.js/flowchart.min.js"), "vditorFlowchartScript").then(function () {
         flowchartElements.forEach(function (item) {
             if (item.getAttribute("data-processed") === "true") {
                 return;
@@ -471,25 +471,25 @@ var flowchartRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 572:
+/***/ 339:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "v": () => (/* binding */ graphvizRender)
+/* harmony export */   m: () => (/* binding */ graphvizRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
 var graphvizRender = function (element, cdn) {
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var graphvizElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.graphvizRenderAdapter.getElements(element);
     if (graphvizElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/graphviz/viz.js"), "vditorGraphVizScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/graphviz/viz.js"), "vditorGraphVizScript").then(function () {
         graphvizElements.forEach(function (e) {
             var code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.graphvizRenderAdapter.getCode(e);
             if (e.parentElement.classList.contains("vditor-wysiwyg__pre") ||
@@ -523,23 +523,23 @@ var graphvizRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 702:
+/***/ 108:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "s": () => (/* binding */ highlightRender)
+/* harmony export */   $: () => (/* binding */ highlightRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(296);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(505);
 
 
 
 var highlightRender = function (hljsOption, element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var style = hljsOption.style;
-    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CODE_THEME.includes */ .g.CODE_THEME.includes(style)) {
+    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CODE_THEME.includes(style)) {
         style = "github";
     }
     var vditorHljsStyle = document.getElementById("vditorHljsStyle");
@@ -547,7 +547,7 @@ var highlightRender = function (hljsOption, element, cdn) {
     if (vditorHljsStyle && vditorHljsStyle.getAttribute('href') !== href) {
         vditorHljsStyle.remove();
     }
-    (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .c)("".concat(cdn, "/dist/js/highlight.js/styles/").concat(style, ".min.css"), "vditorHljsStyle");
+    (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .T)("".concat(cdn, "/dist/js/highlight.js/styles/").concat(style, ".min.css"), "vditorHljsStyle");
     if (hljsOption.enable === false) {
         return;
     }
@@ -555,8 +555,8 @@ var highlightRender = function (hljsOption, element, cdn) {
     if (codes.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/highlight.js/highlight.min.js?v=11.7.0"), "vditorHljsScript").then(function () {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/highlight.js/third-languages.js?v=1.0.1"), "vditorHljsThirdScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/highlight.js/highlight.min.js?v=11.7.0"), "vditorHljsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/highlight.js/third-languages.js?v=1.0.1"), "vditorHljsThirdScript").then(function () {
             element.querySelectorAll("pre > code").forEach(function (block) {
                 // ir & wysiwyg 区域不渲染
                 if (block.parentElement.classList.contains("vditor-ir__marker--pre") ||
@@ -573,7 +573,7 @@ var highlightRender = function (hljsOption, element, cdn) {
                 if (hljsOption.defaultLang !== "" && block.className.indexOf("language-") === -1) {
                     block.classList.add("language-" + hljsOption.defaultLang);
                 }
-                var language = hljsOption.defaultLang || block.className.replace("language-", "");
+                var language = block.className.replace("language-", "");
                 if (!window.hljs.getLanguage(language)) {
                     language = "plaintext";
                 }
@@ -619,15 +619,15 @@ var highlightRender = function (hljsOption, element, cdn) {
 
 /***/ }),
 
-/***/ 593:
+/***/ 597:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "K": () => (/* binding */ markmapRender)
+/* harmony export */   K: () => (/* binding */ markmapRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
@@ -660,12 +660,12 @@ var init = function (el, code) {
 };
 var markmapRender = function (element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var markmapElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.markmapRenderAdapter.getElements(element);
     if (markmapElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/markmap/markmap.min.js"), "vditorMarkerScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/markmap/markmap.min.js"), "vditorMarkerScript").then(function () {
         markmapElements.forEach(function (item) {
             var code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.markmapRenderAdapter.getCode(item);
             if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
@@ -685,17 +685,17 @@ var markmapRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 982:
+/***/ 960:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "H": () => (/* binding */ mathRender)
+/* harmony export */   T: () => (/* binding */ mathRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(998);
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(296);
-/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(528);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(161);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(505);
+/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(695);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
@@ -708,7 +708,7 @@ var mathRender = function (element, options) {
         return;
     }
     var defaultOptions = {
-        cdn: _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN,
+        cdn: _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN,
         math: {
             engine: "KaTeX",
             inlineDigit: false,
@@ -721,9 +721,9 @@ var mathRender = function (element, options) {
     }
     options = Object.assign({}, defaultOptions, options);
     if (options.math.engine === "KaTeX") {
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_2__/* .addStyle */ .c)("".concat(options.cdn, "/dist/js/katex/katex.min.css?v=0.16.9"), "vditorKatexStyle");
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .G)("".concat(options.cdn, "/dist/js/katex/katex.min.js?v=0.16.9"), "vditorKatexScript").then(function () {
-            (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .G)("".concat(options.cdn, "/dist/js/katex/mhchem.min.js?v=0.16.9"), "vditorKatexChemScript").then(function () {
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_2__/* .addStyle */ .T)("".concat(options.cdn, "/dist/js/katex/katex.min.css?v=0.16.9"), "vditorKatexStyle");
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .Z)("".concat(options.cdn, "/dist/js/katex/katex.min.js?v=0.16.9"), "vditorKatexScript").then(function () {
+            (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .Z)("".concat(options.cdn, "/dist/js/katex/mhchem.min.js?v=0.16.9"), "vditorKatexChemScript").then(function () {
                 mathElements.forEach(function (mathElement) {
                     if (mathElement.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                         mathElement.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -732,7 +732,7 @@ var mathRender = function (element, options) {
                     if (mathElement.getAttribute("data-math")) {
                         return;
                     }
-                    var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .X)(_adapterRender__WEBPACK_IMPORTED_MODULE_1__.mathRenderAdapter.getCode(mathElement));
+                    var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .p)(_adapterRender__WEBPACK_IMPORTED_MODULE_1__.mathRenderAdapter.getCode(mathElement));
                     mathElement.setAttribute("data-math", math);
                     try {
                         mathElement.innerHTML = katex.renderToString(math, {
@@ -785,9 +785,9 @@ var mathRender = function (element, options) {
             Object.assign(window.MathJax, options.math.mathJaxOptions);
         }
         // 循环加载会抛异常
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScriptSync */ .J)("".concat(options.cdn, "/dist/js/mathjax/tex-svg-full.js"), "protyleMathJaxScript");
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScriptSync */ .U)("".concat(options.cdn, "/dist/js/mathjax/tex-svg-full.js"), "protyleMathJaxScript");
         var renderMath_1 = function (mathElement, next) {
-            var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .X)(mathElement.textContent).trim();
+            var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .p)(mathElement.textContent).trim();
             var mathOptions = window.MathJax.getMetricsFor(mathElement);
             mathOptions.display = mathElement.tagName === "DIV";
             window.MathJax.tex2svgPromise(math, mathOptions).then(function (node) {
@@ -812,7 +812,7 @@ var mathRender = function (element, options) {
                 var mathElement = mathElements[i];
                 if (!mathElement.parentElement.classList.contains("vditor-wysiwyg__pre") &&
                     !mathElement.parentElement.classList.contains("vditor-ir__marker--pre") &&
-                    !mathElement.getAttribute("data-math") && (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .X)(mathElement.textContent).trim()) {
+                    !mathElement.getAttribute("data-math") && (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .p)(mathElement.textContent).trim()) {
                     chains.push(function (next) {
                         if (i === mathElements.length - 1) {
                             renderMath_1(mathElement);
@@ -834,13 +834,13 @@ var mathRender = function (element, options) {
 
 /***/ }),
 
-/***/ 431:
+/***/ 0:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Y": () => (/* binding */ mediaRender)
+/* harmony export */   l: () => (/* binding */ mediaRender)
 /* harmony export */ });
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(446);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(933);
 
 var videoRender = function (element, url) {
     element.insertAdjacentHTML("afterend", "<video controls=\"controls\" src=\"".concat(url, "\"></video>"));
@@ -886,7 +886,7 @@ var iframeRender = function (element, url) {
     }
     else if (url.indexOf("bilibili.com") > -1 && (url.indexOf("bvid=") > -1 || (bilibiliMatch && bilibiliMatch[1]))) {
         var params_1 = {
-            bvid: (0,_util_function__WEBPACK_IMPORTED_MODULE_0__/* .getSearch */ .on)("bvid", url) || (bilibiliMatch && bilibiliMatch[1]),
+            bvid: (0,_util_function__WEBPACK_IMPORTED_MODULE_0__/* .getSearch */ .TK)("bvid", url) || (bilibiliMatch && bilibiliMatch[1]),
             page: "1",
             high_quality: "1",
             as_wide: "1",
@@ -943,16 +943,16 @@ var mediaRender = function (element) {
 
 /***/ }),
 
-/***/ 570:
+/***/ 975:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "i": () => (/* binding */ mermaidRender)
+/* harmony export */   e: () => (/* binding */ mermaidRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(446);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(933);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -995,12 +995,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var mermaidRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var mermaidElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.mermaidRenderAdapter.getElements(element);
     if (mermaidElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/mermaid/mermaid.min.js"), "vditorMermaidScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/mermaid/mermaid.min.js"), "vditorMermaidScript").then(function () {
         var config = {
             securityLevel: "loose",
             altFontFamily: "sans-serif",
@@ -1035,7 +1035,7 @@ var mermaidRender = function (element, cdn, theme) {
                         if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
                             return [2 /*return*/];
                         }
-                        id = "mermaid" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Wb)();
+                        id = "mermaid" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Ee)();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
@@ -1062,24 +1062,24 @@ var mermaidRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 558:
+/***/ 162:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "P": () => (/* binding */ mindmapRender)
+/* harmony export */   l: () => (/* binding */ mindmapRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
 var mindmapRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var mindmapElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.mindmapRenderAdapter.getElements(element);
     if (mindmapElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
             mindmapElements.forEach(function (e) {
                 if (e.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                     e.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -1149,21 +1149,21 @@ var mindmapRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 182:
+/***/ 70:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "k": () => (/* binding */ outlineRender)
+/* harmony export */   N: () => (/* binding */ outlineRender)
 /* harmony export */ });
-/* harmony import */ var _util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(946);
-/* harmony import */ var _mathRender__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(982);
+/* harmony import */ var _util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(164);
+/* harmony import */ var _mathRender__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(960);
 
 
 var outlineRender = function (contentElement, targetElement, vditor) {
     var tocHTML = "";
     var ids = [];
     Array.from(contentElement.children).forEach(function (item, index) {
-        if ((0,_util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByHeadings */ .W)(item)) {
+        if ((0,_util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByHeadings */ .c)(item)) {
             if (vditor) {
                 var lastIndex = item.id.lastIndexOf("_");
                 item.id = item.id.substring(0, lastIndex === -1 ? undefined : lastIndex) + "_" + index;
@@ -1217,7 +1217,7 @@ var outlineRender = function (contentElement, targetElement, vditor) {
     }
     targetElement.innerHTML = tocHTML;
     if (vditor) {
-        (0,_mathRender__WEBPACK_IMPORTED_MODULE_0__/* .mathRender */ .H)(targetElement, {
+        (0,_mathRender__WEBPACK_IMPORTED_MODULE_0__/* .mathRender */ .T)(targetElement, {
             cdn: vditor.options.cdn,
             math: vditor.options.preview.math,
         });
@@ -1279,26 +1279,26 @@ var outlineRender = function (contentElement, targetElement, vditor) {
 
 /***/ }),
 
-/***/ 931:
+/***/ 591:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "B": () => (/* binding */ plantumlRender)
+/* harmony export */   M: () => (/* binding */ plantumlRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(998);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(781);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
 
 
 
 var plantumlRender = function (element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
     var plantumlElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.plantumlRenderAdapter.getElements(element);
     if (plantumlElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/plantuml/plantuml-encoder.min.js"), "vditorPlantumlScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/plantuml/plantuml-encoder.min.js"), "vditorPlantumlScript").then(function () {
         plantumlElements.forEach(function (e) {
             if (e.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                 e.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -1322,11 +1322,11 @@ var plantumlRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 65:
+/***/ 796:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "X": () => (/* binding */ setLute)
+/* harmony export */   X: () => (/* binding */ setLute)
 /* harmony export */ });
 var setLute = function (options) {
     var lute = Lute.New();
@@ -1356,11 +1356,11 @@ var setLute = function (options) {
 
 /***/ }),
 
-/***/ 971:
+/***/ 726:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "E": () => (/* binding */ previewImage)
+/* harmony export */   o: () => (/* binding */ previewImage)
 /* harmony export */ });
 var previewImage = function (oldImgElement, lang, theme) {
     if (lang === void 0) { lang = "zh_CN"; }
@@ -1398,42 +1398,42 @@ var previewImage = function (oldImgElement, lang, theme) {
 
 /***/ }),
 
-/***/ 34:
+/***/ 13:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Y": () => (/* binding */ setCodeTheme)
+/* harmony export */   h: () => (/* binding */ setCodeTheme)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(296);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(505);
 
 
 var setCodeTheme = function (codeTheme, cdn) {
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
-    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CODE_THEME.includes */ .g.CODE_THEME.includes(codeTheme)) {
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CODE_THEME.includes(codeTheme)) {
         codeTheme = "github";
     }
     var vditorHljsStyle = document.getElementById("vditorHljsStyle");
-    var href = "".concat(cdn, "/dist/js/highlight.js/styles/").concat(codeTheme, ".css");
+    var href = "".concat(cdn, "/dist/js/highlight.js/styles/").concat(codeTheme, ".min.css");
     if (!vditorHljsStyle) {
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .c)(href, "vditorHljsStyle");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .T)(href, "vditorHljsStyle");
     }
     else if (vditorHljsStyle.getAttribute('href') !== href) {
         vditorHljsStyle.remove();
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .c)(href, "vditorHljsStyle");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .T)(href, "vditorHljsStyle");
     }
 };
 
 
 /***/ }),
 
-/***/ 652:
+/***/ 873:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Z": () => (/* binding */ setContentTheme)
+/* harmony export */   H: () => (/* binding */ setContentTheme)
 /* harmony export */ });
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(296);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(505);
 
 var setContentTheme = function (contentTheme, path) {
     if (!contentTheme || !path) {
@@ -1442,23 +1442,23 @@ var setContentTheme = function (contentTheme, path) {
     var vditorContentTheme = document.getElementById("vditorContentTheme");
     var cssPath = "".concat(path, "/").concat(contentTheme, ".css");
     if (!vditorContentTheme) {
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .c)(cssPath, "vditorContentTheme");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .T)(cssPath, "vditorContentTheme");
     }
     else if (vditorContentTheme.getAttribute("href") !== cssPath) {
         vditorContentTheme.remove();
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .c)(cssPath, "vditorContentTheme");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .T)(cssPath, "vditorContentTheme");
     }
 };
 
 
 /***/ }),
 
-/***/ 998:
+/***/ 161:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "G": () => (/* binding */ addScript),
-/* harmony export */   "J": () => (/* binding */ addScriptSync)
+/* harmony export */   U: () => (/* binding */ addScriptSync),
+/* harmony export */   Z: () => (/* binding */ addScript)
 /* harmony export */ });
 var addScriptSync = function (path, id) {
     if (document.getElementById(id)) {
@@ -1505,11 +1505,11 @@ var addScript = function (path, id) {
 
 /***/ }),
 
-/***/ 296:
+/***/ 505:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "c": () => (/* binding */ addStyle)
+/* harmony export */   T: () => (/* binding */ addStyle)
 /* harmony export */ });
 var addStyle = function (url, id) {
     if (!document.getElementById(id)) {
@@ -1525,11 +1525,11 @@ var addStyle = function (url, id) {
 
 /***/ }),
 
-/***/ 528:
+/***/ 695:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "X": () => (/* binding */ code160to32)
+/* harmony export */   p: () => (/* binding */ code160to32)
 /* harmony export */ });
 var code160to32 = function (text) {
     // 非打断空格转换为空格
@@ -1539,13 +1539,13 @@ var code160to32 = function (text) {
 
 /***/ }),
 
-/***/ 446:
+/***/ 933:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Qf": () => (/* binding */ looseJsonParse),
-/* harmony export */   "Wb": () => (/* binding */ genUUID),
-/* harmony export */   "on": () => (/* binding */ getSearch)
+/* harmony export */   Ee: () => (/* binding */ genUUID),
+/* harmony export */   TK: () => (/* binding */ getSearch),
+/* harmony export */   kY: () => (/* binding */ looseJsonParse)
 /* harmony export */ });
 var genUUID = function () { return ([1e7].toString() + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, function (c) {
     return (parseInt(c, 10) ^ (window.crypto.getRandomValues(new Uint32Array(1))[0] & (15 >> (parseInt(c, 10) / 4)))).toString(16);
@@ -1565,12 +1565,12 @@ var looseJsonParse = function (text) {
 
 /***/ }),
 
-/***/ 118:
+/***/ 598:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "fb": () => (/* binding */ hasClosestByClassName),
-/* harmony export */   "lG": () => (/* binding */ hasClosestByMatchTag)
+/* harmony export */   KJ: () => (/* binding */ hasClosestByClassName),
+/* harmony export */   _Y: () => (/* binding */ hasClosestByMatchTag)
 /* harmony export */ });
 /* unused harmony exports hasTopClosestByClassName, hasTopClosestByAttribute, hasTopClosestByTag, getTopList, hasClosestByAttribute, hasClosestBlock, getLastNode */
 
@@ -1727,11 +1727,11 @@ var getLastNode = function (node) {
 
 /***/ }),
 
-/***/ 946:
+/***/ 164:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "W": () => (/* binding */ hasClosestByHeadings)
+/* harmony export */   c: () => (/* binding */ hasClosestByHeadings)
 /* harmony export */ });
 /* unused harmony export hasClosestByTag */
 // NOTE: 减少 method.ts 打包，故从 hasClosest.ts 中拆分
@@ -1765,11 +1765,11 @@ var hasClosestByHeadings = function (element) {
 
 /***/ }),
 
-/***/ 2:
+/***/ 905:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "T": () => (/* binding */ merge)
+/* harmony export */   h: () => (/* binding */ merge)
 /* harmony export */ });
 var merge = function () {
     var options = [];
@@ -1798,14 +1798,14 @@ var merge = function () {
 
 /***/ }),
 
-/***/ 307:
+/***/ 827:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "Hc": () => (/* binding */ setSelectionFocus)
+/* harmony export */   jl: () => (/* binding */ setSelectionFocus)
 /* harmony export */ });
 /* unused harmony exports getEditorRange, getCursorPosition, selectIsEditor, getSelectPosition, setSelectionByPosition, setRangeByWbr, insertHTML */
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(793);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
 
 
 
@@ -2143,8 +2143,6 @@ var insertHTML = function (html, vditor) {
 /******/ 	
 /************************************************************************/
 var __webpack_exports__ = {};
-// This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
-(() => {
 
 // EXPORTS
 __webpack_require__.d(__webpack_exports__, {
@@ -2152,19 +2150,19 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: ./src/ts/markdown/abcRender.ts
-var abcRender = __webpack_require__(386);
+var abcRender = __webpack_require__(288);
 // EXTERNAL MODULE: ./src/ts/markdown/adapterRender.ts
-var adapterRender = __webpack_require__(781);
+var adapterRender = __webpack_require__(59);
 // EXTERNAL MODULE: ./src/ts/markdown/chartRender.ts
-var chartRender = __webpack_require__(379);
+var chartRender = __webpack_require__(784);
 // EXTERNAL MODULE: ./src/ts/markdown/codeRender.ts
-var codeRender = __webpack_require__(895);
+var codeRender = __webpack_require__(51);
 // EXTERNAL MODULE: ./src/ts/markdown/flowchartRender.ts
-var flowchartRender = __webpack_require__(169);
+var flowchartRender = __webpack_require__(500);
 // EXTERNAL MODULE: ./src/ts/markdown/graphvizRender.ts
-var graphvizRender = __webpack_require__(572);
+var graphvizRender = __webpack_require__(339);
 // EXTERNAL MODULE: ./src/ts/markdown/highlightRender.ts
-var highlightRender = __webpack_require__(702);
+var highlightRender = __webpack_require__(108);
 ;// CONCATENATED MODULE: ./src/ts/markdown/lazyLoadImageRender.ts
 var lazyLoadImageRender = function (element) {
     if (element === void 0) { element = document; }
@@ -2217,31 +2215,31 @@ var lazyLoadImageRender = function (element) {
 };
 
 // EXTERNAL MODULE: ./src/ts/markdown/mathRender.ts
-var mathRender = __webpack_require__(982);
+var mathRender = __webpack_require__(960);
 // EXTERNAL MODULE: ./src/ts/markdown/mediaRender.ts
-var mediaRender = __webpack_require__(431);
+var mediaRender = __webpack_require__(0);
 // EXTERNAL MODULE: ./src/ts/markdown/mermaidRender.ts
-var mermaidRender = __webpack_require__(570);
+var mermaidRender = __webpack_require__(975);
 // EXTERNAL MODULE: ./src/ts/markdown/SMILESRender.ts
-var SMILESRender = __webpack_require__(474);
+var SMILESRender = __webpack_require__(931);
 // EXTERNAL MODULE: ./src/ts/markdown/markmapRender.ts
-var markmapRender = __webpack_require__(593);
+var markmapRender = __webpack_require__(597);
 // EXTERNAL MODULE: ./src/ts/markdown/mindmapRender.ts
-var mindmapRender = __webpack_require__(558);
+var mindmapRender = __webpack_require__(162);
 // EXTERNAL MODULE: ./src/ts/markdown/outlineRender.ts
-var outlineRender = __webpack_require__(182);
+var outlineRender = __webpack_require__(70);
 // EXTERNAL MODULE: ./src/ts/markdown/plantumlRender.ts
-var plantumlRender = __webpack_require__(931);
+var plantumlRender = __webpack_require__(591);
 // EXTERNAL MODULE: ./src/ts/constants.ts
-var constants = __webpack_require__(793);
+var constants = __webpack_require__(913);
 // EXTERNAL MODULE: ./src/ts/ui/setContentTheme.ts
-var setContentTheme = __webpack_require__(652);
+var setContentTheme = __webpack_require__(873);
 // EXTERNAL MODULE: ./src/ts/util/addScript.ts
-var addScript = __webpack_require__(998);
+var addScript = __webpack_require__(161);
 // EXTERNAL MODULE: ./src/ts/util/hasClosest.ts
-var hasClosest = __webpack_require__(118);
+var hasClosest = __webpack_require__(598);
 // EXTERNAL MODULE: ./src/ts/util/merge.ts
-var merge = __webpack_require__(2);
+var merge = __webpack_require__(905);
 ;// CONCATENATED MODULE: ./src/ts/markdown/anchorRender.ts
 var anchorRender = function (type) {
     document.querySelectorAll(".vditor-anchor").forEach(function (anchor) {
@@ -2263,9 +2261,9 @@ var anchorRender = function (type) {
 };
 
 // EXTERNAL MODULE: ./src/ts/markdown/setLute.ts
-var setLute = __webpack_require__(65);
+var setLute = __webpack_require__(796);
 // EXTERNAL MODULE: ./src/ts/util/selection.ts
-var selection = __webpack_require__(307);
+var selection = __webpack_require__(827);
 ;// CONCATENATED MODULE: ./src/ts/markdown/speechRender.ts
 
 var speechRender = function (element, lang) {
@@ -2335,7 +2333,7 @@ var speechRender = function (element, lang) {
                     }
                 }
             }
-            (0,selection/* setSelectionFocus */.Hc)(window.vditorSpeechRange);
+            (0,selection/* setSelectionFocus */.jl)(window.vditorSpeechRange);
             element.focus();
             return;
         }
@@ -2429,14 +2427,14 @@ var mergeOptions = function (options) {
     var _a;
     var defaultOption = {
         anchor: 0,
-        cdn: constants/* Constants.CDN */.g.CDN,
+        cdn: constants/* Constants */.Y.CDN,
         customEmoji: {},
-        emojiPath: "".concat(constants/* Constants.CDN */.g.CDN, "/dist/images/emoji"),
-        hljs: constants/* Constants.HLJS_OPTIONS */.g.HLJS_OPTIONS,
+        emojiPath: "".concat(constants/* Constants */.Y.CDN, "/dist/images/emoji"),
+        hljs: constants/* Constants */.Y.HLJS_OPTIONS,
         icon: "ant",
         lang: "zh_CN",
-        markdown: constants/* Constants.MARKDOWN_OPTIONS */.g.MARKDOWN_OPTIONS,
-        math: constants/* Constants.MATH_OPTIONS */.g.MATH_OPTIONS,
+        markdown: constants/* Constants */.Y.MARKDOWN_OPTIONS,
+        math: constants/* Constants */.Y.MATH_OPTIONS,
         mode: "light",
         speech: {
             enable: false,
@@ -2446,7 +2444,7 @@ var mergeOptions = function (options) {
                 enable: true,
             }
         },
-        theme: constants/* Constants.THEME_OPTIONS */.g.THEME_OPTIONS,
+        theme: constants/* Constants */.Y.THEME_OPTIONS,
     };
     if (options.cdn) {
         if (!((_a = options.theme) === null || _a === void 0 ? void 0 : _a.path)) {
@@ -2456,11 +2454,11 @@ var mergeOptions = function (options) {
             defaultOption.emojiPath = "".concat(options.cdn, "/dist/images/emoji");
         }
     }
-    return (0,merge/* merge */.T)(defaultOption, options);
+    return (0,merge/* merge */.h)(defaultOption, options);
 };
 var md2html = function (mdText, options) {
     var mergedOptions = mergeOptions(options);
-    return (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/lute/lute.min.js"), "vditorLuteScript").then(function () {
+    return (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/lute/lute.min.js"), "vditorLuteScript").then(function () {
         var lute = (0,setLute/* setLute */.X)({
             autoSpace: mergedOptions.markdown.autoSpace,
             gfmAutoLink: mergedOptions.markdown.gfmAutoLink,
@@ -2517,7 +2515,7 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                         document.head.removeChild(el);
                     }
                 });
-                return [4 /*yield*/, (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js"), i18nScriptID_1)];
+                return [4 /*yield*/, (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js"), i18nScriptID_1)];
             case 3:
                 _a.sent();
                 _a.label = 4;
@@ -2527,32 +2525,32 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                 _a.label = 6;
             case 6:
                 if (!mergedOptions.icon) return [3 /*break*/, 8];
-                return [4 /*yield*/, (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/icons/").concat(mergedOptions.icon, ".js"), "vditorIconScript")];
+                return [4 /*yield*/, (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/icons/").concat(mergedOptions.icon, ".js"), "vditorIconScript")];
             case 7:
                 _a.sent();
                 _a.label = 8;
             case 8:
-                (0,setContentTheme/* setContentTheme */.Z)(mergedOptions.theme.current, mergedOptions.theme.path);
+                (0,setContentTheme/* setContentTheme */.H)(mergedOptions.theme.current, mergedOptions.theme.path);
                 if (mergedOptions.anchor === 1) {
                     previewElement.classList.add("vditor-reset--anchor");
                 }
-                (0,codeRender/* codeRender */.O)(previewElement, mergedOptions.hljs);
-                (0,highlightRender/* highlightRender */.s)(mergedOptions.hljs, previewElement, mergedOptions.cdn);
-                (0,mathRender/* mathRender */.H)(previewElement, {
+                (0,codeRender/* codeRender */.o)(previewElement, mergedOptions.hljs);
+                (0,highlightRender/* highlightRender */.$)(mergedOptions.hljs, previewElement, mergedOptions.cdn);
+                (0,mathRender/* mathRender */.T)(previewElement, {
                     cdn: mergedOptions.cdn,
                     math: mergedOptions.math,
                 });
-                (0,mermaidRender/* mermaidRender */.i)(previewElement, mergedOptions.cdn, mergedOptions.mode);
-                (0,SMILESRender/* SMILESRender */.J)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,mermaidRender/* mermaidRender */.e)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,SMILESRender/* SMILESRender */.Y)(previewElement, mergedOptions.cdn, mergedOptions.mode);
                 (0,markmapRender/* markmapRender */.K)(previewElement, mergedOptions.cdn);
-                (0,flowchartRender/* flowchartRender */.P)(previewElement, mergedOptions.cdn);
-                (0,graphvizRender/* graphvizRender */.v)(previewElement, mergedOptions.cdn);
-                (0,chartRender/* chartRender */.p)(previewElement, mergedOptions.cdn, mergedOptions.mode);
-                (0,mindmapRender/* mindmapRender */.P)(previewElement, mergedOptions.cdn, mergedOptions.mode);
-                (0,plantumlRender/* plantumlRender */.B)(previewElement, mergedOptions.cdn);
-                (0,abcRender/* abcRender */.Q)(previewElement, mergedOptions.cdn);
+                (0,flowchartRender/* flowchartRender */.D)(previewElement, mergedOptions.cdn);
+                (0,graphvizRender/* graphvizRender */.m)(previewElement, mergedOptions.cdn);
+                (0,chartRender/* chartRender */.v)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,mindmapRender/* mindmapRender */.l)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,plantumlRender/* plantumlRender */.M)(previewElement, mergedOptions.cdn);
+                (0,abcRender/* abcRender */.$)(previewElement, mergedOptions.cdn);
                 if (mergedOptions.render.media.enable) {
-                    (0,mediaRender/* mediaRender */.Y)(previewElement);
+                    (0,mediaRender/* mediaRender */.l)(previewElement);
                 }
                 if (mergedOptions.speech.enable) {
                     speechRender(previewElement);
@@ -2567,8 +2565,8 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                     lazyLoadImageRender(previewElement);
                 }
                 previewElement.addEventListener("click", function (event) {
-                    var spanElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(event.target, "SPAN");
-                    if (spanElement && (0,hasClosest/* hasClosestByClassName */.fb)(spanElement, "vditor-toc")) {
+                    var spanElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(event.target, "SPAN");
+                    if (spanElement && (0,hasClosest/* hasClosestByClassName */.KJ)(spanElement, "vditor-toc")) {
                         var headingElement = previewElement.querySelector("#" + spanElement.getAttribute("data-target-id"));
                         if (headingElement) {
                             window.scrollTo(window.scrollX, headingElement.offsetTop);
@@ -2582,9 +2580,9 @@ var previewRender = function (previewElement, markdown, options) { return __awai
 }); };
 
 // EXTERNAL MODULE: ./src/ts/preview/image.ts
-var preview_image = __webpack_require__(971);
+var preview_image = __webpack_require__(726);
 // EXTERNAL MODULE: ./src/ts/ui/setCodeTheme.ts
-var setCodeTheme = __webpack_require__(34);
+var setCodeTheme = __webpack_require__(13);
 ;// CONCATENATED MODULE: ./src/method.ts
 
 
@@ -2613,35 +2611,35 @@ var Vditor = /** @class */ (function () {
     /** 点击图片放大 */
     Vditor.adapterRender = adapterRender;
     /** 点击图片放大 */
-    Vditor.previewImage = preview_image/* previewImage */.E;
+    Vditor.previewImage = preview_image/* previewImage */.o;
     /** 为 element 中的代码块添加复制按钮 */
-    Vditor.codeRender = codeRender/* codeRender */.O;
+    Vditor.codeRender = codeRender/* codeRender */.o;
     /** 对 graphviz 进行渲染 */
-    Vditor.graphvizRender = graphvizRender/* graphvizRender */.v;
+    Vditor.graphvizRender = graphvizRender/* graphvizRender */.m;
     /** 为 element 中的代码块进行高亮渲染 */
-    Vditor.highlightRender = highlightRender/* highlightRender */.s;
+    Vditor.highlightRender = highlightRender/* highlightRender */.$;
     /** 对数学公式进行渲染 */
-    Vditor.mathRender = mathRender/* mathRender */.H;
+    Vditor.mathRender = mathRender/* mathRender */.T;
     /** 流程图/时序图/甘特图渲染 */
-    Vditor.mermaidRender = mermaidRender/* mermaidRender */.i;
+    Vditor.mermaidRender = mermaidRender/* mermaidRender */.e;
     /** 化学物质结构渲染 */
-    Vditor.SMILESRender = SMILESRender/* SMILESRender */.J;
+    Vditor.SMILESRender = SMILESRender/* SMILESRender */.Y;
     /** 支持 markdown 的思维导图 */
     Vditor.markmapRender = markmapRender/* markmapRender */.K;
     /** flowchart.js 渲染 */
-    Vditor.flowchartRender = flowchartRender/* flowchartRender */.P;
+    Vditor.flowchartRender = flowchartRender/* flowchartRender */.D;
     /** 图表渲染 */
-    Vditor.chartRender = chartRender/* chartRender */.p;
+    Vditor.chartRender = chartRender/* chartRender */.v;
     /** 五线谱渲染 */
-    Vditor.abcRender = abcRender/* abcRender */.Q;
+    Vditor.abcRender = abcRender/* abcRender */.$;
     /** 脑图渲染 */
-    Vditor.mindmapRender = mindmapRender/* mindmapRender */.P;
+    Vditor.mindmapRender = mindmapRender/* mindmapRender */.l;
     /** plantuml渲染 */
-    Vditor.plantumlRender = plantumlRender/* plantumlRender */.B;
+    Vditor.plantumlRender = plantumlRender/* plantumlRender */.M;
     /** 大纲渲染 */
-    Vditor.outlineRender = outlineRender/* outlineRender */.k;
+    Vditor.outlineRender = outlineRender/* outlineRender */.N;
     /** 为[特定链接](https://github.com/Vanessa219/vditor/issues/7)分别渲染为视频、音频、嵌入的 iframe */
-    Vditor.mediaRender = mediaRender/* mediaRender */.Y;
+    Vditor.mediaRender = mediaRender/* mediaRender */.l;
     /** 对选中的文字进行阅读 */
     Vditor.speechRender = speechRender;
     /** 对图片进行懒加载 */
@@ -2651,14 +2649,12 @@ var Vditor = /** @class */ (function () {
     /** 页面 Markdown 文章渲染 */
     Vditor.preview = previewRender;
     /** 设置代码主题 */
-    Vditor.setCodeTheme = setCodeTheme/* setCodeTheme */.Y;
+    Vditor.setCodeTheme = setCodeTheme/* setCodeTheme */.h;
     /** 设置内容主题 */
-    Vditor.setContentTheme = setContentTheme/* setContentTheme */.Z;
+    Vditor.setContentTheme = setContentTheme/* setContentTheme */.H;
     return Vditor;
 }());
 /* harmony default export */ const method = (Vditor);
-
-})();
 
 __webpack_exports__ = __webpack_exports__["default"];
 /******/ 	return __webpack_exports__;
