@@ -9,15 +9,15 @@ import com.buguagaoshu.share.repository.LoginCountRepository;
 import com.buguagaoshu.share.repository.impl.InMemoryIpCache;
 import com.buguagaoshu.share.service.UserService;
 import com.buguagaoshu.share.utils.IpUtils;
+import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import org.lionsoul.ip2region.xdb.Searcher;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
-import java.net.http.HttpHeaders;
+import java.util.Enumeration;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,7 +44,7 @@ public class LoginAndWhitelistController {
     }
 
     @GetMapping("/api/ip")
-    public ResponseDetails getIp(HttpServletRequest request) {
+    public ResponseDetails getIp(HttpServletRequest request, HttpServletResponse response) {
         String ip = ipUtils.getIpAddr(request);
         Map<String, String> map = new HashMap<>(2);
         map.put("ip", ip);

@@ -18,9 +18,9 @@
     "qrcode": "^1.5.3",
     "roboto-fontface": "*",
     "vditor": "^3.10.7",
-    "vue": "^3.5.12",
-    "vue-cookies": "^1.8.4",
-    "vuetify": "^3.7.2"
+    "vue": "^3.5.13",
+    "vue-cookies": "^1.8.6",
+    "vuetify": "^3.7.12"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

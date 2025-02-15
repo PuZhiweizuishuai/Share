@@ -73,6 +73,7 @@
 
         <div class="text-center">
           <v-btn color="primary" class="mt-6" large @click="submitShare">分享</v-btn>
+          <p>&nbsp;</p>
         </div>
       </v-sheet>
     </v-bottom-sheet>

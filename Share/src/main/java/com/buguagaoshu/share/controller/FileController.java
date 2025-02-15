@@ -20,6 +20,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Path;
+import java.util.Enumeration;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -128,7 +129,6 @@ public class FileController {
                                       HttpServletRequest request) {
         try {
             boolean lock = checkSeePower(key, request);
-
             if (lock) {
                 Path path = fileRepository.load(date + "/" + filename);
                 Resource resource = new UrlResource(path.toUri());
