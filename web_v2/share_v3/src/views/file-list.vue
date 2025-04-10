@@ -3,7 +3,7 @@
     <v-data-table-server
       :headers="headers"
       :items="fileList"
-      :itemsLength="nowCount"
+      :itemsLength="fileList.length"
       hide-default-footer
       v-model:page="page"
       item-value="createTime"
@@ -470,8 +470,8 @@ export default {
 
           this.nowCount = json.page.size
           this.fileList = json.page.content
-          this.total = json.page.totalElements
-          this.pageCount = json.page.totalPages
+          this.total = json.page.page.totalElements
+          this.pageCount = json.page.page.totalPages
           this.loading = false
         })
         .catch((e) => {

@@ -69,8 +69,8 @@ export default {
         `/share/list?page=${this.page}&size=${this.size}&key=${encodeURIComponent(this.key)}`,
         (json) => {
           this.shareList = json.page.content
-          this.total = json.page.totalElements
-          this.length = json.page.totalPages
+          this.total = json.page.page.totalElements
+          this.length = json.page.page.totalPages
         }
       )
     },

@@ -86,10 +86,10 @@ export default {
     getViewList() {
       this.httpGet(`/admin/viewlog/list?type=${this.type}&targetId=${this.targetId}&page=${this.page}&size=${this.size}`, (json)=>{
         if (json.status === 200) {
-          this.nowCount = json.data.size
+          this.nowCount = json.data.page.size
           this.viewList = json.data.content
-          this.total = json.data.totalElements
-          this.pageCount = json.data.totalPages
+          this.total = json.data.page.totalElements
+          this.pageCount = json.data.page.totalPages
           this.loading = false
         } else {
           //

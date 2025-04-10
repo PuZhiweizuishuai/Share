@@ -86,8 +86,8 @@ export default {
       const url = `/share/list?page=${this.page}&size=${this.size}`
       this.httpGet(url, (json) => {
         this.shareList = json.page.content
-        this.total = json.page.totalElements
-        this.length = json.page.totalPages
+        this.total = json.page.page.totalElements
+        this.length = json.page.page.totalPages
       })
     },
     pageChange(page) {
