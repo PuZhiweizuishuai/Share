@@ -2,7 +2,7 @@ name: GraalVM 25 Native Build (Linux X64/ARM64)
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
   workflow_dispatch:
 
 jobs:
