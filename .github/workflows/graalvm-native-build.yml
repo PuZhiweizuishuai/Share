@@ -31,7 +31,6 @@ jobs:
           java-version: '25'                # 匹配 Java 25
           distribution: 'graalvm'           # 社区版用 graalvm-community
           version: '25.0.0'                 # 固定 GraalVM 25 版本（也可写 latest 自动拉最新）
-          components: 'native-image'        # 安装 Native Image 组件
           cache: true                       # 缓存 GraalVM 加速构建
           github-token: ${{ secrets.GITHUB_TOKEN }}  # 用于访问 GraalVM 下载资源
 
