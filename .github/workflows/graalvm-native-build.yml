@@ -57,7 +57,7 @@ jobs:
           # native-image $NATIVE_IMAGE_OPTS -cp build com.your.App build/app-linux-x64
 
           # 验证产物架构
-          file target/*-runner || file build/app-linux-x64
+          file target/share || file build/app-linux-x64
 
       - name: 构建 Native 可执行文件（Linux ARM64）
         if: matrix.arch == 'arm64'
@@ -75,14 +75,14 @@ jobs:
           # native-image $NATIVE_IMAGE_OPTS -cp build com.your.App build/app-linux-arm64
 
           # 验证产物架构
-          file target/*-runner || file build/app-linux-arm64
+          file target/share || file build/app-linux-arm64
 
       - name: 上传构建产物
         uses: actions/upload-artifact@v4
         with:
           name: native-executable-linux-${{ matrix.arch }}-graalvm25
           path: |
-            target/*-runner        # Maven/Quarkus 产物路径
-            build/app-linux-${{ matrix.arch }}  # 纯 Java 项目产物路径
+            target/*        # Maven/Quarkus 产物路径
+            # build/app-linux-${{ matrix.arch }}  # 纯 Java 项目产物路径
           if-no-files-found: error
           retention-days: 7        # 产物保留天数
