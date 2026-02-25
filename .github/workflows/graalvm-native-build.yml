@@ -1,4 +1,4 @@
-name: GraalVM 25 Native Build (Linux X64/ARM64)
+name: GraalVM 25 Native Build (Linux X64)
 
 on:
   push:
@@ -13,17 +13,11 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        arch: [x64, arm64]
+        arch: [x64]
 
     steps:
       - name: Checkout 代码
         uses: actions/checkout@v4
-
-      - name: 设置 QEMU（ARM64 模拟）
-        if: matrix.arch == 'arm64'
-        uses: docker/setup-qemu-action@v3
-        with:
-          platforms: arm64
 
       - name: 安装 GraalVM 25 (Java 25)
         uses: graalvm/setup-graalvm@v1
@@ -50,39 +44,16 @@ jobs:
           cd Share
           # Maven (Quarkus/Spring Native)
           mvn -Pnative native:compile -DskipTests -Djava.version=25
-          # Gradle (示例)
-          # ./gradlew nativeCompile -PjavaVersion=25
-          # 纯 Java 项目（手动调用 native-image）
-          # javac -d build --release 25 src/main/java/com/your/App.java
-          # native-image $NATIVE_IMAGE_OPTS -cp build com.your.App build/app-linux-x64
-
           # 验证产物架构
           file target/share || file build/app-linux-x64
 
-      - name: 构建 Native 可执行文件（Linux ARM64）
-        if: matrix.arch == 'arm64'
-        run: |
-          # 设置 ARM64 编译参数（GraalVM 25 统一用 -H:TargetArch）
-          export NATIVE_IMAGE_OPTS="$NATIVE_IMAGE_OPTS -H:TargetArch=arm64"
-          cd Share
-          # ===== 按需替换为你的项目构建命令 =====
-          # Maven (Quarkus/Spring Native)
-          mvn -Pnative native:compile -DskipTests -Djava.version=25 -Dquarkus.native.target-arch=arm64
-          # Gradle (示例)
-          # ./gradlew nativeCompile -PjavaVersion=25 -Pquarkus.native.target-arch=arm64
-          # 纯 Java 项目（手动调用 native-image）
-          # javac -d build --release 25 src/main/java/com/your/App.java
-          # native-image $NATIVE_IMAGE_OPTS -cp build com.your.App build/app-linux-arm64
-
-          # 验证产物架构
-          file target/share || file build/app-linux-arm64
 
       - name: 上传构建产物
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v6.0.0
         with:
           name: native-executable-linux-${{ matrix.arch }}-graalvm25
           path: |
-            target/*        # Maven/Quarkus 产物路径
-            # build/app-linux-${{ matrix.arch }}  # 纯 Java 项目产物路径
+            ./target/
           if-no-files-found: error
+          overwrite: true
           retention-days: 7        # 产物保留天数
