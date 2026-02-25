@@ -1,0 +1,89 @@
+name: GraalVM 25 Native Build (Linux X64/ARM64)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build Native Executable (${{ matrix.arch }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: [x64, arm64]
+
+    steps:
+      - name: Checkout 代码
+        uses: actions/checkout@v4
+
+      - name: 设置 QEMU（ARM64 模拟）
+        if: matrix.arch == 'arm64'
+        uses: docker/setup-qemu-action@v3
+        with:
+          platforms: arm64
+
+      - name: 安装 GraalVM 25 (Java 25)
+        uses: graalvm/setup-graalvm@v1
+        with:
+          java-version: '25'                # 匹配 Java 25
+          distribution: 'graalvm'           # 社区版用 graalvm-community
+          version: '25.0.0'                 # 固定 GraalVM 25 版本（也可写 latest 自动拉最新）
+          components: 'native-image'        # 安装 Native Image 组件
+          cache: true                       # 缓存 GraalVM 加速构建
+          github-token: ${{ secrets.GITHUB_TOKEN }}  # 用于访问 GraalVM 下载资源
+
+      - name: 验证 GraalVM/Java 版本
+        run: |
+          java -version                     # 输出应显示 GraalVM 25 + Java 25
+          native-image --version            # 验证 Native Image 版本
+
+      - name: 配置构建环境变量（通用）
+        run: |
+          echo "GRAALVM_OPTS=-J-Xmx6g" >> $GITHUB_ENV  # 限制内存，避免溢出
+          echo "NATIVE_IMAGE_OPTS=-H:+AllowIncompleteClasspath -H:EnableURLProtocols=http,https" >> $GITHUB_ENV  # 通用构建参数
+
+      - name: 构建 Native 可执行文件（Linux X64）
+        if: matrix.arch == 'x64'
+        run: |
+          # ===== 按需替换为你的项目构建命令 =====
+          # Maven (Quarkus/Spring Native)
+          ./mvn -Pnative native:compile -DskipTests -Djava.version=25
+          # Gradle (示例)
+          # ./gradlew nativeCompile -PjavaVersion=25
+          # 纯 Java 项目（手动调用 native-image）
+          # javac -d build --release 25 src/main/java/com/your/App.java
+          # native-image $NATIVE_IMAGE_OPTS -cp build com.your.App build/app-linux-x64
+
+          # 验证产物架构
+          file target/*-runner || file build/app-linux-x64
+
+      - name: 构建 Native 可执行文件（Linux ARM64）
+        if: matrix.arch == 'arm64'
+        run: |
+          # 设置 ARM64 编译参数（GraalVM 25 统一用 -H:TargetArch）
+          export NATIVE_IMAGE_OPTS="$NATIVE_IMAGE_OPTS -H:TargetArch=arm64"
+          
+          # ===== 按需替换为你的项目构建命令 =====
+          # Maven (Quarkus/Spring Native)
+          ./mvn -Pnative native:compile -DskipTests -Djava.version=25 -Dquarkus.native.target-arch=arm64
+          # Gradle (示例)
+          # ./gradlew nativeCompile -PjavaVersion=25 -Pquarkus.native.target-arch=arm64
+          # 纯 Java 项目（手动调用 native-image）
+          # javac -d build --release 25 src/main/java/com/your/App.java
+          # native-image $NATIVE_IMAGE_OPTS -cp build com.your.App build/app-linux-arm64
+
+          # 验证产物架构
+          file target/*-runner || file build/app-linux-arm64
+
+      - name: 上传构建产物
+        uses: actions/upload-artifact@v4
+        with:
+          name: native-executable-linux-${{ matrix.arch }}-graalvm25
+          path: |
+            target/*-runner        # Maven/Quarkus 产物路径
+            build/app-linux-${{ matrix.arch }}  # 纯 Java 项目产物路径
+          if-no-files-found: error
+          retention-days: 7        # 产物保留天数
