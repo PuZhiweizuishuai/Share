@@ -47,6 +47,7 @@ jobs:
         if: matrix.arch == 'x64'
         run: |
           # ===== 按需替换为你的项目构建命令 =====
+          cd Share
           # Maven (Quarkus/Spring Native)
           mvn -Pnative native:compile -DskipTests -Djava.version=25
           # Gradle (示例)
@@ -63,7 +64,7 @@ jobs:
         run: |
           # 设置 ARM64 编译参数（GraalVM 25 统一用 -H:TargetArch）
           export NATIVE_IMAGE_OPTS="$NATIVE_IMAGE_OPTS -H:TargetArch=arm64"
-          
+          cd Share
           # ===== 按需替换为你的项目构建命令 =====
           # Maven (Quarkus/Spring Native)
           mvn -Pnative native:compile -DskipTests -Djava.version=25 -Dquarkus.native.target-arch=arm64
