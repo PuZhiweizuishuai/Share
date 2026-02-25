@@ -53,7 +53,7 @@ jobs:
         with:
           name: native-executable-linux-${{ matrix.arch }}-graalvm25
           path: |
-            ./target/
+            /home/runner/work/Share/Share/Share/target/
           if-no-files-found: error
           overwrite: true
           retention-days: 7        # 产物保留天数
