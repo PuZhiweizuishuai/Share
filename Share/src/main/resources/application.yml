@@ -17,6 +17,9 @@ share:
   ip-db-path: E:\\Spring\\Share\\Share\\ip2region.xdb
 
 spring:
+  threads:
+    virtual:
+      enabled: true
   datasource:
     url: jdbc:h2:~/share;NON_KEYWORDS=KEY
     driver-class-name: org.h2.Driver
@@ -24,10 +27,10 @@ spring:
     password: 123456
   h2:
     console:
+      enabled: true                   # 开启H2控制台
+      path: /h2-console               # 控制台访问路径（默认/h2-console）
       settings:
         web-allow-others: true
-      path: /h2-console
-      enabled: true
   servlet:
     multipart:
       enabled: true

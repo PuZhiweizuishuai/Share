@@ -3,17 +3,16 @@ package com.buguagaoshu.share.config;
 import com.buguagaoshu.share.domain.DiskMessage;
 import com.buguagaoshu.share.domain.User;
 import com.buguagaoshu.share.repository.DiskMessageRepository;
-import com.buguagaoshu.share.repository.IpRepository;
+
 import com.buguagaoshu.share.repository.TagCacheRepository;
 import com.buguagaoshu.share.repository.impl.InMemoryIpCache;
 import com.buguagaoshu.share.service.UserService;
-import com.buguagaoshu.share.utils.IpUtils;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.boot.autoconfigure.web.servlet.MultipartProperties;
+import org.springframework.boot.servlet.autoconfigure.MultipartProperties;
+import org.springframework.boot.web.error.ErrorPage;
 import org.springframework.boot.web.server.ConfigurableWebServerFactory;
-import org.springframework.boot.web.server.ErrorPage;
+
 import org.springframework.boot.web.server.WebServerFactoryCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
