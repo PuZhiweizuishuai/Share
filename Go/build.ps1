@@ -25,6 +25,10 @@ param(
 
 $ErrorActionPreference = "Stop"
 
+# Version info, keep in sync with Spring pom.xml <version>3.1.7</version>
+# Injected into Go binary via -ldflags -X main.AppVersion
+$AppVersion = "3.1.7"
+
 # Script directory (Go project root)
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
 Set-Location $ScriptDir
@@ -231,7 +235,7 @@ foreach ($platform in $Platforms) {
     $env:GOOS = $goos
     $env:GOARCH = $goarch
 
-    & go build -ldflags "-s -w" -o $outputPath . 2>&1
+    & go build -ldflags "-s -w -X main.AppVersion=$AppVersion" -o $outputPath . 2>&1
     if ($LASTEXITCODE -ne 0) {
         Write-Err "  FAILED: $goos/$goarch"
         $buildFailed = $true

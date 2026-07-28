@@ -90,6 +90,21 @@ https://gitee.com/puzhiweizuishuai/Share/releases
 
 **第一次使用请到设置页面配置编辑器，不然可能出现不显示编辑器的问题**
 
+如果忘记密码：
+
+最新的Go版本支持命令行重置密码功能，使用方法如下：
+
+```
+# 查看帮助
+./share-go-windows-amd64.exe -h
+
+# 重置管理员账号为初始状态（admin/123456），不启动服务
+./share-go-windows-amd64.exe -reset-password
+```
+
+重置密码后，需要重新登录才能生效。
+
+
 ## AI 功能配置指南
 
 使用AI功能需要配置AI API接口，现在本项目使用的是 Cloudflare Workers 提供的 AI 调用能力，免费账户每天有一万次调用额度，非常够用

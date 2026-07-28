@@ -2,10 +2,13 @@ package main
 
 import (
 	"encoding/gob"
+	"errors"
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
 	"os"
+	"runtime"
 	"time"
 
 	"github.com/gin-gonic/gin"
@@ -21,12 +24,41 @@ import (
 	"share-go/internal/utils"
 )
 
+// 版本信息，对齐 Spring pom.xml: share 3.1.7 / 局域网文本共享服务
+// 开发时 go run 使用此处默认值；build.ps1 跨平台编译时通过 -ldflags -X 注入覆盖
+var (
+	AppName    = "Share"
+	AppVersion = "3.1.7"
+	AppDesc    = "局域网文本共享服务"
+)
+
 func init() {
 	// memstore 使用 gob 深拷贝 session 值，需注册存入 session 的具体类型
 	gob.Register(&model.User{})
 }
 
 func main() {
+	// 0. 解析命令行参数
+	resetPwd := flag.Bool("reset-password", false,
+		"reset admin account to initial state (admin/123456) and exit, do not start server")
+	flag.Usage = func() {
+		fmt.Fprintf(os.Stderr, "Share Go backend v%s\n\n", AppVersion)
+		fmt.Fprintf(os.Stderr, "Usage: %s [options]\n\n", os.Args[0])
+		fmt.Fprintf(os.Stderr, "Options:\n")
+		flag.PrintDefaults()
+		fmt.Fprintf(os.Stderr, "\nRun without options to start the server normally.\n")
+	}
+	flag.Parse()
+
+	// 打印版本信息
+	printVersion()
+
+	// 重置密码模式：仅重置管理员账号后退出，不启动服务
+	if *resetPwd {
+		runResetPassword()
+		return
+	}
+
 	// 1. 加载配置
 	cfgPath := "config.yaml"
 	if _, err := os.Stat(cfgPath); os.IsNotExist(err) {
@@ -245,4 +277,64 @@ func printLocalIPs() {
 		return
 	}
 	log.Printf("当前系统IP为：\n%s", ips)
+}
+
+// printVersion 打印版本信息到控制台，对齐 Spring 启动横幅
+func printVersion() {
+	log.Println("========================================")
+	log.Printf("  %s v%s (Go 后端)", AppName, AppVersion)
+	log.Printf("  %s", AppDesc)
+	log.Printf("  Go 运行时: %s %s/%s", runtime.Version(), runtime.GOOS, runtime.GOARCH)
+	log.Println("========================================")
+}
+
+// runResetPassword 重置管理员账号为初始状态（admin / 123456）后退出，不启动服务
+//   - id=1 的管理员存在：重置其用户名为 admin、密码为 123456
+//   - id=1 不存在：创建初始管理员 admin / 123456
+func runResetPassword() {
+	log.Println("重置模式：将管理员账号恢复为初始状态（admin / 123456），不启动服务")
+
+	cfgPath := "config.yaml"
+	if _, err := os.Stat(cfgPath); os.IsNotExist(err) {
+		cfgPath = ""
+	}
+	cfg, err := config.Load(cfgPath)
+	if err != nil {
+		log.Fatalf("加载配置失败: %v", err)
+	}
+
+	db, err := repository.InitDB(cfg)
+	if err != nil {
+		log.Fatalf("初始化数据库失败: %v", err)
+	}
+
+	var admin model.User
+	err = db.First(&admin, 1).Error
+	if errors.Is(err, gorm.ErrRecordNotFound) {
+		// id=1 不存在，创建初始管理员（Save 会自动哈希密码）
+		now := utils.NowMillis()
+		newAdmin := &model.User{
+			Username:   "admin",
+			Password:   "123456",
+			Nickname:   "admin",
+			CreateTime: &now,
+		}
+		userSvc := &service.UserService{DB: db}
+		if err := userSvc.Save(newAdmin); err != nil {
+			log.Fatalf("创建管理员账号失败: %v", err)
+		}
+		log.Println("管理员账号不存在，已创建初始管理员：admin / 123456")
+	} else if err != nil {
+		log.Fatalf("查询管理员账号失败: %v", err)
+	} else {
+		// 存在则重置用户名与密码为初始状态
+		admin.Username = "admin"
+		admin.Password = utils.Encode("123456")
+		if err := db.Save(&admin).Error; err != nil {
+			log.Fatalf("重置管理员密码失败: %v", err)
+		}
+		log.Println("管理员账号已重置为初始状态：admin / 123456")
+	}
+
+	log.Println("重置完成，请重新启动服务（不带 -reset-password 参数）")
 }
