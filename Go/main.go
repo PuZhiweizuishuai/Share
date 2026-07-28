@@ -24,11 +24,11 @@ import (
 	"share-go/internal/utils"
 )
 
-// 版本信息，对齐 Spring pom.xml: share 3.1.7 / 局域网文本共享服务
+// 版本信息，对齐 Spring pom.xml: share 3.8 / 局域网文本共享服务
 // 开发时 go run 使用此处默认值；build.ps1 跨平台编译时通过 -ldflags -X 注入覆盖
 var (
 	AppName    = "Share"
-	AppVersion = "3.1.7"
+	AppVersion = "3.8"
 	AppDesc    = "局域网文本共享服务"
 )
 

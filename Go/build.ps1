@@ -25,9 +25,9 @@ param(
 
 $ErrorActionPreference = "Stop"
 
-# Version info, keep in sync with Spring pom.xml <version>3.1.7</version>
+# Version info, keep in sync with Spring pom.xml <version>3.8</version>
 # Injected into Go binary via -ldflags -X main.AppVersion
-$AppVersion = "3.1.7"
+$AppVersion = "3.8"
 
 # Script directory (Go project root)
 $ScriptDir = Split-Path -Parent $MyInvocation.MyCommand.Path
