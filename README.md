@@ -39,6 +39,8 @@
 
 ## 快速运行
 
+### Spring 版本
+
 运行环境：Java 17
 
 后端： Spring Boot + JPA
@@ -52,6 +54,24 @@ cd Share
 mvn clean package
 java -jar share-*.jar
 ```
+
+### Go 版本
+
+运行环境：Go 1.19+
+
+后端： Go + Gin
+
+数据库： Mysql
+
+前端框架： Vue + vuetifyjs
+
+```
+cd Share/Go
+
+powershell -ExecutionPolicy Bypass -File ./build.ps1
+```
+
+
 
 你也可以直接下载运行
 

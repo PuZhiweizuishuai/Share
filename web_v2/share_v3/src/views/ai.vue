@@ -48,11 +48,11 @@
               </v-col>
             </v-row>
             <v-row align="center" justify="center">
-              <v-btn @click="text2Image()">生成</v-btn>
+              <v-btn color="primary" prepend-icon="mdi-image" @click="text2Image()">生成</v-btn>
             </v-row>
             <v-col></v-col>
-            <v-row v-if="showText2Image">
-              <v-col>
+            <v-row v-if="showText2Image" justify="center">
+              <v-col cols="12" sm="10" md="8">
                 <v-img :src="imgUrl"></v-img>
               </v-col>
             </v-row>
@@ -86,7 +86,7 @@
               </v-col>
             </v-row>
             <v-row align="center" justify="center">
-              <v-btn @click="fanyiFun()">翻译</v-btn>
+              <v-btn color="primary" prepend-icon="mdi-translate" @click="fanyiFun()">翻译</v-btn>
             </v-row>
             <v-col></v-col>
             <v-row>
@@ -122,7 +122,7 @@
               </v-col>
             </v-row>
             <v-row align="center" justify="center">
-              <v-btn @click="bartFun()">生成</v-btn>
+              <v-btn color="primary" prepend-icon="mdi-text-short" @click="bartFun()">生成</v-btn>
             </v-row>
             <v-col></v-col>
             <v-row>

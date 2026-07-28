@@ -10,6 +10,8 @@ type User struct {
 	CreateTime *int64 `gorm:"column:create_time" json:"createTime"`
 	// OldPassword 对齐 @Transient，不持久化但出现在 JSON 响应中
 	OldPassword string `gorm:"-" json:"oldPassword"`
+	// NewUsername 修改密码时可选的新用户名，不持久化，对齐 Spring newUsername
+	NewUsername string `gorm:"-" json:"newUsername"`
 }
 
 func (User) TableName() string { return "user_table" }

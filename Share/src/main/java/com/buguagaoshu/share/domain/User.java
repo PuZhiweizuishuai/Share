@@ -27,4 +27,8 @@ public class User {
 
     @Transient
     private String oldPassword;
+
+    /** 修改密码时可选的新用户名，不持久化，对齐 Go 后端 NewUsername */
+    @Transient
+    private String newUsername;
 }

@@ -1,55 +1,33 @@
 <template>
-  <v-container>
-    <v-row justify="center" align="center">
-      <v-col>
-        <v-card class="mx-auto" outlined>
-          <v-row justify="center">
-            <v-col cols="10">
-              <h2>设置：</h2>
-            </v-col>
-          </v-row>
+  <v-container fluid>
+    <v-row justify="center">
+      <v-col cols="12" md="10" lg="10">
+        <v-card class="mx-auto" elevation="2">
+          <v-card-title class="text-h6">设置</v-card-title>
           <v-divider />
-          <v-col />
-          <!-- <v-row justify="center">
-            <v-col cols="8">
-              <v-text-field
-                variant="underlined"
-                v-model="fileMax"
-                placeholder="上传文件最大大小（单位：M）"
-                label="上传文件最大大小（单位：M）"
-                clearable
-                :rules="[() => checkNumber() || '必须是数字且不为空']"
-              />
-            </v-col>
-            <v-col cols="2">
-              <v-btn color="primary" @click="settingFileMax()">修改</v-btn>
-            </v-col>
-          </v-row> -->
-          <v-row justify="center">
-            <v-col cols="8">
-              <v-select
-                variant="underlined"
-                v-model="editType"
-                item-title="text"
-                item-value="value"
-                :items="items"
-                label="编辑器选择"
-              />
-            </v-col>
-            <v-col cols="2">
-              <v-btn color="primary" @click="settingFileMax()">修改</v-btn>
-            </v-col>
-          </v-row>
-          <v-row justify="center">
-            <v-col cols="10">
-              wangEditor(HTML) 编辑器的上传功能目前还不够成熟，有待更新！
-              注意：修改完成后请刷新浏览器
-            </v-col>
-          </v-row>
+          <v-card-text>
+            <v-alert type="warning" density="compact" variant="tonal" class="mb-4">
+              wangEditor(HTML) 编辑器的上传功能目前还不够成熟，有待更新！修改完成后请刷新浏览器。
+            </v-alert>
+            <v-select
+              variant="underlined"
+              v-model="editType"
+              item-title="text"
+              item-value="value"
+              :items="items"
+              label="编辑器选择"
+              prepend-inner-icon="mdi-file-edit"
+            />
+          </v-card-text>
+          <v-card-actions>
+            <v-spacer />
+            <v-btn color="primary" @click="settingFileMax()">修改</v-btn>
+            <v-spacer />
+          </v-card-actions>
         </v-card>
       </v-col>
     </v-row>
-    <v-snackbar v-model="snackbar" :timeout="3000" :top="true">
+    <v-snackbar v-model="snackbar" :timeout="3000" :top="true" :color="snackbarColor">
       {{ message }}
     </v-snackbar>
   </v-container>
@@ -61,6 +39,7 @@ export default {
     return {
       fileMax: 0,
       snackbar: false,
+      snackbarColor: 'info',
       message: '',
       editType: 0,
       items: [
@@ -74,22 +53,10 @@ export default {
   },
   methods: {
     getFileMax() {
-      fetch('/api/upload/disk', {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        method: 'GET',
-        credentials: 'include'
+      this.httpGet('/upload/disk', (json) => {
+        this.fileMax = json.data.uploadFileMax
+        this.editType = json.data.editType
       })
-        .then((response) => response.json())
-        .then((json) => {
-          this.fileMax = json.data.uploadFileMax
-          this.editType = json.data.editType
-        })
-        .catch((e) => {
-          return null
-        })
     },
     checkNumber() {
       if (this.fileMax == null) {
@@ -101,28 +68,15 @@ export default {
       return true
     },
     settingFileMax() {
-      console.log(this.editType)
       if (this.checkNumber()) {
-        fetch(`/api/upload/setting/filemax?type=setting`, {
-          headers: {
-            'Content-Type': 'application/json; charset=UTF-8',
-            'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-          },
-          method: 'POST',
-          credentials: 'include',
-          body: JSON.stringify({
-            uploadFileMax: this.fileMax,
-            editType: this.editType
-          })
+        this.httpPost(`/upload/setting/filemax?type=setting`, {
+          uploadFileMax: this.fileMax,
+          editType: this.editType
+        }, (json) => {
+          this.message = json.message
+          this.snackbarColor = json.status === 200 ? 'success' : 'error'
+          this.snackbar = true
         })
-          .then((response) => response.json())
-          .then((json) => {
-            this.message = json.message
-            this.snackbar = true
-          })
-          .catch((e) => {
-            return null
-          })
       }
     }
   }

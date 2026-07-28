@@ -429,54 +429,29 @@ export default {
       this.initialize()
     },
     getDiskMessage() {
-      fetch('/api/upload/disk', {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        method: 'GET',
-        credentials: 'include'
+      this.httpGet('/upload/disk', (json) => {
+        const userSize = json.data.userDisk / 1024 / 1024
+        if (userSize < 1024) {
+          this.useSize = userSize.toFixed(2) + 'MB'
+        } else {
+          this.useSize = (userSize / 1024).toFixed(2) + 'GB'
+        }
+        const availableDisk = json.data.availableDisk / 1024 / 1024
+        if (availableDisk < 1024) {
+          this.availableDisk = availableDisk.toFixed(2) + 'MB'
+        } else {
+          this.availableDisk = (availableDisk / 1024).toFixed(2) + 'GB'
+        }
       })
-        .then((response) => response.json())
-        .then((json) => {
-          const userSize = json.data.userDisk / 1024 / 1024
-          if (userSize < 1024) {
-            this.useSize = userSize.toFixed(2) + 'MB'
-          } else {
-            this.useSize = (userSize / 1024).toFixed(2) + 'GB'
-          }
-          const availableDisk = json.data.availableDisk / 1024 / 1024
-          if (availableDisk < 1024) {
-            this.availableDisk = availableDisk.toFixed(2) + 'MB'
-          } else {
-            this.availableDisk = (availableDisk / 1024).toFixed(2) + 'GB'
-          }
-        })
-        .catch((e) => {
-          return null
-        })
     },
     initialize() {
-      fetch(`/api/file/list?page=${this.page}&size=${this.size}`, {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        method: 'GET',
-        credentials: 'include'
+      this.httpGet(`/file/list?page=${this.page}&size=${this.size}`, (json) => {
+        this.nowCount = json.page.size
+        this.fileList = json.page.content
+        this.total = json.page.page.totalElements
+        this.pageCount = json.page.page.totalPages
+        this.loading = false
       })
-        .then((response) => response.json())
-        .then((json) => {
-
-          this.nowCount = json.page.size
-          this.fileList = json.page.content
-          this.total = json.page.page.totalElements
-          this.pageCount = json.page.page.totalPages
-          this.loading = false
-        })
-        .catch((e) => {
-          return null
-        })
     },
     editItem(item) {
       this.renameFileDate = item
@@ -490,31 +465,18 @@ export default {
       this.renameFileDate.uploadFilename = this.newName
       this.renameFileDate.size = 0
       this.renameFileDate.createTime = 0
-      fetch(`/api/file/rename`, {
-        headers: {
-          'Content-Type': 'application/json; charset=UTF-8',
-          'X-XSRF-TOKEN': this.$cookies.get('XSRF-TOKEN')
-        },
-        method: 'POST',
-        credentials: 'include',
-        body: JSON.stringify(this.renameFileDate)
+      this.httpPost('/file/rename', this.renameFileDate, (json) => {
+        if (json.status === 200) {
+          this.message = '修改成功！'
+          this.color = 'success'
+        } else {
+          this.message = '修改失败！' + json.message
+          this.color = 'error'
+        }
+        this.snackbar = true
+        this.showRename = false
+        this.initialize()
       })
-        .then((response) => response.json())
-        .then((json) => {
-          if (json.status === 200) {
-            this.message = '修改成功！'
-            this.color = 'success'
-          } else {
-            this.message = '修改失败！' + json.message
-            this.color = 'error'
-          }
-          this.snackbar = true
-          this.showRename = false
-          this.initialize()
-        })
-        .catch((e) => {
-          return null
-        })
     },
     deleteItem(item) {
       this.deleteItemDate = item

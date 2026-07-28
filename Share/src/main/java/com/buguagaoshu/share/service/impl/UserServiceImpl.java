@@ -51,6 +51,10 @@ public class UserServiceImpl implements UserService {
         User sys = findByUsername(user.getUsername());
         if (sys != null) {
             if (PasswordUtil.judgePassword(user.getOldPassword(), sys.getPassword())) {
+                // 可选修改用户名：提供新用户名且非空时一并更新，提升安全性
+                if (user.getNewUsername() != null && !user.getNewUsername().isEmpty()) {
+                    sys.setUsername(user.getNewUsername());
+                }
                 sys.setPassword(PasswordUtil.encode(user.getPassword()));
                 userRepository.save(sys);
                 sys.setPassword("");

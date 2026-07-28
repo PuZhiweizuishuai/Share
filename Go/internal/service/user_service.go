@@ -62,6 +62,10 @@ func (s *UserService) ChangePassword(u *model.User) (*model.User, error) {
 		return nil, nil
 	}
 	if utils.JudgePassword(u.OldPassword, sys.Password) {
+		// 可选修改用户名：提供新用户名且非空时一并更新，提升安全性
+		if u.NewUsername != "" {
+			sys.Username = u.NewUsername
+		}
 		sys.Password = utils.Encode(u.Password)
 		if err := s.DB.Save(sys).Error; err != nil {
 			return nil, err
