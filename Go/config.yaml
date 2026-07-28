@@ -1,0 +1,29 @@
+# Share Go 后端配置
+server:
+  port: 8081            # 服务端口，对齐 Spring 的 8081
+
+share:
+  # 是否配置代理访问，前置 nginx 等代理时改为 true，防止用户 IP 伪造
+  is-the-proxy-configured: false
+  # 同一 IP 最大登录失败次数，超过则锁定一小时
+  max-login-count: 3
+  # 是否返回 IP 地理位置 / 记录访问日志的城市
+  open-ip-address: true
+  # IP 地址数据库路径；留空则使用内嵌的 ip2region.xdb
+  ip-db-path: ""
+  # 默认最大上传文件大小（MB），与 Spring multipart max-file-size 对齐
+  max-file-size-mb: 1024000000000
+
+database:
+  # 数据库驱动：sqlite（默认） | mysql
+  driver: sqlite
+  sqlite:
+    # SQLite 数据库文件路径
+    path: "./data/share.db"
+  mysql:
+    # MySQL 连接 DSN（启用 mysql 时使用）
+    dsn: "root:123456@tcp(192.168.0.100:3306)/LAN_share?charset=utf8mb4&parseTime=True&loc=Local"
+
+session:
+  # session cookie 名称
+  cookie-name: "SHARE_SESSION"

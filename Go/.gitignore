@@ -1,0 +1,23 @@
+# Go 构建产物
+share-go.exe
+share-go
+*.exe
+release/
+
+# 依赖
+vendor/
+
+# 内嵌资源（构建时由脚本从 web_v2/dist 与 Share/ip2region.xdb 拷贝生成）
+internal/assets/web/
+internal/assets/ip2region.xdb
+
+# 运行时数据
+data/
+file/
+*.db
+*.db-wal
+*.db-shm
+
+# IDE
+.idea/
+.vscode/
