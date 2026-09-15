@@ -2,6 +2,20 @@ declare module "*.svg";
 
 declare module "*.png";
 
+type TWYSISYGToolbar =
+    "table"
+    | "code-block"
+    | "heading"
+    | "link-ref"
+    | "a"
+    | "image"
+    | "footnotes-block"
+    | "footnotes-ref"
+    | "vditor-toc"
+    | "blockquote"
+    | "li"
+    | "block"
+
 interface Window {
     VditorI18n: ITips;
     hljs: {
@@ -27,6 +41,7 @@ interface ILuteNode {
     __internal_object__: {
         Parent: {
             Type: number,
+            LinkType: number,
         },
         HeadingLevel: string,
     };
@@ -50,6 +65,7 @@ interface ILuteRender {
     renderMathBlockCloseMarker?: ILuteRenderCallback;
     renderBlockquote?: ILuteRenderCallback;
     renderBlockquoteMarker?: ILuteRenderCallback;
+    renderCallout?: ILuteRenderCallback;
     renderHeading?: ILuteRenderCallback;
     renderHeadingC8hMarker?: ILuteRenderCallback;
     renderList?: ILuteRenderCallback;
@@ -130,6 +146,9 @@ declare class Lute {
 
     public static GetHeadingID(node: ILuteNode): string;
 
+    /** 返回标题 ID 语法花括号内的原始文本，未设置时返回空字符串 */
+    public static GetHeadingIDRaw(node: ILuteNode): string;
+
     public static NewNodeID(): string;
 
     public static Sanitize(html: string): string;
@@ -149,6 +168,8 @@ declare class Lute {
     }): void;
 
     public SetChineseParagraphBeginningSpace(enable: boolean): void;
+
+    public SetCallout(enable: boolean): void;
 
     public SetHeadingID(enable: boolean): void;
 
@@ -189,6 +210,10 @@ declare class Lute {
     public SetVditorCodeBlockPreview(enable: boolean): void;
 
     public SetVditorMathBlockPreview(enable: boolean): void;
+
+    public SetSub(enable: boolean): void;
+
+    public SetSup(enable: boolean): void;
 
     public PutEmojis(emojis: IObject): void;
 
@@ -333,15 +358,18 @@ interface ITips {
 }
 
 interface II18n {
+    de_DE: ITips;
     en_US: ITips;
+    es_ES: ITips;
     fr_FR: ITips;
     ja_JP: ITips;
     ko_KR: ITips;
+    pt_BR: ITips;
     ru_RU: ITips;
     sv_SE: ITips;
+    vi_VN: ITips;
     zh_CN: ITips;
     zh_TW: ITips;
-    pt_BR: ITips;
 }
 
 interface IClasses {
@@ -362,8 +390,10 @@ interface IUpload {
     max?: number;
     /** 剪切板中包含图片地址时，使用此 url 重新上传 */
     linkToImgUrl?: string;
+
     /** 剪切板中包含图片地址时，使用此方法进行自定义 */
     renderLinkDest?(vditor: IVditor, node: ILuteNode, entering: boolean): [string, number];
+
     /** CORS 上传验证，头为 X-Upload-Token */
     token?: string;
     /** 文件上传类型，同 [input accept](https://www.w3schools.com/tags/att_input_accept.asp) */
@@ -373,7 +403,7 @@ interface IUpload {
     /** 请求头设置 */
     headers?: IObject;
     /** 额外请求参数 */
-    extraData?: { [key: string]: string | Blob };
+    extraData?: {[key: string]: string | Blob};
     /** 是否允许多文件上传。默认值：true */
     multiple?: boolean;
     /** 上传字段名。默认值：file[] */
@@ -383,7 +413,7 @@ interface IUpload {
     setHeaders?(): IObject;
 
     /** 上传成功回调 */
-    success?(editor: HTMLPreElement, msg: string): void;
+    success?(editor: HTMLPreElement | HTMLTextAreaElement, msg: string): void;
 
     /** 上传失败回调 */
     error?(msg: string): void;
@@ -397,6 +427,12 @@ interface IUpload {
     /** 自定义上传，当发生错误时返回错误信息 */
     handler?(files: File[]): string | null | Promise<string> | Promise<null>;
 
+    //将dataUrl上传到服务器，并返回获取数据的url
+    handleDataUrl?(dataUrl: string): string | Promise<string>;
+
+    /** 将图片的 base64 转换为链接 */
+    base64ToLink?(responseText: string): string;
+
     /** 对服务端返回的数据进行转换，以满足内置的数据结构 */
     format?(files: File[], responseText: string): string;
 
@@ -405,6 +441,9 @@ interface IUpload {
 
     /** 将上传的文件处理后再返回  */
     file?(files: File[]): File[] | Promise<File[]>;
+
+    /** 取消正在上传的文件  */
+    cancel?(files: File[]): void;
 
     /** 图片地址上传后的回调  */
     linkToImgCallback?(responseText: string): void;
@@ -470,6 +509,8 @@ interface IMath {
 interface IMarkdownConfig {
     /** 自动空格。默认值: false */
     autoSpace?: boolean;
+    /** Callout。默认值: true */
+    callout?: boolean;
     /** 段落开头是否空两格。默认值: false */
     paragraphBeginningSpace?: boolean;
     /** 自动矫正术语。默认值: false */
@@ -478,6 +519,8 @@ interface IMarkdownConfig {
     toc?: boolean;
     /** 脚注。默认值: true */
     footnotes?: boolean;
+    /** 将独占段落图片的 title 显示为图片说明。默认值: false */
+    imageCaption?: boolean;
     /** wysiwyg & ir 模式代码块是否渲染。默认值: true */
     codeBlockPreview?: boolean;
     /** wysiwyg & ir 模式数学公式块是否渲染。默认值: true */
@@ -494,6 +537,10 @@ interface IMarkdownConfig {
     mark?: boolean;
     /** 支持自动链接 */
     gfmAutoLink?: boolean;
+    /** 支持上标 */
+    sup?: boolean;
+    /** 支持下标 */
+    sub?: boolean;
 }
 
 /** @link https://ld246.com/article/1549638745630#options-preview */
@@ -516,7 +563,7 @@ interface IPreview {
     theme?: IPreviewTheme;
     /** @link https://ld246.com/article/1549638745630#options-preview-actions  */
     actions?: Array<IPreviewAction | IPreviewActionCustom>;
-    render?: IPreviewRender
+    render?: IPreviewRender;
 
     /** 预览回调 */
     parse?(element: HTMLElement): void;
@@ -528,7 +575,7 @@ interface IPreview {
 interface IPreviewRender {
     media?: {
         enable?: boolean;
-    }
+    };
 }
 
 type IPreviewAction = "desktop" | "tablet" | "mobile" | "mp-wechat" | "zhihu";
@@ -564,7 +611,7 @@ interface IPreviewOptions {
     renderers?: ILuteRender;
     theme?: IPreviewTheme;
     icon?: "ant" | "material" | undefined;
-    render?: IPreviewRender
+    render?: IPreviewRender;
 
     transform?(html: string): string;
 
@@ -775,6 +822,15 @@ interface IOptions {
 
     /** 编辑器中选中文字后触发 */
     select?(value: string): void;
+
+    /** 编辑器中未选中文字后触发 */
+    unSelect?(): void;
+
+    /** 对 wysiwyg 模式下的工具栏进行自定义 */
+    customWysiwygToolbar?(type: TWYSISYGToolbar, element: HTMLElement): void
+
+    /** 对移动端 wysiwyg 模式下的工具栏进行自定义 */
+    customWysiwygMobileToolbar?(type: TWYSISYGToolbar, element: HTMLElement): void
 }
 
 interface IEChart {
@@ -799,7 +855,7 @@ interface IVditor {
         toggle(vditor: IVditor, show?: boolean, focus?: boolean): void,
     };
     toolbar?: {
-        elements?: { [key: string]: HTMLElement },
+        elements?: {[key: string]: HTMLElement},
         element?: HTMLElement,
         updateConfig(vditor: IVditor, options: IToolbarConfig): void,
     };
@@ -833,6 +889,9 @@ interface IVditor {
         element: HTMLElement
         isUploading: boolean
         range: Range,
+        selectionEnd: number,
+        selectionStart: number,
+        xhr?: XMLHttpRequest,
     };
     undo?: {
         clearStack(vditor: IVditor): void,
@@ -867,12 +926,9 @@ interface IVditor {
         hlToolbarTimeoutId: number,
     };
     sv?: {
-        range: Range,
-        element: HTMLPreElement,
+        element: HTMLTextAreaElement,
         processTimeoutId: number,
-        hlToolbarTimeoutId: number,
         composingLock: boolean,
-        preventInput: boolean,
     };
 }
 

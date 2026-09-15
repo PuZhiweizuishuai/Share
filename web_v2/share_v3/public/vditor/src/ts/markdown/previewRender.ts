@@ -10,6 +10,7 @@ import {codeRender} from "./codeRender";
 import {flowchartRender} from "./flowchartRender";
 import {graphvizRender} from "./graphvizRender";
 import {highlightRender} from "./highlightRender";
+import {renderImageCaptionHTML} from "./imageCaptionRender";
 import {lazyLoadImageRender} from "./lazyLoadImageRender";
 import {mathRender} from "./mathRender";
 import {mediaRender} from "./mediaRender";
@@ -20,6 +21,7 @@ import {mindmapRender} from "./mindmapRender";
 import {plantumlRender} from "./plantumlRender";
 import {setLute} from "./setLute";
 import {speechRender} from "./speechRender";
+import {wavedromRender} from "./wavedromRender";
 
 const mergeOptions = (options?: IPreviewOptions) => {
     const defaultOption: IPreviewOptions = {
@@ -59,6 +61,7 @@ export const md2html = (mdText: string, options?: IPreviewOptions) => {
     return addScript(`${mergedOptions.cdn}/dist/js/lute/lute.min.js`, "vditorLuteScript").then(() => {
         const lute = setLute({
             autoSpace: mergedOptions.markdown.autoSpace,
+            callout: mergedOptions.markdown.callout,
             gfmAutoLink: mergedOptions.markdown.gfmAutoLink,
             codeBlockPreview: mergedOptions.markdown.codeBlockPreview,
             emojiSite: mergedOptions.emojiPath,
@@ -75,6 +78,8 @@ export const md2html = (mdText: string, options?: IPreviewOptions) => {
             mathBlockPreview: mergedOptions.markdown.mathBlockPreview,
             paragraphBeginningSpace: mergedOptions.markdown.paragraphBeginningSpace,
             sanitize: mergedOptions.markdown.sanitize,
+            sub: mergedOptions.markdown.sub,
+            sup: mergedOptions.markdown.sup,
             toc: mergedOptions.markdown.toc,
         });
         if (options?.renderers) {
@@ -85,7 +90,7 @@ export const md2html = (mdText: string, options?: IPreviewOptions) => {
             });
         }
         lute.SetHeadingID(true);
-        return lute.Md2HTML(mdText);
+        return renderImageCaptionHTML(lute.Md2HTML(mdText), mergedOptions.markdown.imageCaption);
     });
 };
 
@@ -99,7 +104,7 @@ export const previewRender = async (previewElement: HTMLDivElement, markdown: st
     previewElement.classList.add("vditor-reset");
 
     if (!mergedOptions.i18n) {
-        if (!["en_US", "fr_FR", "pt_BR", "ja_JP", "ko_KR", "ru_RU", "sv_SE", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) {
+        if (!["de_DE", "en_US", "es_ES", "fr_FR", "ja_JP", "ko_KR", "pt_BR", "ru_RU", "sv_SE", "vi_VN", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) {
             throw new Error(
                 "options.lang error, see https://ld246.com/article/1549638745630#options",
             );
@@ -136,6 +141,7 @@ export const previewRender = async (previewElement: HTMLDivElement, markdown: st
     markmapRender(previewElement, mergedOptions.cdn);
     flowchartRender(previewElement, mergedOptions.cdn);
     graphvizRender(previewElement, mergedOptions.cdn);
+    wavedromRender(previewElement, mergedOptions.cdn);
     chartRender(previewElement, mergedOptions.cdn, mergedOptions.mode);
     mindmapRender(previewElement, mergedOptions.cdn, mergedOptions.mode);
     plantumlRender(previewElement, mergedOptions.cdn);

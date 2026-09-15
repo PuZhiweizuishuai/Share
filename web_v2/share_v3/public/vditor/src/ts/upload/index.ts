@@ -1,4 +1,5 @@
 import {getEditorRange, setSelectionFocus} from "../util/selection";
+import {processAfterRender as processSVAfterRender, processPaste} from "../sv/process";
 import {getElement} from "./getElement";
 import {setHeaders} from "./setHeaders";
 
@@ -6,6 +7,8 @@ class Upload {
     public element: HTMLElement;
     public isUploading: boolean;
     public range: Range;
+    public selectionEnd: number;
+    public selectionStart: number;
 
     constructor() {
         this.isUploading = false;
@@ -16,7 +19,7 @@ class Upload {
 
 const validateFile = (vditor: IVditor, files: File[]) => {
     vditor.tip.hide();
-    const uploadFileList = [];
+    const uploadFileList: File[] = [];
     let errorTip = "";
     let uploadingStr = "";
     const lang: keyof II18n | "" = vditor.options.lang;
@@ -63,11 +66,22 @@ const validateFile = (vditor: IVditor, files: File[]) => {
 
         if (validate) {
             uploadFileList.push(file);
-            uploadingStr += `<li>${filename} ${window.VditorI18n.uploading}</li>`;
+            uploadingStr += `<li>${filename} ${window.VditorI18n.uploading} <a class="vditorCancelUpload" href="javascript:void(0)">${window.VditorI18n.cancelUpload}</a></li>`;
         }
     }
 
     vditor.tip.show(`<ul>${errorTip}${uploadingStr}</ul>`);
+
+    if (vditor.options.upload.cancel) {
+        const vditorCancelUploadElement = vditor.tip.element.querySelector(".vditorCancelUpload");
+        if (vditorCancelUploadElement) {
+            vditorCancelUploadElement.addEventListener("click", () => {
+                vditor.options.upload.cancel(uploadFileList);
+                vditor.tip.hide();
+                vditor.upload.isUploading = false;
+            });
+        }
+    }
 
     return uploadFileList;
 };
@@ -135,9 +149,25 @@ const genUploadedLabel = (responseText: string, vditor: IVditor) => {
             }
         }
     });
-    setSelectionFocus(vditor.upload.range);
-    document.execCommand("insertHTML", false, succFileText);
-    vditor.upload.range = getSelection().getRangeAt(0).cloneRange();
+    if (!succFileText) {
+        if (vditor.currentMode === "sv") {
+            vditor.sv.element.setSelectionRange(vditor.upload.selectionStart, vditor.upload.selectionEnd);
+        } else {
+            setSelectionFocus(vditor.upload.range);
+        }
+        return;
+    }
+    if (vditor.currentMode === "sv") {
+        vditor.sv.element.setSelectionRange(vditor.upload.selectionStart, vditor.upload.selectionEnd);
+        processPaste(vditor, succFileText);
+        processSVAfterRender(vditor);
+        vditor.upload.selectionStart = vditor.sv.element.selectionStart;
+        vditor.upload.selectionEnd = vditor.sv.element.selectionEnd;
+    } else {
+        setSelectionFocus(vditor.upload.range);
+        document.execCommand("insertHTML", false, succFileText);
+        vditor.upload.range = getSelection().getRangeAt(0).cloneRange();
+    }
 };
 
 const uploadFiles =
@@ -186,7 +216,12 @@ const uploadFiles =
         }
         const editorElement = getElement(vditor);
 
-        vditor.upload.range = getEditorRange(vditor);
+        if (vditor.currentMode === "sv") {
+            vditor.upload.selectionStart = vditor.sv.element.selectionStart;
+            vditor.upload.selectionEnd = vditor.sv.element.selectionEnd;
+        } else {
+            vditor.upload.range = getEditorRange(vditor);
+        }
 
         const validateResult = validateFile(vditor, fileList);
         if (validateResult.length === 0) {
@@ -208,6 +243,7 @@ const uploadFiles =
         }
 
         const xhr = new XMLHttpRequest();
+        vditor.upload.xhr = xhr;
         xhr.open("POST", vditor.options.upload.url);
         if (vditor.options.upload.token) {
             xhr.setRequestHeader("X-Upload-Token", vditor.options.upload.token);
@@ -217,11 +253,19 @@ const uploadFiles =
         }
         setHeaders(vditor, xhr);
         vditor.upload.isUploading = true;
-        editorElement.setAttribute("contenteditable", "false");
+        if (vditor.currentMode === "sv") {
+            vditor.sv.element.disabled = true;
+        } else {
+            editorElement.setAttribute("contenteditable", "false");
+        }
         xhr.onreadystatechange = () => {
             if (xhr.readyState === XMLHttpRequest.DONE) {
                 vditor.upload.isUploading = false;
-                editorElement.setAttribute("contenteditable", "true");
+                if (vditor.currentMode === "sv") {
+                    vditor.sv.element.disabled = false;
+                } else {
+                    editorElement.setAttribute("contenteditable", "true");
+                }
                 if (xhr.status >= 200 && xhr.status < 300) {
                     if (vditor.options.upload.success) {
                         vditor.options.upload.success(editorElement, xhr.responseText);
@@ -243,6 +287,7 @@ const uploadFiles =
                     element.value = "";
                 }
                 vditor.upload.element.style.display = "none";
+                vditor.upload.xhr = undefined;
             }
         };
         xhr.upload.onprogress = (event: ProgressEvent) => {

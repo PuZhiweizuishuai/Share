@@ -192,11 +192,12 @@ export default {
 
         if (this.$route.path === '/search') {
           this.$router.push({
-            path: this.$router.path,
+            path: this.$route.path,
             query: { key: this.searchText }
           })
           this.$refs.child.setKey(this.searchText)
           this.$refs.child.getShareList()
+          this.$refs.child.getFileList()
         } else {
           this.$router.push({ path: '/search', query: { key: this.searchText } })
         }

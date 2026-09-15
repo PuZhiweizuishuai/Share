@@ -20,6 +20,10 @@
 <a href="https://github.com/Vanessa219/vditor/blob/master/README_en_US.md">English</a> &nbsp;|&nbsp; <a href="https://b3log.org/vditor/demo/index.html">Demo</a>
 </p>
 
+<p align="center">
+🔥 欢迎观摩我们的另一个开源项目 <a href="https://github.com/siyuan-note/siyuan">思源笔记</a>
+<p>
+
 ## 💡 简介
 
 [Vditor](https://b3log.org/vditor) 是一款浏览器端的 Markdown 编辑器，支持所见即所得、即时渲染（类似 Typora）和分屏预览模式。它使用 TypeScript 实现，支持原生 JavaScript 以及 Vue、React、Angular 和 Svelte 等框架。
@@ -53,7 +57,7 @@ Vditor 在这些方面做了努力，希望能为现代化的通用 Markdown 编
 ## ✨  特性
 
 * 支持三种编辑模式：所见即所得（wysiwyg）、即时渲染（ir）、分屏预览（sv）
-* 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、五线谱、[多媒体](https://ld246.com/article/1589813914768)、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染、[plantuml](https://plantuml.com)UML图
+* 支持大纲、数学公式、脑图、图表、流程图、甘特图、时序图、数字波形图、五线谱、[多媒体](https://ld246.com/article/1589813914768)、语音阅读、标题锚点、代码高亮及复制、graphviz 渲染、[plantuml](https://plantuml.com)UML图
 * 导出、图片懒加载、任务列表、多平台预览、多主题切换、复制到微信公众号/知乎功能
 * 实现 CommonMark 和 GFM 规范，可对 Markdown 进行格式化和语法树查看，并支持[10+项](https://ld246.com/article/1549638745630#options-preview-markdown)配置
 * 工具栏包含 36+ 项操作，除支持扩展外还可对每一项中的[快捷键](https://ld246.com/article/1582778815353)、提示、提示位置、图标、点击事件、类名、子工具栏进行自定义
@@ -99,6 +103,7 @@ Vditor 在这些方面做了努力，希望能为现代化的通用 Markdown 编
 * 图表语法
   * 流程图、时序图、甘特图，通过 Mermaid 支持
   * Graphviz
+  * 数字波形图，通过 WaveDrom 支持
   * 折线图、饼图、脑图等，通过 ECharts 支持
 * 五线谱：通过 abc.js 支持
 * 数学公式：数学公式块、行级数学公式，通过 MathJax 和 KaTeX 支持
@@ -201,7 +206,7 @@ Markdown 输出的 HTML 所展现的外观。内置 ant-design, light，dark，w
 | minHeight | 编辑区域最小高度 | - |
 | width | 编辑器总宽度，支持 % | 'auto' |
 | placeholder | 输入区域为空时的提示 | '' |
-| lang | 语言种类：en_US, fr_FR, pt_BR, ja_JP, ko_KR, ru_RU, sv_SE, zh_CN, zh_TW | 'zh_CN' |
+| lang | 语言种类：de_DE, en_US, es_ES, fr_FR, ja_JP, ko_KR, pt_BR, ru_RU, sv_SE, vi_VN, zh_CN, zh_TW | 'zh_CN' |
 | input(value: string) | 输入后触发  | - |
 | focus(value: string) | 聚焦后触发 | - |
 | blur(value: string) | 失焦后触发 | - |
@@ -209,6 +214,7 @@ Markdown 输出的 HTML 所展现的外观。内置 ant-design, light，dark，w
 | esc(value: string) | <kbd>esc</kbd> 按下后触发 | - |
 | ctrlEnter(value: string) | <kbd>⌘/ctrl+enter</kbd> 按下后触发 | - |
 | select(value: string) | 编辑器中选中文字后触发 | - |
+| unSelect() | 编辑器中未选中文字后触发 | - |
 | tab | <kbd>tab</kbd> 键操作字符串，支持 `\t` 及任意字符串 | - |
 | typewriterMode | 是否启用打字机模式 | false |
 | cdn | 配置自建 CDN 地址 | `https://unpkg.com/vditor@${VDITOR_VERSION}` |
@@ -218,6 +224,8 @@ Markdown 输出的 HTML 所展现的外观。内置 ant-design, light，dark，w
 | theme | 主题：classic, dark | 'classic' |
 | icon | 图标风格：ant, material | 'ant' |
 | customRenders: {language: string, render: (element: HTMLElement, vditor: IVditor) => void}[] | 自定义渲染器 | [] |
+| customWysiwygToolbar(type: TWYSISYGToolbar, element: HTMLElement): void | 对 wysiwyg 模式下的工具栏进行自定义 | - |
+| customWysiwygMobileToolbar(type: TWYSISYGToolbar, element: HTMLElement): void | 对移动端 wysiwyg 模式下的工具栏进行自定义，未添加菜单项时不显示入口 | - |
 
 #### options.toolbar
 
@@ -316,6 +324,7 @@ new Vditor('vditor', {
 |   | 说明 | 默认值 |
 | - | - | - |
 | autoSpace | 自动空格 | false |
+| callout | Callout 块 | true |
 | gfmAutoLink | 自动链接 | true |
 | fixTermTypo | 自动矫正术语 | false |
 | toc | 插入目录 | false |
@@ -328,6 +337,8 @@ new Vditor('vditor', {
 | linkBase | 链接相对路径前缀 | '' |
 | linkPrefix | 链接强制前缀 | '' |
 | mark | 启用 mark 标记 | false |
+| sup | 上标 | false |
+| sub | 下标 | false |
 
 #### options.preview.theme
 
@@ -464,6 +475,7 @@ if (xhr.status === 200) {
 
 |   | 说明 | 默认值 |
 | - | - | - |
+| xhr | 上传时使用的 XMLHttpRequest | - |
 | url | 上传 url，为空则不会触发上传相关事件 | '' |
 | max | 上传文件最大 Byte | 10 * 1024 * 1024 |
 | linkToImgUrl | 剪切板中包含图片地址时，使用此 url 重新上传 | '' |
@@ -480,6 +492,7 @@ if (xhr.status === 200) {
 | handler(files: File[]) => string \| null \| Promise<string> \| Promise<null> | 自定义上传，当发生错误时返回错误信息 | - |
 | format(files: File[], responseText: string): string | 对服务端返回的数据进行转换，以满足内置的数据结构 | - |
 | file(files: File[]): File[] \| Promise<File[]> | 将上传的文件处理后再返回 | - |
+| cancel(files: File[]): void | 取消正在上传的文件 | - |
 | setHeaders(): { [key: string]: string } | 上传前使用返回值设置头 | - |
 | extraData: { [key: string]: string \| Blob } | 为 FormData 添加额外的参数 | - |
 | multiple | 上传文件是否为多个 | true |
@@ -610,6 +623,7 @@ options?: IPreviewOptions {
 | mathRender(element: HTMLElement, options?: {cdn?: string, math?: IMath}) | 对数学公式进行渲染 |
 | speechRender(element: HTMLElement, lang?: (keyof II18nLang)) | 对选中的文字进行阅读 |
 | graphvizRender(element: HTMLElement, cdn?: string) | 对 graphviz 进行渲染 |
+| wavedromRender(element: (HTMLElement \| Document) = document, cdn = options.cdn) | 对数字波形图进行渲染 |
 | outlineRender(contentElement: HTMLElement, targetElement: Element) | 对大纲进行渲染 |
 | lazyLoadImageRender(element: (HTMLElement \| Document) = document) | 对启用懒加载的图片进行渲染 |
 | setCodeTheme(codeTheme: string, cdn = options.cdn) | 设置代码主题，codeTheme 参见 options.preview.hljs.style |
@@ -667,6 +681,7 @@ Vditor 使用 [MIT](https://opensource.org/licenses/MIT) 开源协议。
 * [Lute](https://github.com/88250/lute)：🎼 一款结构化的 Markdown 引擎，支持 Go 和 JavaScript
 * [highlight.js](https://github.com/highlightjs/highlight.js)：JavaScript syntax highlighter
 * [mermaid](https://github.com/knsv/mermaid)：Generation of diagram and flowchart from text in a similar manner as Markdown
+* [WaveDrom](https://github.com/wavedrom/wavedrom)：Digital timing diagram rendering engine
 * [incubator-echarts](https://github.com/apache/incubator-echarts)：A powerful, interactive charting and visualization library for browser
 * [abcjs](https://github.com/paulrosen/abcjs)：JavaScript library for rendering standard music notation in a browser
 

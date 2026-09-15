@@ -52,7 +52,8 @@ class Undo {
     }
 
     public undo(vditor: IVditor) {
-        if (vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
+        if (vditor.currentMode === "sv" ? vditor.sv.element.disabled :
+            vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
             return;
         }
         if (this[vditor.currentMode].undoStack.length < 2) {
@@ -70,7 +71,8 @@ class Undo {
     }
 
     public redo(vditor: IVditor) {
-        if (vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
+        if (vditor.currentMode === "sv" ? vditor.sv.element.disabled :
+            vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
             return;
         }
         const state = this[vditor.currentMode].redoStack.pop();
@@ -82,7 +84,7 @@ class Undo {
     }
 
     public recordFirstPosition(vditor: IVditor, event: KeyboardEvent) {
-        if (getSelection().rangeCount === 0) {
+        if (vditor.currentMode !== "sv" && getSelection().rangeCount === 0) {
             return;
         }
         if (this[vditor.currentMode].undoStack.length !== 1 || this[vditor.currentMode].undoStack[0].length === 0 ||
@@ -147,12 +149,19 @@ class Undo {
         }
 
         this[vditor.currentMode].lastText = text;
-        vditor[vditor.currentMode].element.innerHTML = text;
-        if (vditor.currentMode !== "sv") {
+        if (vditor.currentMode === "sv") {
+            const caretIndex = text.indexOf("<wbr>");
+            vditor.sv.element.value = text.replace("<wbr>", "");
+            vditor.sv.element.focus();
+            if (caretIndex > -1) {
+                vditor.sv.element.setSelectionRange(caretIndex, caretIndex);
+            }
+        } else {
+            vditor[vditor.currentMode].element.innerHTML = text;
             vditor[vditor.currentMode].element.querySelectorAll(`.vditor-${vditor.currentMode}__preview`)
                 .forEach((blockElement: HTMLElement) => {
                     if (blockElement.parentElement.querySelector(".language-echarts")) {
-                        if (vditor.currentMode ==="ir") {
+                        if (vditor.currentMode === "ir") {
                             blockElement.parentElement.outerHTML = vditor.lute.SpinVditorIRDOM(blockElement.parentElement.outerHTML);
                         } else {
                             blockElement.parentElement.outerHTML = vditor.lute.SpinVditorDOM(blockElement.parentElement.outerHTML);
@@ -163,17 +172,16 @@ class Undo {
                 .forEach((blockElement: HTMLElement) => {
                     processCodeRender(blockElement, vditor);
                 });
-        }
-
-        if (!vditor[vditor.currentMode].element.querySelector("wbr")) {
-            // Safari 第一次输入没有光标，需手动定位到结尾
-            const range = getSelection().getRangeAt(0);
-            range.setEndBefore(vditor[vditor.currentMode].element);
-            range.collapse(false);
-        } else {
-            setRangeByWbr(
-                vditor[vditor.currentMode].element, vditor[vditor.currentMode].element.ownerDocument.createRange());
-            scrollCenter(vditor);
+            if (!vditor[vditor.currentMode].element.querySelector("wbr")) {
+                // Safari 第一次输入没有光标，需手动定位到结尾
+                const range = getSelection().getRangeAt(0);
+                range.setEndBefore(vditor[vditor.currentMode].element);
+                range.collapse(false);
+            } else {
+                setRangeByWbr(
+                    vditor[vditor.currentMode].element, vditor[vditor.currentMode].element.ownerDocument.createRange());
+                scrollCenter(vditor);
+            }
         }
 
         renderToc(vditor);
@@ -183,7 +191,9 @@ class Undo {
             enableHint: false,
             enableInput: true,
         });
-        highlightToolbar(vditor);
+        if (vditor.currentMode !== "sv") {
+            highlightToolbar(vditor);
+        }
 
         vditor[vditor.currentMode].element.querySelectorAll(`.vditor-${vditor.currentMode}__preview[data-render='2']`)
             .forEach((item: HTMLElement) => {
@@ -225,6 +235,11 @@ class Undo {
     }
 
     private addCaret(vditor: IVditor, setFocus = false) {
+        if (vditor.currentMode === "sv") {
+            const element = vditor.sv.element;
+            return element.value.substring(0, element.selectionStart) + "<wbr>" +
+                element.value.substring(element.selectionStart);
+        }
         let cloneRange: Range;
         if (getSelection().rangeCount !== 0 && !vditor[vditor.currentMode].element.querySelector("wbr")) {
             const range = getSelection().getRangeAt(0);
@@ -240,7 +255,7 @@ class Undo {
         cloneElement.querySelectorAll(`.vditor-${vditor.currentMode}__preview[data-render='1']`)
             .forEach((item: HTMLElement) => {
                 if (!item.firstElementChild) {
-                    return
+                    return;
                 }
                 if (item.firstElementChild.classList.contains("language-echarts") ||
                     item.firstElementChild.classList.contains("language-plantuml") ||

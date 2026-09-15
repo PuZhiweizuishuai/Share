@@ -4,6 +4,7 @@ import VditorMethod from "./method";
 declare class Vditor extends VditorMethod {
     readonly version: string;
     vditor: IVditor;
+    private isDestroyed;
     /**
      * @param id 要挂载 Vditor 的元素或者元素 ID。
      * @param options Vditor 参数

@@ -13,7 +13,6 @@ import {Outline} from "./ts/outline/index";
 import {Preview} from "./ts/preview/index";
 import {Resize} from "./ts/resize/index";
 import {Editor} from "./ts/sv/index";
-import {inputEvent} from "./ts/sv/inputEvent";
 import {processAfterRender as processSVAfterRender, processPaste} from "./ts/sv/process";
 import {Tip} from "./ts/tip/index";
 import {Toolbar} from "./ts/toolbar/index";
@@ -41,6 +40,7 @@ import {accessLocalStorage} from "./ts/util/compatibility";
 class Vditor extends VditorMethod {
     public readonly version: string;
     public vditor: IVditor;
+    private isDestroyed = false;
 
     /**
      * @param id 要挂载 Vditor 的元素或者元素 ID。
@@ -58,7 +58,7 @@ class Vditor extends VditorMethod {
                     },
                 };
             } else if (!options.cache) {
-                options.cache = {id: `vditor${id}`};
+                options.cache = { id: `vditor${id}` };
             } else if (!options.cache.id) {
                 options.cache.id = `vditor${id}`;
             }
@@ -74,7 +74,7 @@ class Vditor extends VditorMethod {
 
         // 支持自定义国际化
         if (!mergedOptions.i18n) {
-            if (!["en_US", "fr_FR", "pt_BR", "ja_JP", "ko_KR", "ru_RU", "sv_SE", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) {
+            if (!["de_DE", "en_US", "es_ES", "fr_FR", "ja_JP", "ko_KR", "pt_BR", "ru_RU", "sv_SE", "vi_VN", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) {
                 throw new Error(
                     "options.lang error, see https://ld246.com/article/1549638745630#options",
                 );
@@ -101,7 +101,7 @@ class Vditor extends VditorMethod {
     private showErrorTip(error: string) {
         const tip = new Tip();
         document.body.appendChild(tip.element);
-        tip.show(error, 0)
+        tip.show(error, 0);
     }
 
     public updateToolbarConfig(options: IToolbarConfig) {
@@ -166,10 +166,11 @@ class Vditor extends VditorMethod {
             this.vditor.toolbar.elements,
             Constants.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"]),
         );
-        this.vditor[this.vditor.currentMode].element.setAttribute(
-            "contenteditable",
-            "false",
-        );
+        if (this.vditor.currentMode === "sv") {
+            this.vditor.sv.element.disabled = true;
+        } else {
+            this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "false");
+        }
     }
 
     /** 解除编辑器禁用 */
@@ -179,7 +180,11 @@ class Vditor extends VditorMethod {
             Constants.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"]),
         );
         this.vditor.undo.resetIcon(this.vditor);
-        this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "true");
+        if (this.vditor.currentMode === "sv") {
+            this.vditor.sv.element.disabled = false;
+        } else {
+            this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "true");
+        }
     }
 
     /** 返回选中的字符串 */
@@ -187,7 +192,10 @@ class Vditor extends VditorMethod {
         if (this.vditor.currentMode === "wysiwyg") {
             return getSelectText(this.vditor.wysiwyg.element);
         } else if (this.vditor.currentMode === "sv") {
-            return getSelectText(this.vditor.sv.element);
+            return this.vditor.sv.element.value.substring(
+                this.vditor.sv.element.selectionStart,
+                this.vditor.sv.element.selectionEnd,
+            );
         } else if (this.vditor.currentMode === "ir") {
             return getSelectText(this.vditor.ir.element);
         }
@@ -200,6 +208,15 @@ class Vditor extends VditorMethod {
 
     /** 获取焦点位置 */
     public getCursorPosition() {
+        if (this.vditor.currentMode === "sv") {
+            const element = this.vditor.sv.element;
+            const lineHeight = parseInt(getComputedStyle(element).lineHeight, 10) || 22;
+            const line = element.value.substring(0, element.selectionStart).split("\n").length - 1;
+            return {
+                left: 0,
+                top: line * lineHeight - element.scrollTop,
+            };
+        }
         return getCursorPosition(this.vditor[this.vditor.currentMode].element);
     }
 
@@ -257,6 +274,14 @@ class Vditor extends VditorMethod {
 
     /** 删除选中内容 */
     public deleteValue() {
+        if (this.vditor.currentMode === "sv") {
+            if (this.vditor.sv.element.selectionStart === this.vditor.sv.element.selectionEnd) {
+                return;
+            }
+            processPaste(this.vditor, "");
+            processSVAfterRender(this.vditor);
+            return;
+        }
         if (window.getSelection().isCollapsed) {
             return;
         }
@@ -265,11 +290,23 @@ class Vditor extends VditorMethod {
 
     /** 更新选中内容 */
     public updateValue(value: string) {
+        if (this.vditor.currentMode === "sv") {
+            processPaste(this.vditor, value);
+            processSVAfterRender(this.vditor);
+            return;
+        }
         document.execCommand("insertHTML", false, value);
     }
 
     /** 在焦点处插入内容，并默认进行 Markdown 渲染 */
     public insertValue(value: string, render = true) {
+        if (this.vditor.currentMode === "sv") {
+            processPaste(this.vditor, value);
+            if (render) {
+                processSVAfterRender(this.vditor);
+            }
+            return;
+        }
         const range = getEditorRange(this.vditor);
         range.collapse(true);
         // https://github.com/Vanessa219/vditor/issues/716
@@ -278,12 +315,7 @@ class Vditor extends VditorMethod {
         tmpElement.innerHTML = value;
         range.insertNode(tmpElement.content.cloneNode(true));
         range.collapse(false);
-        if (this.vditor.currentMode === "sv") {
-            this.vditor.sv.preventInput = true;
-            if (render) {
-                inputEvent(this.vditor);
-            }
-        } else if (this.vditor.currentMode === "wysiwyg") {
+        if (this.vditor.currentMode === "wysiwyg") {
             // 由于 https://github.com/Vanessa219/vditor/issues/1566 不能使用 this.vditor.wysiwyg.preventInput = true;
             if (render) {
                 input(this.vditor, getSelection().getRangeAt(0));
@@ -313,7 +345,7 @@ class Vditor extends VditorMethod {
     /** 设置编辑器内容 */
     public setValue(markdown: string, clearStack = false) {
         if (this.vditor.currentMode === "sv") {
-            this.vditor.sv.element.innerHTML = `<div data-block='0'>${this.vditor.lute.SpinVditorSVDOM(markdown)}</div>`;
+            this.vditor.sv.element.value = markdown;
             processSVAfterRender(this.vditor, {
                 enableAddUndoStack: true,
                 enableHint: false,
@@ -369,7 +401,7 @@ class Vditor extends VditorMethod {
         this.vditor.element.innerHTML = this.vditor.originalInnerHTML;
         this.vditor.element.classList.remove("vditor");
         this.vditor.element.removeAttribute("style");
-        const iconScript = document.getElementById("vditorIconScript")
+        const iconScript = document.getElementById("vditorIconScript");
         if (iconScript) {
             iconScript.remove();
         }
@@ -377,6 +409,8 @@ class Vditor extends VditorMethod {
 
         UIUnbindListener();
         this.vditor.wysiwyg.unbindListener();
+        this.vditor.options.after = undefined;
+        this.isDestroyed = true;
     }
 
     /** 获取评论 ID */
@@ -483,6 +517,9 @@ class Vditor extends VditorMethod {
     }
 
     private init(id: HTMLElement, mergedOptions: IOptions) {
+        if (this.isDestroyed) {
+            return;
+        }
         this.vditor = {
             currentMode: mergedOptions.mode,
             element: id,
@@ -519,6 +556,7 @@ class Vditor extends VditorMethod {
         ).then(() => {
             this.vditor.lute = setLute({
                 autoSpace: this.vditor.options.preview.markdown.autoSpace,
+                callout: this.vditor.options.preview.markdown.callout,
                 gfmAutoLink: this.vditor.options.preview.markdown.gfmAutoLink,
                 codeBlockPreview: this.vditor.options.preview.markdown
                     .codeBlockPreview,
@@ -537,6 +575,8 @@ class Vditor extends VditorMethod {
                 paragraphBeginningSpace: this.vditor.options.preview.markdown
                     .paragraphBeginningSpace,
                 sanitize: this.vditor.options.preview.markdown.sanitize,
+                sub: this.vditor.options.preview.markdown.sub,
+                sup: this.vditor.options.preview.markdown.sup,
                 toc: this.vditor.options.preview.markdown.toc,
             });
 

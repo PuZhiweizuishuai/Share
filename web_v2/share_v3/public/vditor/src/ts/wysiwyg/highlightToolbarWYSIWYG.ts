@@ -3,7 +3,7 @@ import {disableToolbar} from "../toolbar/setToolbar";
 import {enableToolbar} from "../toolbar/setToolbar";
 import {removeCurrentToolbar} from "../toolbar/setToolbar";
 import {setCurrentToolbar} from "../toolbar/setToolbar";
-import {isCtrl, updateHotkeyTip} from "../util/compatibility";
+import {getEventName, isCtrl, updateHotkeyTip} from "../util/compatibility";
 import {scrollCenter} from "../util/editorCommonEvent";
 import {
     deleteColumn,
@@ -33,6 +33,7 @@ import {afterRenderEvent} from "./afterRenderEvent";
 import {removeBlockElement} from "./processKeydown";
 import {renderToc} from "../util/toc";
 import {getMarkdown} from "../markdown/getMarkdown";
+import {renderImageCaptions} from "../markdown/imageCaptionRender";
 
 export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
     clearTimeout(vditor.wysiwyg.hlToolbarTimeoutId);
@@ -65,6 +66,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
         if (footnotesElement) {
             vditor.wysiwyg.popover.innerHTML = "";
             genClose(footnotesElement, vditor);
+            customWysiwygToolbar(vditor, "footnotes-block")
             setPopoverPosition(vditor, footnotesElement);
             return;
         }
@@ -195,6 +197,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
         if (tocElement) {
             vditor.wysiwyg.popover.innerHTML = "";
             genClose(tocElement, vditor);
+            customWysiwygToolbar(vditor, "vditor-toc")
             setPopoverPosition(vditor, tocElement);
             return;
         }
@@ -206,6 +209,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
             genUp(range, blockquoteElement, vditor);
             genDown(range, blockquoteElement, vditor);
             genClose(blockquoteElement, vditor);
+            customWysiwygToolbar(vditor, "blockquote")
             setPopoverPosition(vditor, blockquoteElement);
         }
 
@@ -216,7 +220,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
             genUp(range, liElement, vditor);
             genDown(range, liElement, vditor);
             genClose(liElement, vditor);
-
+            customWysiwygToolbar(vditor, "li")
             setPopoverPosition(vditor, liElement);
         }
 
@@ -549,6 +553,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
             vditor.wysiwyg.popover.insertAdjacentHTML("beforeend", " x ");
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input2Wrap);
+            customWysiwygToolbar(vditor, "table")
             setPopoverPosition(vditor, tableElement);
         }
 
@@ -596,6 +601,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
 
             genClose(footnotesRefElement, vditor);
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
+            customWysiwygToolbar(vditor, "footnotes-ref")
             setPopoverPosition(vditor, footnotesRefElement);
         }
 
@@ -684,7 +690,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
                     }
                     const matchLangData: IHintData[] = [];
                     const key = language.value.substring(0, language.selectionStart);
-                    (vditor.options.preview.hljs.langs ||  Constants.ALIAS_CODE_LANGUAGES.concat((window.hljs?.listLanguages() ?? []).sort())).forEach((keyName) => {
+                    (vditor.options.preview.hljs.langs || Constants.ALIAS_CODE_LANGUAGES.concat((window.hljs?.listLanguages() ?? []).sort())).forEach((keyName) => {
                         if (keyName.indexOf(key.toLowerCase()) > -1) {
                             matchLangData.push({
                                 html: keyName,
@@ -696,6 +702,9 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
                     event.preventDefault();
                 };
                 vditor.wysiwyg.popover.insertAdjacentElement("beforeend", languageWrap);
+                customWysiwygToolbar(vditor, "code-block")
+            } else {
+                customWysiwygToolbar(vditor, "block")
             }
             setPopoverPosition(vditor, blockRenderElement);
         } else {
@@ -735,6 +744,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
             genDown(range, headingElement, vditor);
             genClose(headingElement, vditor);
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
+            customWysiwygToolbar(vditor, "heading")
             setPopoverPosition(vditor, headingElement);
         }
 
@@ -763,7 +773,7 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
                 genUp(range, blockElement, vditor);
                 genDown(range, blockElement, vditor);
                 genClose(blockElement, vditor);
-
+                customWysiwygToolbar(vditor, "block")
                 setPopoverPosition(vditor, blockElement);
             } else {
                 vditor.wysiwyg.popover.style.display = "none";
@@ -781,6 +791,57 @@ export const highlightToolbarWYSIWYG = (vditor: IVditor) => {
             backslashElement.querySelector("span").style.display = "inline";
         }
     }, 200);
+};
+
+const genMobileToolbar = (type: TWYSISYGToolbar, vditor: IVditor) => {
+    const customToolbar = vditor.options.customWysiwygMobileToolbar;
+    if (!customToolbar || window.innerWidth > 520) {
+        return;
+    }
+    const toolbarElement = document.createElement("div");
+    toolbarElement.className = "vditor-wysiwyg__mobile-toolbar";
+
+    const menuButton = document.createElement("button");
+    menuButton.type = "button";
+    menuButton.className = "vditor-icon";
+    menuButton.setAttribute("data-type", "mobile-menu");
+    menuButton.setAttribute("aria-label", window.VditorI18n.more);
+    menuButton.textContent = "+";
+
+    const actionsElement = document.createElement("div");
+    actionsElement.className = "vditor-panel vditor-wysiwyg__mobile-actions";
+    const savedRange = getEditorRange(vditor).cloneRange();
+    customToolbar(type, actionsElement);
+
+    if (!actionsElement.hasChildNodes()) {
+        return;
+    }
+
+    const restoreSelection = () => {
+        if (!vditor.wysiwyg.element.contains(savedRange.commonAncestorContainer)) {
+            return;
+        }
+        const restoredRange = savedRange.cloneRange();
+        vditor.wysiwyg.range = restoredRange;
+        setSelectionFocus(restoredRange);
+        actionsElement.classList.remove("vditor-wysiwyg__mobile-actions--open");
+    };
+    actionsElement.addEventListener("touchstart", restoreSelection, true);
+    actionsElement.addEventListener("click", restoreSelection, true);
+
+    menuButton.addEventListener(getEventName(), (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        actionsElement.classList.toggle("vditor-wysiwyg__mobile-actions--open");
+        actionsElement.classList.remove("vditor-panel--left");
+        if (actionsElement.getBoundingClientRect().right > window.innerWidth) {
+            actionsElement.classList.add("vditor-panel--left");
+        }
+    });
+
+    toolbarElement.appendChild(menuButton);
+    toolbarElement.appendChild(actionsElement);
+    vditor.wysiwyg.popover.insertAdjacentElement("afterbegin", toolbarElement);
 };
 
 const setPopoverPosition = (vditor: IVditor, element: HTMLElement) => {
@@ -864,6 +925,7 @@ export const genLinkRefPopover = (vditor: IVditor, linkRefElement: HTMLElement, 
     genClose(linkRefElement, vditor);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input1Wrap);
+    customWysiwygToolbar(vditor, "link-ref")
     setPopoverPosition(vditor, linkRefElement);
 };
 
@@ -1058,6 +1120,7 @@ export const genAPopover = (vditor: IVditor, aElement: HTMLElement, range: Range
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input1Wrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input2Wrap);
+    customWysiwygToolbar(vditor, "a")
     setPopoverPosition(vditor, aElement);
 };
 
@@ -1068,6 +1131,7 @@ export const genImagePopover = (event: Event, vditor: IVditor) => {
         imgElement.setAttribute("src", inputElement.value);
         imgElement.setAttribute("alt", alt.value);
         imgElement.setAttribute("title", title.value);
+        renderImageCaptions(vditor.wysiwyg.element, "wysiwyg", vditor.options.preview.markdown.imageCaption);
         if (typeof vditor.options.input === "function") {
             vditor.options.input(getMarkdown(vditor));
         }
@@ -1122,7 +1186,7 @@ export const genImagePopover = (event: Event, vditor: IVditor) => {
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", altWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", titleWrap);
-
+    customWysiwygToolbar(vditor, "image")
     setPopoverPosition(vditor, imgElement);
 };
 
@@ -1135,5 +1199,12 @@ const focusToElement = (event: KeyboardEvent, range: Range) => {
         event.preventDefault();
         event.stopPropagation();
         return true;
+    }
+};
+
+const customWysiwygToolbar = (vditor: IVditor, type: TWYSISYGToolbar) => {
+    genMobileToolbar(type, vditor);
+    if (vditor.options.customWysiwygToolbar) {
+        vditor.options.customWysiwygToolbar(type, vditor.wysiwyg.popover);
     }
 };

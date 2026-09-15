@@ -17,7 +17,7 @@
     "dplayer": "^1.27.1",
     "qrcode": "^1.5.3",
     "roboto-fontface": "*",
-    "vditor": "^3.10.7",
+    "vditor": "^4.0.0",
     "vue": "^3.5.13",
     "vue-cookies": "^1.8.6",
     "vuetify": "^3.7.12"

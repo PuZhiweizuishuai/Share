@@ -33,8 +33,8 @@ func (s *FileService) DiskMessage() (*model.DiskMessage, error) {
 	return &dm, nil
 }
 
-// LoadAll 分页查询文件列表，对齐 fileRepository.loadAll
-func (s *FileService) LoadAll(page, size int) (*model.PageResult, error) {
+// LoadAll 分页查询文件列表，key 非空时按上传文件名模糊搜索，对齐 fileRepository.loadAll
+func (s *FileService) LoadAll(page, size int, key string) (*model.PageResult, error) {
 	if page <= 0 {
 		page = 1
 	}
@@ -45,6 +45,9 @@ func (s *FileService) LoadAll(page, size int) (*model.PageResult, error) {
 		size = 100
 	}
 	q := s.DB.Model(&model.FileMessage{})
+	if key != "" {
+		q = q.Where("upload_filename LIKE ?", "%"+key+"%")
+	}
 	var total int64
 	if err := q.Count(&total).Error; err != nil {
 		return nil, err

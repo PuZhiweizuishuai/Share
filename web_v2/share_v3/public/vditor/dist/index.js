@@ -1,5 +1,5 @@
 /*!
- * Vditor v3.10.9 - A markdown editor written in TypeScript.
+ * Vditor v4.0.0 - A markdown editor written in TypeScript.
  *
  * MIT License
  *
@@ -33,11 +33,11 @@
 		exports["Vditor"] = factory();
 	else
 		root["Vditor"] = factory();
-})(this, () => {
+})(this, function() {
 return /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ 192:
+/***/ 132:
 /***/ ((module) => {
 
 /**
@@ -2105,7 +2105,7 @@ module.exports.DIFF_EQUAL = DIFF_EQUAL;
 
 /***/ }),
 
-/***/ 923:
+/***/ 408:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -2116,19 +2116,19 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: ./src/ts/markdown/abcRender.ts
-var abcRender = __webpack_require__(288);
+var abcRender = __webpack_require__(135);
 // EXTERNAL MODULE: ./src/ts/markdown/adapterRender.ts
-var adapterRender = __webpack_require__(59);
+var adapterRender = __webpack_require__(840);
 // EXTERNAL MODULE: ./src/ts/markdown/chartRender.ts
-var chartRender = __webpack_require__(784);
+var chartRender = __webpack_require__(775);
 // EXTERNAL MODULE: ./src/ts/markdown/codeRender.ts
-var codeRender = __webpack_require__(51);
+var codeRender = __webpack_require__(428);
 // EXTERNAL MODULE: ./src/ts/markdown/flowchartRender.ts
-var flowchartRender = __webpack_require__(500);
+var flowchartRender = __webpack_require__(325);
 // EXTERNAL MODULE: ./src/ts/markdown/graphvizRender.ts
-var graphvizRender = __webpack_require__(339);
+var graphvizRender = __webpack_require__(483);
 // EXTERNAL MODULE: ./src/ts/markdown/highlightRender.ts
-var highlightRender = __webpack_require__(108);
+var highlightRender = __webpack_require__(999);
 ;// CONCATENATED MODULE: ./src/ts/markdown/lazyLoadImageRender.ts
 var lazyLoadImageRender = function (element) {
     if (element === void 0) { element = document; }
@@ -2181,31 +2181,33 @@ var lazyLoadImageRender = function (element) {
 };
 
 // EXTERNAL MODULE: ./src/ts/markdown/mathRender.ts
-var mathRender = __webpack_require__(960);
+var mathRender = __webpack_require__(472);
 // EXTERNAL MODULE: ./src/ts/markdown/mediaRender.ts
-var mediaRender = __webpack_require__(0);
+var mediaRender = __webpack_require__(280);
 // EXTERNAL MODULE: ./src/ts/markdown/mermaidRender.ts
-var mermaidRender = __webpack_require__(975);
+var mermaidRender = __webpack_require__(637);
 // EXTERNAL MODULE: ./src/ts/markdown/SMILESRender.ts
-var SMILESRender = __webpack_require__(931);
+var SMILESRender = __webpack_require__(825);
 // EXTERNAL MODULE: ./src/ts/markdown/markmapRender.ts
-var markmapRender = __webpack_require__(597);
+var markmapRender = __webpack_require__(11);
 // EXTERNAL MODULE: ./src/ts/markdown/mindmapRender.ts
-var mindmapRender = __webpack_require__(162);
+var mindmapRender = __webpack_require__(194);
 // EXTERNAL MODULE: ./src/ts/markdown/outlineRender.ts
-var outlineRender = __webpack_require__(70);
+var outlineRender = __webpack_require__(436);
 // EXTERNAL MODULE: ./src/ts/markdown/plantumlRender.ts
-var plantumlRender = __webpack_require__(591);
+var plantumlRender = __webpack_require__(229);
+// EXTERNAL MODULE: ./src/ts/markdown/wavedromRender.ts
+var wavedromRender = __webpack_require__(497);
 // EXTERNAL MODULE: ./src/ts/constants.ts
-var constants = __webpack_require__(913);
+var constants = __webpack_require__(145);
 // EXTERNAL MODULE: ./src/ts/ui/setContentTheme.ts
-var setContentTheme = __webpack_require__(873);
+var setContentTheme = __webpack_require__(538);
 // EXTERNAL MODULE: ./src/ts/util/addScript.ts
-var addScript = __webpack_require__(161);
+var addScript = __webpack_require__(413);
 // EXTERNAL MODULE: ./src/ts/util/hasClosest.ts
-var hasClosest = __webpack_require__(598);
+var hasClosest = __webpack_require__(106);
 // EXTERNAL MODULE: ./src/ts/util/merge.ts
-var merge = __webpack_require__(905);
+var merge = __webpack_require__(673);
 ;// CONCATENATED MODULE: ./src/ts/markdown/anchorRender.ts
 var anchorRender = function (type) {
     document.querySelectorAll(".vditor-anchor").forEach(function (anchor) {
@@ -2226,10 +2228,12 @@ var anchorRender = function (type) {
     };
 };
 
+// EXTERNAL MODULE: ./src/ts/markdown/imageCaptionRender.ts
+var imageCaptionRender = __webpack_require__(161);
 // EXTERNAL MODULE: ./src/ts/markdown/setLute.ts
-var setLute = __webpack_require__(796);
+var setLute = __webpack_require__(214);
 // EXTERNAL MODULE: ./src/ts/util/selection.ts
-var selection = __webpack_require__(827);
+var selection = __webpack_require__(810);
 ;// CONCATENATED MODULE: ./src/ts/markdown/speechRender.ts
 
 var speechRender = function (element, lang) {
@@ -2299,7 +2303,7 @@ var speechRender = function (element, lang) {
                     }
                 }
             }
-            (0,selection/* setSelectionFocus */.jl)(window.vditorSpeechRange);
+            (0,selection/* setSelectionFocus */.Hc)(window.vditorSpeechRange);
             element.focus();
             return;
         }
@@ -2389,18 +2393,20 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 
 
+
+
 var mergeOptions = function (options) {
     var _a;
     var defaultOption = {
         anchor: 0,
-        cdn: constants/* Constants */.Y.CDN,
+        cdn: constants/* Constants.CDN */.g.CDN,
         customEmoji: {},
-        emojiPath: "".concat(constants/* Constants */.Y.CDN, "/dist/images/emoji"),
-        hljs: constants/* Constants */.Y.HLJS_OPTIONS,
+        emojiPath: "".concat(constants/* Constants.CDN */.g.CDN, "/dist/images/emoji"),
+        hljs: constants/* Constants.HLJS_OPTIONS */.g.HLJS_OPTIONS,
         icon: "ant",
         lang: "zh_CN",
-        markdown: constants/* Constants */.Y.MARKDOWN_OPTIONS,
-        math: constants/* Constants */.Y.MATH_OPTIONS,
+        markdown: constants/* Constants.MARKDOWN_OPTIONS */.g.MARKDOWN_OPTIONS,
+        math: constants/* Constants.MATH_OPTIONS */.g.MATH_OPTIONS,
         mode: "light",
         speech: {
             enable: false,
@@ -2410,7 +2416,7 @@ var mergeOptions = function (options) {
                 enable: true,
             }
         },
-        theme: constants/* Constants */.Y.THEME_OPTIONS,
+        theme: constants/* Constants.THEME_OPTIONS */.g.THEME_OPTIONS,
     };
     if (options.cdn) {
         if (!((_a = options.theme) === null || _a === void 0 ? void 0 : _a.path)) {
@@ -2420,13 +2426,14 @@ var mergeOptions = function (options) {
             defaultOption.emojiPath = "".concat(options.cdn, "/dist/images/emoji");
         }
     }
-    return (0,merge/* merge */.h)(defaultOption, options);
+    return (0,merge/* merge */.T)(defaultOption, options);
 };
 var md2html = function (mdText, options) {
     var mergedOptions = mergeOptions(options);
-    return (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/lute/lute.min.js"), "vditorLuteScript").then(function () {
+    return (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/lute/lute.min.js"), "vditorLuteScript").then(function () {
         var lute = (0,setLute/* setLute */.X)({
             autoSpace: mergedOptions.markdown.autoSpace,
+            callout: mergedOptions.markdown.callout,
             gfmAutoLink: mergedOptions.markdown.gfmAutoLink,
             codeBlockPreview: mergedOptions.markdown.codeBlockPreview,
             emojiSite: mergedOptions.emojiPath,
@@ -2443,6 +2450,8 @@ var md2html = function (mdText, options) {
             mathBlockPreview: mergedOptions.markdown.mathBlockPreview,
             paragraphBeginningSpace: mergedOptions.markdown.paragraphBeginningSpace,
             sanitize: mergedOptions.markdown.sanitize,
+            sub: mergedOptions.markdown.sub,
+            sup: mergedOptions.markdown.sup,
             toc: mergedOptions.markdown.toc,
         });
         if (options === null || options === void 0 ? void 0 : options.renderers) {
@@ -2453,7 +2462,7 @@ var md2html = function (mdText, options) {
             });
         }
         lute.SetHeadingID(true);
-        return lute.Md2HTML(mdText);
+        return (0,imageCaptionRender/* renderImageCaptionHTML */.V)(lute.Md2HTML(mdText), mergedOptions.markdown.imageCaption);
     });
 };
 var previewRender = function (previewElement, markdown, options) { return __awaiter(void 0, void 0, void 0, function () {
@@ -2471,7 +2480,7 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                 previewElement.innerHTML = html;
                 previewElement.classList.add("vditor-reset");
                 if (!!mergedOptions.i18n) return [3 /*break*/, 5];
-                if (!!["en_US", "fr_FR", "pt_BR", "ja_JP", "ko_KR", "ru_RU", "sv_SE", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) return [3 /*break*/, 2];
+                if (!!["de_DE", "en_US", "es_ES", "fr_FR", "ja_JP", "ko_KR", "pt_BR", "ru_RU", "sv_SE", "vi_VN", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) return [3 /*break*/, 2];
                 throw new Error("options.lang error, see https://ld246.com/article/1549638745630#options");
             case 2:
                 i18nScriptPrefix = "vditorI18nScript";
@@ -2481,7 +2490,7 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                         document.head.removeChild(el);
                     }
                 });
-                return [4 /*yield*/, (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js"), i18nScriptID_1)];
+                return [4 /*yield*/, (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js"), i18nScriptID_1)];
             case 3:
                 _a.sent();
                 _a.label = 4;
@@ -2491,32 +2500,33 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                 _a.label = 6;
             case 6:
                 if (!mergedOptions.icon) return [3 /*break*/, 8];
-                return [4 /*yield*/, (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/icons/").concat(mergedOptions.icon, ".js"), "vditorIconScript")];
+                return [4 /*yield*/, (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/icons/").concat(mergedOptions.icon, ".js"), "vditorIconScript")];
             case 7:
                 _a.sent();
                 _a.label = 8;
             case 8:
-                (0,setContentTheme/* setContentTheme */.H)(mergedOptions.theme.current, mergedOptions.theme.path);
+                (0,setContentTheme/* setContentTheme */.Z)(mergedOptions.theme.current, mergedOptions.theme.path);
                 if (mergedOptions.anchor === 1) {
                     previewElement.classList.add("vditor-reset--anchor");
                 }
-                (0,codeRender/* codeRender */.o)(previewElement, mergedOptions.hljs);
-                (0,highlightRender/* highlightRender */.$)(mergedOptions.hljs, previewElement, mergedOptions.cdn);
-                (0,mathRender/* mathRender */.T)(previewElement, {
+                (0,codeRender/* codeRender */.O)(previewElement, mergedOptions.hljs);
+                (0,highlightRender/* highlightRender */.s)(mergedOptions.hljs, previewElement, mergedOptions.cdn);
+                (0,mathRender/* mathRender */.H)(previewElement, {
                     cdn: mergedOptions.cdn,
                     math: mergedOptions.math,
                 });
-                (0,mermaidRender/* mermaidRender */.e)(previewElement, mergedOptions.cdn, mergedOptions.mode);
-                (0,SMILESRender/* SMILESRender */.Y)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,mermaidRender/* mermaidRender */.i)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,SMILESRender/* SMILESRender */.J)(previewElement, mergedOptions.cdn, mergedOptions.mode);
                 (0,markmapRender/* markmapRender */.K)(previewElement, mergedOptions.cdn);
-                (0,flowchartRender/* flowchartRender */.D)(previewElement, mergedOptions.cdn);
-                (0,graphvizRender/* graphvizRender */.m)(previewElement, mergedOptions.cdn);
-                (0,chartRender/* chartRender */.v)(previewElement, mergedOptions.cdn, mergedOptions.mode);
-                (0,mindmapRender/* mindmapRender */.l)(previewElement, mergedOptions.cdn, mergedOptions.mode);
-                (0,plantumlRender/* plantumlRender */.M)(previewElement, mergedOptions.cdn);
-                (0,abcRender/* abcRender */.$)(previewElement, mergedOptions.cdn);
+                (0,flowchartRender/* flowchartRender */.P)(previewElement, mergedOptions.cdn);
+                (0,graphvizRender/* graphvizRender */.v)(previewElement, mergedOptions.cdn);
+                (0,wavedromRender/* wavedromRender */.F)(previewElement, mergedOptions.cdn);
+                (0,chartRender/* chartRender */.p)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,mindmapRender/* mindmapRender */.P)(previewElement, mergedOptions.cdn, mergedOptions.mode);
+                (0,plantumlRender/* plantumlRender */.B)(previewElement, mergedOptions.cdn);
+                (0,abcRender/* abcRender */.Q)(previewElement, mergedOptions.cdn);
                 if (mergedOptions.render.media.enable) {
-                    (0,mediaRender/* mediaRender */.l)(previewElement);
+                    (0,mediaRender/* mediaRender */.Y)(previewElement);
                 }
                 if (mergedOptions.speech.enable) {
                     speechRender(previewElement);
@@ -2531,8 +2541,8 @@ var previewRender = function (previewElement, markdown, options) { return __awai
                     lazyLoadImageRender(previewElement);
                 }
                 previewElement.addEventListener("click", function (event) {
-                    var spanElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(event.target, "SPAN");
-                    if (spanElement && (0,hasClosest/* hasClosestByClassName */.KJ)(spanElement, "vditor-toc")) {
+                    var spanElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(event.target, "SPAN");
+                    if (spanElement && (0,hasClosest/* hasClosestByClassName */.fb)(spanElement, "vditor-toc")) {
                         var headingElement = previewElement.querySelector("#" + spanElement.getAttribute("data-target-id"));
                         if (headingElement) {
                             window.scrollTo(window.scrollX, headingElement.offsetTop);
@@ -2546,10 +2556,11 @@ var previewRender = function (previewElement, markdown, options) { return __awai
 }); };
 
 // EXTERNAL MODULE: ./src/ts/preview/image.ts
-var preview_image = __webpack_require__(726);
+var preview_image = __webpack_require__(190);
 // EXTERNAL MODULE: ./src/ts/ui/setCodeTheme.ts
-var setCodeTheme = __webpack_require__(13);
+var setCodeTheme = __webpack_require__(580);
 ;// CONCATENATED MODULE: ./src/method.ts
+
 
 
 
@@ -2577,35 +2588,37 @@ var Vditor = /** @class */ (function () {
     /** 点击图片放大 */
     Vditor.adapterRender = adapterRender;
     /** 点击图片放大 */
-    Vditor.previewImage = preview_image/* previewImage */.o;
+    Vditor.previewImage = preview_image/* previewImage */.E;
     /** 为 element 中的代码块添加复制按钮 */
-    Vditor.codeRender = codeRender/* codeRender */.o;
+    Vditor.codeRender = codeRender/* codeRender */.O;
     /** 对 graphviz 进行渲染 */
-    Vditor.graphvizRender = graphvizRender/* graphvizRender */.m;
+    Vditor.graphvizRender = graphvizRender/* graphvizRender */.v;
+    /** 对数字波形图进行渲染 */
+    Vditor.wavedromRender = wavedromRender/* wavedromRender */.F;
     /** 为 element 中的代码块进行高亮渲染 */
-    Vditor.highlightRender = highlightRender/* highlightRender */.$;
+    Vditor.highlightRender = highlightRender/* highlightRender */.s;
     /** 对数学公式进行渲染 */
-    Vditor.mathRender = mathRender/* mathRender */.T;
+    Vditor.mathRender = mathRender/* mathRender */.H;
     /** 流程图/时序图/甘特图渲染 */
-    Vditor.mermaidRender = mermaidRender/* mermaidRender */.e;
+    Vditor.mermaidRender = mermaidRender/* mermaidRender */.i;
     /** 化学物质结构渲染 */
-    Vditor.SMILESRender = SMILESRender/* SMILESRender */.Y;
+    Vditor.SMILESRender = SMILESRender/* SMILESRender */.J;
     /** 支持 markdown 的思维导图 */
     Vditor.markmapRender = markmapRender/* markmapRender */.K;
     /** flowchart.js 渲染 */
-    Vditor.flowchartRender = flowchartRender/* flowchartRender */.D;
+    Vditor.flowchartRender = flowchartRender/* flowchartRender */.P;
     /** 图表渲染 */
-    Vditor.chartRender = chartRender/* chartRender */.v;
+    Vditor.chartRender = chartRender/* chartRender */.p;
     /** 五线谱渲染 */
-    Vditor.abcRender = abcRender/* abcRender */.$;
+    Vditor.abcRender = abcRender/* abcRender */.Q;
     /** 脑图渲染 */
-    Vditor.mindmapRender = mindmapRender/* mindmapRender */.l;
+    Vditor.mindmapRender = mindmapRender/* mindmapRender */.P;
     /** plantuml渲染 */
-    Vditor.plantumlRender = plantumlRender/* plantumlRender */.M;
+    Vditor.plantumlRender = plantumlRender/* plantumlRender */.B;
     /** 大纲渲染 */
-    Vditor.outlineRender = outlineRender/* outlineRender */.N;
+    Vditor.outlineRender = outlineRender/* outlineRender */.k;
     /** 为[特定链接](https://github.com/Vanessa219/vditor/issues/7)分别渲染为视频、音频、嵌入的 iframe */
-    Vditor.mediaRender = mediaRender/* mediaRender */.l;
+    Vditor.mediaRender = mediaRender/* mediaRender */.Y;
     /** 对选中的文字进行阅读 */
     Vditor.speechRender = speechRender;
     /** 对图片进行懒加载 */
@@ -2615,9 +2628,9 @@ var Vditor = /** @class */ (function () {
     /** 页面 Markdown 文章渲染 */
     Vditor.preview = previewRender;
     /** 设置代码主题 */
-    Vditor.setCodeTheme = setCodeTheme/* setCodeTheme */.h;
+    Vditor.setCodeTheme = setCodeTheme/* setCodeTheme */.Y;
     /** 设置内容主题 */
-    Vditor.setContentTheme = setContentTheme/* setContentTheme */.H;
+    Vditor.setContentTheme = setContentTheme/* setContentTheme */.Z;
     return Vditor;
 }());
 /* harmony default export */ const method = (Vditor);
@@ -2625,15 +2638,15 @@ var Vditor = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 913:
+/***/ 145:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Y: () => (/* binding */ Constants),
-/* harmony export */   g: () => (/* binding */ _VDITOR_VERSION)
+/* harmony export */   "H": () => (/* binding */ _VDITOR_VERSION),
+/* harmony export */   "g": () => (/* binding */ Constants)
 /* harmony export */ });
-var _VDITOR_VERSION = "3.10.9";
+var _VDITOR_VERSION = "4.0.0";
 
 var Constants = /** @class */ (function () {
     function Constants() {
@@ -2677,17 +2690,19 @@ var Constants = /** @class */ (function () {
         "stackoverflow-light", "tokyo-night-light", "vs", "xcode", "default"];
     Constants.ALIAS_CODE_LANGUAGES = [
         // 自定义
-        "abc", "plantuml", "mermaid", "flowchart", "echarts", "mindmap", "graphviz", "math", "markmap", "smiles",
+        "abc", "plantuml", "mermaid", "flowchart", "echarts", "mindmap", "graphviz", "wavedrom", "math", "markmap", "smiles",
         // 别名
         "js", "ts", "html", "toml", "c#", "bat"
     ];
-    Constants.CDN = "https://unpkg.com/vditor@".concat("3.10.9");
+    Constants.CDN = "https://unpkg.com/vditor@".concat("4.0.0");
     Constants.MARKDOWN_OPTIONS = {
         autoSpace: false,
+        callout: true,
         gfmAutoLink: true,
         codeBlockPreview: true,
         fixTermTypo: false,
         footnotes: true,
+        imageCaption: false,
         linkBase: "",
         linkPrefix: "",
         listStyle: false,
@@ -2695,6 +2710,8 @@ var Constants = /** @class */ (function () {
         mathBlockPreview: true,
         paragraphBeginningSpace: false,
         sanitize: true,
+        sub: false,
+        sup: false,
         toc: false,
     };
     Constants.HLJS_OPTIONS = {
@@ -2725,34 +2742,34 @@ var Constants = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 931:
+/***/ 825:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Y: () => (/* binding */ SMILESRender)
+/* harmony export */   "J": () => (/* binding */ SMILESRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(933);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(494);
 
 
 
 
 var SMILESRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var SMILESElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.SMILESRenderAdapter.getElements(element);
     if (SMILESElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/smiles-drawer/smiles-drawer.min.js?v=2.1.7"), "vditorAbcjsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/smiles-drawer/smiles-drawer.min.js?v=2.1.7"), "vditorAbcjsScript").then(function () {
             var sd = new SmiDrawer({}, {});
             SMILESElements.forEach(function (item) {
                 var code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.SMILESRenderAdapter.getCode(item).trim();
                 if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
                     return;
                 }
-                var id = "smiles" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Ee)();
+                var id = "smiles" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Wb)();
                 item.innerHTML = "<svg id=\"".concat(id, "\"></svg>");
                 sd.draw(code, '#' + id, theme === "dark" ? "dark" : undefined);
                 item.setAttribute("data-processed", "true");
@@ -2764,25 +2781,25 @@ var SMILESRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 288:
+/***/ 135:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   $: () => (/* binding */ abcRender)
+/* harmony export */   "Q": () => (/* binding */ abcRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
 var abcRender = function (element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var abcElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.abcRenderAdapter.getElements(element);
     if (abcElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/abcjs/abcjs_basic.min.js"), "vditorAbcjsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/abcjs/abcjs_basic.min.js"), "vditorAbcjsScript").then(function () {
             abcElements.forEach(function (item) {
                 if (item.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                     item.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -2802,22 +2819,23 @@ var abcRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 59:
+/***/ 840:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   SMILESRenderAdapter: () => (/* binding */ SMILESRenderAdapter),
-/* harmony export */   abcRenderAdapter: () => (/* binding */ abcRenderAdapter),
-/* harmony export */   chartRenderAdapter: () => (/* binding */ chartRenderAdapter),
-/* harmony export */   flowchartRenderAdapter: () => (/* binding */ flowchartRenderAdapter),
-/* harmony export */   graphvizRenderAdapter: () => (/* binding */ graphvizRenderAdapter),
-/* harmony export */   markmapRenderAdapter: () => (/* binding */ markmapRenderAdapter),
-/* harmony export */   mathRenderAdapter: () => (/* binding */ mathRenderAdapter),
-/* harmony export */   mermaidRenderAdapter: () => (/* binding */ mermaidRenderAdapter),
-/* harmony export */   mindmapRenderAdapter: () => (/* binding */ mindmapRenderAdapter),
-/* harmony export */   plantumlRenderAdapter: () => (/* binding */ plantumlRenderAdapter)
+/* harmony export */   "mathRenderAdapter": () => (/* binding */ mathRenderAdapter),
+/* harmony export */   "SMILESRenderAdapter": () => (/* binding */ SMILESRenderAdapter),
+/* harmony export */   "mermaidRenderAdapter": () => (/* binding */ mermaidRenderAdapter),
+/* harmony export */   "markmapRenderAdapter": () => (/* binding */ markmapRenderAdapter),
+/* harmony export */   "mindmapRenderAdapter": () => (/* binding */ mindmapRenderAdapter),
+/* harmony export */   "chartRenderAdapter": () => (/* binding */ chartRenderAdapter),
+/* harmony export */   "abcRenderAdapter": () => (/* binding */ abcRenderAdapter),
+/* harmony export */   "graphvizRenderAdapter": () => (/* binding */ graphvizRenderAdapter),
+/* harmony export */   "wavedromRenderAdapter": () => (/* binding */ wavedromRenderAdapter),
+/* harmony export */   "flowchartRenderAdapter": () => (/* binding */ flowchartRenderAdapter),
+/* harmony export */   "plantumlRenderAdapter": () => (/* binding */ plantumlRenderAdapter)
 /* harmony export */ });
 var mathRenderAdapter = {
     getCode: function (el) { return el.textContent; },
@@ -2852,6 +2870,10 @@ var graphvizRenderAdapter = {
     getCode: function (el) { return el.textContent; },
     getElements: function (el) { return el.querySelectorAll(".language-graphviz"); },
 };
+var wavedromRenderAdapter = {
+    getCode: function (el) { return el.textContent; },
+    getElements: function (el) { return el.querySelectorAll(".language-wavedrom"); },
+};
 var flowchartRenderAdapter = {
     getCode: function (el) { return el.textContent; },
     getElements: function (el) { return el.querySelectorAll(".language-flowchart"); },
@@ -2864,17 +2886,17 @@ var plantumlRenderAdapter = {
 
 /***/ }),
 
-/***/ 784:
+/***/ 775:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   v: () => (/* binding */ chartRender)
+/* harmony export */   "p": () => (/* binding */ chartRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(933);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(494);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -2917,10 +2939,10 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var chartRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var echartsElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.chartRenderAdapter.getElements(element);
     if (echartsElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
             echartsElements.forEach(function (e) { return __awaiter(void 0, void 0, void 0, function () {
                 var text, option, error_1;
                 return __generator(this, function (_a) {
@@ -2940,7 +2962,7 @@ var chartRender = function (element, cdn, theme) {
                             if (e.getAttribute("data-processed") === "true") {
                                 return [2 /*return*/];
                             }
-                            return [4 /*yield*/, (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .looseJsonParse */ .kY)(text)];
+                            return [4 /*yield*/, (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .looseJsonParse */ .Qf)(text)];
                         case 2:
                             option = _a.sent();
                             echarts.init(e, theme === "dark" ? "dark" : undefined).setOption(option);
@@ -2962,15 +2984,15 @@ var chartRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 51:
+/***/ 428:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   o: () => (/* binding */ codeRender)
+/* harmony export */   "O": () => (/* binding */ codeRender)
 /* harmony export */ });
-/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(695);
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
+/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(105);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
 
 
 var codeRender = function (element, option) {
@@ -3013,9 +3035,9 @@ var codeRender = function (element, option) {
         }
         var divElement = document.createElement("div");
         divElement.className = "vditor-copy";
-        divElement.innerHTML = "<span aria-label=\"".concat(((_a = window.VditorI18n) === null || _a === void 0 ? void 0 : _a.copy) || "复制", "\"\nonmouseover=\"this.setAttribute('aria-label', '").concat(((_b = window.VditorI18n) === null || _b === void 0 ? void 0 : _b.copy) || "复制", "')\"\nclass=\"vditor-tooltipped vditor-tooltipped__w\"\nonclick=\"this.previousElementSibling.select();document.execCommand('copy');this.setAttribute('aria-label', '").concat(((_c = window.VditorI18n) === null || _c === void 0 ? void 0 : _c.copied) || "已复制", "');this.previousElementSibling.blur()\">").concat(iconHTML, "</span>");
+        divElement.innerHTML = "<span aria-label=\"".concat(((_a = window.VditorI18n) === null || _a === void 0 ? void 0 : _a.copy) || "复制", "\"\nonmouseover=\"this.setAttribute('aria-label', '").concat(((_b = window.VditorI18n) === null || _b === void 0 ? void 0 : _b.copy) || "复制", "')\"\nclass=\"vditor-tooltipped vditor-tooltipped__w\"\nonclick=\"event.stopPropagation();this.previousElementSibling.select();document.execCommand('copy');this.setAttribute('aria-label', '").concat(((_c = window.VditorI18n) === null || _c === void 0 ? void 0 : _c.copied) || "已复制", "');this.previousElementSibling.blur()\">").concat(iconHTML, "</span>");
         var textarea = document.createElement("textarea");
-        textarea.value = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_1__/* .code160to32 */ .p)(codeText);
+        textarea.value = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_1__/* .code160to32 */ .X)(codeText);
         divElement.insertAdjacentElement("afterbegin", textarea);
         if (option && option.renderMenu) {
             option.renderMenu(e, divElement);
@@ -3023,33 +3045,33 @@ var codeRender = function (element, option) {
         e.before(divElement);
         e.style.maxHeight = (window.outerHeight - 40) + "px";
         // https://github.com/Vanessa219/vditor/issues/1356
-        e.insertAdjacentHTML("afterend", "<span style=\"position: absolute\">".concat(_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.ZWSP, "</span>"));
+        e.insertAdjacentHTML("afterend", "<span style=\"position: absolute\">".concat(_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.ZWSP */ .g.ZWSP, "</span>"));
     });
 };
 
 
 /***/ }),
 
-/***/ 500:
+/***/ 325:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   D: () => (/* binding */ flowchartRender)
+/* harmony export */   "P": () => (/* binding */ flowchartRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
 var flowchartRender = function (element, cdn) {
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var flowchartElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.flowchartRenderAdapter.getElements(element);
     if (flowchartElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/flowchart.js/flowchart.min.js"), "vditorFlowchartScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/flowchart.js/flowchart.min.js"), "vditorFlowchartScript").then(function () {
         flowchartElements.forEach(function (item) {
             if (item.getAttribute("data-processed") === "true") {
                 return;
@@ -3065,26 +3087,26 @@ var flowchartRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 339:
+/***/ 483:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   m: () => (/* binding */ graphvizRender)
+/* harmony export */   "v": () => (/* binding */ graphvizRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
 var graphvizRender = function (element, cdn) {
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var graphvizElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.graphvizRenderAdapter.getElements(element);
     if (graphvizElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/graphviz/viz.js"), "vditorGraphVizScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/graphviz/viz.js"), "vditorGraphVizScript").then(function () {
         graphvizElements.forEach(function (e) {
             var code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.graphvizRenderAdapter.getCode(e);
             if (e.parentElement.classList.contains("vditor-wysiwyg__pre") ||
@@ -3118,24 +3140,24 @@ var graphvizRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 108:
+/***/ 999:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   $: () => (/* binding */ highlightRender)
+/* harmony export */   "s": () => (/* binding */ highlightRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(505);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(290);
 
 
 
 var highlightRender = function (hljsOption, element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var style = hljsOption.style;
-    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CODE_THEME.includes(style)) {
+    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CODE_THEME.includes */ .g.CODE_THEME.includes(style)) {
         style = "github";
     }
     var vditorHljsStyle = document.getElementById("vditorHljsStyle");
@@ -3143,7 +3165,7 @@ var highlightRender = function (hljsOption, element, cdn) {
     if (vditorHljsStyle && vditorHljsStyle.getAttribute('href') !== href) {
         vditorHljsStyle.remove();
     }
-    (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .T)("".concat(cdn, "/dist/js/highlight.js/styles/").concat(style, ".min.css"), "vditorHljsStyle");
+    (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .c)("".concat(cdn, "/dist/js/highlight.js/styles/").concat(style, ".min.css"), "vditorHljsStyle");
     if (hljsOption.enable === false) {
         return;
     }
@@ -3151,8 +3173,8 @@ var highlightRender = function (hljsOption, element, cdn) {
     if (codes.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/highlight.js/highlight.min.js?v=11.7.0"), "vditorHljsScript").then(function () {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/highlight.js/third-languages.js?v=1.0.1"), "vditorHljsThirdScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/highlight.js/highlight.min.js?v=11.7.0"), "vditorHljsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/highlight.js/third-languages.js?v=1.0.1"), "vditorHljsThirdScript").then(function () {
             element.querySelectorAll("pre > code").forEach(function (block) {
                 // ir & wysiwyg 区域不渲染
                 if (block.parentElement.classList.contains("vditor-ir__marker--pre") ||
@@ -3215,16 +3237,189 @@ var highlightRender = function (hljsOption, element, cdn) {
 
 /***/ }),
 
-/***/ 597:
+/***/ 161:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   K: () => (/* binding */ markmapRender)
+/* harmony export */   "W": () => (/* binding */ renderImageCaptions),
+/* harmony export */   "V": () => (/* binding */ renderImageCaptionHTML)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+var getContentNodes = function (element, ignoreIRMarkers) {
+    if (ignoreIRMarkers === void 0) { ignoreIRMarkers = false; }
+    return Array.from(element.childNodes).filter(function (node) {
+        if (node.nodeType === Node.COMMENT_NODE) {
+            return false;
+        }
+        if (node.nodeType === Node.TEXT_NODE) {
+            return node.textContent.replace(/\u200b/g, "").trim() !== "";
+        }
+        if (!(node instanceof HTMLElement)) {
+            return true;
+        }
+        if (node.tagName === "WBR") {
+            return false;
+        }
+        return !ignoreIRMarkers || !node.classList.contains("vditor-ir__marker");
+    });
+};
+var getWYSIWYGImage = function (paragraph) {
+    var nodes = getContentNodes(paragraph);
+    if (nodes.length !== 1 || !(nodes[0] instanceof HTMLElement)) {
+        return undefined;
+    }
+    var container = nodes[0];
+    if (container instanceof HTMLImageElement) {
+        return {
+            container: container,
+            image: container,
+        };
+    }
+    if (container instanceof HTMLAnchorElement) {
+        var linkNodes = getContentNodes(container);
+        if (linkNodes.length === 1 && linkNodes[0] instanceof HTMLImageElement) {
+            return {
+                container: container,
+                image: linkNodes[0],
+            };
+        }
+    }
+    return undefined;
+};
+var getIRImage = function (paragraph) {
+    var nodes = getContentNodes(paragraph);
+    if (nodes.length !== 1 || !(nodes[0] instanceof HTMLElement)) {
+        return undefined;
+    }
+    var imageNode = nodes[0];
+    if (imageNode.getAttribute("data-type") === "a") {
+        var linkNodes = getContentNodes(imageNode, true);
+        if (linkNodes.length !== 1 || !(linkNodes[0] instanceof HTMLElement)) {
+            return undefined;
+        }
+        imageNode = linkNodes[0];
+    }
+    if (imageNode.getAttribute("data-type") !== "img") {
+        return undefined;
+    }
+    var image = imageNode.querySelector(":scope > img");
+    var titleMarker = imageNode.querySelector(":scope > .vditor-ir__marker--title");
+    if (!(image instanceof HTMLImageElement) || !titleMarker) {
+        return undefined;
+    }
+    var markerText = titleMarker.textContent.trim();
+    var closeMarker = markerText[0] === "(" ? ")" : markerText[0];
+    if (markerText.length < 2 || !["\"", "'", "("].includes(markerText[0]) ||
+        markerText[markerText.length - 1] !== closeMarker) {
+        return undefined;
+    }
+    return {
+        caption: markerText.slice(1, -1).trim(),
+        container: imageNode,
+        image: image,
+    };
+};
+var unwrapWYSIWYGCaptions = function (element) {
+    element.querySelectorAll("span.vditor-image[data-image-caption]").forEach(function (wrapper) {
+        while (wrapper.firstChild) {
+            wrapper.parentNode.insertBefore(wrapper.firstChild, wrapper);
+        }
+        wrapper.remove();
+    });
+};
+var resetIRCaptions = function (element) {
+    element.querySelectorAll(".vditor-image[data-image-caption]").forEach(function (imageNode) {
+        imageNode.classList.remove("vditor-image");
+        imageNode.removeAttribute("data-image-caption");
+    });
+};
+var renderPreviewCaptions = function (element) {
+    element.querySelectorAll("p").forEach(function (paragraph) {
+        var _a;
+        var imageData = getWYSIWYGImage(paragraph);
+        var caption = (_a = imageData === null || imageData === void 0 ? void 0 : imageData.image.getAttribute("title")) === null || _a === void 0 ? void 0 : _a.trim();
+        if (!imageData || !caption) {
+            return;
+        }
+        var figure = document.createElement("figure");
+        Array.from(paragraph.attributes).forEach(function (attribute) {
+            figure.setAttribute(attribute.name, attribute.value);
+        });
+        figure.classList.add("vditor-image");
+        var figcaption = document.createElement("figcaption");
+        figcaption.textContent = caption;
+        figure.append(imageData.container, figcaption);
+        paragraph.replaceWith(figure);
+    });
+};
+var renderWYSIWYGCaptions = function (element) {
+    element.querySelectorAll("p").forEach(function (paragraph) {
+        var _a;
+        var imageData = getWYSIWYGImage(paragraph);
+        var caption = (_a = imageData === null || imageData === void 0 ? void 0 : imageData.image.getAttribute("title")) === null || _a === void 0 ? void 0 : _a.trim();
+        if (!imageData || !caption) {
+            return;
+        }
+        var wrapper = document.createElement("span");
+        wrapper.className = "vditor-image";
+        wrapper.setAttribute("data-image-caption", caption);
+        imageData.container.replaceWith(wrapper);
+        wrapper.append(imageData.container);
+    });
+};
+var renderIRCaptions = function (element) {
+    element.querySelectorAll("p").forEach(function (paragraph) {
+        var imageData = getIRImage(paragraph);
+        if (!(imageData === null || imageData === void 0 ? void 0 : imageData.caption)) {
+            return;
+        }
+        imageData.container.classList.add("vditor-image");
+        imageData.container.setAttribute("data-image-caption", imageData.caption);
+    });
+};
+var renderImageCaptions = function (element, mode, enable) {
+    if (mode === "wysiwyg") {
+        unwrapWYSIWYGCaptions(element);
+    }
+    else if (mode === "ir") {
+        resetIRCaptions(element);
+    }
+    if (!enable) {
+        return;
+    }
+    if (mode === "preview") {
+        renderPreviewCaptions(element);
+    }
+    else if (mode === "wysiwyg") {
+        renderWYSIWYGCaptions(element);
+    }
+    else {
+        renderIRCaptions(element);
+    }
+};
+var renderImageCaptionHTML = function (html, enable) {
+    if (!enable) {
+        return html;
+    }
+    var container = document.createElement("div");
+    container.innerHTML = html;
+    renderImageCaptions(container, "preview", true);
+    return container.innerHTML;
+};
+
+
+/***/ }),
+
+/***/ 11:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "K": () => (/* binding */ markmapRender)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
@@ -3257,12 +3452,12 @@ var init = function (el, code) {
 };
 var markmapRender = function (element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var markmapElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.markmapRenderAdapter.getElements(element);
     if (markmapElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/markmap/markmap.min.js"), "vditorMarkerScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/markmap/markmap.min.js"), "vditorMarkerScript").then(function () {
         markmapElements.forEach(function (item) {
             var code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.markmapRenderAdapter.getCode(item);
             if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
@@ -3282,18 +3477,18 @@ var markmapRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 960:
+/***/ 472:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   T: () => (/* binding */ mathRender)
+/* harmony export */   "H": () => (/* binding */ mathRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(161);
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(505);
-/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(695);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(413);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(290);
+/* harmony import */ var _util_code160to32__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(105);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
@@ -3306,7 +3501,7 @@ var mathRender = function (element, options) {
         return;
     }
     var defaultOptions = {
-        cdn: _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN,
+        cdn: _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN,
         math: {
             engine: "KaTeX",
             inlineDigit: false,
@@ -3319,9 +3514,9 @@ var mathRender = function (element, options) {
     }
     options = Object.assign({}, defaultOptions, options);
     if (options.math.engine === "KaTeX") {
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_2__/* .addStyle */ .T)("".concat(options.cdn, "/dist/js/katex/katex.min.css?v=0.16.9"), "vditorKatexStyle");
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .Z)("".concat(options.cdn, "/dist/js/katex/katex.min.js?v=0.16.9"), "vditorKatexScript").then(function () {
-            (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .Z)("".concat(options.cdn, "/dist/js/katex/mhchem.min.js?v=0.16.9"), "vditorKatexChemScript").then(function () {
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_2__/* .addStyle */ .c)("".concat(options.cdn, "/dist/js/katex/katex.min.css?v=0.16.9"), "vditorKatexStyle");
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .G)("".concat(options.cdn, "/dist/js/katex/katex.min.js?v=0.16.9"), "vditorKatexScript").then(function () {
+            (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScript */ .G)("".concat(options.cdn, "/dist/js/katex/mhchem.min.js?v=0.16.9"), "vditorKatexChemScript").then(function () {
                 mathElements.forEach(function (mathElement) {
                     if (mathElement.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                         mathElement.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -3330,7 +3525,7 @@ var mathRender = function (element, options) {
                     if (mathElement.getAttribute("data-math")) {
                         return;
                     }
-                    var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .p)(_adapterRender__WEBPACK_IMPORTED_MODULE_1__.mathRenderAdapter.getCode(mathElement));
+                    var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .X)(_adapterRender__WEBPACK_IMPORTED_MODULE_1__.mathRenderAdapter.getCode(mathElement));
                     mathElement.setAttribute("data-math", math);
                     try {
                         mathElement.innerHTML = katex.renderToString(math, {
@@ -3383,9 +3578,9 @@ var mathRender = function (element, options) {
             Object.assign(window.MathJax, options.math.mathJaxOptions);
         }
         // 循环加载会抛异常
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScriptSync */ .U)("".concat(options.cdn, "/dist/js/mathjax/tex-svg-full.js"), "protyleMathJaxScript");
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_3__/* .addScriptSync */ .J)("".concat(options.cdn, "/dist/js/mathjax/tex-svg-full.js"), "protyleMathJaxScript");
         var renderMath_1 = function (mathElement, next) {
-            var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .p)(mathElement.textContent).trim();
+            var math = (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .X)(mathElement.textContent).trim();
             var mathOptions = window.MathJax.getMetricsFor(mathElement);
             mathOptions.display = mathElement.tagName === "DIV";
             window.MathJax.tex2svgPromise(math, mathOptions).then(function (node) {
@@ -3410,7 +3605,7 @@ var mathRender = function (element, options) {
                 var mathElement = mathElements[i];
                 if (!mathElement.parentElement.classList.contains("vditor-wysiwyg__pre") &&
                     !mathElement.parentElement.classList.contains("vditor-ir__marker--pre") &&
-                    !mathElement.getAttribute("data-math") && (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .p)(mathElement.textContent).trim()) {
+                    !mathElement.getAttribute("data-math") && (0,_util_code160to32__WEBPACK_IMPORTED_MODULE_4__/* .code160to32 */ .X)(mathElement.textContent).trim()) {
                     chains.push(function (next) {
                         if (i === mathElements.length - 1) {
                             renderMath_1(mathElement);
@@ -3432,14 +3627,14 @@ var mathRender = function (element, options) {
 
 /***/ }),
 
-/***/ 0:
+/***/ 280:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   l: () => (/* binding */ mediaRender)
+/* harmony export */   "Y": () => (/* binding */ mediaRender)
 /* harmony export */ });
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(933);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(494);
 
 var videoRender = function (element, url) {
     element.insertAdjacentHTML("afterend", "<video controls=\"controls\" src=\"".concat(url, "\"></video>"));
@@ -3485,7 +3680,7 @@ var iframeRender = function (element, url) {
     }
     else if (url.indexOf("bilibili.com") > -1 && (url.indexOf("bvid=") > -1 || (bilibiliMatch && bilibiliMatch[1]))) {
         var params_1 = {
-            bvid: (0,_util_function__WEBPACK_IMPORTED_MODULE_0__/* .getSearch */ .TK)("bvid", url) || (bilibiliMatch && bilibiliMatch[1]),
+            bvid: (0,_util_function__WEBPACK_IMPORTED_MODULE_0__/* .getSearch */ .on)("bvid", url) || (bilibiliMatch && bilibiliMatch[1]),
             page: "1",
             high_quality: "1",
             as_wide: "1",
@@ -3542,17 +3737,17 @@ var mediaRender = function (element) {
 
 /***/ }),
 
-/***/ 975:
+/***/ 637:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   e: () => (/* binding */ mermaidRender)
+/* harmony export */   "i": () => (/* binding */ mermaidRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
-/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(933);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(494);
 var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -3595,12 +3790,12 @@ var __generator = (undefined && undefined.__generator) || function (thisArg, bod
 
 var mermaidRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var mermaidElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.mermaidRenderAdapter.getElements(element);
     if (mermaidElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/mermaid/mermaid.min.js"), "vditorMermaidScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/mermaid/mermaid.min.js?v=11.16.1"), "vditorMermaidScript").then(function () {
         var config = {
             securityLevel: "loose",
             altFontFamily: "sans-serif",
@@ -3635,7 +3830,7 @@ var mermaidRender = function (element, cdn, theme) {
                         if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
                             return [2 /*return*/];
                         }
-                        id = "mermaid" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Ee)();
+                        id = "mermaid" + (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .genUUID */ .Wb)();
                         _a.label = 1;
                     case 1:
                         _a.trys.push([1, 3, , 4]);
@@ -3662,25 +3857,25 @@ var mermaidRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 162:
+/***/ 194:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   l: () => (/* binding */ mindmapRender)
+/* harmony export */   "P": () => (/* binding */ mindmapRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
 var mindmapRender = function (element, cdn, theme) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var mindmapElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.mindmapRenderAdapter.getElements(element);
     if (mindmapElements.length > 0) {
-        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
+        (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
             mindmapElements.forEach(function (e) {
                 if (e.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                     e.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -3750,22 +3945,22 @@ var mindmapRender = function (element, cdn, theme) {
 
 /***/ }),
 
-/***/ 70:
+/***/ 436:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   N: () => (/* binding */ outlineRender)
+/* harmony export */   "k": () => (/* binding */ outlineRender)
 /* harmony export */ });
-/* harmony import */ var _util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(164);
-/* harmony import */ var _mathRender__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(960);
+/* harmony import */ var _util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(771);
+/* harmony import */ var _mathRender__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(472);
 
 
 var outlineRender = function (contentElement, targetElement, vditor) {
     var tocHTML = "";
     var ids = [];
     Array.from(contentElement.children).forEach(function (item, index) {
-        if ((0,_util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByHeadings */ .c)(item)) {
+        if ((0,_util_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByHeadings */ .W)(item)) {
             if (vditor) {
                 var lastIndex = item.id.lastIndexOf("_");
                 item.id = item.id.substring(0, lastIndex === -1 ? undefined : lastIndex) + "_" + index;
@@ -3819,7 +4014,7 @@ var outlineRender = function (contentElement, targetElement, vditor) {
     }
     targetElement.innerHTML = tocHTML;
     if (vditor) {
-        (0,_mathRender__WEBPACK_IMPORTED_MODULE_0__/* .mathRender */ .T)(targetElement, {
+        (0,_mathRender__WEBPACK_IMPORTED_MODULE_0__/* .mathRender */ .H)(targetElement, {
             cdn: vditor.options.cdn,
             math: vditor.options.preview.math,
         });
@@ -3881,27 +4076,27 @@ var outlineRender = function (contentElement, targetElement, vditor) {
 
 /***/ }),
 
-/***/ 591:
+/***/ 229:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   M: () => (/* binding */ plantumlRender)
+/* harmony export */   "B": () => (/* binding */ plantumlRender)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(161);
-/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(59);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
 
 
 
 var plantumlRender = function (element, cdn) {
     if (element === void 0) { element = document; }
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
     var plantumlElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.plantumlRenderAdapter.getElements(element);
     if (plantumlElements.length === 0) {
         return;
     }
-    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .Z)("".concat(cdn, "/dist/js/plantuml/plantuml-encoder.min.js"), "vditorPlantumlScript").then(function () {
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/plantuml/plantuml-encoder.min.js"), "vditorPlantumlScript").then(function () {
         plantumlElements.forEach(function (e) {
             if (e.parentElement.classList.contains("vditor-wysiwyg__pre") ||
                 e.parentElement.classList.contains("vditor-ir__marker--pre")) {
@@ -3925,12 +4120,12 @@ var plantumlRender = function (element, cdn) {
 
 /***/ }),
 
-/***/ 796:
+/***/ 214:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   X: () => (/* binding */ setLute)
+/* harmony export */   "X": () => (/* binding */ setLute)
 /* harmony export */ });
 var setLute = function (options) {
     var lute = Lute.New();
@@ -3939,6 +4134,7 @@ var setLute = function (options) {
     lute.SetHeadingAnchor(options.headingAnchor);
     lute.SetInlineMathAllowDigitAfterOpenMarker(options.inlineMathDigit);
     lute.SetAutoSpace(options.autoSpace);
+    lute.SetCallout(options.callout);
     lute.SetToC(options.toc);
     lute.SetFootnotes(options.footnotes);
     lute.SetFixTermTypo(options.fixTermTypo);
@@ -3954,18 +4150,129 @@ var setLute = function (options) {
     if (options.lazyLoadImage) {
         lute.SetImageLazyLoading(options.lazyLoadImage);
     }
+    lute.SetSup(options.sup);
+    lute.SetSub(options.sub);
     return lute;
 };
 
 
 /***/ }),
 
-/***/ 726:
+/***/ 497:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   o: () => (/* binding */ previewImage)
+/* harmony export */   "F": () => (/* binding */ wavedromRender)
+/* harmony export */ });
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addScript__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(413);
+/* harmony import */ var _util_function__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(494);
+/* harmony import */ var _adapterRender__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(840);
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var wavedromIndex = 0;
+var wavedromRender = function (element, cdn) {
+    if (element === void 0) { element = document; }
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    var wavedromElements = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.wavedromRenderAdapter.getElements(element);
+    if (wavedromElements.length === 0) {
+        return;
+    }
+    (0,_util_addScript__WEBPACK_IMPORTED_MODULE_2__/* .addScript */ .G)("".concat(cdn, "/dist/js/wavedrom/wavedrom.min.js?v=3.6.2"), "vditorWavedromScript").then(function () {
+        wavedromElements.forEach(function (item) { return __awaiter(void 0, void 0, void 0, function () {
+            var code, renderElement, source, error_1, message, lineBreak;
+            return __generator(this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        if (item.parentElement.classList.contains("vditor-wysiwyg__pre") ||
+                            item.parentElement.classList.contains("vditor-ir__marker--pre")) {
+                            return [2 /*return*/];
+                        }
+                        code = _adapterRender__WEBPACK_IMPORTED_MODULE_1__.wavedromRenderAdapter.getCode(item);
+                        if (item.getAttribute("data-processed") === "true" || code.trim() === "") {
+                            return [2 /*return*/];
+                        }
+                        renderElement = item;
+                        if (item.tagName === "CODE") {
+                            renderElement = document.createElement("div");
+                            Array.from(item.attributes).forEach(function (attribute) {
+                                renderElement.setAttribute(attribute.name, attribute.value);
+                            });
+                            item.replaceWith(renderElement);
+                        }
+                        _a.label = 1;
+                    case 1:
+                        _a.trys.push([1, 3, , 4]);
+                        return [4 /*yield*/, (0,_util_function__WEBPACK_IMPORTED_MODULE_3__/* .looseJsonParse */ .Qf)(code)];
+                    case 2:
+                        source = _a.sent();
+                        wavedrom.renderWaveElement(wavedromIndex, source, renderElement, wavedrom.waveSkin, false);
+                        wavedromIndex++;
+                        return [3 /*break*/, 4];
+                    case 3:
+                        error_1 = _a.sent();
+                        message = error_1 instanceof Error ? error_1.message : String(error_1);
+                        lineBreak = document.createElement("br");
+                        renderElement.replaceChildren(document.createTextNode("wavedrom render error:"), lineBreak, document.createTextNode(message));
+                        renderElement.classList.add("vditor-reset--error");
+                        return [3 /*break*/, 4];
+                    case 4:
+                        renderElement.setAttribute("data-processed", "true");
+                        return [2 /*return*/];
+                }
+            });
+        }); });
+    });
+};
+
+
+/***/ }),
+
+/***/ 190:
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "E": () => (/* binding */ previewImage)
 /* harmony export */ });
 var previewImage = function (oldImgElement, lang, theme) {
     if (lang === void 0) { lang = "zh_CN"; }
@@ -4003,44 +4310,44 @@ var previewImage = function (oldImgElement, lang, theme) {
 
 /***/ }),
 
-/***/ 13:
+/***/ 580:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   h: () => (/* binding */ setCodeTheme)
+/* harmony export */   "Y": () => (/* binding */ setCodeTheme)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(505);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(290);
 
 
 var setCodeTheme = function (codeTheme, cdn) {
-    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CDN; }
-    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.CODE_THEME.includes(codeTheme)) {
+    if (cdn === void 0) { cdn = _constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CDN */ .g.CDN; }
+    if (!_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.CODE_THEME.includes */ .g.CODE_THEME.includes(codeTheme)) {
         codeTheme = "github";
     }
     var vditorHljsStyle = document.getElementById("vditorHljsStyle");
     var href = "".concat(cdn, "/dist/js/highlight.js/styles/").concat(codeTheme, ".min.css");
     if (!vditorHljsStyle) {
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .T)(href, "vditorHljsStyle");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .c)(href, "vditorHljsStyle");
     }
     else if (vditorHljsStyle.getAttribute('href') !== href) {
         vditorHljsStyle.remove();
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .T)(href, "vditorHljsStyle");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_1__/* .addStyle */ .c)(href, "vditorHljsStyle");
     }
 };
 
 
 /***/ }),
 
-/***/ 873:
+/***/ 538:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   H: () => (/* binding */ setContentTheme)
+/* harmony export */   "Z": () => (/* binding */ setContentTheme)
 /* harmony export */ });
-/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(505);
+/* harmony import */ var _util_addStyle__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(290);
 
 var setContentTheme = function (contentTheme, path) {
     if (!contentTheme || !path) {
@@ -4049,24 +4356,24 @@ var setContentTheme = function (contentTheme, path) {
     var vditorContentTheme = document.getElementById("vditorContentTheme");
     var cssPath = "".concat(path, "/").concat(contentTheme, ".css");
     if (!vditorContentTheme) {
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .T)(cssPath, "vditorContentTheme");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .c)(cssPath, "vditorContentTheme");
     }
     else if (vditorContentTheme.getAttribute("href") !== cssPath) {
         vditorContentTheme.remove();
-        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .T)(cssPath, "vditorContentTheme");
+        (0,_util_addStyle__WEBPACK_IMPORTED_MODULE_0__/* .addStyle */ .c)(cssPath, "vditorContentTheme");
     }
 };
 
 
 /***/ }),
 
-/***/ 161:
+/***/ 413:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   U: () => (/* binding */ addScriptSync),
-/* harmony export */   Z: () => (/* binding */ addScript)
+/* harmony export */   "J": () => (/* binding */ addScriptSync),
+/* harmony export */   "G": () => (/* binding */ addScript)
 /* harmony export */ });
 var addScriptSync = function (path, id) {
     if (document.getElementById(id)) {
@@ -4113,12 +4420,12 @@ var addScript = function (path, id) {
 
 /***/ }),
 
-/***/ 505:
+/***/ 290:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   T: () => (/* binding */ addStyle)
+/* harmony export */   "c": () => (/* binding */ addStyle)
 /* harmony export */ });
 var addStyle = function (url, id) {
     if (!document.getElementById(id)) {
@@ -4134,12 +4441,12 @@ var addStyle = function (url, id) {
 
 /***/ }),
 
-/***/ 695:
+/***/ 105:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   p: () => (/* binding */ code160to32)
+/* harmony export */   "X": () => (/* binding */ code160to32)
 /* harmony export */ });
 var code160to32 = function (text) {
     // 非打断空格转换为空格
@@ -4149,18 +4456,18 @@ var code160to32 = function (text) {
 
 /***/ }),
 
-/***/ 629:
+/***/ 410:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   D: () => (/* binding */ accessLocalStorage),
-/* harmony export */   H8: () => (/* binding */ isChrome),
-/* harmony export */   _0: () => (/* binding */ isCtrl),
-/* harmony export */   fG: () => (/* binding */ updateHotkeyTip),
-/* harmony export */   gm: () => (/* binding */ isFirefox),
-/* harmony export */   nr: () => (/* binding */ isSafari),
-/* harmony export */   y3: () => (/* binding */ getEventName)
+/* harmony export */   "G6": () => (/* binding */ isSafari),
+/* harmony export */   "vU": () => (/* binding */ isFirefox),
+/* harmony export */   "pK": () => (/* binding */ accessLocalStorage),
+/* harmony export */   "Le": () => (/* binding */ getEventName),
+/* harmony export */   "yl": () => (/* binding */ isCtrl),
+/* harmony export */   "ns": () => (/* binding */ updateHotkeyTip),
+/* harmony export */   "i7": () => (/* binding */ isChrome)
 /* harmony export */ });
 var isSafari = function () {
     return navigator.userAgent.indexOf("Safari") > -1 && navigator.userAgent.indexOf("Chrome") === -1;
@@ -4234,14 +4541,14 @@ var isChrome = function () {
 
 /***/ }),
 
-/***/ 933:
+/***/ 494:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Ee: () => (/* binding */ genUUID),
-/* harmony export */   TK: () => (/* binding */ getSearch),
-/* harmony export */   kY: () => (/* binding */ looseJsonParse)
+/* harmony export */   "Wb": () => (/* binding */ genUUID),
+/* harmony export */   "on": () => (/* binding */ getSearch),
+/* harmony export */   "Qf": () => (/* binding */ looseJsonParse)
 /* harmony export */ });
 var genUUID = function () { return ([1e7].toString() + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, function (c) {
     return (parseInt(c, 10) ^ (window.crypto.getRandomValues(new Uint32Array(1))[0] & (15 >> (parseInt(c, 10) / 4)))).toString(16);
@@ -4261,22 +4568,22 @@ var looseJsonParse = function (text) {
 
 /***/ }),
 
-/***/ 598:
+/***/ 106:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Ab: () => (/* binding */ hasTopClosestByTag),
-/* harmony export */   KJ: () => (/* binding */ hasClosestByClassName),
-/* harmony export */   KR: () => (/* binding */ getTopList),
-/* harmony export */   Rp: () => (/* binding */ getLastNode),
-/* harmony export */   Th: () => (/* binding */ hasClosestByAttribute),
-/* harmony export */   XW: () => (/* binding */ hasTopClosestByClassName),
-/* harmony export */   _Y: () => (/* binding */ hasClosestByMatchTag),
-/* harmony export */   pt: () => (/* binding */ hasClosestBlock)
+/* harmony export */   "JQ": () => (/* binding */ hasTopClosestByClassName),
+/* harmony export */   "E2": () => (/* binding */ hasTopClosestByTag),
+/* harmony export */   "O9": () => (/* binding */ getTopList),
+/* harmony export */   "a1": () => (/* binding */ hasClosestByAttribute),
+/* harmony export */   "F9": () => (/* binding */ hasClosestBlock),
+/* harmony export */   "lG": () => (/* binding */ hasClosestByMatchTag),
+/* harmony export */   "fb": () => (/* binding */ hasClosestByClassName),
+/* harmony export */   "DX": () => (/* binding */ getLastNode)
 /* harmony export */ });
 /* unused harmony export hasTopClosestByAttribute */
-/* harmony import */ var _hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(164);
+/* harmony import */ var _hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(771);
 
 var hasTopClosestByClassName = function (element, className) {
     var closest = hasClosestByClassName(element, className);
@@ -4309,11 +4616,11 @@ var hasTopClosestByAttribute = function (element, attr, value) {
     return closest || false;
 };
 var hasTopClosestByTag = function (element, nodeName) {
-    var closest = (0,_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_0__/* .hasClosestByTag */ .f)(element, nodeName);
+    var closest = (0,_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_0__/* .hasClosestByTag */ .S)(element, nodeName);
     var parentClosest = false;
     var findTop = false;
     while (closest && !closest.classList.contains("vditor-reset") && !findTop) {
-        parentClosest = (0,_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_0__/* .hasClosestByTag */ .f)(closest.parentElement, nodeName);
+        parentClosest = (0,_hasClosestByHeadings__WEBPACK_IMPORTED_MODULE_0__/* .hasClosestByTag */ .S)(closest.parentElement, nodeName);
         if (parentClosest) {
             closest = parentClosest;
         }
@@ -4431,13 +4738,13 @@ var getLastNode = function (node) {
 
 /***/ }),
 
-/***/ 164:
+/***/ 771:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   c: () => (/* binding */ hasClosestByHeadings),
-/* harmony export */   f: () => (/* binding */ hasClosestByTag)
+/* harmony export */   "S": () => (/* binding */ hasClosestByTag),
+/* harmony export */   "W": () => (/* binding */ hasClosestByHeadings)
 /* harmony export */ });
 // NOTE: 减少 method.ts 打包，故从 hasClosest.ts 中拆分
 var hasClosestByTag = function (element, nodeName) {
@@ -4470,12 +4777,12 @@ var hasClosestByHeadings = function (element) {
 
 /***/ }),
 
-/***/ 905:
+/***/ 673:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   h: () => (/* binding */ merge)
+/* harmony export */   "T": () => (/* binding */ merge)
 /* harmony export */ });
 var merge = function () {
     var options = [];
@@ -4504,27 +4811,30 @@ var merge = function () {
 
 /***/ }),
 
-/***/ 827:
+/***/ 810:
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Co: () => (/* binding */ selectIsEditor),
-/* harmony export */   ED: () => (/* binding */ getSelectPosition),
-/* harmony export */   Ey: () => (/* binding */ getCursorPosition),
-/* harmony export */   Fm: () => (/* binding */ setSelectionByPosition),
-/* harmony export */   RN: () => (/* binding */ getEditorRange),
-/* harmony export */   Z2: () => (/* binding */ insertHTML),
-/* harmony export */   ir: () => (/* binding */ setRangeByWbr),
-/* harmony export */   jl: () => (/* binding */ setSelectionFocus)
+/* harmony export */   "zh": () => (/* binding */ getEditorRange),
+/* harmony export */   "Ny": () => (/* binding */ getCursorPosition),
+/* harmony export */   "Gb": () => (/* binding */ selectIsEditor),
+/* harmony export */   "Hc": () => (/* binding */ setSelectionFocus),
+/* harmony export */   "im": () => (/* binding */ getSelectPosition),
+/* harmony export */   "$j": () => (/* binding */ setSelectionByPosition),
+/* harmony export */   "ib": () => (/* binding */ setRangeByWbr),
+/* harmony export */   "oC": () => (/* binding */ insertHTML)
 /* harmony export */ });
-/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(913);
-/* harmony import */ var _compatibility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(629);
-/* harmony import */ var _hasClosest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(598);
+/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(145);
+/* harmony import */ var _compatibility__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(410);
+/* harmony import */ var _hasClosest__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(106);
 
 
 
 var getEditorRange = function (vditor) {
+    if (vditor.currentMode === "sv") {
+        throw new Error("SV mode uses textarea selection");
+    }
     var range;
     var element = vditor[vditor.currentMode].element;
     if (getSelection().rangeCount > 0) {
@@ -4533,8 +4843,9 @@ var getEditorRange = function (vditor) {
             return range;
         }
     }
-    if (vditor[vditor.currentMode].range) {
-        return vditor[vditor.currentMode].range;
+    var lastRange = vditor.currentMode === "ir" ? vditor.ir.range : vditor.wysiwyg.range;
+    if (lastRange) {
+        return lastRange;
     }
     element.focus();
     range = element.ownerDocument.createRange();
@@ -4544,7 +4855,7 @@ var getEditorRange = function (vditor) {
 };
 var getCursorPosition = function (editor) {
     var range = window.getSelection().getRangeAt(0);
-    if (!editor.contains(range.startContainer) && !(0,_hasClosest__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByClassName */ .KJ)(range.startContainer, "vditor-panel--none")) {
+    if (!editor.contains(range.startContainer) && !(0,_hasClosest__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByClassName */ .fb)(range.startContainer, "vditor-panel--none")) {
         return {
             left: 0,
             top: 0,
@@ -4737,10 +5048,10 @@ var setRangeByWbr = function (element, range) {
                 range.collapse(true);
                 setSelectionFocus(range);
                 // fix Chrome set range bug: **c**
-                if ((0,_compatibility__WEBPACK_IMPORTED_MODULE_2__/* .isChrome */ .H8)() && (wbrElement.previousElementSibling.tagName === "EM" ||
+                if ((0,_compatibility__WEBPACK_IMPORTED_MODULE_2__/* .isChrome */ .i7)() && (wbrElement.previousElementSibling.tagName === "EM" ||
                     wbrElement.previousElementSibling.tagName === "STRONG" ||
                     wbrElement.previousElementSibling.tagName === "S")) {
-                    range.insertNode(document.createTextNode(_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants */ .Y.ZWSP));
+                    range.insertNode(document.createTextNode(_constants__WEBPACK_IMPORTED_MODULE_0__/* .Constants.ZWSP */ .g.ZWSP));
                     range.collapse(false);
                 }
                 wbrElement.remove();
@@ -4773,19 +5084,30 @@ var insertHTML = function (html, vditor) {
     pasteElement.innerHTML = html;
     var range = getEditorRange(vditor);
     if (range.toString() !== "") {
-        vditor[vditor.currentMode].preventInput = true;
+        if (vditor.currentMode === "ir") {
+            vditor.ir.preventInput = true;
+        }
+        else if (vditor.currentMode === "wysiwyg") {
+            vditor.wysiwyg.preventInput = true;
+        }
         document.execCommand("delete", false, "");
     }
     if (pasteElement.firstElementChild &&
         pasteElement.firstElementChild.getAttribute("data-block") === "0") {
         // 粘贴内容为块元素时，应在下一段落中插入
         pasteElement.lastElementChild.insertAdjacentHTML("beforeend", "<wbr>");
-        var blockElement = (0,_hasClosest__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestBlock */ .pt)(range.startContainer);
+        var blockElement = (0,_hasClosest__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestBlock */ .F9)(range.startContainer);
         if (!blockElement) {
             vditor[vditor.currentMode].element.insertAdjacentHTML("beforeend", pasteElement.innerHTML);
         }
         else {
-            blockElement.insertAdjacentHTML("afterend", pasteElement.innerHTML);
+            var liElement = (0,_hasClosest__WEBPACK_IMPORTED_MODULE_1__/* .hasClosestByMatchTag */ .lG)(range.startContainer, "LI");
+            if (liElement && pasteElement.firstElementChild.tagName === "UL") {
+                liElement.insertAdjacentHTML("afterend", pasteElement.firstElementChild.innerHTML);
+            }
+            else {
+                blockElement.insertAdjacentHTML("afterend", pasteElement.innerHTML);
+            }
         }
         setRangeByWbr(vditor[vditor.currentMode].element, range);
     }
@@ -4868,28 +5190,28 @@ __webpack_require__.d(__webpack_exports__, {
 });
 
 // EXTERNAL MODULE: ./src/method.ts + 4 modules
-var method = __webpack_require__(923);
+var method = __webpack_require__(408);
 // EXTERNAL MODULE: ./src/ts/constants.ts
-var constants = __webpack_require__(913);
+var constants = __webpack_require__(145);
 // EXTERNAL MODULE: ./src/ts/util/code160to32.ts
-var code160to32 = __webpack_require__(695);
+var code160to32 = __webpack_require__(105);
 ;// CONCATENATED MODULE: ./src/ts/markdown/getMarkdown.ts
 
 var getMarkdown = function (vditor) {
     if (vditor.currentMode === "sv") {
-        return (0,code160to32/* code160to32 */.p)("".concat(vditor.sv.element.textContent, "\n").replace(/\n\n$/, "\n"));
+        return (0,code160to32/* code160to32 */.X)("".concat(vditor.sv.element.value, "\n").replace(/\n\n$/, "\n"));
     }
     else if (vditor.currentMode === "wysiwyg") {
-        return vditor.lute.VditorDOM2Md(vditor.wysiwyg.element.innerHTML);
+        return (0,code160to32/* code160to32 */.X)(vditor.lute.VditorDOM2Md(vditor.wysiwyg.element.innerHTML));
     }
     else if (vditor.currentMode === "ir") {
-        return vditor.lute.VditorIRDOM2Md(vditor.ir.element.innerHTML);
+        return (0,code160to32/* code160to32 */.X)(vditor.lute.VditorIRDOM2Md(vditor.ir.element.innerHTML));
     }
     return "";
 };
 
 // EXTERNAL MODULE: ./src/ts/util/addScript.ts
-var addScript = __webpack_require__(161);
+var addScript = __webpack_require__(413);
 ;// CONCATENATED MODULE: ./src/ts/devtools/index.ts
 
 
@@ -4904,7 +5226,7 @@ var DevTools = /** @class */ (function () {
         if (vditor.devtools.element.style.display !== "block") {
             return;
         }
-        (0,addScript/* addScript */.Z)("".concat(vditor.options.cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
+        (0,addScript/* addScript */.G)("".concat(vditor.options.cdn, "/dist/js/echarts/echarts.min.js?v=5.5.1"), "vditorEchartsScript").then(function () {
             if (!_this.ASTChart) {
                 _this.ASTChart = echarts.init(vditor.devtools.element.lastElementChild);
             }
@@ -4969,8 +5291,10 @@ var DevTools = /** @class */ (function () {
 }());
 
 
+// EXTERNAL MODULE: ./src/ts/markdown/imageCaptionRender.ts
+var imageCaptionRender = __webpack_require__(161);
 // EXTERNAL MODULE: ./src/ts/util/compatibility.ts
-var compatibility = __webpack_require__(629);
+var compatibility = __webpack_require__(410);
 ;// CONCATENATED MODULE: ./src/ts/toolbar/setToolbar.ts
 
 
@@ -5002,8 +5326,8 @@ var enableToolbar = function (toolbar, names) {
             return;
         }
         var itemElement = toolbar[name].children[0];
-        if (itemElement && itemElement.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
-            itemElement.classList.remove(constants/* Constants */.Y.CLASS_MENU_DISABLED);
+        if (itemElement && itemElement.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
+            itemElement.classList.remove(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED);
         }
     });
 };
@@ -5013,8 +5337,8 @@ var disableToolbar = function (toolbar, names) {
             return;
         }
         var itemElement = toolbar[name].children[0];
-        if (itemElement && !itemElement.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
-            itemElement.classList.add(constants/* Constants */.Y.CLASS_MENU_DISABLED);
+        if (itemElement && !itemElement.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
+            itemElement.classList.add(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED);
         }
     });
 };
@@ -5059,10 +5383,10 @@ var hidePanel = function (vditor, panels, exceptElement) {
     }
 };
 var toggleSubMenu = function (vditor, panelElement, actionBtn, level) {
-    actionBtn.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+    actionBtn.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
         event.preventDefault();
         event.stopPropagation();
-        if (actionBtn.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+        if (actionBtn.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
             return;
         }
         vditor.toolbar.element.querySelectorAll(".vditor-hint--current").forEach(function (item) {
@@ -5088,9 +5412,9 @@ var toggleSubMenu = function (vditor, panelElement, actionBtn, level) {
 };
 
 // EXTERNAL MODULE: ./src/ts/util/hasClosest.ts
-var hasClosest = __webpack_require__(598);
+var hasClosest = __webpack_require__(106);
 // EXTERNAL MODULE: ./src/ts/util/hasClosestByHeadings.ts
-var hasClosestByHeadings = __webpack_require__(164);
+var hasClosestByHeadings = __webpack_require__(771);
 ;// CONCATENATED MODULE: ./src/ts/util/log.ts
 var log = function (method, content, type, print) {
     if (print) {
@@ -5100,30 +5424,33 @@ var log = function (method, content, type, print) {
 };
 
 // EXTERNAL MODULE: ./src/ts/markdown/abcRender.ts
-var abcRender = __webpack_require__(288);
+var abcRender = __webpack_require__(135);
 // EXTERNAL MODULE: ./src/ts/markdown/chartRender.ts
-var chartRender = __webpack_require__(784);
+var chartRender = __webpack_require__(775);
 // EXTERNAL MODULE: ./src/ts/markdown/codeRender.ts
-var codeRender = __webpack_require__(51);
+var codeRender = __webpack_require__(428);
 // EXTERNAL MODULE: ./src/ts/markdown/flowchartRender.ts
-var flowchartRender = __webpack_require__(500);
+var flowchartRender = __webpack_require__(325);
 // EXTERNAL MODULE: ./src/ts/markdown/graphvizRender.ts
-var graphvizRender = __webpack_require__(339);
+var graphvizRender = __webpack_require__(483);
 // EXTERNAL MODULE: ./src/ts/markdown/highlightRender.ts
-var highlightRender = __webpack_require__(108);
+var highlightRender = __webpack_require__(999);
 // EXTERNAL MODULE: ./src/ts/markdown/mathRender.ts
-var mathRender = __webpack_require__(960);
+var mathRender = __webpack_require__(472);
 // EXTERNAL MODULE: ./src/ts/markdown/mermaidRender.ts
-var mermaidRender = __webpack_require__(975);
+var mermaidRender = __webpack_require__(637);
 // EXTERNAL MODULE: ./src/ts/markdown/markmapRender.ts
-var markmapRender = __webpack_require__(597);
+var markmapRender = __webpack_require__(11);
 // EXTERNAL MODULE: ./src/ts/markdown/mindmapRender.ts
-var mindmapRender = __webpack_require__(162);
+var mindmapRender = __webpack_require__(194);
 // EXTERNAL MODULE: ./src/ts/markdown/plantumlRender.ts
-var plantumlRender = __webpack_require__(591);
+var plantumlRender = __webpack_require__(229);
 // EXTERNAL MODULE: ./src/ts/markdown/SMILESRender.ts
-var SMILESRender = __webpack_require__(931);
+var SMILESRender = __webpack_require__(825);
+// EXTERNAL MODULE: ./src/ts/markdown/wavedromRender.ts
+var wavedromRender = __webpack_require__(497);
 ;// CONCATENATED MODULE: ./src/ts/util/processCode.ts
+
 
 
 
@@ -5189,34 +5516,37 @@ var processCodeRender = function (previewPanel, vditor) {
     }
     var language = previewPanel.firstElementChild.className.replace("language-", "");
     if (language === "abc") {
-        (0,abcRender/* abcRender */.$)(previewPanel, vditor.options.cdn);
+        (0,abcRender/* abcRender */.Q)(previewPanel, vditor.options.cdn);
     }
     else if (language === "mermaid") {
-        (0,mermaidRender/* mermaidRender */.e)(previewPanel, vditor.options.cdn, vditor.options.theme);
+        (0,mermaidRender/* mermaidRender */.i)(previewPanel, vditor.options.cdn, vditor.options.theme);
     }
     else if (language === "smiles") {
-        (0,SMILESRender/* SMILESRender */.Y)(previewPanel, vditor.options.cdn, vditor.options.theme);
+        (0,SMILESRender/* SMILESRender */.J)(previewPanel, vditor.options.cdn, vditor.options.theme);
     }
     else if (language === "markmap") {
         (0,markmapRender/* markmapRender */.K)(previewPanel, vditor.options.cdn);
     }
     else if (language === "flowchart") {
-        (0,flowchartRender/* flowchartRender */.D)(previewPanel, vditor.options.cdn);
+        (0,flowchartRender/* flowchartRender */.P)(previewPanel, vditor.options.cdn);
     }
     else if (language === "echarts") {
-        (0,chartRender/* chartRender */.v)(previewPanel, vditor.options.cdn, vditor.options.theme);
+        (0,chartRender/* chartRender */.p)(previewPanel, vditor.options.cdn, vditor.options.theme);
     }
     else if (language === "mindmap") {
-        (0,mindmapRender/* mindmapRender */.l)(previewPanel, vditor.options.cdn, vditor.options.theme);
+        (0,mindmapRender/* mindmapRender */.P)(previewPanel, vditor.options.cdn, vditor.options.theme);
     }
     else if (language === "plantuml") {
-        (0,plantumlRender/* plantumlRender */.M)(previewPanel, vditor.options.cdn);
+        (0,plantumlRender/* plantumlRender */.B)(previewPanel, vditor.options.cdn);
     }
     else if (language === "graphviz") {
-        (0,graphvizRender/* graphvizRender */.m)(previewPanel, vditor.options.cdn);
+        (0,graphvizRender/* graphvizRender */.v)(previewPanel, vditor.options.cdn);
+    }
+    else if (language === "wavedrom") {
+        (0,wavedromRender/* wavedromRender */.F)(previewPanel, vditor.options.cdn);
     }
     else if (language === "math") {
-        (0,mathRender/* mathRender */.T)(previewPanel, { cdn: vditor.options.cdn, math: vditor.options.preview.math });
+        (0,mathRender/* mathRender */.H)(previewPanel, { cdn: vditor.options.cdn, math: vditor.options.preview.math });
     }
     else {
         var cRender = vditor.options.customRenders.find(function (item) {
@@ -5226,15 +5556,15 @@ var processCodeRender = function (previewPanel, vditor) {
             }
         });
         if (!cRender) {
-            (0,highlightRender/* highlightRender */.$)(Object.assign({}, vditor.options.preview.hljs), previewPanel, vditor.options.cdn);
-            (0,codeRender/* codeRender */.o)(previewPanel, vditor.options.preview.hljs);
+            (0,highlightRender/* highlightRender */.s)(Object.assign({}, vditor.options.preview.hljs), previewPanel, vditor.options.cdn);
+            (0,codeRender/* codeRender */.O)(previewPanel, vditor.options.preview.hljs);
         }
     }
     previewPanel.setAttribute("data-render", "1");
 };
 
 // EXTERNAL MODULE: ./src/ts/util/selection.ts
-var selection = __webpack_require__(827);
+var selection = __webpack_require__(810);
 ;// CONCATENATED MODULE: ./src/ts/util/toc.ts
 
 
@@ -5251,15 +5581,15 @@ var renderToc = function (vditor) {
     }
     editorElement.querySelectorAll('[data-type="toc-block"]').forEach(function (item) {
         item.innerHTML = tocHTML;
-        (0,mathRender/* mathRender */.T)(item, {
+        (0,mathRender/* mathRender */.H)(item, {
             cdn: vditor.options.cdn,
             math: vditor.options.preview.math,
         });
     });
 };
 var clickToc = function (event, vditor) {
-    var spanElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(event.target, "SPAN");
-    if (spanElement && (0,hasClosest/* hasClosestByClassName */.KJ)(spanElement, "vditor-toc")) {
+    var spanElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(event.target, "SPAN");
+    if (spanElement && (0,hasClosest/* hasClosestByClassName */.fb)(spanElement, "vditor-toc")) {
         var headingElement = vditor[vditor.currentMode].element.querySelector("#" + spanElement.getAttribute("data-target-id"));
         if (headingElement) {
             if (vditor.options.height === "auto") {
@@ -5284,7 +5614,7 @@ var keydownToc = function (blockElement, vditor, event, range) {
     if (blockElement.previousElementSibling &&
         blockElement.previousElementSibling.classList.contains("vditor-toc")) {
         if (event.key === "Backspace" &&
-            (0,selection/* getSelectPosition */.ED)(blockElement, vditor[vditor.currentMode].element, range).start === 0) {
+            (0,selection/* getSelectPosition */.im)(blockElement, vditor[vditor.currentMode].element, range).start === 0) {
             blockElement.previousElementSibling.remove();
             execAfterRender(vditor);
             return true;
@@ -5297,7 +5627,7 @@ var keydownToc = function (blockElement, vditor, event, range) {
     if (blockElement.nextElementSibling &&
         blockElement.nextElementSibling.classList.contains("vditor-toc")) {
         if (event.key === "Delete" &&
-            (0,selection/* getSelectPosition */.ED)(blockElement, vditor[vditor.currentMode].element, range).start
+            (0,selection/* getSelectPosition */.im)(blockElement, vditor[vditor.currentMode].element, range).start
                 >= blockElement.textContent.trimRight().length) {
             blockElement.nextElementSibling.remove();
             execAfterRender(vditor);
@@ -5309,7 +5639,7 @@ var keydownToc = function (blockElement, vditor, event, range) {
     }
     // toc 删除
     if (event.key === "Backspace" || event.key === "Delete") {
-        var tocElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-toc");
+        var tocElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-toc");
         if (tocElement) {
             tocElement.remove();
             execAfterRender(vditor);
@@ -5331,7 +5661,7 @@ var keydownToc = function (blockElement, vditor, event, range) {
 
 var input = function (vditor, range, ignoreSpace, event) {
     if (ignoreSpace === void 0) { ignoreSpace = false; }
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
     // 前后可以输入空格
     if (blockElement && !ignoreSpace && blockElement.getAttribute("data-type") !== "code-block") {
         if ((isHrMD(blockElement.innerHTML) && blockElement.previousElementSibling) ||
@@ -5339,7 +5669,7 @@ var input = function (vditor, range, ignoreSpace, event) {
             return;
         }
         // 前后空格处理
-        var startOffset = (0,selection/* getSelectPosition */.ED)(blockElement, vditor.ir.element, range).start;
+        var startOffset = (0,selection/* getSelectPosition */.im)(blockElement, vditor.ir.element, range).start;
         // 开始可以输入空格
         var startSpace = true;
         for (var i = startOffset - 1; 
@@ -5374,7 +5704,7 @@ var input = function (vditor, range, ignoreSpace, event) {
             endSpace = false;
         }
         if (endSpace) {
-            var markerElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-ir__marker");
+            var markerElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-ir__marker");
             if (markerElement) {
                 // inline marker space https://github.com/Vanessa219/vditor/issues/239
             }
@@ -5400,7 +5730,7 @@ var input = function (vditor, range, ignoreSpace, event) {
     }
     // document.exeComment insertHTML 会插入 wbr
     if (!blockElement.querySelector("wbr")) {
-        var previewRenderElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-ir__preview");
+        var previewRenderElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-ir__preview");
         if (previewRenderElement) {
             previewRenderElement.previousElementSibling.insertAdjacentHTML("beforeend", "<wbr>");
         }
@@ -5417,12 +5747,12 @@ var input = function (vditor, range, ignoreSpace, event) {
         blockElement = vditor.ir.element;
     }
     var isIRElement = blockElement.isEqualNode(vditor.ir.element);
-    var footnoteElement = (0,hasClosest/* hasClosestByAttribute */.Th)(blockElement, "data-type", "footnotes-block");
+    var footnoteElement = (0,hasClosest/* hasClosestByAttribute */.a1)(blockElement, "data-type", "footnotes-block");
     var html = "";
     if (!isIRElement) {
-        var blockquoteElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(range.startContainer, "BLOCKQUOTE");
+        var blockquoteElement = (0,hasClosestByHeadings/* hasClosestByTag */.S)(range.startContainer, "BLOCKQUOTE");
         // 列表需要到最顶层
-        var topListElement = (0,hasClosest/* getTopList */.KR)(range.startContainer);
+        var topListElement = (0,hasClosest/* getTopList */.O9)(range.startContainer);
         if (topListElement) {
             blockElement = topListElement;
         }
@@ -5451,7 +5781,7 @@ var input = function (vditor, range, ignoreSpace, event) {
             html = html.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
         }
         else if (blockElement.previousElementSibling &&
-            blockElement.previousElementSibling.textContent.replace(constants/* Constants */.Y.ZWSP, "") !== "" &&
+            blockElement.previousElementSibling.textContent.replace(constants/* Constants.ZWSP */.g.ZWSP, "") !== "" &&
             event && event.inputType === "insertParagraph") {
             // 换行时需要处理上一段落
             html = blockElement.previousElementSibling.outerHTML + html;
@@ -5487,7 +5817,7 @@ var input = function (vditor, range, ignoreSpace, event) {
         blockElement.outerHTML = html;
         // 更新正文中的 tip
         if (footnoteElement) {
-            var footnoteItemElement = (0,hasClosest/* hasClosestByAttribute */.Th)(vditor.ir.element.querySelector("wbr"), "data-type", "footnotes-def");
+            var footnoteItemElement = (0,hasClosest/* hasClosestByAttribute */.a1)(vditor.ir.element.querySelector("wbr"), "data-type", "footnotes-def");
             if (footnoteItemElement) {
                 var footnoteItemText = footnoteItemElement.textContent;
                 var marker = footnoteItemText.substring(1, footnoteItemText.indexOf("]:"));
@@ -5528,12 +5858,829 @@ var input = function (vditor, range, ignoreSpace, event) {
     if (allFootnoteElement.length > 0) {
         vditor.ir.element.insertAdjacentElement("beforeend", allFootnoteElement[0]);
     }
-    (0,selection/* setRangeByWbr */.ir)(vditor.ir.element, range);
+    (0,selection/* setRangeByWbr */.ib)(vditor.ir.element, range);
     vditor.ir.element.querySelectorAll(".vditor-ir__preview[data-render='2']").forEach(function (item) {
         processCodeRender(item, vditor);
     });
     renderToc(vditor);
     process_processAfterRender(vditor, {
+        enableAddUndoStack: true,
+        enableHint: true,
+        enableInput: true,
+    });
+};
+
+;// CONCATENATED MODULE: ./src/ts/sv/process.ts
+
+
+var replaceSelection = function (vditor, text, selectionMode) {
+    if (selectionMode === void 0) { selectionMode = "end"; }
+    var element = vditor.sv.element;
+    element.setRangeText(text, element.selectionStart, element.selectionEnd, selectionMode);
+    element.focus();
+};
+var processPaste = function (vditor, text) {
+    replaceSelection(vditor, text);
+};
+var processAfterRender = function (vditor, options) {
+    if (options === void 0) { options = {
+        enableAddUndoStack: true,
+        enableHint: false,
+        enableInput: true,
+    }; }
+    vditor.preview.render(vditor);
+    var text = getMarkdown(vditor);
+    if (typeof vditor.options.input === "function" && options.enableInput) {
+        vditor.options.input(text);
+    }
+    if (vditor.options.counter.enable) {
+        vditor.counter.render(vditor, text);
+    }
+    if (vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.pK)()) {
+        localStorage.setItem(vditor.options.cache.id, text);
+        if (vditor.options.cache.after) {
+            vditor.options.cache.after(text);
+        }
+    }
+    if (vditor.devtools) {
+        vditor.devtools.renderEchart(vditor);
+    }
+    clearTimeout(vditor.sv.processTimeoutId);
+    vditor.sv.processTimeoutId = window.setTimeout(function () {
+        if (options.enableAddUndoStack && !vditor.sv.composingLock) {
+            vditor.undo.addToUndoStack(vditor);
+        }
+    }, vditor.options.undoDelay);
+};
+var processHeading = function (vditor, value) {
+    var element = vditor.sv.element;
+    var lineStart = element.value.lastIndexOf("\n", element.selectionStart - 1) + 1;
+    var lineEndIndex = element.value.indexOf("\n", element.selectionEnd);
+    var lineEnd = lineEndIndex === -1 ? element.value.length : lineEndIndex;
+    var selectedLines = element.value.substring(lineStart, lineEnd);
+    var heading = value ? value + selectedLines.replace(/^#{1,6}\s+/, "") : selectedLines.replace(/^#{1,6}\s+/, "");
+    element.setRangeText(heading, lineStart, lineEnd, "select");
+    element.focus();
+    processAfterRender(vditor);
+};
+var processToolbar = function (vditor, actionBtn, prefix, suffix) {
+    var element = vditor.sv.element;
+    var commandName = actionBtn.getAttribute("data-type");
+    var start = element.selectionStart;
+    var end = element.selectionEnd;
+    var selectedText = element.value.substring(start, end);
+    var text = "";
+    var selectionStart = start + prefix.length;
+    var selectionEnd = selectionStart + selectedText.length;
+    if (commandName === "check" || commandName === "list" || commandName === "ordered-list" ||
+        commandName === "quote") {
+        var lineStart = element.value.lastIndexOf("\n", start - 1) + 1;
+        var lineEndIndex = element.value.indexOf("\n", end);
+        var lineEnd = lineEndIndex === -1 ? element.value.length : lineEndIndex;
+        var lines = element.value.substring(lineStart, lineEnd);
+        text = lines.split("\n").map(function (line) { return prefix + line; }).join("\n");
+        element.setRangeText(text, lineStart, lineEnd, "select");
+    }
+    else if (commandName === "line") {
+        text = "".concat(start === 0 ? "" : "\n\n").concat(prefix, "\n");
+        element.setRangeText(text, start, end, "end");
+    }
+    else if (commandName === "code") {
+        text = "".concat(prefix, "\n").concat(selectedText).concat(suffix);
+        element.setRangeText(text, start, end, "end");
+        selectionStart = start + prefix.length + 1;
+        selectionEnd = selectionStart + selectedText.length;
+        element.setSelectionRange(selectionStart, selectionEnd);
+    }
+    else if (commandName === "table") {
+        text = "".concat(start === 0 ? "" : "\n\n").concat(prefix).concat(suffix);
+        element.setRangeText(text, start, end, "end");
+    }
+    else {
+        text = "".concat(prefix).concat(selectedText).concat(suffix);
+        element.setRangeText(text, start, end, "end");
+        element.setSelectionRange(selectionStart, selectionEnd);
+    }
+    element.focus();
+    processAfterRender(vditor);
+};
+
+;// CONCATENATED MODULE: ./src/ts/upload/getElement.ts
+var getElement = function (vditor) {
+    switch (vditor.currentMode) {
+        case "ir":
+            return vditor.ir.element;
+        case "wysiwyg":
+            return vditor.wysiwyg.element;
+        case "sv":
+            return vditor.sv.element;
+    }
+};
+
+;// CONCATENATED MODULE: ./src/ts/upload/setHeaders.ts
+var setHeaders = function (vditor, xhr) {
+    if (vditor.options.upload.setHeaders) {
+        vditor.options.upload.headers = vditor.options.upload.setHeaders();
+    }
+    if (vditor.options.upload.headers) {
+        Object.keys(vditor.options.upload.headers).forEach(function (key) {
+            xhr.setRequestHeader(key, vditor.options.upload.headers[key]);
+        });
+    }
+};
+
+;// CONCATENATED MODULE: ./src/ts/upload/index.ts
+var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
+    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
+    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
+    function verb(n) { return function (v) { return step([n, v]); }; }
+    function step(op) {
+        if (f) throw new TypeError("Generator is already executing.");
+        while (g && (g = 0, op[0] && (_ = 0)), _) try {
+            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
+            if (y = 0, t) op = [op[0] & 2, t.value];
+            switch (op[0]) {
+                case 0: case 1: t = op; break;
+                case 4: _.label++; return { value: op[1], done: false };
+                case 5: _.label++; y = op[1]; op = [0]; continue;
+                case 7: op = _.ops.pop(); _.trys.pop(); continue;
+                default:
+                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
+                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
+                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
+                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
+                    if (t[2]) _.ops.pop();
+                    _.trys.pop(); continue;
+            }
+            op = body.call(thisArg, _);
+        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
+        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
+    }
+};
+
+
+
+
+var Upload = /** @class */ (function () {
+    function Upload() {
+        this.isUploading = false;
+        this.element = document.createElement("div");
+        this.element.className = "vditor-upload";
+    }
+    return Upload;
+}());
+var validateFile = function (vditor, files) {
+    vditor.tip.hide();
+    var uploadFileList = [];
+    var errorTip = "";
+    var uploadingStr = "";
+    var lang = vditor.options.lang;
+    var options = vditor.options;
+    var _loop_1 = function (iMax, i) {
+        var file = files[i];
+        var validate = true;
+        if (!file.name) {
+            errorTip += "<li>".concat(window.VditorI18n.nameEmpty, "</li>");
+            validate = false;
+        }
+        if (file.size > vditor.options.upload.max) {
+            errorTip += "<li>".concat(file.name, " ").concat(window.VditorI18n.over, " ").concat(vditor.options.upload.max / 1024 / 1024, "M</li>");
+            validate = false;
+        }
+        var lastIndex = file.name.lastIndexOf(".");
+        var fileExt = file.name.substr(lastIndex);
+        var filename = vditor.options.upload.filename(file.name.substr(0, lastIndex)) + fileExt;
+        if (vditor.options.upload.accept) {
+            var isAccept = vditor.options.upload.accept.split(",").some(function (item) {
+                var type = item.trim();
+                if (type.indexOf(".") === 0) {
+                    if (fileExt.toLowerCase() === type.toLowerCase()) {
+                        return true;
+                    }
+                }
+                else {
+                    if (file.type.split("/")[0] === type.split("/")[0]) {
+                        return true;
+                    }
+                }
+                return false;
+            });
+            if (!isAccept) {
+                errorTip += "<li>".concat(file.name, " ").concat(window.VditorI18n.fileTypeError, "</li>");
+                validate = false;
+            }
+        }
+        if (validate) {
+            uploadFileList.push(file);
+            uploadingStr += "<li>".concat(filename, " ").concat(window.VditorI18n.uploading, " <a class=\"vditorCancelUpload\" href=\"javascript:void(0)\">").concat(window.VditorI18n.cancelUpload, "</a></li>");
+        }
+    };
+    for (var iMax = files.length, i = 0; i < iMax; i++) {
+        _loop_1(iMax, i);
+    }
+    vditor.tip.show("<ul>".concat(errorTip).concat(uploadingStr, "</ul>"));
+    if (vditor.options.upload.cancel) {
+        var vditorCancelUploadElement = vditor.tip.element.querySelector(".vditorCancelUpload");
+        if (vditorCancelUploadElement) {
+            vditorCancelUploadElement.addEventListener("click", function () {
+                vditor.options.upload.cancel(uploadFileList);
+                vditor.tip.hide();
+                vditor.upload.isUploading = false;
+            });
+        }
+    }
+    return uploadFileList;
+};
+var genUploadedLabel = function (responseText, vditor) {
+    var editorElement = getElement(vditor);
+    editorElement.focus();
+    var response = JSON.parse(responseText);
+    var errorTip = "";
+    if (response.code === 1) {
+        errorTip = "".concat(response.msg);
+    }
+    if (response.data.errFiles && response.data.errFiles.length > 0) {
+        errorTip = "<ul><li>".concat(errorTip, "</li>");
+        response.data.errFiles.forEach(function (data) {
+            var lastIndex = data.lastIndexOf(".");
+            var filename = vditor.options.upload.filename(data.substr(0, lastIndex)) + data.substr(lastIndex);
+            errorTip += "<li>".concat(filename, " ").concat(window.VditorI18n.uploadError, "</li>");
+        });
+        errorTip += "</ul>";
+    }
+    if (errorTip) {
+        vditor.tip.show(errorTip);
+    }
+    else {
+        vditor.tip.hide();
+    }
+    var succFileText = "";
+    Object.keys(response.data.succMap).forEach(function (key) {
+        var path = response.data.succMap[key];
+        var lastIndex = key.lastIndexOf(".");
+        var type = key.substr(lastIndex);
+        var filename = vditor.options.upload.filename(key.substr(0, lastIndex)) + type;
+        type = type.toLowerCase();
+        if (type.indexOf(".wav") === 0 || type.indexOf(".mp3") === 0 || type.indexOf(".ogg") === 0) {
+            if (vditor.currentMode === "wysiwyg") {
+                succFileText += "<div class=\"vditor-wysiwyg__block\" data-type=\"html-block\"\n data-block=\"0\"><pre><code>&lt;audio controls=\"controls\" src=\"".concat(path, "\"&gt;&lt;/audio&gt;</code></pre><pre class=\"vditor-wysiwyg__preview\" data-render=\"1\"><audio controls=\"controls\" src=\"").concat(path, "\"></audio></pre></div>\n");
+            }
+            else if (vditor.currentMode === "ir") {
+                succFileText += "<audio controls=\"controls\" src=\"".concat(path, "\"></audio>\n");
+            }
+            else {
+                succFileText += "[".concat(filename, "](").concat(path, ")\n");
+            }
+        }
+        else if (type.indexOf(".apng") === 0
+            || type.indexOf(".bmp") === 0
+            || type.indexOf(".gif") === 0
+            || type.indexOf(".ico") === 0 || type.indexOf(".cur") === 0
+            || type.indexOf(".jpg") === 0 || type.indexOf(".jpeg") === 0 || type.indexOf(".jfif") === 0 || type.indexOf(".pjp") === 0 || type.indexOf(".pjpeg") === 0
+            || type.indexOf(".png") === 0
+            || type.indexOf(".svg") === 0
+            || type.indexOf(".webp") === 0) {
+            if (vditor.currentMode === "wysiwyg") {
+                succFileText += "<img alt=\"".concat(filename, "\" src=\"").concat(path, "\">\n");
+            }
+            else {
+                succFileText += "![".concat(filename, "](").concat(path, ")\n");
+            }
+        }
+        else {
+            if (vditor.currentMode === "wysiwyg") {
+                succFileText += "<a href=\"".concat(path, "\">").concat(filename, "</a>\n");
+            }
+            else {
+                succFileText += "[".concat(filename, "](").concat(path, ")\n");
+            }
+        }
+    });
+    if (!succFileText) {
+        if (vditor.currentMode === "sv") {
+            vditor.sv.element.setSelectionRange(vditor.upload.selectionStart, vditor.upload.selectionEnd);
+        }
+        else {
+            (0,selection/* setSelectionFocus */.Hc)(vditor.upload.range);
+        }
+        return;
+    }
+    if (vditor.currentMode === "sv") {
+        vditor.sv.element.setSelectionRange(vditor.upload.selectionStart, vditor.upload.selectionEnd);
+        processPaste(vditor, succFileText);
+        processAfterRender(vditor);
+        vditor.upload.selectionStart = vditor.sv.element.selectionStart;
+        vditor.upload.selectionEnd = vditor.sv.element.selectionEnd;
+    }
+    else {
+        (0,selection/* setSelectionFocus */.Hc)(vditor.upload.range);
+        document.execCommand("insertHTML", false, succFileText);
+        vditor.upload.range = getSelection().getRangeAt(0).cloneRange();
+    }
+};
+var uploadFiles = function (vditor, files, element) { return __awaiter(void 0, void 0, void 0, function () {
+    var fileList, filesMax, i, fileItem, isValidate, isValidate, editorElement, validateResult, formData, extraData, _i, _a, key, i, iMax, xhr;
+    return __generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                fileList = [];
+                filesMax = vditor.options.upload.multiple === true ? files.length : 1;
+                for (i = 0; i < filesMax; i++) {
+                    fileItem = files[i];
+                    if (fileItem instanceof DataTransferItem) {
+                        fileItem = fileItem.getAsFile();
+                    }
+                    fileList.push(fileItem);
+                }
+                if (!vditor.options.upload.handler) return [3 /*break*/, 2];
+                return [4 /*yield*/, vditor.options.upload.handler(fileList)];
+            case 1:
+                isValidate = _b.sent();
+                if (element) {
+                    element.value = "";
+                }
+                if (typeof isValidate === "string") {
+                    vditor.tip.show(isValidate);
+                    return [2 /*return*/];
+                }
+                return [2 /*return*/];
+            case 2:
+                if (!vditor.options.upload.url || !vditor.upload) {
+                    if (element) {
+                        element.value = "";
+                    }
+                    vditor.tip.show("please config: options.upload.url");
+                    return [2 /*return*/];
+                }
+                if (!vditor.options.upload.file) return [3 /*break*/, 4];
+                return [4 /*yield*/, vditor.options.upload.file(fileList)];
+            case 3:
+                fileList = _b.sent();
+                _b.label = 4;
+            case 4:
+                if (vditor.options.upload.validate) {
+                    isValidate = vditor.options.upload.validate(fileList);
+                    if (typeof isValidate === "string") {
+                        vditor.tip.show(isValidate);
+                        return [2 /*return*/];
+                    }
+                }
+                editorElement = getElement(vditor);
+                if (vditor.currentMode === "sv") {
+                    vditor.upload.selectionStart = vditor.sv.element.selectionStart;
+                    vditor.upload.selectionEnd = vditor.sv.element.selectionEnd;
+                }
+                else {
+                    vditor.upload.range = (0,selection/* getEditorRange */.zh)(vditor);
+                }
+                validateResult = validateFile(vditor, fileList);
+                if (validateResult.length === 0) {
+                    if (element) {
+                        element.value = "";
+                    }
+                    return [2 /*return*/];
+                }
+                formData = new FormData();
+                extraData = vditor.options.upload.extraData;
+                for (_i = 0, _a = Object.keys(extraData); _i < _a.length; _i++) {
+                    key = _a[_i];
+                    formData.append(key, extraData[key]);
+                }
+                for (i = 0, iMax = validateResult.length; i < iMax; i++) {
+                    formData.append(vditor.options.upload.fieldName, validateResult[i]);
+                }
+                xhr = new XMLHttpRequest();
+                vditor.upload.xhr = xhr;
+                xhr.open("POST", vditor.options.upload.url);
+                if (vditor.options.upload.token) {
+                    xhr.setRequestHeader("X-Upload-Token", vditor.options.upload.token);
+                }
+                if (vditor.options.upload.withCredentials) {
+                    xhr.withCredentials = true;
+                }
+                setHeaders(vditor, xhr);
+                vditor.upload.isUploading = true;
+                if (vditor.currentMode === "sv") {
+                    vditor.sv.element.disabled = true;
+                }
+                else {
+                    editorElement.setAttribute("contenteditable", "false");
+                }
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === XMLHttpRequest.DONE) {
+                        vditor.upload.isUploading = false;
+                        if (vditor.currentMode === "sv") {
+                            vditor.sv.element.disabled = false;
+                        }
+                        else {
+                            editorElement.setAttribute("contenteditable", "true");
+                        }
+                        if (xhr.status >= 200 && xhr.status < 300) {
+                            if (vditor.options.upload.success) {
+                                vditor.options.upload.success(editorElement, xhr.responseText);
+                            }
+                            else {
+                                var responseText = xhr.responseText;
+                                if (vditor.options.upload.format) {
+                                    responseText = vditor.options.upload.format(files, xhr.responseText);
+                                }
+                                genUploadedLabel(responseText, vditor);
+                            }
+                        }
+                        else {
+                            if (vditor.options.upload.error) {
+                                vditor.options.upload.error(xhr.responseText);
+                            }
+                            else {
+                                vditor.tip.show(xhr.responseText);
+                            }
+                        }
+                        if (element) {
+                            element.value = "";
+                        }
+                        vditor.upload.element.style.display = "none";
+                        vditor.upload.xhr = undefined;
+                    }
+                };
+                xhr.upload.onprogress = function (event) {
+                    if (!event.lengthComputable) {
+                        return;
+                    }
+                    var progress = event.loaded / event.total * 100;
+                    vditor.upload.element.style.display = "block";
+                    var progressBar = vditor.upload.element;
+                    progressBar.style.width = progress + "%";
+                };
+                xhr.send(formData);
+                return [2 /*return*/];
+        }
+    });
+}); };
+
+
+;// CONCATENATED MODULE: ./src/ts/wysiwyg/afterRenderEvent.ts
+
+
+
+var afterRenderEvent = function (vditor, options) {
+    if (options === void 0) { options = {
+        enableAddUndoStack: true,
+        enableHint: false,
+        enableInput: true,
+    }; }
+    (0,imageCaptionRender/* renderImageCaptions */.W)(vditor.wysiwyg.element, "wysiwyg", vditor.options.preview.markdown.imageCaption);
+    if (options.enableHint) {
+        vditor.hint.render(vditor);
+    }
+    clearTimeout(vditor.wysiwyg.afterRenderTimeoutId);
+    vditor.wysiwyg.afterRenderTimeoutId = window.setTimeout(function () {
+        if (vditor.wysiwyg.composingLock) {
+            return;
+        }
+        var text = getMarkdown(vditor);
+        if (typeof vditor.options.input === "function" && options.enableInput) {
+            vditor.options.input(text);
+        }
+        if (vditor.options.counter.enable) {
+            vditor.counter.render(vditor, text);
+        }
+        if (vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.pK)()) {
+            localStorage.setItem(vditor.options.cache.id, text);
+            if (vditor.options.cache.after) {
+                vditor.options.cache.after(text);
+            }
+        }
+        if (vditor.devtools) {
+            vditor.devtools.renderEchart(vditor);
+        }
+        if (options.enableAddUndoStack) {
+            vditor.undo.addToUndoStack(vditor);
+        }
+    }, vditor.options.undoDelay);
+};
+
+;// CONCATENATED MODULE: ./src/ts/wysiwyg/inlineTag.ts
+
+
+var previoueIsEmptyA = function (node) {
+    var previousNode = node.previousSibling;
+    while (previousNode) {
+        if (previousNode.nodeType !== 3 && previousNode.tagName === "A" && !previousNode.previousSibling
+            && previousNode.innerHTML.replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "" && previousNode.nextSibling) {
+            return previousNode;
+        }
+        previousNode = previousNode.previousSibling;
+    }
+    return false;
+};
+var nextIsCode = function (range) {
+    var nextNode = range.startContainer.nextSibling;
+    while (nextNode && nextNode.textContent === "") {
+        nextNode = nextNode.nextSibling;
+    }
+    if (nextNode && nextNode.nodeType !== 3 && (nextNode.tagName === "CODE" ||
+        nextNode.getAttribute("data-type") === "math-inline" ||
+        nextNode.getAttribute("data-type") === "html-entity" ||
+        nextNode.getAttribute("data-type") === "html-inline")) {
+        return true;
+    }
+    return false;
+};
+var getNextHTML = function (node) {
+    var html = "";
+    var nextNode = node.nextSibling;
+    while (nextNode) {
+        if (nextNode.nodeType === 3) {
+            html += nextNode.textContent;
+        }
+        else {
+            html += nextNode.outerHTML;
+        }
+        nextNode = nextNode.nextSibling;
+    }
+    return html;
+};
+var getPreviousHTML = function (node) {
+    var html = "";
+    var previousNode = node.previousSibling;
+    while (previousNode) {
+        if (previousNode.nodeType === 3) {
+            html = previousNode.textContent + html;
+        }
+        else {
+            html = previousNode.outerHTML + html;
+        }
+        previousNode = previousNode.previousSibling;
+    }
+    return html;
+};
+var getRenderElementNextNode = function (blockCodeElement) {
+    var nextNode = blockCodeElement;
+    while (nextNode && !nextNode.nextSibling) {
+        nextNode = nextNode.parentElement;
+    }
+    return nextNode.nextSibling;
+};
+var splitElement = function (range) {
+    var previousHTML = getPreviousHTML(range.startContainer);
+    var nextHTML = getNextHTML(range.startContainer);
+    var text = range.startContainer.textContent;
+    var offset = range.startOffset;
+    var beforeHTML = "";
+    var afterHTML = "";
+    if (text.substr(0, offset) !== "" && text.substr(0, offset) !== constants/* Constants.ZWSP */.g.ZWSP || previousHTML) {
+        beforeHTML = "".concat(previousHTML).concat(text.substr(0, offset));
+    }
+    if (text.substr(offset) !== "" && text.substr(offset) !== constants/* Constants.ZWSP */.g.ZWSP || nextHTML) {
+        afterHTML = "".concat(text.substr(offset)).concat(nextHTML);
+    }
+    return {
+        afterHTML: afterHTML,
+        beforeHTML: beforeHTML,
+    };
+};
+var modifyPre = function (vditor, range) {
+    // 没有被块元素包裹
+    Array.from(vditor.wysiwyg.element.childNodes).find(function (node) {
+        if (node.nodeType === 3) {
+            var pElement = document.createElement("p");
+            pElement.setAttribute("data-block", "0");
+            pElement.textContent = node.textContent;
+            // 为空按下 tab 且 tab = '    ' 时，range.startContainer 不为 node
+            var cloneRangeOffset = range.startContainer.nodeType === 3 ? range.startOffset : node.textContent.length;
+            node.parentNode.insertBefore(pElement, node);
+            node.remove();
+            range.setStart(pElement.firstChild, Math.min(pElement.firstChild.textContent.length, cloneRangeOffset));
+            range.collapse(true);
+            (0,selection/* setSelectionFocus */.Hc)(range);
+            return true;
+        }
+        else if (!node.getAttribute("data-block")) {
+            if (node.tagName === "P") {
+                node.remove();
+            }
+            else {
+                if (node.tagName === "DIV") {
+                    range.insertNode(document.createElement("wbr"));
+                    // firefox 列表换行产生 div
+                    node.outerHTML = "<p data-block=\"0\">".concat(node.innerHTML, "</p>");
+                }
+                else {
+                    if (node.tagName === "BR") {
+                        // firefox 空换行产生 BR
+                        node.outerHTML = "<p data-block=\"0\">".concat(node.outerHTML, "<wbr></p>");
+                    }
+                    else {
+                        range.insertNode(document.createElement("wbr"));
+                        node.outerHTML = "<p data-block=\"0\">".concat(node.outerHTML, "</p>");
+                    }
+                }
+                (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
+                range = getSelection().getRangeAt(0);
+            }
+            return true;
+        }
+    });
+};
+
+;// CONCATENATED MODULE: ./src/ts/wysiwyg/input.ts
+
+
+
+
+
+
+
+
+var input_input = function (vditor, range, event) {
+    var _a;
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
+    if (!blockElement) {
+        // 使用顶级块元素，应使用 innerHTML
+        blockElement = vditor.wysiwyg.element;
+    }
+    if (event && event.inputType !== "formatItalic"
+        && event.inputType !== "deleteByDrag"
+        && event.inputType !== "insertFromDrop"
+        && event.inputType !== "formatBold"
+        && event.inputType !== "formatRemove"
+        && event.inputType !== "formatStrikeThrough"
+        && event.inputType !== "insertUnorderedList"
+        && event.inputType !== "insertOrderedList"
+        && event.inputType !== "formatOutdent"
+        && event.inputType !== "formatIndent"
+        && event.inputType !== "" // document.execCommand('unlink', false)
+        || !event) {
+        var previousAEmptyElement = previoueIsEmptyA(range.startContainer);
+        if (previousAEmptyElement) {
+            // 链接结尾回车不应该复制到下一行 https://github.com/Vanessa219/vditor/issues/163
+            previousAEmptyElement.remove();
+        }
+        // 保存光标
+        vditor.wysiwyg.element.querySelectorAll("wbr").forEach(function (wbr) {
+            wbr.remove();
+        });
+        range.insertNode(document.createElement("wbr"));
+        // 在行首进行删除，后面的元素会带有样式，需清除
+        blockElement.querySelectorAll("[style]").forEach(function (item) {
+            item.removeAttribute("style");
+        });
+        // 移除空评论
+        blockElement.querySelectorAll(".vditor-comment").forEach(function (item) {
+            if (item.textContent.trim() === "") {
+                item.classList.remove("vditor-comment", "vditor-comment--focus");
+                item.removeAttribute("data-cmtids");
+            }
+        });
+        //  在有评论的行首换行后，该行的前一段会带有评论标识
+        (_a = blockElement.previousElementSibling) === null || _a === void 0 ? void 0 : _a.querySelectorAll(".vditor-comment").forEach(function (item) {
+            if (item.textContent.trim() === "") {
+                item.classList.remove("vditor-comment", "vditor-comment--focus");
+                item.removeAttribute("data-cmtids");
+            }
+        });
+        var html_1 = "";
+        if (blockElement.getAttribute("data-type") === "link-ref-defs-block") {
+            // 修改链接引用
+            blockElement = vditor.wysiwyg.element;
+        }
+        var isWYSIWYGElement = blockElement.isEqualNode(vditor.wysiwyg.element);
+        var footnoteElement = (0,hasClosest/* hasClosestByAttribute */.a1)(blockElement, "data-type", "footnotes-block");
+        var calloutElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "callout");
+        if (!isWYSIWYGElement) {
+            // 列表需要到最顶层
+            var topListElement = (0,hasClosest/* getTopList */.O9)(range.startContainer);
+            if (topListElement && !footnoteElement) {
+                var blockquoteElement = (0,hasClosestByHeadings/* hasClosestByTag */.S)(range.startContainer, "BLOCKQUOTE");
+                if (blockquoteElement) {
+                    // li 中有 blockquote 就只渲染 blockquote
+                    blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer) || blockElement;
+                }
+                else {
+                    blockElement = topListElement;
+                }
+            }
+            // 修改脚注
+            if (footnoteElement) {
+                blockElement = footnoteElement;
+            }
+            if (calloutElement) {
+                blockElement = calloutElement;
+            }
+            html_1 = blockElement.outerHTML;
+            if (blockElement.tagName === "UL" || blockElement.tagName === "OL") {
+                // 如果为列表的话，需要把上下的列表都重绘
+                var listPrevElement = blockElement.previousElementSibling;
+                var listNextElement = blockElement.nextElementSibling;
+                if (listPrevElement && (listPrevElement.tagName === "UL" || listPrevElement.tagName === "OL")) {
+                    html_1 = listPrevElement.outerHTML + html_1;
+                    listPrevElement.remove();
+                }
+                if (listNextElement && (listNextElement.tagName === "UL" || listNextElement.tagName === "OL")) {
+                    html_1 = html_1 + listNextElement.outerHTML;
+                    listNextElement.remove();
+                }
+                // firefox 列表回车不会产生新的 list item https://github.com/Vanessa219/vditor/issues/194
+                html_1 = html_1.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
+            }
+            if (!blockElement.innerText.startsWith("```")) {
+                // 添加链接引用
+                vditor.wysiwyg.element.querySelectorAll("[data-type='link-ref-defs-block']").forEach(function (item) {
+                    if (item && !blockElement.isEqualNode(item)) {
+                        html_1 += item.outerHTML;
+                        item.remove();
+                    }
+                });
+                // 添加脚注
+                vditor.wysiwyg.element.querySelectorAll("[data-type='footnotes-block']").forEach(function (item) {
+                    if (item && !blockElement.isEqualNode(item)) {
+                        html_1 += item.outerHTML;
+                        item.remove();
+                    }
+                });
+            }
+        }
+        else {
+            html_1 = blockElement.innerHTML;
+        }
+        // 合并多个 em， strong，s。以防止多个相同元素在一起时不满足 commonmark 规范，出现标记符
+        html_1 = html_1.replace(/<\/(strong|b)><strong data-marker="\W{2}">/g, "")
+            .replace(/<\/(em|i)><em data-marker="\W{1}">/g, "")
+            .replace(/<\/(s|strike)><s data-marker="~{1,2}">/g, "");
+        if (html_1 === '<p data-block="0">```<wbr></p>' && vditor.hint.recentLanguage) {
+            html_1 = '<p data-block="0">```<wbr></p>'.replace("```", "```" + vditor.hint.recentLanguage);
+        }
+        log("SpinVditorDOM", html_1, "argument", vditor.options.debugger);
+        html_1 = vditor.lute.SpinVditorDOM(html_1);
+        log("SpinVditorDOM", html_1, "result", vditor.options.debugger);
+        if (isWYSIWYGElement) {
+            blockElement.innerHTML = html_1;
+        }
+        else {
+            blockElement.outerHTML = html_1;
+            if (footnoteElement) {
+                // 更新正文中的 tip
+                var footnoteItemElement = (0,hasClosest/* hasTopClosestByTag */.E2)(vditor.wysiwyg.element.querySelector("wbr"), "LI");
+                if (footnoteItemElement) {
+                    var footnoteRefElement = vditor.wysiwyg.element.querySelector("sup[data-type=\"footnotes-ref\"][data-footnotes-label=\"".concat(footnoteItemElement.getAttribute("data-marker"), "\"]"));
+                    if (footnoteRefElement) {
+                        footnoteRefElement.setAttribute("aria-label", footnoteItemElement.textContent.trim().substr(0, 24));
+                    }
+                }
+            }
+        }
+        var firstLinkRefDefElement_1;
+        var allLinkRefDefsElement = vditor.wysiwyg.element.querySelectorAll("[data-type='link-ref-defs-block']");
+        allLinkRefDefsElement.forEach(function (item, index) {
+            if (index === 0) {
+                firstLinkRefDefElement_1 = item;
+            }
+            else {
+                firstLinkRefDefElement_1.insertAdjacentHTML("beforeend", item.innerHTML);
+                item.remove();
+            }
+        });
+        if (allLinkRefDefsElement.length > 0) {
+            vditor.wysiwyg.element.insertAdjacentElement("beforeend", allLinkRefDefsElement[0]);
+        }
+        // 脚注合并后添加的末尾
+        var firstFootnoteElement_1;
+        var allFootnoteElement = vditor.wysiwyg.element.querySelectorAll("[data-type='footnotes-block']");
+        allFootnoteElement.forEach(function (item, index) {
+            if (index === 0) {
+                firstFootnoteElement_1 = item;
+            }
+            else {
+                firstFootnoteElement_1.insertAdjacentHTML("beforeend", item.innerHTML);
+                item.remove();
+            }
+        });
+        if (allFootnoteElement.length > 0) {
+            vditor.wysiwyg.element.insertAdjacentElement("beforeend", allFootnoteElement[0]);
+        }
+        // 设置光标
+        (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
+        vditor.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']")
+            .forEach(function (item) {
+            processCodeRender(item, vditor);
+        });
+        if (event && (event.inputType === "deleteContentBackward" || event.inputType === "deleteContentForward") &&
+            vditor.options.comment.enable) {
+            vditor.wysiwyg.triggerRemoveComment(vditor);
+            vditor.options.comment.adjustTop(vditor.wysiwyg.getComments(vditor, true));
+        }
+    }
+    renderToc(vditor);
+    afterRenderEvent(vditor, {
         enableAddUndoStack: true,
         enableHint: true,
         enableInput: true,
@@ -5549,14 +6696,14 @@ var matchHotKey = function (hotKey, event) {
     }
     // []
     if (hotKey.indexOf("⇧") === -1 && hotKey.indexOf("⌘") === -1 && hotKey.indexOf("⌥") === -1) {
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && !event.shiftKey && event.code === hotKey) {
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && !event.shiftKey && event.code === hotKey) {
             return true;
         }
         return false;
     }
     // 是否匹配 ⇧Tab
     if (hotKey === "⇧Tab") {
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && event.shiftKey && event.code === "Tab") {
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && event.shiftKey && event.code === "Tab") {
             return true;
         }
         return false;
@@ -5565,7 +6712,7 @@ var matchHotKey = function (hotKey, event) {
     if (hotKey.startsWith("⌥")) {
         // 是否匹配 ⌥[] / ⌥⌘[]
         var keyCode = hotKeys.length === 3 ? hotKeys[2] : hotKeys[1];
-        if ((hotKeys.length === 3 ? (0,compatibility/* isCtrl */._0)(event) : !(0,compatibility/* isCtrl */._0)(event)) && event.altKey && !event.shiftKey &&
+        if ((hotKeys.length === 3 ? (0,compatibility/* isCtrl */.yl)(event) : !(0,compatibility/* isCtrl */.yl)(event)) && event.altKey && !event.shiftKey &&
             event.code === (/^[0-9]$/.test(keyCode) ? "Digit" : "Key") + keyCode) {
             return true;
         }
@@ -5577,7 +6724,7 @@ var matchHotKey = function (hotKey, event) {
     }
     var hasShift = hotKeys.length > 2 && (hotKeys[0] === "⇧");
     var key = (hasShift ? hotKeys[2] : hotKeys[1]);
-    if (hasShift && ((0,compatibility/* isFirefox */.gm)() || !/Mac/.test(navigator.platform))) {
+    if (hasShift && ((0,compatibility/* isFirefox */.vU)() || !/Mac/.test(navigator.platform))) {
         if (key === "-") {
             key = "_";
         }
@@ -5585,7 +6732,7 @@ var matchHotKey = function (hotKey, event) {
             key = "+";
         }
     }
-    if ((0,compatibility/* isCtrl */._0)(event) && event.key.toLowerCase() === key.toLowerCase() && !event.altKey
+    if ((0,compatibility/* isCtrl */.yl)(event) && event.key.toLowerCase() === key.toLowerCase() && !event.altKey
         && ((!hasShift && !event.shiftKey) || (hasShift && event.shiftKey))) {
         return true;
     }
@@ -5606,7 +6753,7 @@ var nextIsNode = function (range) {
     }
     if (!nextNode) {
         // *em*|**string**
-        var markerElement = (0,hasClosest/* hasClosestByClassName */.KJ)(startContainer, "vditor-ir__marker");
+        var markerElement = (0,hasClosest/* hasClosestByClassName */.fb)(startContainer, "vditor-ir__marker");
         if (markerElement && !markerElement.nextSibling) {
             var parentNextNode = startContainer.parentElement.parentElement.nextSibling;
             if (parentNextNode && parentNextNode.nodeType !== 3 &&
@@ -5637,8 +6784,8 @@ var expandMarker = function (range, vditor) {
     vditor.ir.element.querySelectorAll(".vditor-ir__node--expand").forEach(function (item) {
         item.classList.remove("vditor-ir__node--expand");
     });
-    var nodeElement = (0,hasClosest/* hasTopClosestByClassName */.XW)(range.startContainer, "vditor-ir__node");
-    var nodeElementEnd = !range.collapsed && (0,hasClosest/* hasTopClosestByClassName */.XW)(range.endContainer, "vditor-ir__node");
+    var nodeElement = (0,hasClosest/* hasTopClosestByClassName */.JQ)(range.startContainer, "vditor-ir__node");
+    var nodeElementEnd = !range.collapsed && (0,hasClosest/* hasTopClosestByClassName */.JQ)(range.endContainer, "vditor-ir__node");
     // 选中文本为同一个 nodeElement 内时，需要展开
     if (!range.collapsed && (!nodeElement || nodeElement !== nodeElementEnd)) {
         return;
@@ -5647,7 +6794,7 @@ var expandMarker = function (range, vditor) {
         nodeElement.classList.add("vditor-ir__node--expand");
         nodeElement.classList.remove("vditor-ir__node--hidden");
         // https://github.com/Vanessa219/vditor/issues/615 safari中光标位置跳动
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
     }
     var nextNode = nextIsNode(range);
     if (nextNode) {
@@ -5685,7 +6832,7 @@ var processKeydown = function (vditor, event) {
         event.key !== "Shift" && event.key !== "CapsLock" && event.key !== "Escape" && !/^F\d{1,2}$/.test(event.key)) {
         vditor.undo.recordFirstPosition(vditor, event);
     }
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
     var startContainer = range.startContainer;
     if (!fixGSKeyBackspace(event, vditor, startContainer)) {
         return false;
@@ -5694,12 +6841,12 @@ var processKeydown = function (vditor, event) {
     fixHR(range);
     // 仅处理以下快捷键操作
     if (event.key !== "Enter" && event.key !== "Tab" && event.key !== "Backspace" && event.key.indexOf("Arrow") === -1
-        && !(0,compatibility/* isCtrl */._0)(event) && event.key !== "Escape" && event.key !== "Delete") {
+        && !(0,compatibility/* isCtrl */.yl)(event) && event.key !== "Escape" && event.key !== "Delete") {
         return false;
     }
     // 斜体、粗体、内联代码块中换行
-    var newlineElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-newline", "1");
-    if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && !event.shiftKey && event.key === "Enter" && newlineElement
+    var newlineElement = (0,hasClosest/* hasClosestByAttribute */.a1)(startContainer, "data-newline", "1");
+    if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && !event.shiftKey && event.key === "Enter" && newlineElement
         && range.startOffset < newlineElement.textContent.length) {
         var beforeMarkerElement = newlineElement.previousElementSibling;
         if (beforeMarkerElement) {
@@ -5712,7 +6859,7 @@ var processKeydown = function (vditor, event) {
             range.collapse(true);
         }
     }
-    var pElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "P");
+    var pElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "P");
     // md 处理
     if (fixMarkdown(event, vditor, pElement, range)) {
         return true;
@@ -5726,7 +6873,7 @@ var processKeydown = function (vditor, event) {
         return true;
     }
     // 代码块
-    var preRenderElement = (0,hasClosest/* hasClosestByClassName */.KJ)(startContainer, "vditor-ir__marker--pre");
+    var preRenderElement = (0,hasClosest/* hasClosestByClassName */.fb)(startContainer, "vditor-ir__marker--pre");
     if (preRenderElement && preRenderElement.tagName === "PRE") {
         var codeRenderElement = preRenderElement.firstChild;
         if (fixCodeBlock(vditor, event, preRenderElement, range)) {
@@ -5744,7 +6891,7 @@ var processKeydown = function (vditor, event) {
         }
     }
     // 代码块语言
-    var preBeforeElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "code-block-info");
+    var preBeforeElement = (0,hasClosest/* hasClosestByAttribute */.a1)(startContainer, "data-type", "code-block-info");
     if (preBeforeElement) {
         if (event.key === "Enter" || event.key === "Tab") {
             range.selectNodeContents(preBeforeElement.nextElementSibling.firstChild);
@@ -5754,7 +6901,7 @@ var processKeydown = function (vditor, event) {
             return true;
         }
         if (event.key === "Backspace") {
-            var start = (0,selection/* getSelectPosition */.ED)(preBeforeElement, vditor.ir.element).start;
+            var start = (0,selection/* getSelectPosition */.im)(preBeforeElement, vditor.ir.element).start;
             if (start === 1) { // 删除零宽空格
                 range.setStart(startContainer, 0);
             }
@@ -5769,8 +6916,8 @@ var processKeydown = function (vditor, event) {
         }
     }
     // table
-    var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-        (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+    var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+        (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
     if (event.key.indexOf("Arrow") > -1 && cellElement) {
         var tableElement = isFirstCell(cellElement);
         if (tableElement && insertBeforeBlock(vditor, event, range, cellElement, tableElement)) {
@@ -5792,7 +6939,7 @@ var processKeydown = function (vditor, event) {
     if (fixTab(vditor, range, event)) {
         return true;
     }
-    var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.c)(startContainer);
+    var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.W)(startContainer);
     if (headingElement) {
         // enter++: 标题变大
         if (matchHotKey("⌘=", event)) {
@@ -5813,8 +6960,8 @@ var processKeydown = function (vditor, event) {
             return true;
         }
     }
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(startContainer);
-    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && range.toString() === "") {
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(startContainer);
+    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && range.toString() === "") {
         if (fixDelete(vditor, range, event, pElement)) {
             return true;
         }
@@ -5822,13 +6969,13 @@ var processKeydown = function (vditor, event) {
             && blockElement.tagName !== "UL" && blockElement.tagName !== "OL"
             && (blockElement.previousElementSibling.getAttribute("data-type") === "code-block" ||
                 blockElement.previousElementSibling.getAttribute("data-type") === "math-block")) {
-            var rangeStart = (0,selection/* getSelectPosition */.ED)(blockElement, vditor.ir.element, range).start;
-            if (rangeStart === 0 || (rangeStart === 1 && blockElement.innerText.startsWith(constants/* Constants */.Y.ZWSP))) {
+            var rangeStart = (0,selection/* getSelectPosition */.im)(blockElement, vditor.ir.element, range).start;
+            if (rangeStart === 0 || (rangeStart === 1 && blockElement.innerText.startsWith(constants/* Constants.ZWSP */.g.ZWSP))) {
                 // 当前块删除后光标落于代码渲染块上，当前块会被删除，因此需要阻止事件，不能和 keyup 中的代码块处理合并
                 range.selectNodeContents(blockElement.previousElementSibling.querySelector(".vditor-ir__marker--pre code"));
                 range.collapse(false);
                 expandMarker(range, vditor);
-                if (blockElement.textContent.trim().replace(constants/* Constants */.Y.ZWSP, "") === "") {
+                if (blockElement.textContent.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "") {
                     // 当前块为空且不是最后一个时，需要删除
                     blockElement.remove();
                     process_processAfterRender(vditor);
@@ -5840,10 +6987,10 @@ var processKeydown = function (vditor, event) {
         // 光标位于标题前，marker 后
         if (headingElement) {
             var headingLength = headingElement.firstElementChild.textContent.length;
-            if ((0,selection/* getSelectPosition */.ED)(headingElement, vditor.ir.element).start === headingLength && headingLength !== 0) {
+            if ((0,selection/* getSelectPosition */.im)(headingElement, vditor.ir.element).start === headingLength && headingLength !== 0) {
                 range.setStart(headingElement.firstElementChild.firstChild, headingLength - 1);
                 range.collapse(true);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
         }
     }
@@ -5867,227 +7014,11 @@ var processKeydown = function (vditor, event) {
 };
 
 // EXTERNAL MODULE: ./src/ts/preview/image.ts
-var preview_image = __webpack_require__(726);
-;// CONCATENATED MODULE: ./src/ts/sv/combineFootnote.ts
-/**
- * 合并脚注
- * @param elements vditor.sv.element
- * @param afterCombine 每个脚注块合并完成后的回调, param: root为合并后的脚注块
- */
-var combineFootnote = function (elements, afterCombine) {
-    elements.querySelectorAll("[data-type=footnotes-link]").forEach(function (el) {
-        var root = el.parentElement;
-        var footnote = root.nextSibling;
-        // 寻找所有该脚注的块
-        while (footnote) {
-            if (footnote.textContent.startsWith("    ")) {
-                // 解析到四个空格，加入到root并继续解析
-                var thisNode = footnote;
-                thisNode.childNodes.forEach(function (node) {
-                    root.append(node.cloneNode(true));
-                });
-                footnote = footnote.nextSibling;
-                thisNode.remove();
-            }
-            else {
-                // 非空格停止解析
-                break;
-            }
-        }
-        afterCombine && afterCombine(root);
-    });
-};
-
-;// CONCATENATED MODULE: ./src/ts/sv/inputEvent.ts
-
-
-
-
-
-var inputEvent = function (vditor, event) {
-    var _a;
-    var range = getSelection().getRangeAt(0).cloneRange();
-    var startContainer = range.startContainer;
-    if (range.startContainer.nodeType !== 3 && range.startContainer.tagName === "DIV") {
-        startContainer = range.startContainer.childNodes[range.startOffset - 1];
-    }
-    var blockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-block", "0");
-    // 不调用 lute 解析
-    if (blockElement && event && (event.inputType === "deleteContentBackward" || event.data === " ")) {
-        // 开始可以输入空格
-        var startOffset = (0,selection/* getSelectPosition */.ED)(blockElement, vditor.sv.element, range).start;
-        var startSpace = true;
-        for (var i = startOffset - 1; 
-        // 软换行后有空格
-        i > blockElement.textContent.substr(0, startOffset).lastIndexOf("\n"); i--) {
-            if (blockElement.textContent.charAt(i) !== " " &&
-                // 多个 tab 前删除不形成代码块 https://github.com/Vanessa219/vditor/issues/162 1
-                blockElement.textContent.charAt(i) !== "\t") {
-                startSpace = false;
-                break;
-            }
-        }
-        if (startOffset === 0) {
-            startSpace = false;
-        }
-        if (startSpace) {
-            processAfterRender(vditor);
-            return;
-        }
-        if (event.inputType === "deleteContentBackward") {
-            // https://github.com/Vanessa219/vditor/issues/584 代码块 marker 删除
-            var codeBlockMarkerElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "code-block-open-marker") ||
-                (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "code-block-close-marker");
-            if (codeBlockMarkerElement) {
-                if (codeBlockMarkerElement.getAttribute("data-type") === "code-block-close-marker") {
-                    var openMarkerElement = getSideByType(startContainer, "code-block-open-marker");
-                    if (openMarkerElement) {
-                        openMarkerElement.textContent = codeBlockMarkerElement.textContent;
-                        processAfterRender(vditor);
-                        return;
-                    }
-                }
-                if (codeBlockMarkerElement.getAttribute("data-type") === "code-block-open-marker") {
-                    var openMarkerElement = getSideByType(startContainer, "code-block-close-marker", false);
-                    if (openMarkerElement) {
-                        openMarkerElement.textContent = codeBlockMarkerElement.textContent;
-                        processAfterRender(vditor);
-                        return;
-                    }
-                }
-            }
-            // https://github.com/Vanessa219/vditor/issues/877 数学公式输入删除生成节点
-            var mathBlockMarkerElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "math-block-open-marker");
-            if (mathBlockMarkerElement) {
-                var mathBlockCloseElement = mathBlockMarkerElement.nextElementSibling.nextElementSibling;
-                if (mathBlockCloseElement && mathBlockCloseElement.getAttribute("data-type") === "math-block-close-marker") {
-                    mathBlockCloseElement.remove();
-                    processAfterRender(vditor);
-                }
-                return;
-            }
-            blockElement.querySelectorAll('[data-type="code-block-open-marker"]').forEach(function (item) {
-                if (item.textContent.length === 1) {
-                    item.remove();
-                }
-            });
-            blockElement.querySelectorAll('[data-type="code-block-close-marker"]').forEach(function (item) {
-                if (item.textContent.length === 1) {
-                    item.remove();
-                }
-            });
-            // 标题删除
-            var headingElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "heading-marker");
-            if (headingElement && headingElement.textContent.indexOf("#") === -1) {
-                processAfterRender(vditor);
-                return;
-            }
-        }
-        // 删除或空格不解析，否则会 format 回去
-        if ((event.data === " " || event.inputType === "deleteContentBackward") &&
-            ((0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "padding") // 场景：b 前进行删除 [> 1. a\n>   b]
-                || (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "li-marker") // 场景：删除最后一个字符 [* 1\n* ]
-                || (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "task-marker") // 场景：删除最后一个字符 [* [ ] ]
-                || (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "blockquote-marker") // 场景：删除最后一个字符 [> ]
-            )) {
-            processAfterRender(vditor);
-            return;
-        }
-    }
-    if (blockElement && blockElement.textContent.trimRight() === "$$") {
-        // 内联数学公式
-        processAfterRender(vditor);
-        return;
-    }
-    if (!blockElement) {
-        blockElement = vditor.sv.element;
-    }
-    if (((_a = blockElement.firstElementChild) === null || _a === void 0 ? void 0 : _a.getAttribute("data-type")) === "link-ref-defs-block") {
-        // 修改链接引用
-        blockElement = vditor.sv.element;
-    }
-    if ((0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "footnotes-link")) {
-        // 修改脚注角标
-        blockElement = vditor.sv.element;
-    }
-    // 添加光标位置
-    if (blockElement.textContent.indexOf(Lute.Caret) === -1) {
-        // 点击工具栏会插入 Caret
-        range.insertNode(document.createTextNode(Lute.Caret));
-    }
-    // 清除浏览器自带的样式
-    blockElement.querySelectorAll("[style]").forEach(function (item) {
-        item.removeAttribute("style");
-    });
-    blockElement.querySelectorAll("font").forEach(function (item) {
-        item.outerHTML = item.innerHTML;
-    });
-    var html = blockElement.textContent;
-    var isSVElement = blockElement.isEqualNode(vditor.sv.element);
-    if (isSVElement) {
-        html = blockElement.textContent;
-    }
-    else {
-        // 添加前一个块元素
-        if (blockElement.previousElementSibling) {
-            html = blockElement.previousElementSibling.textContent + html;
-            blockElement.previousElementSibling.remove();
-        }
-        if (blockElement.previousElementSibling && html.indexOf("---\n") === 0) {
-            // 确认 yaml-front 是否为首行
-            html = blockElement.previousElementSibling.textContent + html;
-            blockElement.previousElementSibling.remove();
-        }
-        // 添加链接引用
-        var footnotes_1 = "";
-        vditor.sv.element.querySelectorAll("[data-type='link-ref-defs-block']").forEach(function (item, index) {
-            if (item && !blockElement.isEqualNode(item.parentElement)) {
-                footnotes_1 += item.parentElement.textContent + "\n";
-                item.parentElement.remove();
-            }
-        });
-        // 添加脚注到文章头，便于lute处理
-        vditor.sv.element.querySelectorAll("[data-type='footnotes-link']").forEach(function (item, index) {
-            if (item && !blockElement.isEqualNode(item.parentElement)) {
-                footnotes_1 += item.parentElement.textContent + "\n";
-                item.parentElement.remove();
-            }
-        });
-        html = footnotes_1 + html;
-    }
-    html = processSpinVditorSVDOM(html, vditor);
-    if (isSVElement) {
-        blockElement.innerHTML = html;
-    }
-    else {
-        blockElement.outerHTML = html;
-    }
-    vditor.sv.element.querySelectorAll("[data-type='link-ref-defs-block']").forEach(function (item) {
-        vditor.sv.element.insertAdjacentElement("beforeend", item.parentElement);
-    });
-    // 合并脚注
-    combineFootnote(vditor.sv.element, function (root) {
-        vditor.sv.element.insertAdjacentElement("beforeend", root);
-    });
-    (0,selection/* setRangeByWbr */.ir)(vditor.sv.element, range);
-    scrollCenter(vditor);
-    processAfterRender(vditor, {
-        enableAddUndoStack: true,
-        enableHint: true,
-        enableInput: true,
-    });
-};
-
+var preview_image = __webpack_require__(190);
 ;// CONCATENATED MODULE: ./src/ts/sv/processKeydown.ts
 
 
-
-
-
-
-
 var processKeydown_processKeydown = function (vditor, event) {
-    var _a, _b, _c, _d, _e;
     vditor.sv.composingLock = event.isComposing;
     if (event.isComposing) {
         return false;
@@ -6096,193 +7027,30 @@ var processKeydown_processKeydown = function (vditor, event) {
         event.key !== "Shift" && event.key !== "CapsLock" && event.key !== "Escape" && !/^F\d{1,2}$/.test(event.key)) {
         vditor.undo.recordFirstPosition(vditor, event);
     }
-    // 仅处理以下快捷键操作
-    if (event.key !== "Enter" && event.key !== "Tab" && event.key !== "Backspace" && event.key.indexOf("Arrow") === -1
-        && !(0,compatibility/* isCtrl */._0)(event) && event.key !== "Escape") {
+    if (event.key !== "Tab" || (0,compatibility/* isCtrl */.yl)(event) || event.altKey) {
         return false;
     }
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    var startContainer = range.startContainer;
-    if (range.startContainer.nodeType !== 3 && range.startContainer.tagName === "DIV") {
-        startContainer = range.startContainer.childNodes[range.startOffset - 1];
-    }
-    var textElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "text");
-    // blockquote
-    var blockquoteMarkerElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "blockquote-marker");
-    if (!blockquoteMarkerElement && range.startOffset === 0 && textElement && textElement.previousElementSibling &&
-        textElement.previousElementSibling.getAttribute("data-type") === "blockquote-marker") {
-        blockquoteMarkerElement = textElement.previousElementSibling;
-    }
-    // 回车逐个删除 blockquote marker 标记
-    if (blockquoteMarkerElement) {
-        if (event.key === "Enter" && !(0,compatibility/* isCtrl */._0)(event) && !event.altKey &&
-            blockquoteMarkerElement.nextElementSibling.textContent.trim() === "" &&
-            (0,selection/* getSelectPosition */.ED)(blockquoteMarkerElement, vditor.sv.element, range).start ===
-                blockquoteMarkerElement.textContent.length) {
-            if (((_a = blockquoteMarkerElement.previousElementSibling) === null || _a === void 0 ? void 0 : _a.getAttribute("data-type")) === "padding") {
-                // 列表中存在多行 BQ 时，标记回车需跳出列表
-                blockquoteMarkerElement.previousElementSibling.setAttribute("data-action", "enter-remove");
-            }
-            blockquoteMarkerElement.remove();
-            processAfterRender(vditor);
-            event.preventDefault();
-            return true;
+    var element = vditor.sv.element;
+    var start = element.selectionStart;
+    var end = element.selectionEnd;
+    if (event.shiftKey) {
+        var lineStart = element.value.lastIndexOf("\n", start - 1) + 1;
+        var indentation = element.value.substring(lineStart, start).match(/^(\t| {1,4})/);
+        if (indentation) {
+            element.setRangeText("", lineStart, lineStart + indentation[0].length, "end");
+            element.setSelectionRange(start - indentation[0].length, end - indentation[0].length);
         }
     }
-    // list item
-    var listMarkerElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "li-marker");
-    var taskMarkerElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "task-marker");
-    var listLastMarkerElement = listMarkerElement;
-    if (!listLastMarkerElement) {
-        if (taskMarkerElement && taskMarkerElement.nextElementSibling.getAttribute("data-type") !== "task-marker") {
-            listLastMarkerElement = taskMarkerElement;
-        }
+    else {
+        element.setRangeText(vditor.options.tab, start, end, "end");
     }
-    if (!listLastMarkerElement && range.startOffset === 0 && textElement && textElement.previousElementSibling &&
-        (textElement.previousElementSibling.getAttribute("data-type") === "li-marker" ||
-            textElement.previousElementSibling.getAttribute("data-type") === "task-marker")) {
-        listLastMarkerElement = textElement.previousElementSibling;
-    }
-    if (listLastMarkerElement) {
-        var startIndex = (0,selection/* getSelectPosition */.ED)(listLastMarkerElement, vditor.sv.element, range).start;
-        var isTask = listLastMarkerElement.getAttribute("data-type") === "task-marker";
-        var listFirstMarkerElement = listLastMarkerElement;
-        if (isTask) {
-            listFirstMarkerElement = listLastMarkerElement.previousElementSibling.previousElementSibling
-                .previousElementSibling;
-        }
-        if (startIndex === listLastMarkerElement.textContent.length) {
-            // 回车清空列表标记符
-            if (event.key === "Enter" && !(0,compatibility/* isCtrl */._0)(event) && !event.altKey && !event.shiftKey &&
-                listLastMarkerElement.nextElementSibling.textContent.trim() === "") {
-                if (((_b = listFirstMarkerElement.previousElementSibling) === null || _b === void 0 ? void 0 : _b.getAttribute("data-type")) === "padding") {
-                    listFirstMarkerElement.previousElementSibling.remove();
-                    inputEvent(vditor);
-                }
-                else {
-                    if (isTask) {
-                        listFirstMarkerElement.remove();
-                        listLastMarkerElement.previousElementSibling.previousElementSibling.remove();
-                        listLastMarkerElement.previousElementSibling.remove();
-                    }
-                    listLastMarkerElement.nextElementSibling.remove();
-                    listLastMarkerElement.remove();
-                    processAfterRender(vditor);
-                }
-                event.preventDefault();
-                return true;
-            }
-            // 第一个 marker 后 tab 进行缩进
-            if (event.key === "Tab") {
-                if (event.shiftKey) {
-                    if (listFirstMarkerElement.previousElementSibling.getAttribute("data-type") === "padding") {
-                        listFirstMarkerElement.previousElementSibling.remove();
-                    }
-                }
-                else {
-                    listFirstMarkerElement.insertAdjacentHTML("beforebegin", "<span data-type=\"padding\">".concat(listFirstMarkerElement.textContent.replace(/\S/g, " "), "</span>"));
-                }
-                if (/^\d/.test(listFirstMarkerElement.textContent)) {
-                    listFirstMarkerElement.textContent = listFirstMarkerElement.textContent.replace(/^\d{1,}/, "1");
-                    range.selectNodeContents(listLastMarkerElement.firstChild);
-                    range.collapse(false);
-                }
-                inputEvent(vditor);
-                event.preventDefault();
-                return true;
-            }
-        }
-    }
-    // tab
-    if (fixTab(vditor, range, event)) {
-        return true;
-    }
-    var blockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-block", "0");
-    var spanElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(startContainer, "SPAN");
-    // 回车
-    if (event.key === "Enter" && !(0,compatibility/* isCtrl */._0)(event) && !event.altKey && !event.shiftKey && blockElement) {
-        var isFirst = false;
-        var newLineMatch = blockElement.textContent.match(/^\n+/);
-        if ((0,selection/* getSelectPosition */.ED)(blockElement, vditor.sv.element).start <= (newLineMatch ? newLineMatch[0].length : 0)) {
-            // 允许段落开始换行
-            isFirst = true;
-        }
-        var newLineText = "\n";
-        if (spanElement) {
-            if (((_c = spanElement.previousElementSibling) === null || _c === void 0 ? void 0 : _c.getAttribute("data-action")) === "enter-remove") {
-                // https://github.com/Vanessa219/vditor/issues/596
-                spanElement.previousElementSibling.remove();
-                processAfterRender(vditor);
-                event.preventDefault();
-                return true;
-            }
-            else {
-                newLineText += processPreviousMarkers(spanElement);
-            }
-        }
-        range.insertNode(document.createTextNode(newLineText));
-        range.collapse(false);
-        if (blockElement && blockElement.textContent.trim() !== "" && !isFirst) {
-            inputEvent(vditor);
-        }
-        else {
-            processAfterRender(vditor);
-        }
-        event.preventDefault();
-        return true;
-    }
-    // 删除后光标前有 newline 的处理
-    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.altKey && !event.shiftKey) {
-        if (spanElement && ((_d = spanElement.previousElementSibling) === null || _d === void 0 ? void 0 : _d.getAttribute("data-type")) === "newline" &&
-            (0,selection/* getSelectPosition */.ED)(spanElement, vditor.sv.element, range).start === 1 &&
-            // 飘号的处理需在 inputEvent 中，否则上下飘号对不齐
-            spanElement.getAttribute("data-type").indexOf("code-block-") === -1) {
-            // 光标在每一行的第一个字符后
-            range.setStart(spanElement, 0);
-            range.extractContents();
-            if (spanElement.textContent.trim() !== "") {
-                inputEvent(vditor);
-            }
-            else {
-                processAfterRender(vditor);
-            }
-            event.preventDefault();
-            return true;
-        }
-        // 每一段第一个字符前
-        if (blockElement && (0,selection/* getSelectPosition */.ED)(blockElement, vditor.sv.element, range).start === 0 &&
-            blockElement.previousElementSibling) {
-            range.extractContents();
-            var previousLastElement = blockElement.previousElementSibling.lastElementChild;
-            if (previousLastElement.getAttribute("data-type") === "newline") {
-                previousLastElement.remove();
-                previousLastElement = blockElement.previousElementSibling.lastElementChild;
-            }
-            // 场景：末尾无法删除 [```\ntext\n```\n\n]
-            if (previousLastElement.getAttribute("data-type") !== "newline") {
-                previousLastElement.insertAdjacentHTML("afterend", blockElement.innerHTML);
-                blockElement.remove();
-            }
-            if (blockElement.textContent.trim() !== "" && !((_e = blockElement.previousElementSibling) === null || _e === void 0 ? void 0 : _e.querySelector('[data-type="code-block-open-marker"]'))) {
-                inputEvent(vditor);
-            }
-            else {
-                if (previousLastElement.getAttribute("data-type") !== "newline") {
-                    // https://github.com/Vanessa219/vditor/issues/597
-                    range.selectNodeContents(previousLastElement.lastChild);
-                    range.collapse(false);
-                }
-                processAfterRender(vditor);
-            }
-            event.preventDefault();
-            return true;
-        }
-    }
-    return false;
+    processAfterRender(vditor);
+    event.preventDefault();
+    return true;
 };
 
 // EXTERNAL MODULE: ./src/ts/ui/setContentTheme.ts
-var setContentTheme = __webpack_require__(873);
+var setContentTheme = __webpack_require__(538);
 ;// CONCATENATED MODULE: ./src/ts/ui/setTheme.ts
 var setTheme = function (vditor) {
     if (vditor.options.theme === "dark") {
@@ -6308,7 +7076,7 @@ var initUI = function (vditor) {
         vditor.element.setAttribute("dir", "rtl");
     }
     setTheme(vditor);
-    (0,setContentTheme/* setContentTheme */.H)(vditor.options.preview.theme.current, vditor.options.preview.theme.path);
+    (0,setContentTheme/* setContentTheme */.Z)(vditor.options.preview.theme.current, vditor.options.preview.theme.path);
     if (typeof vditor.options.height === "number") {
         vditor.element.style.height = vditor.options.height + "px";
     }
@@ -6381,7 +7149,7 @@ var initUI = function (vditor) {
     }
 };
 var setPadding = function (vditor) {
-    var minPadding = window.innerWidth <= constants/* Constants */.Y.MOBILE_WIDTH ? 10 : 35;
+    var minPadding = window.innerWidth <= constants/* Constants.MOBILE_WIDTH */.g.MOBILE_WIDTH ? 10 : 35;
     if (vditor.wysiwyg.element.parentElement.style.display !== "none") {
         var padding = (vditor.wysiwyg.element.parentElement.clientWidth
             - vditor.options.preview.maxWidth) / 2;
@@ -6419,8 +7187,14 @@ var setTypewriterPosition = function (vditor) {
     if (vditor.element.classList.contains("vditor--fullscreen")) {
         height = window.innerHeight;
     }
-    // 由于 Firefox padding-bottom bug，只能使用 :after
-    vditor[vditor.currentMode].element.style.setProperty("--editor-bottom", ((height - vditor.toolbar.element.offsetHeight) / 2) + "px");
+    var editorBottom = ((height - vditor.toolbar.element.offsetHeight) / 2) + "px";
+    if (vditor.currentMode === "sv") {
+        vditor.sv.element.style.paddingBottom = editorBottom;
+    }
+    else {
+        // 由于 Firefox padding-bottom bug，只能使用 :after
+        vditor[vditor.currentMode].element.style.setProperty("--editor-bottom", editorBottom);
+    }
 };
 var resizeCb;
 function UIUnbindListener() {
@@ -6434,7 +7208,7 @@ var afterRender = function (vditor) {
         setTypewriterPosition(vditor);
     });
     // set default value
-    var initValue = (0,compatibility/* accessLocalStorage */.D)() && localStorage.getItem(vditor.options.cache.id);
+    var initValue = (0,compatibility/* accessLocalStorage */.pK)() && localStorage.getItem(vditor.options.cache.id);
     if (!vditor.options.cache.enable || !initValue) {
         if (vditor.options.value) {
             initValue = vditor.options.value;
@@ -6456,17 +7230,17 @@ var afterRender = function (vditor) {
 
 
 var highlightToolbarIR = function (vditor) {
-    clearTimeout(vditor[vditor.currentMode].hlToolbarTimeoutId);
-    vditor[vditor.currentMode].hlToolbarTimeoutId = window.setTimeout(function () {
-        if (vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
+    clearTimeout(vditor.ir.hlToolbarTimeoutId);
+    vditor.ir.hlToolbarTimeoutId = window.setTimeout(function () {
+        if (vditor.ir.element.getAttribute("contenteditable") === "false") {
             return;
         }
-        if (!(0,selection/* selectIsEditor */.Co)(vditor[vditor.currentMode].element)) {
+        if (!(0,selection/* selectIsEditor */.Gb)(vditor.ir.element)) {
             return;
         }
-        removeCurrentToolbar(vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS);
-        enableToolbar(vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS);
-        var range = (0,selection/* getEditorRange */.RN)(vditor);
+        removeCurrentToolbar(vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS */.g.EDIT_TOOLBARS);
+        enableToolbar(vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS */.g.EDIT_TOOLBARS);
+        var range = (0,selection/* getEditorRange */.zh)(vditor);
         var typeElement = range.startContainer;
         if (range.startContainer.nodeType === 3) {
             typeElement = range.startContainer.parentElement;
@@ -6475,32 +7249,32 @@ var highlightToolbarIR = function (vditor) {
             typeElement = typeElement.childNodes[range.startOffset];
         }
         var headingElement = vditor.currentMode === "sv" ?
-            (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "heading") : (0,hasClosestByHeadings/* hasClosestByHeadings */.c)(typeElement);
+            (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "heading") : (0,hasClosestByHeadings/* hasClosestByHeadings */.W)(typeElement);
         if (headingElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["headings"]);
         }
-        var quoteElement = vditor.currentMode === "sv" ? (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "blockquote") :
-            (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "BLOCKQUOTE");
+        var quoteElement = vditor.currentMode === "sv" ? (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "blockquote") :
+            (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "BLOCKQUOTE");
         if (quoteElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["quote"]);
         }
-        var strongElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "strong");
+        var strongElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "strong");
         if (strongElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["bold"]);
         }
-        var emElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "em");
+        var emElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "em");
         if (emElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["italic"]);
         }
-        var sElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "s");
+        var sElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "s");
         if (sElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["strike"]);
         }
-        var aElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "a");
+        var aElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "a");
         if (aElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["link"]);
         }
-        var liElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "LI");
+        var liElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "LI");
         if (liElement) {
             if (liElement.classList.contains("vditor-task")) {
                 setCurrentToolbar(vditor.toolbar.elements, ["check"]);
@@ -6516,19 +7290,19 @@ var highlightToolbarIR = function (vditor) {
         else {
             disableToolbar(vditor.toolbar.elements, ["outdent", "indent"]);
         }
-        var codeBlockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "code-block");
+        var codeBlockElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "code-block");
         if (codeBlockElement) {
             disableToolbar(vditor.toolbar.elements, ["headings", "bold", "italic", "strike", "line", "quote",
                 "list", "ordered-list", "check", "code", "inline-code", "upload", "link", "table", "record"]);
             setCurrentToolbar(vditor.toolbar.elements, ["code"]);
         }
-        var codeElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "code");
+        var codeElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "code");
         if (codeElement) {
             disableToolbar(vditor.toolbar.elements, ["headings", "bold", "italic", "strike", "line", "quote",
                 "list", "ordered-list", "check", "code", "upload", "link", "table", "record"]);
             setCurrentToolbar(vditor.toolbar.elements, ["inline-code"]);
         }
-        var tableElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "table");
+        var tableElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "table");
         if (tableElement) {
             disableToolbar(vditor.toolbar.elements, ["headings", "list", "ordered-list", "check", "line",
                 "quote", "code", "table"]);
@@ -6536,176 +7310,91 @@ var highlightToolbarIR = function (vditor) {
     }, 200);
 };
 
-;// CONCATENATED MODULE: ./src/ts/wysiwyg/afterRenderEvent.ts
-
-
-var afterRenderEvent = function (vditor, options) {
-    if (options === void 0) { options = {
-        enableAddUndoStack: true,
-        enableHint: false,
-        enableInput: true,
-    }; }
-    if (options.enableHint) {
-        vditor.hint.render(vditor);
-    }
-    clearTimeout(vditor.wysiwyg.afterRenderTimeoutId);
-    vditor.wysiwyg.afterRenderTimeoutId = window.setTimeout(function () {
-        if (vditor.wysiwyg.composingLock) {
-            return;
-        }
-        var text = getMarkdown(vditor);
-        if (typeof vditor.options.input === "function" && options.enableInput) {
-            vditor.options.input(text);
-        }
-        if (vditor.options.counter.enable) {
-            vditor.counter.render(vditor, text);
-        }
-        if (vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.D)()) {
-            localStorage.setItem(vditor.options.cache.id, text);
-            if (vditor.options.cache.after) {
-                vditor.options.cache.after(text);
-            }
-        }
-        if (vditor.devtools) {
-            vditor.devtools.renderEchart(vditor);
-        }
-        if (options.enableAddUndoStack) {
-            vditor.undo.addToUndoStack(vditor);
-        }
-    }, vditor.options.undoDelay);
-};
-
-;// CONCATENATED MODULE: ./src/ts/wysiwyg/inlineTag.ts
-
-
-var previoueIsEmptyA = function (node) {
-    var previousNode = node.previousSibling;
-    while (previousNode) {
-        if (previousNode.nodeType !== 3 && previousNode.tagName === "A" && !previousNode.previousSibling
-            && previousNode.innerHTML.replace(constants/* Constants */.Y.ZWSP, "") === "" && previousNode.nextSibling) {
-            return previousNode;
-        }
-        previousNode = previousNode.previousSibling;
-    }
-    return false;
-};
-var nextIsCode = function (range) {
-    var nextNode = range.startContainer.nextSibling;
-    while (nextNode && nextNode.textContent === "") {
-        nextNode = nextNode.nextSibling;
-    }
-    if (nextNode && nextNode.nodeType !== 3 && (nextNode.tagName === "CODE" ||
-        nextNode.getAttribute("data-type") === "math-inline" ||
-        nextNode.getAttribute("data-type") === "html-entity" ||
-        nextNode.getAttribute("data-type") === "html-inline")) {
-        return true;
-    }
-    return false;
-};
-var getNextHTML = function (node) {
-    var html = "";
-    var nextNode = node.nextSibling;
-    while (nextNode) {
-        if (nextNode.nodeType === 3) {
-            html += nextNode.textContent;
-        }
-        else {
-            html += nextNode.outerHTML;
-        }
-        nextNode = nextNode.nextSibling;
-    }
-    return html;
-};
-var getPreviousHTML = function (node) {
-    var html = "";
-    var previousNode = node.previousSibling;
-    while (previousNode) {
-        if (previousNode.nodeType === 3) {
-            html = previousNode.textContent + html;
-        }
-        else {
-            html = previousNode.outerHTML + html;
-        }
-        previousNode = previousNode.previousSibling;
-    }
-    return html;
-};
-var getRenderElementNextNode = function (blockCodeElement) {
-    var nextNode = blockCodeElement;
-    while (nextNode && !nextNode.nextSibling) {
-        nextNode = nextNode.parentElement;
-    }
-    return nextNode.nextSibling;
-};
-var splitElement = function (range) {
-    var previousHTML = getPreviousHTML(range.startContainer);
-    var nextHTML = getNextHTML(range.startContainer);
-    var text = range.startContainer.textContent;
-    var offset = range.startOffset;
-    var beforeHTML = "";
-    var afterHTML = "";
-    if (text.substr(0, offset) !== "" && text.substr(0, offset) !== constants/* Constants */.Y.ZWSP || previousHTML) {
-        beforeHTML = "".concat(previousHTML).concat(text.substr(0, offset));
-    }
-    if (text.substr(offset) !== "" && text.substr(offset) !== constants/* Constants */.Y.ZWSP || nextHTML) {
-        afterHTML = "".concat(text.substr(offset)).concat(nextHTML);
-    }
-    return {
-        afterHTML: afterHTML,
-        beforeHTML: beforeHTML,
-    };
-};
-var modifyPre = function (vditor, range) {
-    // 没有被块元素包裹
-    Array.from(vditor.wysiwyg.element.childNodes).find(function (node) {
-        if (node.nodeType === 3) {
-            var pElement = document.createElement("p");
-            pElement.setAttribute("data-block", "0");
-            pElement.textContent = node.textContent;
-            // 为空按下 tab 且 tab = '    ' 时，range.startContainer 不为 node
-            var cloneRangeOffset = range.startContainer.nodeType === 3 ? range.startOffset : node.textContent.length;
-            node.parentNode.insertBefore(pElement, node);
-            node.remove();
-            range.setStart(pElement.firstChild, Math.min(pElement.firstChild.textContent.length, cloneRangeOffset));
-            range.collapse(true);
-            (0,selection/* setSelectionFocus */.jl)(range);
-            return true;
-        }
-        else if (!node.getAttribute("data-block")) {
-            if (node.tagName === "P") {
-                node.remove();
-            }
-            else {
-                if (node.tagName === "DIV") {
-                    range.insertNode(document.createElement("wbr"));
-                    // firefox 列表换行产生 div
-                    node.outerHTML = "<p data-block=\"0\">".concat(node.innerHTML, "</p>");
-                }
-                else {
-                    if (node.tagName === "BR") {
-                        // firefox 空换行产生 BR
-                        node.outerHTML = "<p data-block=\"0\">".concat(node.outerHTML, "<wbr></p>");
-                    }
-                    else {
-                        range.insertNode(document.createElement("wbr"));
-                        node.outerHTML = "<p data-block=\"0\">".concat(node.outerHTML, "</p>");
-                    }
-                }
-                (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
-                range = getSelection().getRangeAt(0);
-            }
-            return true;
-        }
-    });
-};
-
 ;// CONCATENATED MODULE: ./src/ts/wysiwyg/setHeading.ts
 
 
 
+var createBlockElement = function (element, tagName) {
+    var blockElement = element.ownerDocument.createElement(tagName);
+    blockElement.setAttribute("data-block", "0");
+    return blockElement;
+};
+var replaceBlockElement = function (element, tagName) {
+    var blockElement = createBlockElement(element, tagName);
+    while (element.firstChild) {
+        blockElement.appendChild(element.firstChild);
+    }
+    element.replaceWith(blockElement);
+    return blockElement;
+};
+var isListItemBlock = function (node) {
+    if (node.nodeType !== 1) {
+        return false;
+    }
+    var element = node;
+    return element.getAttribute("data-block") === "0" || element.tagName === "INPUT";
+};
+var getListItemInlineNodes = function (itemElement, wbrElement) {
+    var _a, _b;
+    var anchorNode = wbrElement;
+    while (anchorNode.parentNode && !anchorNode.parentNode.isSameNode(itemElement)) {
+        anchorNode = anchorNode.parentNode;
+    }
+    if (!((_a = anchorNode.parentNode) === null || _a === void 0 ? void 0 : _a.isSameNode(itemElement))) {
+        return [];
+    }
+    var firstNode = anchorNode;
+    var lastNode = anchorNode;
+    while (firstNode.previousSibling && !isListItemBlock(firstNode.previousSibling)) {
+        firstNode = firstNode.previousSibling;
+    }
+    while (lastNode.nextSibling && !isListItemBlock(lastNode.nextSibling)) {
+        lastNode = lastNode.nextSibling;
+    }
+    // 任务列表的复选框和正文之间需要保留分隔空格。
+    if (firstNode.previousSibling instanceof HTMLInputElement && firstNode.nodeType === 3) {
+        var leadingWhitespace = (_b = firstNode.textContent.match(/^\s+/)) === null || _b === void 0 ? void 0 : _b[0];
+        if (leadingWhitespace) {
+            firstNode.textContent = firstNode.textContent.substring(leadingWhitespace.length);
+            itemElement.insertBefore(itemElement.ownerDocument.createTextNode(leadingWhitespace), firstNode);
+        }
+    }
+    var nodes = [];
+    var node = firstNode;
+    while (node) {
+        nodes.push(node);
+        if (node.isSameNode(lastNode)) {
+            break;
+        }
+        node = node.nextSibling;
+    }
+    return nodes;
+};
+var setListItemHeading = function (itemElement, wbrElement, tagName) {
+    var inlineNodes = getListItemInlineNodes(itemElement, wbrElement);
+    if (inlineNodes.length === 0) {
+        return false;
+    }
+    var headingElement = createBlockElement(itemElement, tagName);
+    itemElement.insertBefore(headingElement, inlineNodes[0]);
+    inlineNodes.forEach(function (node) {
+        headingElement.appendChild(node);
+    });
+    if (headingElement.innerHTML.trim() === "<wbr>") {
+        headingElement.appendChild(itemElement.ownerDocument.createElement("br"));
+    }
+    return true;
+};
+var unwrapBlockElement = function (element) {
+    var fragment = element.ownerDocument.createDocumentFragment();
+    while (element.firstChild) {
+        fragment.appendChild(element.firstChild);
+    }
+    element.replaceWith(fragment);
+};
 var setHeading = function (vditor, tagName) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
     if (!blockElement) {
         blockElement = range.startContainer.childNodes[range.startOffset];
     }
@@ -6713,32 +7402,52 @@ var setHeading = function (vditor, tagName) {
         blockElement = vditor.wysiwyg.element;
     }
     if (blockElement && !blockElement.classList.contains("vditor-wysiwyg__block")) {
-        range.insertNode(document.createElement("wbr"));
+        var wbrElement = document.createElement("wbr");
+        range.insertNode(wbrElement);
         // Firefox 需要 trim https://github.com/Vanessa219/vditor/issues/207
         if (blockElement.innerHTML.trim() === "<wbr>") {
             // Firefox 光标对不齐 https://github.com/Vanessa219/vditor/issues/199 1
             blockElement.innerHTML = "<wbr><br>";
         }
-        if (blockElement.tagName === "BLOCKQUOTE" || blockElement.classList.contains("vditor-reset")) {
-            blockElement.innerHTML = "<".concat(tagName, " data-block=\"0\">").concat(blockElement.innerHTML.trim(), "</").concat(tagName, ">");
+        var itemElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(wbrElement, "LI");
+        if (itemElement && blockElement.isSameNode(itemElement.parentElement)) {
+            if (!setListItemHeading(itemElement, wbrElement, tagName)) {
+                wbrElement.remove();
+                return;
+            }
+        }
+        else if (blockElement.tagName === "BLOCKQUOTE" || blockElement.classList.contains("vditor-reset")) {
+            var headingElement = createBlockElement(blockElement, tagName);
+            while (blockElement.firstChild) {
+                headingElement.appendChild(blockElement.firstChild);
+            }
+            blockElement.appendChild(headingElement);
         }
         else {
-            blockElement.outerHTML = "<".concat(tagName, " data-block=\"0\">").concat(blockElement.innerHTML.trim(), "</").concat(tagName, ">");
+            replaceBlockElement(blockElement, tagName);
         }
-        (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+        (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
         renderToc(vditor);
     }
 };
 var removeHeading = function (vditor) {
+    var _a, _b;
     var range = getSelection().getRangeAt(0);
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
     if (!blockElement) {
         blockElement = range.startContainer.childNodes[range.startOffset];
     }
     if (blockElement) {
         range.insertNode(document.createElement("wbr"));
-        blockElement.outerHTML = "<p data-block=\"0\">".concat(blockElement.innerHTML, "</p>");
-        (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+        if (((_a = blockElement.parentElement) === null || _a === void 0 ? void 0 : _a.tagName) === "LI" &&
+            ((_b = blockElement.parentElement.parentElement) === null || _b === void 0 ? void 0 : _b.getAttribute("data-tight")) === "true") {
+            unwrapBlockElement(blockElement);
+        }
+        else {
+            replaceBlockElement(blockElement, "p");
+        }
+        (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
+        renderToc(vditor);
     }
     vditor.wysiwyg.popover.style.display = "none";
 };
@@ -6772,7 +7481,7 @@ var showCode = function (previewElement, vditor, first) {
     else {
         range.collapse(false);
     }
-    (0,selection/* setSelectionFocus */.jl)(range);
+    (0,selection/* setSelectionFocus */.Hc)(range);
     if (previewElement.firstElementChild.classList.contains("language-mindmap")) {
         return;
     }
@@ -6793,6 +7502,50 @@ var showCode = function (previewElement, vditor, first) {
 
 
 
+var fixAndroidCursor = function (vditor, range, event) {
+    if (navigator.userAgent.indexOf("Android") === -1 || event.ctrlKey || event.metaKey || event.altKey) {
+        return false;
+    }
+    var pElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "P");
+    var startElement = range.startContainer.nodeType === 3 ?
+        range.startContainer.parentElement : range.startContainer;
+    if (!pElement || !pElement.isSameNode(startElement) ||
+        !pElement.parentElement.isSameNode(vditor.wysiwyg.element)) {
+        return false;
+    }
+    var direction;
+    var granularity;
+    if (event.key === "ArrowLeft") {
+        direction = "backward";
+        granularity = "character";
+    }
+    else if (event.key === "ArrowRight") {
+        direction = "forward";
+        granularity = "character";
+    }
+    else if (event.key === "ArrowUp") {
+        direction = "backward";
+        granularity = "line";
+    }
+    else if (event.key === "ArrowDown") {
+        direction = "forward";
+        granularity = "line";
+    }
+    else if (event.key === "End") {
+        direction = "forward";
+        granularity = "documentboundary";
+    }
+    else {
+        return false;
+    }
+    var selection = window.getSelection();
+    if (typeof selection.modify !== "function") {
+        return false;
+    }
+    selection.modify(event.shiftKey ? "extend" : "move", direction, granularity);
+    event.preventDefault();
+    return true;
+};
 var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
     // Chrome firefox 触发 compositionend 机制不一致 https://github.com/Vanessa219/vditor/issues/188
     vditor.wysiwyg.composingLock = event.isComposing;
@@ -6804,8 +7557,12 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
         event.key !== "Shift" && event.key !== "CapsLock" && event.key !== "Escape" && !/^F\d{1,2}$/.test(event.key)) {
         vditor.undo.recordFirstPosition(vditor, event);
     }
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
     var startContainer = range.startContainer;
+    // Android 输入法的编辑面板无法在 contenteditable 中正确处理方向键和 End
+    if (fixAndroidCursor(vditor, range, event)) {
+        return true;
+    }
     if (!fixGSKeyBackspace(event, vditor, startContainer)) {
         return false;
     }
@@ -6813,11 +7570,11 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
     fixHR(range);
     // 仅处理以下快捷键操作
     if (event.key !== "Enter" && event.key !== "Tab" && event.key !== "Backspace" && event.key.indexOf("Arrow") === -1
-        && !(0,compatibility/* isCtrl */._0)(event) && event.key !== "Escape" && event.key !== "Delete") {
+        && !(0,compatibility/* isCtrl */.yl)(event) && event.key !== "Escape" && event.key !== "Delete") {
         return false;
     }
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(startContainer);
-    var pElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "P");
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(startContainer);
+    var pElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "P");
     // md 处理
     if (fixMarkdown(event, vditor, pElement, range)) {
         return true;
@@ -6831,7 +7588,7 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
         return true;
     }
     // code render
-    var codeRenderElement = (0,hasClosest/* hasClosestByClassName */.KJ)(startContainer, "vditor-wysiwyg__block");
+    var codeRenderElement = (0,hasClosest/* hasClosestByClassName */.fb)(startContainer, "vditor-wysiwyg__block");
     if (codeRenderElement) {
         // esc: 退出编辑，仅展示渲染
         if (event.key === "Escape" && codeRenderElement.children.length === 2) {
@@ -6842,7 +7599,7 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
             return true;
         }
         // alt+enter: 代码块切换到语言 https://github.com/Vanessa219/vditor/issues/54
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && event.altKey && event.key === "Enter" &&
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && event.altKey && event.key === "Enter" &&
             codeRenderElement.getAttribute("data-type") === "code-block") {
             var inputElemment = vditor.wysiwyg.popover.querySelector(".vditor-input");
             inputElemment.focus();
@@ -6868,10 +7625,10 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
         return true;
     }
     // 顶层 blockquote
-    var topBQElement = (0,hasClosest/* hasTopClosestByTag */.Ab)(startContainer, "BLOCKQUOTE");
+    var topBQElement = (0,hasClosest/* hasTopClosestByTag */.E2)(startContainer, "BLOCKQUOTE");
     if (topBQElement) {
         if (!event.shiftKey && event.altKey && event.key === "Enter") {
-            if (!(0,compatibility/* isCtrl */._0)(event)) {
+            if (!(0,compatibility/* isCtrl */.yl)(event)) {
                 // alt+enter: 跳出多层 blockquote 嵌套之后 https://github.com/Vanessa219/vditor/issues/51
                 range.setStartAfter(topBQElement);
             }
@@ -6879,13 +7636,13 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
                 // ctrl+alt+enter: 跳出多层 blockquote 嵌套之前
                 range.setStartBefore(topBQElement);
             }
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             var node = document.createElement("p");
             node.setAttribute("data-block", "0");
             node.innerHTML = "\n";
             range.insertNode(node);
             range.collapse(true);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             afterRenderEvent(vditor);
             scrollCenter(vditor);
             event.preventDefault();
@@ -6893,17 +7650,17 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
         }
     }
     // h1-h6
-    var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.c)(startContainer);
+    var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.W)(startContainer);
     if (headingElement) {
         if (headingElement.tagName === "H6" && startContainer.textContent.length === range.startOffset &&
-            !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && event.key === "Enter") {
+            !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && event.key === "Enter") {
             // enter: H6 回车解析问题 https://github.com/Vanessa219/vditor/issues/48
             var pTempElement = document.createElement("p");
             pTempElement.textContent = "\n";
             pTempElement.setAttribute("data-block", "0");
             startContainer.parentElement.insertAdjacentElement("afterend", pTempElement);
             range.setStart(pTempElement, 0);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             afterRenderEvent(vditor);
             scrollCenter(vditor);
             event.preventDefault();
@@ -6929,7 +7686,7 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
             event.preventDefault();
             return true;
         }
-        if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey
+        if (event.key === "Backspace" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey
             && headingElement.textContent.length === 1) {
             // 删除后变为空
             removeHeading(vditor);
@@ -6940,11 +7697,11 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
         return true;
     }
     // alt+enter
-    if (event.altKey && event.key === "Enter" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey) {
+    if (event.altKey && event.key === "Enter" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey) {
         // 切换到链接、链接引用、脚注引用弹出的输入框中
-        var aElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "A");
-        var linRefElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "link-ref");
-        var footnoteRefElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "footnotes-ref");
+        var aElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "A");
+        var linRefElement = (0,hasClosest/* hasClosestByAttribute */.a1)(startContainer, "data-type", "link-ref");
+        var footnoteRefElement = (0,hasClosest/* hasClosestByAttribute */.a1)(startContainer, "data-type", "footnotes-ref");
         if (aElement || linRefElement || footnoteRefElement ||
             (headingElement && headingElement.tagName.length === 2)) {
             var inputElement = vditor.wysiwyg.popover.querySelector("input");
@@ -6978,24 +7735,24 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
         return true;
     }
     // shift+enter：软换行，但 table/hr/heading 处理、cell 内换行、block render 换行处理单独写在上面，li & p 使用浏览器默认
-    if (!(0,compatibility/* isCtrl */._0)(event) && event.shiftKey && !event.altKey && event.key === "Enter" &&
+    if (!(0,compatibility/* isCtrl */.yl)(event) && event.shiftKey && !event.altKey && event.key === "Enter" &&
         startContainer.parentElement.tagName !== "LI" && startContainer.parentElement.tagName !== "P") {
         if (["STRONG", "STRIKE", "S", "I", "EM", "B"].includes(startContainer.parentElement.tagName)) {
             // 行内元素软换行需继续 https://github.com/Vanessa219/vditor/issues/170
-            range.insertNode(document.createTextNode("\n" + constants/* Constants */.Y.ZWSP));
+            range.insertNode(document.createTextNode("\n" + constants/* Constants.ZWSP */.g.ZWSP));
         }
         else {
             range.insertNode(document.createTextNode("\n"));
         }
         range.collapse(false);
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
         afterRenderEvent(vditor);
         scrollCenter(vditor);
         event.preventDefault();
         return true;
     }
     // 删除
-    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && range.toString() === "") {
+    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && range.toString() === "") {
         if (fixDelete(vditor, range, event, pElement)) {
             return true;
         }
@@ -7005,12 +7762,12 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
                 && blockElement.previousElementSibling.getAttribute("data-block") === "0"
                 // https://github.com/Vanessa219/vditor/issues/946
                 && blockElement.tagName !== "UL" && blockElement.tagName !== "OL") {
-                var rangeStart = (0,selection/* getSelectPosition */.ED)(blockElement, vditor.wysiwyg.element, range).start;
+                var rangeStart = (0,selection/* getSelectPosition */.im)(blockElement, vditor.wysiwyg.element, range).start;
                 if ((rangeStart === 0 && range.startOffset === 0) || // https://github.com/Vanessa219/vditor/issues/894
-                    (rangeStart === 1 && blockElement.innerText.startsWith(constants/* Constants */.Y.ZWSP))) {
+                    (rangeStart === 1 && blockElement.innerText.startsWith(constants/* Constants.ZWSP */.g.ZWSP))) {
                     // 当前块删除后光标落于代码渲染块上，当前块会被删除，因此需要阻止事件，不能和 keyup 中的代码块处理合并
                     showCode(blockElement.previousElementSibling.lastElementChild, vditor, false);
-                    if (blockElement.innerHTML.trim().replace(constants/* Constants */.Y.ZWSP, "") === "") {
+                    if (blockElement.innerHTML.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "") {
                         // 当前块为空且不是最后一个时，需要删除
                         blockElement.remove();
                         afterRenderEvent(vditor);
@@ -7022,11 +7779,11 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
             var rangeStartOffset = range.startOffset;
             if (range.toString() === "" && startContainer.nodeType === 3 &&
                 startContainer.textContent.charAt(rangeStartOffset - 2) === "\n" &&
-                startContainer.textContent.charAt(rangeStartOffset - 1) !== constants/* Constants */.Y.ZWSP
+                startContainer.textContent.charAt(rangeStartOffset - 1) !== constants/* Constants.ZWSP */.g.ZWSP
                 && ["STRONG", "STRIKE", "S", "I", "EM", "B"].includes(startContainer.parentElement.tagName)) {
                 // 保持行内元素软换行需继续的一致性
                 startContainer.textContent = startContainer.textContent.substring(0, rangeStartOffset - 1) +
-                    constants/* Constants */.Y.ZWSP;
+                    constants/* Constants.ZWSP */.g.ZWSP;
                 range.setStart(startContainer, rangeStartOffset);
                 range.collapse(true);
                 afterRenderEvent(vditor);
@@ -7034,7 +7791,7 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
                 return true;
             }
             // inline code、math、html 行前零宽字符后进行删除
-            if (startContainer.textContent === constants/* Constants */.Y.ZWSP && range.startOffset === 1
+            if (startContainer.textContent === constants/* Constants.ZWSP */.g.ZWSP && range.startOffset === 1
                 && !startContainer.previousSibling && nextIsCode(range)) {
                 startContainer.textContent = "";
                 // 不能返回，其前面为代码渲染块时需进行以下处理：修正光标位于 inline math/html 前，按下删除按钮 code 中内容会被删除
@@ -7050,7 +7807,7 @@ var wysiwyg_processKeydown_processKeydown = function (vditor, event) {
             });
         }
     }
-    if ((0,compatibility/* isFirefox */.gm)() && range.startOffset === 1 && startContainer.textContent.indexOf(constants/* Constants */.Y.ZWSP) > -1 &&
+    if ((0,compatibility/* isFirefox */.vU)() && range.startOffset === 1 && startContainer.textContent.indexOf(constants/* Constants.ZWSP */.g.ZWSP) > -1 &&
         startContainer.previousSibling && startContainer.previousSibling.nodeType !== 3 &&
         startContainer.previousSibling.tagName === "CODE" &&
         (event.key === "Backspace" || event.key === "ArrowLeft")) {
@@ -7107,17 +7864,18 @@ var removeBlockElement = function (vditor, event) {
 
 
 
+
 var highlightToolbarWYSIWYG = function (vditor) {
     clearTimeout(vditor.wysiwyg.hlToolbarTimeoutId);
     vditor.wysiwyg.hlToolbarTimeoutId = window.setTimeout(function () {
         if (vditor.wysiwyg.element.getAttribute("contenteditable") === "false") {
             return;
         }
-        if (!(0,selection/* selectIsEditor */.Co)(vditor.wysiwyg.element)) {
+        if (!(0,selection/* selectIsEditor */.Gb)(vditor.wysiwyg.element)) {
             return;
         }
-        removeCurrentToolbar(vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS);
-        enableToolbar(vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS);
+        removeCurrentToolbar(vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS */.g.EDIT_TOOLBARS);
+        enableToolbar(vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS */.g.EDIT_TOOLBARS);
         var range = getSelection().getRangeAt(0);
         var typeElement = range.startContainer;
         if (range.startContainer.nodeType === 3) {
@@ -7128,15 +7886,16 @@ var highlightToolbarWYSIWYG = function (vditor) {
                 ? typeElement.childNodes.length - 1
                 : range.startOffset];
         }
-        var footnotesElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "footnotes-block");
+        var footnotesElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "footnotes-block");
         if (footnotesElement) {
             vditor.wysiwyg.popover.innerHTML = "";
             genClose(footnotesElement, vditor);
+            customWysiwygToolbar(vditor, "footnotes-block");
             setPopoverPosition(vditor, footnotesElement);
             return;
         }
         // 工具栏高亮和禁用
-        var liElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "LI");
+        var liElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "LI");
         if (liElement) {
             if (liElement.classList.contains("vditor-task")) {
                 setCurrentToolbar(vditor.toolbar.elements, ["check"]);
@@ -7152,19 +7911,19 @@ var highlightToolbarWYSIWYG = function (vditor) {
         else {
             disableToolbar(vditor.toolbar.elements, ["outdent", "indent"]);
         }
-        if ((0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "BLOCKQUOTE")) {
+        if ((0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "BLOCKQUOTE")) {
             setCurrentToolbar(vditor.toolbar.elements, ["quote"]);
         }
-        if ((0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "B") ||
-            (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "STRONG")) {
+        if ((0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "B") ||
+            (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "STRONG")) {
             setCurrentToolbar(vditor.toolbar.elements, ["bold"]);
         }
-        if ((0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "I") ||
-            (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "EM")) {
+        if ((0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "I") ||
+            (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "EM")) {
             setCurrentToolbar(vditor.toolbar.elements, ["italic"]);
         }
-        if ((0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "STRIKE") ||
-            (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "S")) {
+        if ((0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "STRIKE") ||
+            (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "S")) {
             setCurrentToolbar(vditor.toolbar.elements, ["strike"]);
         }
         // comments
@@ -7173,7 +7932,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             .forEach(function (item) {
             item.classList.remove("vditor-comment--focus");
         });
-        var commentElement = (0,hasClosest/* hasClosestByClassName */.KJ)(typeElement, "vditor-comment");
+        var commentElement = (0,hasClosest/* hasClosestByClassName */.fb)(typeElement, "vditor-comment");
         if (commentElement) {
             var ids_1 = commentElement.getAttribute("data-cmtids").split(" ");
             if (ids_1.length > 1 && commentElement.nextSibling.isSameNode(commentElement.nextElementSibling)) {
@@ -7195,14 +7954,14 @@ var highlightToolbarWYSIWYG = function (vditor) {
                 }
             });
         }
-        var aElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "A");
+        var aElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "A");
         if (aElement) {
             setCurrentToolbar(vditor.toolbar.elements, ["link"]);
         }
-        var tableElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "TABLE");
-        var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.c)(typeElement);
-        if ((0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "CODE")) {
-            if ((0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "PRE")) {
+        var tableElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "TABLE");
+        var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.W)(typeElement);
+        if ((0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "CODE")) {
+            if ((0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "PRE")) {
                 disableToolbar(vditor.toolbar.elements, [
                     "headings",
                     "bold",
@@ -7250,20 +8009,22 @@ var highlightToolbarWYSIWYG = function (vditor) {
             disableToolbar(vditor.toolbar.elements, ["table"]);
         }
         // toc popover
-        var tocElement = (0,hasClosest/* hasClosestByClassName */.KJ)(typeElement, "vditor-toc");
+        var tocElement = (0,hasClosest/* hasClosestByClassName */.fb)(typeElement, "vditor-toc");
         if (tocElement) {
             vditor.wysiwyg.popover.innerHTML = "";
             genClose(tocElement, vditor);
+            customWysiwygToolbar(vditor, "vditor-toc");
             setPopoverPosition(vditor, tocElement);
             return;
         }
         // quote popover
-        var blockquoteElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(typeElement, "BLOCKQUOTE");
+        var blockquoteElement = (0,hasClosestByHeadings/* hasClosestByTag */.S)(typeElement, "BLOCKQUOTE");
         if (blockquoteElement) {
             vditor.wysiwyg.popover.innerHTML = "";
             genUp(range, blockquoteElement, vditor);
             genDown(range, blockquoteElement, vditor);
             genClose(blockquoteElement, vditor);
+            customWysiwygToolbar(vditor, "blockquote");
             setPopoverPosition(vditor, blockquoteElement);
         }
         // list item popover
@@ -7272,6 +8033,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             genUp(range, liElement, vditor);
             genDown(range, liElement, vditor);
             genClose(liElement, vditor);
+            customWysiwygToolbar(vditor, "li");
             setPopoverPosition(vditor, liElement);
         }
         // table popover
@@ -7357,11 +8119,11 @@ var highlightToolbarWYSIWYG = function (vditor) {
                     right_1.classList.remove("vditor-icon--current");
                     left_1.classList.add("vditor-icon--current");
                 }
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
                 afterRenderEvent(vditor);
             };
-            var td = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "TD");
-            var th = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "TH");
+            var td = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "TD");
+            var th = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "TH");
             var alignType = "left";
             if (td) {
                 alignType = td.getAttribute("align") || "left";
@@ -7371,7 +8133,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             }
             var left_1 = document.createElement("button");
             left_1.setAttribute("type", "button");
-            left_1.setAttribute("aria-label", window.VditorI18n.alignLeft + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘L") + ">");
+            left_1.setAttribute("aria-label", window.VditorI18n.alignLeft + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘L") + ">");
             left_1.setAttribute("data-type", "left");
             left_1.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-align-left"></use></svg>';
@@ -7383,7 +8145,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             };
             var center_1 = document.createElement("button");
             center_1.setAttribute("type", "button");
-            center_1.setAttribute("aria-label", window.VditorI18n.alignCenter + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘C") + ">");
+            center_1.setAttribute("aria-label", window.VditorI18n.alignCenter + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘C") + ">");
             center_1.setAttribute("data-type", "center");
             center_1.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-align-center"></use></svg>';
@@ -7395,7 +8157,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             };
             var right_1 = document.createElement("button");
             right_1.setAttribute("type", "button");
-            right_1.setAttribute("aria-label", window.VditorI18n.alignRight + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘R") + ">");
+            right_1.setAttribute("aria-label", window.VditorI18n.alignRight + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘R") + ">");
             right_1.setAttribute("data-type", "right");
             right_1.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-align-right"></use></svg>';
@@ -7407,7 +8169,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             };
             var insertRowElement = document.createElement("button");
             insertRowElement.setAttribute("type", "button");
-            insertRowElement.setAttribute("aria-label", window.VditorI18n.insertRowBelow + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌘=") + ">");
+            insertRowElement.setAttribute("aria-label", window.VditorI18n.insertRowBelow + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌘=") + ">");
             insertRowElement.setAttribute("data-type", "insertRow");
             insertRowElement.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-insert-row"></use></svg>';
@@ -7416,15 +8178,15 @@ var highlightToolbarWYSIWYG = function (vditor) {
             insertRowElement.onclick = function () {
                 var startContainer = getSelection().getRangeAt(0)
                     .startContainer;
-                var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+                var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
                 if (cellElement) {
                     insertRow(vditor, range, cellElement);
                 }
             };
             var insertRowBElement = document.createElement("button");
             insertRowBElement.setAttribute("type", "button");
-            insertRowBElement.setAttribute("aria-label", window.VditorI18n.insertRowAbove + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘F") + ">");
+            insertRowBElement.setAttribute("aria-label", window.VditorI18n.insertRowAbove + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘F") + ">");
             insertRowBElement.setAttribute("data-type", "insertRow");
             insertRowBElement.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-insert-rowb"></use></svg>';
@@ -7433,15 +8195,15 @@ var highlightToolbarWYSIWYG = function (vditor) {
             insertRowBElement.onclick = function () {
                 var startContainer = getSelection().getRangeAt(0)
                     .startContainer;
-                var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+                var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
                 if (cellElement) {
                     insertRowAbove(vditor, range, cellElement);
                 }
             };
             var insertColumnElement = document.createElement("button");
             insertColumnElement.setAttribute("type", "button");
-            insertColumnElement.setAttribute("aria-label", window.VditorI18n.insertColumnRight + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘=") + ">");
+            insertColumnElement.setAttribute("aria-label", window.VditorI18n.insertColumnRight + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘=") + ">");
             insertColumnElement.setAttribute("data-type", "insertColumn");
             insertColumnElement.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-insert-column"></use></svg>';
@@ -7450,15 +8212,15 @@ var highlightToolbarWYSIWYG = function (vditor) {
             insertColumnElement.onclick = function () {
                 var startContainer = getSelection().getRangeAt(0)
                     .startContainer;
-                var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+                var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
                 if (cellElement) {
                     insertColumn(vditor, tableElement, cellElement);
                 }
             };
             var insertColumnBElement = document.createElement("button");
             insertColumnBElement.setAttribute("type", "button");
-            insertColumnBElement.setAttribute("aria-label", window.VditorI18n.insertColumnLeft + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘G") + ">");
+            insertColumnBElement.setAttribute("aria-label", window.VditorI18n.insertColumnLeft + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘G") + ">");
             insertColumnBElement.setAttribute("data-type", "insertColumn");
             insertColumnBElement.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-insert-columnb"></use></svg>';
@@ -7467,15 +8229,15 @@ var highlightToolbarWYSIWYG = function (vditor) {
             insertColumnBElement.onclick = function () {
                 var startContainer = getSelection().getRangeAt(0)
                     .startContainer;
-                var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+                var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
                 if (cellElement) {
                     insertColumn(vditor, tableElement, cellElement, "beforebegin");
                 }
             };
             var deleteRowElement = document.createElement("button");
             deleteRowElement.setAttribute("type", "button");
-            deleteRowElement.setAttribute("aria-label", window.VditorI18n["delete-row"] + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌘-") + ">");
+            deleteRowElement.setAttribute("aria-label", window.VditorI18n["delete-row"] + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌘-") + ">");
             deleteRowElement.setAttribute("data-type", "deleteRow");
             deleteRowElement.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-delete-row"></use></svg>';
@@ -7484,15 +8246,15 @@ var highlightToolbarWYSIWYG = function (vditor) {
             deleteRowElement.onclick = function () {
                 var startContainer = getSelection().getRangeAt(0)
                     .startContainer;
-                var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+                var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
                 if (cellElement) {
                     deleteRow(vditor, range, cellElement);
                 }
             };
             var deleteColumnElement = document.createElement("button");
             deleteColumnElement.setAttribute("type", "button");
-            deleteColumnElement.setAttribute("aria-label", window.VditorI18n["delete-column"] + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘-") + ">");
+            deleteColumnElement.setAttribute("aria-label", window.VditorI18n["delete-column"] + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘-") + ">");
             deleteColumnElement.setAttribute("data-type", "deleteColumn");
             deleteColumnElement.innerHTML =
                 '<svg><use xlink:href="#vditor-icon-delete-column"></use></svg>';
@@ -7501,8 +8263,8 @@ var highlightToolbarWYSIWYG = function (vditor) {
             deleteColumnElement.onclick = function () {
                 var startContainer = getSelection().getRangeAt(0)
                     .startContainer;
-                var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+                var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
                 if (cellElement) {
                     deleteColumn(vditor, range, tableElement, cellElement);
                 }
@@ -7586,26 +8348,27 @@ var highlightToolbarWYSIWYG = function (vditor) {
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
             vditor.wysiwyg.popover.insertAdjacentHTML("beforeend", " x ");
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input2Wrap);
+            customWysiwygToolbar(vditor, "table");
             setPopoverPosition(vditor, tableElement);
         }
         // link ref popover
-        var linkRefElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "link-ref");
+        var linkRefElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "link-ref");
         if (linkRefElement) {
             genLinkRefPopover(vditor, linkRefElement, range);
         }
         // footnote popover
-        var footnotesRefElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-type", "footnotes-ref");
+        var footnotesRefElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-type", "footnotes-ref");
         if (footnotesRefElement) {
             var lang = vditor.options.lang;
             var options = vditor.options;
             vditor.wysiwyg.popover.innerHTML = "";
             var inputWrap = document.createElement("span");
-            inputWrap.setAttribute("aria-label", window.VditorI18n.footnoteRef + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌥Enter") + ">");
+            inputWrap.setAttribute("aria-label", window.VditorI18n.footnoteRef + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌥Enter") + ">");
             inputWrap.className = "vditor-tooltipped vditor-tooltipped__n";
             var input_2 = document.createElement("input");
             inputWrap.appendChild(input_2);
             input_2.className = "vditor-input";
-            input_2.setAttribute("placeholder", window.VditorI18n.footnoteRef + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌥Enter") + ">");
+            input_2.setAttribute("placeholder", window.VditorI18n.footnoteRef + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌥Enter") + ">");
             input_2.style.width = "120px";
             input_2.value = footnotesRefElement.getAttribute("data-footnotes-label");
             input_2.oninput = function () {
@@ -7629,10 +8392,11 @@ var highlightToolbarWYSIWYG = function (vditor) {
             };
             genClose(footnotesRefElement, vditor);
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
+            customWysiwygToolbar(vditor, "footnotes-ref");
             setPopoverPosition(vditor, footnotesRefElement);
         }
         // block popover: math-inline, math-block, html-block, html-inline, code-block, html-entity
-        var blockRenderElement = (0,hasClosest/* hasClosestByClassName */.KJ)(typeElement, "vditor-wysiwyg__block");
+        var blockRenderElement = (0,hasClosest/* hasClosestByClassName */.fb)(typeElement, "vditor-wysiwyg__block");
         var isBlock = blockRenderElement ? blockRenderElement.getAttribute("data-type").indexOf("block") > -1 : false;
         vditor.wysiwyg.element
             .querySelectorAll(".vditor-wysiwyg__preview")
@@ -7649,13 +8413,13 @@ var highlightToolbarWYSIWYG = function (vditor) {
             genClose(blockRenderElement, vditor);
             if (blockRenderElement.getAttribute("data-type") === "code-block") {
                 var languageWrap = document.createElement("span");
-                languageWrap.setAttribute("aria-label", window.VditorI18n.language + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌥Enter") + ">");
+                languageWrap.setAttribute("aria-label", window.VditorI18n.language + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌥Enter") + ">");
                 languageWrap.className = "vditor-tooltipped vditor-tooltipped__n";
                 var language_1 = document.createElement("input");
                 languageWrap.appendChild(language_1);
                 var codeElement_1 = blockRenderElement.firstElementChild.firstElementChild;
                 language_1.className = "vditor-input";
-                language_1.setAttribute("placeholder", window.VditorI18n.language + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌥Enter") + ">");
+                language_1.setAttribute("placeholder", window.VditorI18n.language + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌥Enter") + ">");
                 language_1.value =
                     codeElement_1.className.indexOf("language-") > -1
                         ? codeElement_1.className.split("-")[1].split(" ")[0]
@@ -7679,7 +8443,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
                         // 选择语言后，输入焦点切换到代码输入框
                         range.setStart(codeElement_1.firstChild, 0);
                         range.collapse(true);
-                        (0,selection/* setSelectionFocus */.jl)(range);
+                        (0,selection/* setSelectionFocus */.Hc)(range);
                     }
                 };
                 language_1.onkeydown = function (event) {
@@ -7709,7 +8473,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
                     }
                     var matchLangData = [];
                     var key = language_1.value.substring(0, language_1.selectionStart);
-                    (vditor.options.preview.hljs.langs || constants/* Constants */.Y.ALIAS_CODE_LANGUAGES.concat(((_b = (_a = window.hljs) === null || _a === void 0 ? void 0 : _a.listLanguages()) !== null && _b !== void 0 ? _b : []).sort())).forEach(function (keyName) {
+                    (vditor.options.preview.hljs.langs || constants/* Constants.ALIAS_CODE_LANGUAGES.concat */.g.ALIAS_CODE_LANGUAGES.concat(((_b = (_a = window.hljs) === null || _a === void 0 ? void 0 : _a.listLanguages()) !== null && _b !== void 0 ? _b : []).sort())).forEach(function (keyName) {
                         if (keyName.indexOf(key.toLowerCase()) > -1) {
                             matchLangData.push({
                                 html: keyName,
@@ -7721,6 +8485,10 @@ var highlightToolbarWYSIWYG = function (vditor) {
                     event.preventDefault();
                 };
                 vditor.wysiwyg.popover.insertAdjacentElement("beforeend", languageWrap);
+                customWysiwygToolbar(vditor, "code-block");
+            }
+            else {
+                customWysiwygToolbar(vditor, "block");
             }
             setPopoverPosition(vditor, blockRenderElement);
         }
@@ -7730,12 +8498,12 @@ var highlightToolbarWYSIWYG = function (vditor) {
         if (headingElement) {
             vditor.wysiwyg.popover.innerHTML = "";
             var inputWrap = document.createElement("span");
-            inputWrap.setAttribute("aria-label", "ID" + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌥Enter") + ">");
+            inputWrap.setAttribute("aria-label", "ID" + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌥Enter") + ">");
             inputWrap.className = "vditor-tooltipped vditor-tooltipped__n";
             var input_3 = document.createElement("input");
             inputWrap.appendChild(input_3);
             input_3.className = "vditor-input";
-            input_3.setAttribute("placeholder", "ID" + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⌥Enter") + ">");
+            input_3.setAttribute("placeholder", "ID" + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⌥Enter") + ">");
             input_3.style.width = "120px";
             input_3.value = headingElement.getAttribute("data-id") || "";
             input_3.oninput = function () {
@@ -7759,6 +8527,7 @@ var highlightToolbarWYSIWYG = function (vditor) {
             genDown(range, headingElement, vditor);
             genClose(headingElement, vditor);
             vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
+            customWysiwygToolbar(vditor, "heading");
             setPopoverPosition(vditor, headingElement);
         }
         // a popover
@@ -7774,13 +8543,14 @@ var highlightToolbarWYSIWYG = function (vditor) {
             !footnotesRefElement &&
             !headingElement &&
             !tocElement) {
-            var blockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(typeElement, "data-block", "0");
+            var blockElement = (0,hasClosest/* hasClosestByAttribute */.a1)(typeElement, "data-block", "0");
             if (blockElement &&
                 blockElement.parentElement.isEqualNode(vditor.wysiwyg.element)) {
                 vditor.wysiwyg.popover.innerHTML = "";
                 genUp(range, blockElement, vditor);
                 genDown(range, blockElement, vditor);
                 genClose(blockElement, vditor);
+                customWysiwygToolbar(vditor, "block");
                 setPopoverPosition(vditor, blockElement);
             }
             else {
@@ -7793,15 +8563,59 @@ var highlightToolbarWYSIWYG = function (vditor) {
             .forEach(function (item) {
             item.style.display = "none";
         });
-        var backslashElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", "backslash");
+        var backslashElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "backslash");
         if (backslashElement) {
             backslashElement.querySelector("span").style.display = "inline";
         }
     }, 200);
 };
+var genMobileToolbar = function (type, vditor) {
+    var customToolbar = vditor.options.customWysiwygMobileToolbar;
+    if (!customToolbar || window.innerWidth > 520) {
+        return;
+    }
+    var toolbarElement = document.createElement("div");
+    toolbarElement.className = "vditor-wysiwyg__mobile-toolbar";
+    var menuButton = document.createElement("button");
+    menuButton.type = "button";
+    menuButton.className = "vditor-icon";
+    menuButton.setAttribute("data-type", "mobile-menu");
+    menuButton.setAttribute("aria-label", window.VditorI18n.more);
+    menuButton.textContent = "+";
+    var actionsElement = document.createElement("div");
+    actionsElement.className = "vditor-panel vditor-wysiwyg__mobile-actions";
+    var savedRange = (0,selection/* getEditorRange */.zh)(vditor).cloneRange();
+    customToolbar(type, actionsElement);
+    if (!actionsElement.hasChildNodes()) {
+        return;
+    }
+    var restoreSelection = function () {
+        if (!vditor.wysiwyg.element.contains(savedRange.commonAncestorContainer)) {
+            return;
+        }
+        var restoredRange = savedRange.cloneRange();
+        vditor.wysiwyg.range = restoredRange;
+        (0,selection/* setSelectionFocus */.Hc)(restoredRange);
+        actionsElement.classList.remove("vditor-wysiwyg__mobile-actions--open");
+    };
+    actionsElement.addEventListener("touchstart", restoreSelection, true);
+    actionsElement.addEventListener("click", restoreSelection, true);
+    menuButton.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        actionsElement.classList.toggle("vditor-wysiwyg__mobile-actions--open");
+        actionsElement.classList.remove("vditor-panel--left");
+        if (actionsElement.getBoundingClientRect().right > window.innerWidth) {
+            actionsElement.classList.add("vditor-panel--left");
+        }
+    });
+    toolbarElement.appendChild(menuButton);
+    toolbarElement.appendChild(actionsElement);
+    vditor.wysiwyg.popover.insertAdjacentElement("afterbegin", toolbarElement);
+};
 var setPopoverPosition = function (vditor, element) {
     var targetElement = element;
-    var tableElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(element, "TABLE");
+    var tableElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(element, "TABLE");
     if (tableElement) {
         targetElement = tableElement;
     }
@@ -7878,6 +8692,7 @@ var genLinkRefPopover = function (vditor, linkRefElement, range) {
     genClose(linkRefElement, vditor);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input1Wrap);
+    customWysiwygToolbar(vditor, "link-ref");
     setPopoverPosition(vditor, linkRefElement);
 };
 var genUp = function (range, element, vditor) {
@@ -7890,13 +8705,13 @@ var genUp = function (range, element, vditor) {
     var upElement = document.createElement("button");
     upElement.setAttribute("type", "button");
     upElement.setAttribute("data-type", "up");
-    upElement.setAttribute("aria-label", window.VditorI18n.up + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘U") + ">");
+    upElement.setAttribute("aria-label", window.VditorI18n.up + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘U") + ">");
     upElement.innerHTML = '<svg><use xlink:href="#vditor-icon-up"></use></svg>';
     upElement.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n";
     upElement.onclick = function () {
         range.insertNode(document.createElement("wbr"));
         previousElement.insertAdjacentElement("beforebegin", element);
-        (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+        (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
         afterRenderEvent(vditor);
         highlightToolbarWYSIWYG(vditor);
         scrollCenter(vditor);
@@ -7913,7 +8728,7 @@ var genDown = function (range, element, vditor) {
     var downElement = document.createElement("button");
     downElement.setAttribute("type", "button");
     downElement.setAttribute("data-type", "down");
-    downElement.setAttribute("aria-label", window.VditorI18n.down + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘D") + ">");
+    downElement.setAttribute("aria-label", window.VditorI18n.down + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘D") + ">");
     downElement.innerHTML =
         '<svg><use xlink:href="#vditor-icon-down"></use></svg>';
     downElement.className =
@@ -7921,7 +8736,7 @@ var genDown = function (range, element, vditor) {
     downElement.onclick = function () {
         range.insertNode(document.createElement("wbr"));
         nextElement.insertAdjacentElement("afterend", element);
-        (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+        (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
         afterRenderEvent(vditor);
         highlightToolbarWYSIWYG(vditor);
         scrollCenter(vditor);
@@ -7932,14 +8747,14 @@ var genClose = function (element, vditor) {
     var close = document.createElement("button");
     close.setAttribute("type", "button");
     close.setAttribute("data-type", "remove");
-    close.setAttribute("aria-label", window.VditorI18n.remove + "<" + (0,compatibility/* updateHotkeyTip */.fG)("⇧⌘X") + ">");
+    close.setAttribute("aria-label", window.VditorI18n.remove + "<" + (0,compatibility/* updateHotkeyTip */.ns)("⇧⌘X") + ">");
     close.innerHTML =
         '<svg><use xlink:href="#vditor-icon-trashcan"></use></svg>';
     close.className = "vditor-icon vditor-tooltipped vditor-tooltipped__n";
     close.onclick = function () {
-        var range = (0,selection/* getEditorRange */.RN)(vditor);
+        var range = (0,selection/* getEditorRange */.zh)(vditor);
         range.setStartAfter(element);
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
         element.remove();
         afterRenderEvent(vditor);
         highlightToolbarWYSIWYG(vditor);
@@ -7959,16 +8774,16 @@ var linkHotkey = function (vditor, element, event, nextInputElement) {
         event.preventDefault();
         return;
     }
-    if (!(0,compatibility/* isCtrl */._0)(event) &&
+    if (!(0,compatibility/* isCtrl */.yl)(event) &&
         !event.shiftKey &&
         event.altKey &&
         event.key === "Enter") {
-        var range = (0,selection/* getEditorRange */.RN)(vditor);
+        var range = (0,selection/* getEditorRange */.zh)(vditor);
         // firefox 不会打断 link https://github.com/Vanessa219/vditor/issues/193
-        element.insertAdjacentHTML("afterend", constants/* Constants */.Y.ZWSP);
+        element.insertAdjacentHTML("afterend", constants/* Constants.ZWSP */.g.ZWSP);
         range.setStartAfter(element.nextSibling);
         range.collapse(true);
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
         event.preventDefault();
     }
 };
@@ -8051,6 +8866,7 @@ var genAPopover = function (vditor, aElement, range) {
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input1Wrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", input2Wrap);
+    customWysiwygToolbar(vditor, "a");
     setPopoverPosition(vditor, aElement);
 };
 var genImagePopover = function (event, vditor) {
@@ -8060,6 +8876,7 @@ var genImagePopover = function (event, vditor) {
         imgElement.setAttribute("src", inputElement.value);
         imgElement.setAttribute("alt", alt.value);
         imgElement.setAttribute("title", title.value);
+        (0,imageCaptionRender/* renderImageCaptions */.W)(vditor.wysiwyg.element, "wysiwyg", vditor.options.preview.markdown.imageCaption);
         if (typeof vditor.options.input === "function") {
             vditor.options.input(getMarkdown(vditor));
         }
@@ -8111,16 +8928,23 @@ var genImagePopover = function (event, vditor) {
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", inputWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", altWrap);
     vditor.wysiwyg.popover.insertAdjacentElement("beforeend", titleWrap);
+    customWysiwygToolbar(vditor, "image");
     setPopoverPosition(vditor, imgElement);
 };
 var focusToElement = function (event, range) {
-    if ((!(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && event.key === "Enter") || event.key === "Escape") {
+    if ((!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && event.key === "Enter") || event.key === "Escape") {
         if (range) {
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
         }
         event.preventDefault();
         event.stopPropagation();
         return true;
+    }
+};
+var customWysiwygToolbar = function (vditor, type) {
+    genMobileToolbar(type, vditor);
+    if (vditor.options.customWysiwygToolbar) {
+        vditor.options.customWysiwygToolbar(type, vditor.wysiwyg.popover);
     }
 };
 
@@ -8199,7 +9023,7 @@ var cancelBES = function (range, vditor, commandName) {
                 (commandName === "italic" && tagName === "EM") ||
                 (commandName === "strikeThrough" && tagName === "S")) {
                 // 取消
-                insertHTML += "".concat(lastTagName).concat(constants/* Constants */.Y.ZWSP, "<wbr>").concat(lastEndTagName);
+                insertHTML += "".concat(lastTagName).concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr>").concat(lastEndTagName);
                 jump = true;
             }
             if (lastAfterHTML || nextHTML) {
@@ -8221,7 +9045,7 @@ var cancelBES = function (range, vditor, commandName) {
             jump = true;
         }
     }
-    (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+    (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
 };
 var toolbarEvent = function (vditor, actionBtn, event) {
     if (vditor.wysiwyg.composingLock // Mac Chrome 中韩文结束会出发此事件，导致重复末尾字符 https://github.com/Vanessa219/vditor/issues/188
@@ -8234,7 +9058,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
     if (vditor.wysiwyg.element.querySelector("wbr")) {
         vditor.wysiwyg.element.querySelector("wbr").remove();
     }
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
     var commandName = actionBtn.getAttribute("data-type");
     // 移除
     if (actionBtn.classList.contains("vditor-menu--current")) {
@@ -8242,7 +9066,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
             commandName = "strikeThrough";
         }
         if (commandName === "quote") {
-            var quoteElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "BLOCKQUOTE");
+            var quoteElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "BLOCKQUOTE");
             if (!quoteElement) {
                 quoteElement = range.startContainer.childNodes[range.startOffset];
             }
@@ -8252,17 +9076,17 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 range.insertNode(document.createElement("wbr"));
                 quoteElement.outerHTML = quoteElement.innerHTML.trim() === "" ?
                     "<p data-block=\"0\">".concat(quoteElement.innerHTML, "</p>") : quoteElement.innerHTML;
-                (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+                (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             }
         }
         else if (commandName === "inline-code") {
-            var inlineCodeElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "CODE");
+            var inlineCodeElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "CODE");
             if (!inlineCodeElement) {
                 inlineCodeElement = range.startContainer.childNodes[range.startOffset];
             }
             if (inlineCodeElement) {
-                inlineCodeElement.outerHTML = inlineCodeElement.innerHTML.replace(constants/* Constants */.Y.ZWSP, "") + "<wbr>";
-                (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+                inlineCodeElement.outerHTML = inlineCodeElement.innerHTML.replace(constants/* Constants.ZWSP */.g.ZWSP, "") + "<wbr>";
+                (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             }
         }
         else if (commandName === "link") {
@@ -8276,7 +9100,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
         }
         else if (commandName === "check" || commandName === "list" || commandName === "ordered-list") {
             listToggle(vditor, range, commandName);
-            (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             useHighlight = false;
             actionBtn.classList.remove("vditor-menu--current");
         }
@@ -8296,9 +9120,9 @@ var toolbarEvent = function (vditor, actionBtn, event) {
         // 添加
         if (vditor.wysiwyg.element.childNodes.length === 0) {
             vditor.wysiwyg.element.innerHTML = '<p data-block="0"><wbr></p>';
-            (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
         }
-        var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+        var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
         if (commandName === "quote") {
             if (!blockElement) {
                 blockElement = range.startContainer.childNodes[range.startOffset];
@@ -8307,7 +9131,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 useHighlight = false;
                 actionBtn.classList.add("vditor-menu--current");
                 range.insertNode(document.createElement("wbr"));
-                var liElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "LI");
+                var liElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "LI");
                 // li 中软换行
                 if (liElement && blockElement.contains(liElement)) {
                     liElement.innerHTML = "<blockquote data-block=\"0\">".concat(liElement.innerHTML, "</blockquote>");
@@ -8315,12 +9139,12 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 else {
                     blockElement.outerHTML = "<blockquote data-block=\"0\">".concat(blockElement.outerHTML, "</blockquote>");
                 }
-                (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+                (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             }
         }
         else if (commandName === "check" || commandName === "list" || commandName === "ordered-list") {
             listToggle(vditor, range, commandName, false);
-            (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             useHighlight = false;
             removeCurrentToolbar(vditor.toolbar.elements, ["check", "list", "ordered-list"]);
             actionBtn.classList.add("vditor-menu--current");
@@ -8328,17 +9152,17 @@ var toolbarEvent = function (vditor, actionBtn, event) {
         else if (commandName === "inline-code") {
             if (range.toString() === "") {
                 var node = document.createElement("code");
-                node.textContent = constants/* Constants */.Y.ZWSP;
+                node.textContent = constants/* Constants.ZWSP */.g.ZWSP;
                 range.insertNode(node);
                 range.setStart(node.firstChild, 1);
                 range.collapse(true);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
             else if (range.startContainer.nodeType === 3) {
                 var node = document.createElement("code");
                 range.surroundContents(node);
                 range.insertNode(node);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
             actionBtn.classList.add("vditor-menu--current");
         }
@@ -8359,7 +9183,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
             if (blockElement) {
                 blockElement.outerHTML = vditor.lute.SpinVditorDOM(blockElement.outerHTML);
             }
-            (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             vditor.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']").forEach(function (item) {
                 processCodeRender(item, vditor);
             });
@@ -8368,7 +9192,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
         else if (commandName === "link") {
             if (range.toString() === "") {
                 var aElement = document.createElement("a");
-                aElement.innerText = constants/* Constants */.Y.ZWSP;
+                aElement.innerText = constants/* Constants.ZWSP */.g.ZWSP;
                 range.insertNode(aElement);
                 range.setStart(aElement.firstChild, 1);
                 range.collapse(true);
@@ -8384,7 +9208,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 node.innerHTML = range.toString();
                 range.surroundContents(node);
                 range.insertNode(node);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
                 genAPopover(vditor, node, range);
                 var textInputElements = vditor.wysiwyg.popover.querySelectorAll("input");
                 textInputElements[0].value = node.innerText;
@@ -8396,7 +9220,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
         else if (commandName === "table") {
             var tableHTML_1 = "<table data-block=\"0\"><thead><tr><th>col1<wbr></th><th>col2</th><th>col3</th></tr></thead><tbody><tr><td> </td><td> </td><td> </td></tr><tr><td> </td><td> </td><td> </td></tr></tbody></table>";
             if (range.toString().trim() === "") {
-                if (blockElement && blockElement.innerHTML.trim().replace(constants/* Constants */.Y.ZWSP, "") === "") {
+                if (blockElement && blockElement.innerHTML.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "") {
                     blockElement.outerHTML = tableHTML_1;
                 }
                 else {
@@ -8404,7 +9228,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 }
                 range.selectNode(vditor.wysiwyg.element.querySelector("wbr").previousSibling);
                 vditor.wysiwyg.element.querySelector("wbr").remove();
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
             else {
                 tableHTML_1 = "<table data-block=\"0\"><thead><tr>";
@@ -8437,7 +9261,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 });
                 tableHTML_1 += "</tbody></table>";
                 document.execCommand("insertHTML", false, tableHTML_1);
-                (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+                (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             }
             useHighlight = false;
             actionBtn.classList.add("vditor-menu--disabled");
@@ -8451,7 +9275,7 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                 else {
                     blockElement.insertAdjacentHTML("afterend", hrHTML);
                 }
-                (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+                (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             }
         }
         else {
@@ -8470,15 +9294,15 @@ var toolbarEvent = function (vditor, actionBtn, event) {
                     tagName = "s";
                 }
                 var node = document.createElement(tagName);
-                node.textContent = constants/* Constants */.Y.ZWSP;
+                node.textContent = constants/* Constants.ZWSP */.g.ZWSP;
                 range.insertNode(node);
-                if (node.previousSibling && node.previousSibling.textContent === constants/* Constants */.Y.ZWSP) {
+                if (node.previousSibling && node.previousSibling.textContent === constants/* Constants.ZWSP */.g.ZWSP) {
                     // 移除多层嵌套中的 zwsp
                     node.previousSibling.textContent = "";
                 }
                 range.setStart(node.firstChild, 1);
                 range.collapse(true);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
             else {
                 document.execCommand(commandName, false, "");
@@ -8508,9 +9332,9 @@ var MenuItem = /** @class */ (function () {
         if (menuItem.className) {
             (_a = this.element.classList).add.apply(_a, menuItem.className.split(" "));
         }
-        var hotkey = menuItem.hotkey ? " <".concat((0,compatibility/* updateHotkeyTip */.fG)(menuItem.hotkey), ">") : "";
+        var hotkey = menuItem.hotkey ? " <".concat((0,compatibility/* updateHotkeyTip */.ns)(menuItem.hotkey), ">") : "";
         if (menuItem.level === 2) {
-            hotkey = menuItem.hotkey ? " &lt;".concat((0,compatibility/* updateHotkeyTip */.fG)(menuItem.hotkey), "&gt;") : "";
+            hotkey = menuItem.hotkey ? " &lt;".concat((0,compatibility/* updateHotkeyTip */.ns)(menuItem.hotkey), "&gt;") : "";
         }
         var tip = menuItem.tip ? menuItem.tip + hotkey : "".concat(window.VditorI18n[menuItem.name]).concat(hotkey);
         var tagName = menuItem.name === "upload" ? "div" : "button";
@@ -8529,9 +9353,9 @@ var MenuItem = /** @class */ (function () {
         if (!menuItem.prefix) {
             return;
         }
-        this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             if (vditor.currentMode === "wysiwyg") {
@@ -8578,7 +9402,6 @@ var __extends = (undefined && undefined.__extends) || (function () {
 
 
 
-
 var setEditMode = function (vditor, type, event) {
     var markdownText;
     if (typeof event !== "string") {
@@ -8601,8 +9424,8 @@ var setEditMode = function (vditor, type, event) {
     else {
         vditor.preview.element.style.display = "none";
     }
-    enableToolbar(vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS);
-    removeCurrentToolbar(vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS);
+    enableToolbar(vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS */.g.EDIT_TOOLBARS);
+    removeCurrentToolbar(vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS */.g.EDIT_TOOLBARS);
     disableToolbar(vditor.toolbar.elements, ["outdent", "indent"]);
     if (type === "ir") {
         hideToolbar(vditor.toolbar.elements, ["both"]);
@@ -8625,7 +9448,7 @@ var setEditMode = function (vditor, type, event) {
             processCodeRender(item, vditor);
         });
         vditor.ir.element.querySelectorAll(".vditor-toc").forEach(function (item) {
-            (0,mathRender/* mathRender */.T)(item, {
+            (0,mathRender/* mathRender */.H)(item, {
                 cdn: vditor.options.cdn,
                 math: vditor.options.preview.math,
             });
@@ -8648,7 +9471,7 @@ var setEditMode = function (vditor, type, event) {
             enableInput: false,
         });
         vditor.wysiwyg.element.querySelectorAll(".vditor-toc").forEach(function (item) {
-            (0,mathRender/* mathRender */.T)(item, {
+            (0,mathRender/* mathRender */.H)(item, {
                 cdn: vditor.options.cdn,
                 math: vditor.options.preview.math,
             });
@@ -8668,15 +9491,9 @@ var setEditMode = function (vditor, type, event) {
         }
         vditor.lute.SetVditorIR(false);
         vditor.lute.SetVditorWYSIWYG(false);
-        vditor.lute.SetVditorSV(true);
+        vditor.lute.SetVditorSV(false);
         vditor.currentMode = "sv";
-        var svHTML = processSpinVditorSVDOM(markdownText, vditor);
-        if (svHTML === "<div data-block='0'></div>") {
-            // https://github.com/Vanessa219/vditor/issues/654 SV 模式 Placeholder 显示问题
-            svHTML = "";
-        }
-        vditor.sv.element.innerHTML = svHTML;
-        combineFootnote(vditor.sv.element);
+        vditor.sv.element.value = markdownText;
         processAfterRender(vditor, {
             enableAddUndoStack: true,
             enableHint: false,
@@ -8706,7 +9523,7 @@ var EditMode = /** @class */ (function (_super) {
         var _this = _super.call(this, vditor, menuItem) || this;
         var panelElement = document.createElement("div");
         panelElement.className = "vditor-hint".concat(menuItem.level === 2 ? "" : " vditor-panel--arrow");
-        panelElement.innerHTML = "<button data-mode=\"wysiwyg\">".concat(window.VditorI18n.wysiwyg, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘7"), "></button>\n<button data-mode=\"ir\">").concat(window.VditorI18n.instantRendering, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘8"), "></button>\n<button data-mode=\"sv\">").concat(window.VditorI18n.splitView, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘9"), "></button>");
+        panelElement.innerHTML = "<button data-mode=\"wysiwyg\">".concat(window.VditorI18n.wysiwyg, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘7"), "></button>\n<button data-mode=\"ir\">").concat(window.VditorI18n.instantRendering, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘8"), "></button>\n<button data-mode=\"sv\">").concat(window.VditorI18n.splitView, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘9"), "></button>");
         _this.element.appendChild(panelElement);
         _this._bindEvent(vditor, panelElement, menuItem);
         return _this;
@@ -8714,19 +9531,19 @@ var EditMode = /** @class */ (function (_super) {
     EditMode.prototype._bindEvent = function (vditor, panelElement, menuItem) {
         var actionBtn = this.element.children[0];
         toggleSubMenu(vditor, panelElement, actionBtn, menuItem.level);
-        panelElement.children.item(0).addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        panelElement.children.item(0).addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             // wysiwyg
             setEditMode(vditor, "wysiwyg", event);
             event.preventDefault();
             event.stopPropagation();
         });
-        panelElement.children.item(1).addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        panelElement.children.item(1).addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             // ir
             setEditMode(vditor, "ir", event);
             event.preventDefault();
             event.stopPropagation();
         });
-        panelElement.children.item(2).addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        panelElement.children.item(2).addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             // markdown
             setEditMode(vditor, "sv", event);
             event.preventDefault();
@@ -8740,7 +9557,7 @@ var EditMode = /** @class */ (function (_super) {
 ;// CONCATENATED MODULE: ./src/ts/util/getSelectText.ts
 
 var getSelectText = function (editor, range) {
-    if ((0,selection/* selectIsEditor */.Co)(editor, range)) {
+    if ((0,selection/* selectIsEditor */.Gb)(editor, range)) {
         return getSelection().toString();
     }
     return "";
@@ -8780,7 +9597,7 @@ var dblclickEvent = function (vditor, editorElement) {
                 vditor.options.image.preview(event.target);
             }
             else if (vditor.options.image.isPreview) {
-                (0,preview_image/* previewImage */.o)(event.target, vditor.options.lang, vditor.options.theme);
+                (0,preview_image/* previewImage */.E)(event.target, vditor.options.lang, vditor.options.theme);
             }
         }
     });
@@ -8792,33 +9609,36 @@ var blurEvent = function (vditor, editorElement) {
             if (expandElement) {
                 expandElement.classList.remove("vditor-ir__node--expand");
             }
+            vditor.ir.range = (0,selection/* getEditorRange */.zh)(vditor);
         }
-        else if (vditor.currentMode === "wysiwyg" &&
-            !vditor.wysiwyg.selectPopover.contains(event.relatedTarget)) {
-            vditor.wysiwyg.hideComment();
+        else if (vditor.currentMode === "wysiwyg") {
+            if (!vditor.wysiwyg.selectPopover.contains(event.relatedTarget)) {
+                vditor.wysiwyg.hideComment();
+            }
+            vditor.wysiwyg.range = (0,selection/* getEditorRange */.zh)(vditor);
         }
-        vditor[vditor.currentMode].range = (0,selection/* getEditorRange */.RN)(vditor);
         if (vditor.options.blur) {
             vditor.options.blur(getMarkdown(vditor));
         }
     });
 };
-var dropEvent = function (vditor, editorElement) {
+var dropEvent = function (vditor, editorElement, pasteCode) {
+    if (pasteCode === void 0) { pasteCode = function (code) {
+        document.execCommand("insertHTML", false, code);
+    }; }
     editorElement.addEventListener("dragstart", function (event) {
         // 选中编辑器中的文字进行拖拽
-        event.dataTransfer.setData(constants/* Constants */.Y.DROP_EDITOR, constants/* Constants */.Y.DROP_EDITOR);
+        event.dataTransfer.setData(constants/* Constants.DROP_EDITOR */.g.DROP_EDITOR, constants/* Constants.DROP_EDITOR */.g.DROP_EDITOR);
     });
     editorElement.addEventListener("drop", function (event) {
-        if (event.dataTransfer.getData(constants/* Constants */.Y.DROP_EDITOR)) {
+        if (event.dataTransfer.getData(constants/* Constants.DROP_EDITOR */.g.DROP_EDITOR)) {
             // 编辑器内选中文字拖拽
             execAfterRender(vditor);
         }
         else if (event.dataTransfer.types.includes("Files") || event.dataTransfer.types.includes("text/html")) {
             // 外部文件拖入编辑器中或者编辑器内选中文字拖拽
             paste(vditor, event, {
-                pasteCode: function (code) {
-                    document.execCommand("insertHTML", false, code);
-                },
+                pasteCode: pasteCode,
             });
         }
     });
@@ -8844,7 +9664,15 @@ var scrollCenter = function (vditor) {
         return;
     }
     var editorElement = vditor[vditor.currentMode].element;
-    var cursorTop = (0,selection/* getCursorPosition */.Ey)(editorElement).top;
+    var cursorTop;
+    if (vditor.currentMode === "sv") {
+        var lineHeight = parseInt(getComputedStyle(vditor.sv.element).lineHeight, 10) || 22;
+        cursorTop = (vditor.sv.element.value.substring(0, vditor.sv.element.selectionStart).split("\n").length - 1) *
+            lineHeight;
+    }
+    else {
+        cursorTop = (0,selection/* getCursorPosition */.Ny)(editorElement).top;
+    }
     if (vditor.options.height === "auto" && !vditor.element.classList.contains("vditor--fullscreen")) {
         window.scrollTo(window.scrollX, cursorTop + vditor.element.offsetTop + vditor.toolbar.element.offsetHeight - window.innerHeight / 2 + 10);
     }
@@ -8911,10 +9739,10 @@ var hotkeyEvent = function (vditor, editorElement) {
             return;
         }
         // h1 - h6 hotkey
-        if ((0,compatibility/* isCtrl */._0)(event) && event.altKey && !event.shiftKey && /^Digit[1-6]$/.test(event.code)) {
+        if ((0,compatibility/* isCtrl */.yl)(event) && event.altKey && !event.shiftKey && /^Digit[1-6]$/.test(event.code)) {
             if (vditor.currentMode === "wysiwyg") {
                 var tagName = event.code.replace("Digit", "H");
-                if ((0,hasClosest/* hasClosestByMatchTag */._Y)(getSelection().getRangeAt(0).startContainer, tagName)) {
+                if ((0,hasClosest/* hasClosestByMatchTag */.lG)(getSelection().getRangeAt(0).startContainer, tagName)) {
                     removeHeading(vditor);
                 }
                 else {
@@ -8932,7 +9760,7 @@ var hotkeyEvent = function (vditor, editorElement) {
             return true;
         }
         // toggle edit mode
-        if ((0,compatibility/* isCtrl */._0)(event) && event.altKey && !event.shiftKey && /^Digit[7-9]$/.test(event.code)) {
+        if ((0,compatibility/* isCtrl */.yl)(event) && event.altKey && !event.shiftKey && /^Digit[7-9]$/.test(event.code)) {
             if (event.code === "Digit7") {
                 setEditMode(vditor, "wysiwyg", event);
             }
@@ -8954,7 +9782,7 @@ var hotkeyEvent = function (vditor, editorElement) {
                         }
                         if (matchHotKey(subMenuItem.hotkey, event)) {
                             vditor.toolbar.elements[subMenuItem.name].children[0]
-                                .dispatchEvent(new CustomEvent((0,compatibility/* getEventName */.y3)()));
+                                .dispatchEvent(new CustomEvent((0,compatibility/* getEventName */.Le)()));
                             event.preventDefault();
                             return true;
                         }
@@ -8964,7 +9792,7 @@ var hotkeyEvent = function (vditor, editorElement) {
                 return false;
             }
             if (matchHotKey(menuItem.hotkey, event)) {
-                vditor.toolbar.elements[menuItem.name].children[0].dispatchEvent(new CustomEvent((0,compatibility/* getEventName */.y3)()));
+                vditor.toolbar.elements[menuItem.name].children[0].dispatchEvent(new CustomEvent((0,compatibility/* getEventName */.Le)()));
                 event.preventDefault();
                 return true;
             }
@@ -8978,8 +9806,8 @@ var selectEvent = function (vditor, editorElement) {
                 var selectText = getSelectText(vditor[vditor.currentMode].element);
                 if (selectText.trim()) {
                     if (vditor.currentMode === "wysiwyg" && vditor.options.comment.enable) {
-                        if (!(0,hasClosest/* hasClosestByAttribute */.Th)(event.target, "data-type", "footnotes-block") &&
-                            !(0,hasClosest/* hasClosestByAttribute */.Th)(event.target, "data-type", "link-ref-defs-block")) {
+                        if (!(0,hasClosest/* hasClosestByAttribute */.a1)(event.target, "data-type", "footnotes-block") &&
+                            !(0,hasClosest/* hasClosestByAttribute */.a1)(event.target, "data-type", "link-ref-defs-block")) {
                             vditor.wysiwyg.showComment();
                         }
                         else {
@@ -8994,731 +9822,12 @@ var selectEvent = function (vditor, editorElement) {
                     if (vditor.currentMode === "wysiwyg" && vditor.options.comment.enable) {
                         vditor.wysiwyg.hideComment();
                     }
+                    if (typeof vditor.options.unSelect === 'function') {
+                        vditor.options.unSelect();
+                    }
                 }
             });
         };
-    });
-};
-
-;// CONCATENATED MODULE: ./src/ts/sv/process.ts
-
-
-
-
-
-
-
-
-
-var processPaste = function (vditor, text) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    range.extractContents();
-    range.insertNode(document.createTextNode(Lute.Caret));
-    range.insertNode(document.createTextNode(text));
-    var blockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-block", "0");
-    if (!blockElement) {
-        blockElement = vditor.sv.element;
-    }
-    var spinHTML = vditor.lute.SpinVditorSVDOM(blockElement.textContent);
-    spinHTML = "<div data-block='0'>" +
-        spinHTML.replace(/<span data-type="newline"><br \/><span style="display: none">\n<\/span><\/span><span data-type="newline"><br \/><span style="display: none">\n<\/span><\/span></g, '<span data-type="newline"><br /><span style="display: none">\n</span></span><span data-type="newline"><br /><span style="display: none">\n</span></span></div><div data-block="0"><') +
-        "</div>";
-    if (blockElement.isEqualNode(vditor.sv.element)) {
-        blockElement.innerHTML = spinHTML;
-    }
-    else {
-        blockElement.outerHTML = spinHTML;
-    }
-    combineFootnote(vditor.sv.element);
-    (0,selection/* setRangeByWbr */.ir)(vditor.sv.element, range);
-    scrollCenter(vditor);
-};
-var getSideByType = function (spanNode, type, isPrevious) {
-    if (isPrevious === void 0) { isPrevious = true; }
-    var sideElement = spanNode;
-    if (sideElement.nodeType === 3) {
-        sideElement = sideElement.parentElement;
-    }
-    while (sideElement) {
-        if (sideElement.getAttribute("data-type") === type) {
-            return sideElement;
-        }
-        if (isPrevious) {
-            sideElement = sideElement.previousElementSibling;
-        }
-        else {
-            sideElement = sideElement.nextElementSibling;
-        }
-    }
-    return false;
-};
-var processSpinVditorSVDOM = function (html, vditor) {
-    log("SpinVditorSVDOM", html, "argument", vditor.options.debugger);
-    var spinHTML = vditor.lute.SpinVditorSVDOM(html);
-    html = "<div data-block='0'>" +
-        spinHTML.replace(/<span data-type="newline"><br \/><span style="display: none">\n<\/span><\/span><span data-type="newline"><br \/><span style="display: none">\n<\/span><\/span></g, '<span data-type="newline"><br /><span style="display: none">\n</span></span><span data-type="newline"><br /><span style="display: none">\n</span></span></div><div data-block="0"><') +
-        "</div>";
-    log("SpinVditorSVDOM", html, "result", vditor.options.debugger);
-    return html;
-};
-var processPreviousMarkers = function (spanElement) {
-    var spanType = spanElement.getAttribute("data-type");
-    var previousElement = spanElement.previousElementSibling;
-    // 有内容的子列表/标题，在其 marker 后换行
-    var markerText = (spanType && spanType !== "text" && spanType !== "table" && spanType !== "heading-marker" &&
-        spanType !== "newline" && spanType !== "yaml-front-matter-open-marker" && spanType !== "yaml-front-matter-close-marker"
-        && spanType !== "code-block-info" && spanType !== "code-block-close-marker" && spanType !== "code-block-open-marker") ?
-        spanElement.textContent : "";
-    var hasNL = false;
-    if (spanType === "newline") {
-        hasNL = true;
-    }
-    while (previousElement && !hasNL) {
-        var previousType = previousElement.getAttribute("data-type");
-        if (previousType === "li-marker" || previousType === "blockquote-marker" || previousType === "task-marker" ||
-            previousType === "padding") {
-            var previousText = previousElement.textContent;
-            if (previousType === "li-marker" &&
-                (spanType === "code-block-open-marker" || spanType === "code-block-info")) {
-                // https://github.com/Vanessa219/vditor/issues/586
-                markerText = previousText.replace(/\S/g, " ") + markerText;
-            }
-            else if (spanType === "code-block-close-marker" &&
-                previousElement.nextElementSibling.isSameNode(spanElement)) {
-                // https://github.com/Vanessa219/vditor/issues/594
-                var openMarker = getSideByType(spanElement, "code-block-open-marker");
-                if (openMarker && openMarker.previousElementSibling) {
-                    previousElement = openMarker.previousElementSibling;
-                    markerText = previousText + markerText;
-                }
-            }
-            else {
-                markerText = previousText + markerText;
-            }
-        }
-        else if (previousType === "newline") {
-            hasNL = true;
-        }
-        previousElement = previousElement.previousElementSibling;
-    }
-    return markerText;
-};
-var processAfterRender = function (vditor, options) {
-    if (options === void 0) { options = {
-        enableAddUndoStack: true,
-        enableHint: false,
-        enableInput: true,
-    }; }
-    if (options.enableHint) {
-        vditor.hint.render(vditor);
-    }
-    vditor.preview.render(vditor);
-    var text = getMarkdown(vditor);
-    if (typeof vditor.options.input === "function" && options.enableInput) {
-        vditor.options.input(text);
-    }
-    if (vditor.options.counter.enable) {
-        vditor.counter.render(vditor, text);
-    }
-    if (vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.D)()) {
-        localStorage.setItem(vditor.options.cache.id, text);
-        if (vditor.options.cache.after) {
-            vditor.options.cache.after(text);
-        }
-    }
-    if (vditor.devtools) {
-        vditor.devtools.renderEchart(vditor);
-    }
-    clearTimeout(vditor.sv.processTimeoutId);
-    vditor.sv.processTimeoutId = window.setTimeout(function () {
-        if (options.enableAddUndoStack && !vditor.sv.composingLock) {
-            vditor.undo.addToUndoStack(vditor);
-        }
-    }, vditor.options.undoDelay);
-};
-var processHeading = function (vditor, value) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    var headingElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(range.startContainer, "SPAN");
-    if (headingElement && headingElement.textContent.trim() !== "") {
-        value = "\n" + value;
-    }
-    range.collapse(true);
-    document.execCommand("insertHTML", false, value);
-};
-var processToolbar = function (vditor, actionBtn, prefix, suffix) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    var commandName = actionBtn.getAttribute("data-type");
-    // 添加
-    if (vditor.sv.element.childNodes.length === 0) {
-        vditor.sv.element.innerHTML = "<span data-type=\"p\" data-block=\"0\"><span data-type=\"text\"><wbr></span></span><span data-type=\"newline\"><br><span style=\"display: none\">\n</span></span>";
-        (0,selection/* setRangeByWbr */.ir)(vditor.sv.element, range);
-    }
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
-    var spanElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(range.startContainer, "SPAN");
-    if (!blockElement) {
-        return;
-    }
-    if (commandName === "link") {
-        var html = void 0;
-        if (range.toString() === "") {
-            html = "".concat(prefix).concat(Lute.Caret).concat(suffix);
-        }
-        else {
-            html = "".concat(prefix).concat(range.toString()).concat(suffix.replace(")", Lute.Caret + ")"));
-        }
-        document.execCommand("insertHTML", false, html);
-        return;
-    }
-    else if (commandName === "italic" || commandName === "bold" || commandName === "strike" ||
-        commandName === "inline-code" || commandName === "code" || commandName === "table" || commandName === "line") {
-        var html = void 0;
-        // https://github.com/Vanessa219/vditor/issues/563 代码块不需要后面的 ```
-        if (range.toString() === "") {
-            html = "".concat(prefix).concat(Lute.Caret).concat(commandName === "code" ? "" : suffix);
-        }
-        else {
-            html = "".concat(prefix).concat(range.toString()).concat(Lute.Caret).concat(commandName === "code" ? "" : suffix);
-        }
-        if (commandName === "table" || (commandName === "code" && spanElement && spanElement.textContent !== "")) {
-            html = "\n\n" + html;
-        }
-        else if (commandName === "line") {
-            html = "\n\n".concat(prefix, "\n").concat(Lute.Caret);
-        }
-        document.execCommand("insertHTML", false, html);
-        return;
-    }
-    else if (commandName === "check" || commandName === "list" || commandName === "ordered-list" ||
-        commandName === "quote") {
-        if (spanElement) {
-            var marker = "* ";
-            if (commandName === "check") {
-                marker = "* [ ] ";
-            }
-            else if (commandName === "ordered-list") {
-                marker = "1. ";
-            }
-            else if (commandName === "quote") {
-                marker = "> ";
-            }
-            var newLine = getSideByType(spanElement, "newline");
-            if (newLine) {
-                newLine.insertAdjacentText("afterend", marker);
-            }
-            else {
-                blockElement.insertAdjacentText("afterbegin", marker);
-            }
-            inputEvent(vditor);
-            return;
-        }
-    }
-    (0,selection/* setRangeByWbr */.ir)(vditor.sv.element, range);
-    processAfterRender(vditor);
-};
-
-;// CONCATENATED MODULE: ./src/ts/upload/getElement.ts
-var getElement = function (vditor) {
-    switch (vditor.currentMode) {
-        case "ir":
-            return vditor.ir.element;
-        case "wysiwyg":
-            return vditor.wysiwyg.element;
-        case "sv":
-            return vditor.sv.element;
-    }
-};
-
-;// CONCATENATED MODULE: ./src/ts/upload/setHeaders.ts
-var setHeaders = function (vditor, xhr) {
-    if (vditor.options.upload.setHeaders) {
-        vditor.options.upload.headers = vditor.options.upload.setHeaders();
-    }
-    if (vditor.options.upload.headers) {
-        Object.keys(vditor.options.upload.headers).forEach(function (key) {
-            xhr.setRequestHeader(key, vditor.options.upload.headers[key]);
-        });
-    }
-};
-
-;// CONCATENATED MODULE: ./src/ts/upload/index.ts
-var __awaiter = (undefined && undefined.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __generator = (undefined && undefined.__generator) || function (thisArg, body) {
-    var _ = { label: 0, sent: function() { if (t[0] & 1) throw t[1]; return t[1]; }, trys: [], ops: [] }, f, y, t, g;
-    return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() { return this; }), g;
-    function verb(n) { return function (v) { return step([n, v]); }; }
-    function step(op) {
-        if (f) throw new TypeError("Generator is already executing.");
-        while (g && (g = 0, op[0] && (_ = 0)), _) try {
-            if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done) return t;
-            if (y = 0, t) op = [op[0] & 2, t.value];
-            switch (op[0]) {
-                case 0: case 1: t = op; break;
-                case 4: _.label++; return { value: op[1], done: false };
-                case 5: _.label++; y = op[1]; op = [0]; continue;
-                case 7: op = _.ops.pop(); _.trys.pop(); continue;
-                default:
-                    if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) { _ = 0; continue; }
-                    if (op[0] === 3 && (!t || (op[1] > t[0] && op[1] < t[3]))) { _.label = op[1]; break; }
-                    if (op[0] === 6 && _.label < t[1]) { _.label = t[1]; t = op; break; }
-                    if (t && _.label < t[2]) { _.label = t[2]; _.ops.push(op); break; }
-                    if (t[2]) _.ops.pop();
-                    _.trys.pop(); continue;
-            }
-            op = body.call(thisArg, _);
-        } catch (e) { op = [6, e]; y = 0; } finally { f = t = 0; }
-        if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
-    }
-};
-
-
-
-var Upload = /** @class */ (function () {
-    function Upload() {
-        this.isUploading = false;
-        this.element = document.createElement("div");
-        this.element.className = "vditor-upload";
-    }
-    return Upload;
-}());
-var validateFile = function (vditor, files) {
-    vditor.tip.hide();
-    var uploadFileList = [];
-    var errorTip = "";
-    var uploadingStr = "";
-    var lang = vditor.options.lang;
-    var options = vditor.options;
-    var _loop_1 = function (iMax, i) {
-        var file = files[i];
-        var validate = true;
-        if (!file.name) {
-            errorTip += "<li>".concat(window.VditorI18n.nameEmpty, "</li>");
-            validate = false;
-        }
-        if (file.size > vditor.options.upload.max) {
-            errorTip += "<li>".concat(file.name, " ").concat(window.VditorI18n.over, " ").concat(vditor.options.upload.max / 1024 / 1024, "M</li>");
-            validate = false;
-        }
-        var lastIndex = file.name.lastIndexOf(".");
-        var fileExt = file.name.substr(lastIndex);
-        var filename = vditor.options.upload.filename(file.name.substr(0, lastIndex)) + fileExt;
-        if (vditor.options.upload.accept) {
-            var isAccept = vditor.options.upload.accept.split(",").some(function (item) {
-                var type = item.trim();
-                if (type.indexOf(".") === 0) {
-                    if (fileExt.toLowerCase() === type.toLowerCase()) {
-                        return true;
-                    }
-                }
-                else {
-                    if (file.type.split("/")[0] === type.split("/")[0]) {
-                        return true;
-                    }
-                }
-                return false;
-            });
-            if (!isAccept) {
-                errorTip += "<li>".concat(file.name, " ").concat(window.VditorI18n.fileTypeError, "</li>");
-                validate = false;
-            }
-        }
-        if (validate) {
-            uploadFileList.push(file);
-            uploadingStr += "<li>".concat(filename, " ").concat(window.VditorI18n.uploading, "</li>");
-        }
-    };
-    for (var iMax = files.length, i = 0; i < iMax; i++) {
-        _loop_1(iMax, i);
-    }
-    vditor.tip.show("<ul>".concat(errorTip).concat(uploadingStr, "</ul>"));
-    return uploadFileList;
-};
-var genUploadedLabel = function (responseText, vditor) {
-    var editorElement = getElement(vditor);
-    editorElement.focus();
-    var response = JSON.parse(responseText);
-    var errorTip = "";
-    if (response.code === 1) {
-        errorTip = "".concat(response.msg);
-    }
-    if (response.data.errFiles && response.data.errFiles.length > 0) {
-        errorTip = "<ul><li>".concat(errorTip, "</li>");
-        response.data.errFiles.forEach(function (data) {
-            var lastIndex = data.lastIndexOf(".");
-            var filename = vditor.options.upload.filename(data.substr(0, lastIndex)) + data.substr(lastIndex);
-            errorTip += "<li>".concat(filename, " ").concat(window.VditorI18n.uploadError, "</li>");
-        });
-        errorTip += "</ul>";
-    }
-    if (errorTip) {
-        vditor.tip.show(errorTip);
-    }
-    else {
-        vditor.tip.hide();
-    }
-    var succFileText = "";
-    Object.keys(response.data.succMap).forEach(function (key) {
-        var path = response.data.succMap[key];
-        var lastIndex = key.lastIndexOf(".");
-        var type = key.substr(lastIndex);
-        var filename = vditor.options.upload.filename(key.substr(0, lastIndex)) + type;
-        type = type.toLowerCase();
-        if (type.indexOf(".wav") === 0 || type.indexOf(".mp3") === 0 || type.indexOf(".ogg") === 0) {
-            if (vditor.currentMode === "wysiwyg") {
-                succFileText += "<div class=\"vditor-wysiwyg__block\" data-type=\"html-block\"\n data-block=\"0\"><pre><code>&lt;audio controls=\"controls\" src=\"".concat(path, "\"&gt;&lt;/audio&gt;</code></pre><pre class=\"vditor-wysiwyg__preview\" data-render=\"1\"><audio controls=\"controls\" src=\"").concat(path, "\"></audio></pre></div>\n");
-            }
-            else if (vditor.currentMode === "ir") {
-                succFileText += "<audio controls=\"controls\" src=\"".concat(path, "\"></audio>\n");
-            }
-            else {
-                succFileText += "[".concat(filename, "](").concat(path, ")\n");
-            }
-        }
-        else if (type.indexOf(".apng") === 0
-            || type.indexOf(".bmp") === 0
-            || type.indexOf(".gif") === 0
-            || type.indexOf(".ico") === 0 || type.indexOf(".cur") === 0
-            || type.indexOf(".jpg") === 0 || type.indexOf(".jpeg") === 0 || type.indexOf(".jfif") === 0 || type.indexOf(".pjp") === 0 || type.indexOf(".pjpeg") === 0
-            || type.indexOf(".png") === 0
-            || type.indexOf(".svg") === 0
-            || type.indexOf(".webp") === 0) {
-            if (vditor.currentMode === "wysiwyg") {
-                succFileText += "<img alt=\"".concat(filename, "\" src=\"").concat(path, "\">\n");
-            }
-            else {
-                succFileText += "![".concat(filename, "](").concat(path, ")\n");
-            }
-        }
-        else {
-            if (vditor.currentMode === "wysiwyg") {
-                succFileText += "<a href=\"".concat(path, "\">").concat(filename, "</a>\n");
-            }
-            else {
-                succFileText += "[".concat(filename, "](").concat(path, ")\n");
-            }
-        }
-    });
-    (0,selection/* setSelectionFocus */.jl)(vditor.upload.range);
-    document.execCommand("insertHTML", false, succFileText);
-    vditor.upload.range = getSelection().getRangeAt(0).cloneRange();
-};
-var uploadFiles = function (vditor, files, element) { return __awaiter(void 0, void 0, void 0, function () {
-    var fileList, filesMax, i, fileItem, isValidate, isValidate, editorElement, validateResult, formData, extraData, _i, _a, key, i, iMax, xhr;
-    return __generator(this, function (_b) {
-        switch (_b.label) {
-            case 0:
-                fileList = [];
-                filesMax = vditor.options.upload.multiple === true ? files.length : 1;
-                for (i = 0; i < filesMax; i++) {
-                    fileItem = files[i];
-                    if (fileItem instanceof DataTransferItem) {
-                        fileItem = fileItem.getAsFile();
-                    }
-                    fileList.push(fileItem);
-                }
-                if (!vditor.options.upload.handler) return [3 /*break*/, 2];
-                return [4 /*yield*/, vditor.options.upload.handler(fileList)];
-            case 1:
-                isValidate = _b.sent();
-                if (element) {
-                    element.value = "";
-                }
-                if (typeof isValidate === "string") {
-                    vditor.tip.show(isValidate);
-                    return [2 /*return*/];
-                }
-                return [2 /*return*/];
-            case 2:
-                if (!vditor.options.upload.url || !vditor.upload) {
-                    if (element) {
-                        element.value = "";
-                    }
-                    vditor.tip.show("please config: options.upload.url");
-                    return [2 /*return*/];
-                }
-                if (!vditor.options.upload.file) return [3 /*break*/, 4];
-                return [4 /*yield*/, vditor.options.upload.file(fileList)];
-            case 3:
-                fileList = _b.sent();
-                _b.label = 4;
-            case 4:
-                if (vditor.options.upload.validate) {
-                    isValidate = vditor.options.upload.validate(fileList);
-                    if (typeof isValidate === "string") {
-                        vditor.tip.show(isValidate);
-                        return [2 /*return*/];
-                    }
-                }
-                editorElement = getElement(vditor);
-                vditor.upload.range = (0,selection/* getEditorRange */.RN)(vditor);
-                validateResult = validateFile(vditor, fileList);
-                if (validateResult.length === 0) {
-                    if (element) {
-                        element.value = "";
-                    }
-                    return [2 /*return*/];
-                }
-                formData = new FormData();
-                extraData = vditor.options.upload.extraData;
-                for (_i = 0, _a = Object.keys(extraData); _i < _a.length; _i++) {
-                    key = _a[_i];
-                    formData.append(key, extraData[key]);
-                }
-                for (i = 0, iMax = validateResult.length; i < iMax; i++) {
-                    formData.append(vditor.options.upload.fieldName, validateResult[i]);
-                }
-                xhr = new XMLHttpRequest();
-                xhr.open("POST", vditor.options.upload.url);
-                if (vditor.options.upload.token) {
-                    xhr.setRequestHeader("X-Upload-Token", vditor.options.upload.token);
-                }
-                if (vditor.options.upload.withCredentials) {
-                    xhr.withCredentials = true;
-                }
-                setHeaders(vditor, xhr);
-                vditor.upload.isUploading = true;
-                editorElement.setAttribute("contenteditable", "false");
-                xhr.onreadystatechange = function () {
-                    if (xhr.readyState === XMLHttpRequest.DONE) {
-                        vditor.upload.isUploading = false;
-                        editorElement.setAttribute("contenteditable", "true");
-                        if (xhr.status >= 200 && xhr.status < 300) {
-                            if (vditor.options.upload.success) {
-                                vditor.options.upload.success(editorElement, xhr.responseText);
-                            }
-                            else {
-                                var responseText = xhr.responseText;
-                                if (vditor.options.upload.format) {
-                                    responseText = vditor.options.upload.format(files, xhr.responseText);
-                                }
-                                genUploadedLabel(responseText, vditor);
-                            }
-                        }
-                        else {
-                            if (vditor.options.upload.error) {
-                                vditor.options.upload.error(xhr.responseText);
-                            }
-                            else {
-                                vditor.tip.show(xhr.responseText);
-                            }
-                        }
-                        if (element) {
-                            element.value = "";
-                        }
-                        vditor.upload.element.style.display = "none";
-                    }
-                };
-                xhr.upload.onprogress = function (event) {
-                    if (!event.lengthComputable) {
-                        return;
-                    }
-                    var progress = event.loaded / event.total * 100;
-                    vditor.upload.element.style.display = "block";
-                    var progressBar = vditor.upload.element;
-                    progressBar.style.width = progress + "%";
-                };
-                xhr.send(formData);
-                return [2 /*return*/];
-        }
-    });
-}); };
-
-
-;// CONCATENATED MODULE: ./src/ts/wysiwyg/input.ts
-
-
-
-
-
-
-
-
-var input_input = function (vditor, range, event) {
-    var _a;
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
-    if (!blockElement) {
-        // 使用顶级块元素，应使用 innerHTML
-        blockElement = vditor.wysiwyg.element;
-    }
-    if (event && event.inputType !== "formatItalic"
-        && event.inputType !== "deleteByDrag"
-        && event.inputType !== "insertFromDrop"
-        && event.inputType !== "formatBold"
-        && event.inputType !== "formatRemove"
-        && event.inputType !== "formatStrikeThrough"
-        && event.inputType !== "insertUnorderedList"
-        && event.inputType !== "insertOrderedList"
-        && event.inputType !== "formatOutdent"
-        && event.inputType !== "formatIndent"
-        && event.inputType !== "" // document.execCommand('unlink', false)
-        || !event) {
-        var previousAEmptyElement = previoueIsEmptyA(range.startContainer);
-        if (previousAEmptyElement) {
-            // 链接结尾回车不应该复制到下一行 https://github.com/Vanessa219/vditor/issues/163
-            previousAEmptyElement.remove();
-        }
-        // 保存光标
-        vditor.wysiwyg.element.querySelectorAll("wbr").forEach(function (wbr) {
-            wbr.remove();
-        });
-        range.insertNode(document.createElement("wbr"));
-        // 在行首进行删除，后面的元素会带有样式，需清除
-        blockElement.querySelectorAll("[style]").forEach(function (item) {
-            item.removeAttribute("style");
-        });
-        // 移除空评论
-        blockElement.querySelectorAll(".vditor-comment").forEach(function (item) {
-            if (item.textContent.trim() === "") {
-                item.classList.remove("vditor-comment", "vditor-comment--focus");
-                item.removeAttribute("data-cmtids");
-            }
-        });
-        //  在有评论的行首换行后，该行的前一段会带有评论标识
-        (_a = blockElement.previousElementSibling) === null || _a === void 0 ? void 0 : _a.querySelectorAll(".vditor-comment").forEach(function (item) {
-            if (item.textContent.trim() === "") {
-                item.classList.remove("vditor-comment", "vditor-comment--focus");
-                item.removeAttribute("data-cmtids");
-            }
-        });
-        var html_1 = "";
-        if (blockElement.getAttribute("data-type") === "link-ref-defs-block") {
-            // 修改链接引用
-            blockElement = vditor.wysiwyg.element;
-        }
-        var isWYSIWYGElement = blockElement.isEqualNode(vditor.wysiwyg.element);
-        var footnoteElement = (0,hasClosest/* hasClosestByAttribute */.Th)(blockElement, "data-type", "footnotes-block");
-        if (!isWYSIWYGElement) {
-            // 列表需要到最顶层
-            var topListElement = (0,hasClosest/* getTopList */.KR)(range.startContainer);
-            if (topListElement && !footnoteElement) {
-                var blockquoteElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(range.startContainer, "BLOCKQUOTE");
-                if (blockquoteElement) {
-                    // li 中有 blockquote 就只渲染 blockquote
-                    blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer) || blockElement;
-                }
-                else {
-                    blockElement = topListElement;
-                }
-            }
-            // 修改脚注
-            if (footnoteElement) {
-                blockElement = footnoteElement;
-            }
-            html_1 = blockElement.outerHTML;
-            if (blockElement.tagName === "UL" || blockElement.tagName === "OL") {
-                // 如果为列表的话，需要把上下的列表都重绘
-                var listPrevElement = blockElement.previousElementSibling;
-                var listNextElement = blockElement.nextElementSibling;
-                if (listPrevElement && (listPrevElement.tagName === "UL" || listPrevElement.tagName === "OL")) {
-                    html_1 = listPrevElement.outerHTML + html_1;
-                    listPrevElement.remove();
-                }
-                if (listNextElement && (listNextElement.tagName === "UL" || listNextElement.tagName === "OL")) {
-                    html_1 = html_1 + listNextElement.outerHTML;
-                    listNextElement.remove();
-                }
-                // firefox 列表回车不会产生新的 list item https://github.com/Vanessa219/vditor/issues/194
-                html_1 = html_1.replace("<div><wbr><br></div>", "<li><p><wbr><br></p></li>");
-            }
-            if (!blockElement.innerText.startsWith("```")) {
-                // 添加链接引用
-                vditor.wysiwyg.element.querySelectorAll("[data-type='link-ref-defs-block']").forEach(function (item) {
-                    if (item && !blockElement.isEqualNode(item)) {
-                        html_1 += item.outerHTML;
-                        item.remove();
-                    }
-                });
-                // 添加脚注
-                vditor.wysiwyg.element.querySelectorAll("[data-type='footnotes-block']").forEach(function (item) {
-                    if (item && !blockElement.isEqualNode(item)) {
-                        html_1 += item.outerHTML;
-                        item.remove();
-                    }
-                });
-            }
-        }
-        else {
-            html_1 = blockElement.innerHTML;
-        }
-        // 合并多个 em， strong，s。以防止多个相同元素在一起时不满足 commonmark 规范，出现标记符
-        html_1 = html_1.replace(/<\/(strong|b)><strong data-marker="\W{2}">/g, "")
-            .replace(/<\/(em|i)><em data-marker="\W{1}">/g, "")
-            .replace(/<\/(s|strike)><s data-marker="~{1,2}">/g, "");
-        if (html_1 === '<p data-block="0">```<wbr></p>' && vditor.hint.recentLanguage) {
-            html_1 = '<p data-block="0">```<wbr></p>'.replace("```", "```" + vditor.hint.recentLanguage);
-        }
-        log("SpinVditorDOM", html_1, "argument", vditor.options.debugger);
-        html_1 = vditor.lute.SpinVditorDOM(html_1);
-        log("SpinVditorDOM", html_1, "result", vditor.options.debugger);
-        if (isWYSIWYGElement) {
-            blockElement.innerHTML = html_1;
-        }
-        else {
-            blockElement.outerHTML = html_1;
-            if (footnoteElement) {
-                // 更新正文中的 tip
-                var footnoteItemElement = (0,hasClosest/* hasTopClosestByTag */.Ab)(vditor.wysiwyg.element.querySelector("wbr"), "LI");
-                if (footnoteItemElement) {
-                    var footnoteRefElement = vditor.wysiwyg.element.querySelector("sup[data-type=\"footnotes-ref\"][data-footnotes-label=\"".concat(footnoteItemElement.getAttribute("data-marker"), "\"]"));
-                    if (footnoteRefElement) {
-                        footnoteRefElement.setAttribute("aria-label", footnoteItemElement.textContent.trim().substr(0, 24));
-                    }
-                }
-            }
-        }
-        var firstLinkRefDefElement_1;
-        var allLinkRefDefsElement = vditor.wysiwyg.element.querySelectorAll("[data-type='link-ref-defs-block']");
-        allLinkRefDefsElement.forEach(function (item, index) {
-            if (index === 0) {
-                firstLinkRefDefElement_1 = item;
-            }
-            else {
-                firstLinkRefDefElement_1.insertAdjacentHTML("beforeend", item.innerHTML);
-                item.remove();
-            }
-        });
-        if (allLinkRefDefsElement.length > 0) {
-            vditor.wysiwyg.element.insertAdjacentElement("beforeend", allLinkRefDefsElement[0]);
-        }
-        // 脚注合并后添加的末尾
-        var firstFootnoteElement_1;
-        var allFootnoteElement = vditor.wysiwyg.element.querySelectorAll("[data-type='footnotes-block']");
-        allFootnoteElement.forEach(function (item, index) {
-            if (index === 0) {
-                firstFootnoteElement_1 = item;
-            }
-            else {
-                firstFootnoteElement_1.insertAdjacentHTML("beforeend", item.innerHTML);
-                item.remove();
-            }
-        });
-        if (allFootnoteElement.length > 0) {
-            vditor.wysiwyg.element.insertAdjacentElement("beforeend", allFootnoteElement[0]);
-        }
-        // 设置光标
-        (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
-        vditor.wysiwyg.element.querySelectorAll(".vditor-wysiwyg__preview[data-render='2']")
-            .forEach(function (item) {
-            processCodeRender(item, vditor);
-        });
-        if (event && (event.inputType === "deleteContentBackward" || event.inputType === "deleteContentForward") &&
-            vditor.options.comment.enable) {
-            vditor.wysiwyg.triggerRemoveComment(vditor);
-            vditor.options.comment.adjustTop(vditor.wysiwyg.getComments(vditor, true));
-        }
-    }
-    renderToc(vditor);
-    afterRenderEvent(vditor, {
-        enableAddUndoStack: true,
-        enableHint: true,
-        enableInput: true,
     });
 };
 
@@ -9782,7 +9891,7 @@ var fixBrowserBehavior_generator = (undefined && undefined.__generator) || funct
 // https://github.com/Vanessa219/vditor/issues/508 软键盘无法删除空块
 var fixGSKeyBackspace = function (event, vditor, startContainer) {
     if (event.keyCode === 229 && event.code === "" && event.key === "Unidentified" && vditor.currentMode !== "sv") {
-        var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(startContainer);
+        var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(startContainer);
         // 移动端的标点符号都显示为 299，因此需限定为空删除的条件
         if (blockElement && blockElement.textContent.trim() === "") {
             vditor[vditor.currentMode].composingLock = true;
@@ -9794,17 +9903,17 @@ var fixGSKeyBackspace = function (event, vditor, startContainer) {
 // https://github.com/Vanessa219/vditor/issues/361 代码块后输入中文
 var fixCJKPosition = function (range, vditor, event) {
     if (event.key === "Enter" || event.key === "Tab" || event.key === "Backspace" || event.key.indexOf("Arrow") > -1
-        || (0,compatibility/* isCtrl */._0)(event) || event.key === "Escape" || event.shiftKey || event.altKey) {
+        || (0,compatibility/* isCtrl */.yl)(event) || event.key === "Escape" || event.shiftKey || event.altKey) {
         return;
     }
-    var pLiElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "P") ||
-        (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "LI");
-    if (pLiElement && (0,selection/* getSelectPosition */.ED)(pLiElement, vditor[vditor.currentMode].element, range).start === 0) {
+    var pLiElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "P") ||
+        (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "LI");
+    if (pLiElement && (0,selection/* getSelectPosition */.im)(pLiElement, vditor[vditor.currentMode].element, range).start === 0) {
         // https://github.com/Vanessa219/vditor/issues/1289 WKWebView切换输入法产生六分之一空格，造成光标错位
         if (pLiElement.nodeValue) {
-            pLiElement.nodeValue = pLiElement.nodeValue.replace(/\u2006/g, '');
+            pLiElement.nodeValue = pLiElement.nodeValue.replace(/\u2006/g, "");
         }
-        var zwspNode = document.createTextNode(constants/* Constants */.Y.ZWSP);
+        var zwspNode = document.createTextNode(constants/* Constants.ZWSP */.g.ZWSP);
         range.insertNode(zwspNode);
         range.setStartAfter(zwspNode);
     }
@@ -9812,9 +9921,9 @@ var fixCJKPosition = function (range, vditor, event) {
 // https://github.com/Vanessa219/vditor/issues/381 光标在内联数学公式中无法向下移动
 var fixCursorDownInlineMath = function (range, key) {
     if (key === "ArrowDown" || key === "ArrowUp") {
-        var inlineElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", "math-inline") ||
-            (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", "html-entity") ||
-            (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", "html-inline");
+        var inlineElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "math-inline") ||
+            (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "html-entity") ||
+            (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "html-inline");
         if (inlineElement) {
             if (key === "ArrowDown") {
                 range.setStartAfter(inlineElement.parentElement);
@@ -9826,24 +9935,40 @@ var fixCursorDownInlineMath = function (range, key) {
     }
 };
 var insertEmptyBlock = function (vditor, position) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+    if (vditor.currentMode === "sv") {
+        var element = vditor.sv.element;
+        if (position === "beforebegin") {
+            var lineStart = element.value.lastIndexOf("\n", element.selectionStart - 1) + 1;
+            element.setRangeText("\n", lineStart, lineStart, "end");
+            element.setSelectionRange(lineStart, lineStart);
+        }
+        else {
+            var lineEndIndex = element.value.indexOf("\n", element.selectionEnd);
+            var lineEnd = lineEndIndex === -1 ? element.value.length : lineEndIndex;
+            element.setRangeText("\n", lineEnd, lineEnd, "end");
+        }
+        element.focus();
+        processAfterRender(vditor);
+        return;
+    }
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
+    var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
     if (blockElement) {
-        blockElement.insertAdjacentHTML(position, "<p data-block=\"0\">".concat(constants/* Constants */.Y.ZWSP, "<wbr>\n</p>"));
-        (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+        blockElement.insertAdjacentHTML(position, "<p data-block=\"0\">".concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr>\n</p>"));
+        (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
         highlightToolbar(vditor);
         execAfterRender(vditor);
     }
 };
 var isFirstCell = function (cellElement) {
-    var tableElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(cellElement, "TABLE");
+    var tableElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(cellElement, "TABLE");
     if (tableElement && tableElement.rows[0].cells[0].isSameNode(cellElement)) {
         return tableElement;
     }
     return false;
 };
 var isLastCell = function (cellElement) {
-    var tableElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(cellElement, "TABLE");
+    var tableElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(cellElement, "TABLE");
     if (tableElement && tableElement.lastElementChild.lastElementChild.lastElementChild.isSameNode(cellElement)) {
         return tableElement;
     }
@@ -9871,24 +9996,24 @@ var goPreviousCell = function (cellElement, range, isSelected) {
         if (!isSelected) {
             range.collapse(false);
         }
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
     }
     return previousElement;
 };
 var insertAfterBlock = function (vditor, event, range, element, blockElement) {
-    var position = (0,selection/* getSelectPosition */.ED)(element, vditor[vditor.currentMode].element, range);
+    var position = (0,selection/* getSelectPosition */.im)(element, vditor[vditor.currentMode].element, range);
     if ((event.key === "ArrowDown" && element.textContent.trimRight().substr(position.start).indexOf("\n") === -1) ||
         (event.key === "ArrowRight" && position.start >= element.textContent.trimRight().length)) {
         var nextElement = blockElement.nextElementSibling;
         if (!nextElement ||
             (nextElement && (nextElement.tagName === "TABLE" || nextElement.getAttribute("data-type")))) {
-            blockElement.insertAdjacentHTML("afterend", "<p data-block=\"0\">".concat(constants/* Constants */.Y.ZWSP, "<wbr></p>"));
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            blockElement.insertAdjacentHTML("afterend", "<p data-block=\"0\">".concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr></p>"));
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
         }
         else {
             range.selectNodeContents(nextElement);
             range.collapse(true);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
         }
         event.preventDefault();
         return true;
@@ -9896,7 +10021,7 @@ var insertAfterBlock = function (vditor, event, range, element, blockElement) {
     return false;
 };
 var insertBeforeBlock = function (vditor, event, range, element, blockElement) {
-    var position = (0,selection/* getSelectPosition */.ED)(element, vditor[vditor.currentMode].element, range);
+    var position = (0,selection/* getSelectPosition */.im)(element, vditor[vditor.currentMode].element, range);
     if ((event.key === "ArrowUp" && element.textContent.substr(0, position.start).indexOf("\n") === -1) ||
         ((event.key === "ArrowLeft" || (event.key === "Backspace" && range.toString() === "")) &&
             position.start === 0)) {
@@ -9904,13 +10029,13 @@ var insertBeforeBlock = function (vditor, event, range, element, blockElement) {
         // table || code
         if (!previousElement ||
             (previousElement && (previousElement.tagName === "TABLE" || previousElement.getAttribute("data-type")))) {
-            blockElement.insertAdjacentHTML("beforebegin", "<p data-block=\"0\">".concat(constants/* Constants */.Y.ZWSP, "<wbr></p>"));
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            blockElement.insertAdjacentHTML("beforebegin", "<p data-block=\"0\">".concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr></p>"));
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
         }
         else {
             range.selectNodeContents(previousElement);
             range.collapse(false);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
         }
         event.preventDefault();
         return true;
@@ -9919,11 +10044,41 @@ var insertBeforeBlock = function (vditor, event, range, element, blockElement) {
 };
 var listToggle = function (vditor, range, type, cancel) {
     if (cancel === void 0) { cancel = true; }
-    var itemElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "LI");
+    var itemElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "LI");
+    var selectedBlockElements = [];
+    var startBlockElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-block", "0");
+    var endBlockElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.endContainer, "data-block", "0");
+    if (startBlockElement && endBlockElement &&
+        startBlockElement.parentElement.isSameNode(endBlockElement.parentElement)) {
+        var blockElement = startBlockElement;
+        while (blockElement) {
+            selectedBlockElements.push(blockElement);
+            if (blockElement.isSameNode(endBlockElement)) {
+                break;
+            }
+            blockElement = blockElement.nextElementSibling;
+        }
+    }
     vditor[vditor.currentMode].element.querySelectorAll("wbr").forEach(function (wbr) {
         wbr.remove();
     });
-    range.insertNode(document.createElement("wbr"));
+    var keepSelection = !range.collapsed;
+    if (keepSelection) {
+        // 列表转换会重建块元素，分别标记选区起止位置以便恢复原始选区
+        var endRange = range.cloneRange();
+        endRange.collapse(false);
+        var endElement = document.createElement("wbr");
+        endElement.setAttribute("data-type", "list-selection-end");
+        endRange.insertNode(endElement);
+        var startRange = range.cloneRange();
+        startRange.collapse(true);
+        var startElement = document.createElement("wbr");
+        startElement.setAttribute("data-type", "list-selection-start");
+        startRange.insertNode(startElement);
+    }
+    else {
+        range.insertNode(document.createElement("wbr"));
+    }
     if (cancel && itemElement) {
         // 取消
         var pHTML = "";
@@ -9940,24 +10095,24 @@ var listToggle = function (vditor, range, type, cancel) {
     else {
         if (!itemElement) {
             // 添加
-            var blockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-block", "0");
-            if (!blockElement) {
+            if (selectedBlockElements.length === 0) {
                 vditor[vditor.currentMode].element.querySelector("wbr").remove();
-                blockElement = vditor[vditor.currentMode].element.querySelector("p");
+                var blockElement = vditor[vditor.currentMode].element.querySelector("p");
                 blockElement.innerHTML = "<wbr>";
+                selectedBlockElements.push(blockElement);
             }
-            if (type === "check") {
-                blockElement.insertAdjacentHTML("beforebegin", "<ul data-block=\"0\"><li class=\"vditor-task\"><input type=\"checkbox\" /> ".concat(blockElement.innerHTML, "</li></ul>"));
-                blockElement.remove();
-            }
-            else if (type === "list") {
-                blockElement.insertAdjacentHTML("beforebegin", "<ul data-block=\"0\"><li>".concat(blockElement.innerHTML, "</li></ul>"));
-                blockElement.remove();
-            }
-            else if (type === "ordered-list") {
-                blockElement.insertAdjacentHTML("beforebegin", "<ol data-block=\"0\"><li>".concat(blockElement.innerHTML, "</li></ol>"));
-                blockElement.remove();
-            }
+            var listHTML_1 = "";
+            selectedBlockElements.forEach(function (blockElement) {
+                if (type === "check") {
+                    listHTML_1 += "<li class=\"vditor-task\"><input type=\"checkbox\" /> ".concat(blockElement.innerHTML, "</li>");
+                }
+                else {
+                    listHTML_1 += "<li>".concat(blockElement.innerHTML, "</li>");
+                }
+            });
+            var listTagName = type === "ordered-list" ? "ol" : "ul";
+            selectedBlockElements[0].insertAdjacentHTML("beforebegin", "<".concat(listTagName, " data-block=\"0\">").concat(listHTML_1, "</").concat(listTagName, ">"));
+            selectedBlockElements.forEach(function (blockElement) { return blockElement.remove(); });
         }
         else {
             // 切换
@@ -9970,7 +10125,14 @@ var listToggle = function (vditor, range, type, cancel) {
             else {
                 if (itemElement.querySelector("input")) {
                     itemElement.parentElement.querySelectorAll("li").forEach(function (item) {
-                        item.querySelector("input").remove();
+                        var inputElement = item.querySelector("input");
+                        if (inputElement) {
+                            var nextSibling = inputElement.nextSibling;
+                            inputElement.remove();
+                            if (nextSibling && nextSibling.nodeType === 3 && nextSibling.textContent.startsWith(" ")) {
+                                nextSibling.textContent = nextSibling.textContent.substring(1);
+                            }
+                        }
                         item.classList.remove("vditor-task");
                     });
                 }
@@ -9988,6 +10150,18 @@ var listToggle = function (vditor, range, type, cancel) {
                 element.innerHTML = itemElement.parentElement.innerHTML;
                 itemElement.parentElement.parentNode.replaceChild(element, itemElement.parentElement);
             }
+        }
+    }
+    if (keepSelection) {
+        var editorElement = vditor[vditor.currentMode].element;
+        var startElement = editorElement.querySelector('[data-type="list-selection-start"]');
+        var endElement = editorElement.querySelector('[data-type="list-selection-end"]');
+        if (startElement && endElement) {
+            range.setStartAfter(startElement);
+            range.setEndBefore(endElement);
+            startElement.remove();
+            endElement.remove();
+            (0,selection/* setSelectionFocus */.Hc)(range);
         }
     }
 };
@@ -10025,8 +10199,8 @@ var listIndent = function (vditor, liElement, range) {
         else {
             liParentElement.outerHTML = vditor.lute.SpinVditorIRDOM(liParentElement.outerHTML);
         }
-        (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
-        var tempTopListElement = (0,hasClosest/* getTopList */.KR)(range.startContainer);
+        (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
+        var tempTopListElement = (0,hasClosest/* getTopList */.O9)(range.startContainer);
         if (tempTopListElement) {
             tempTopListElement.querySelectorAll(".vditor-".concat(vditor.currentMode, "__preview[data-render='2']"))
                 .forEach(function (item) {
@@ -10044,7 +10218,7 @@ var listIndent = function (vditor, liElement, range) {
     }
 };
 var listOutdent = function (vditor, liElement, range, topListElement) {
-    var liParentLiElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(liElement.parentElement, "LI");
+    var liParentLiElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(liElement.parentElement, "LI");
     if (liParentLiElement) {
         vditor[vditor.currentMode].element.querySelectorAll("wbr").forEach(function (wbr) {
             wbr.remove();
@@ -10091,8 +10265,8 @@ var listOutdent = function (vditor, liElement, range, topListElement) {
         else {
             topListElement.outerHTML = vditor.lute.SpinVditorIRDOM(topListElement.outerHTML);
         }
-        (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
-        var tempTopListElement = (0,hasClosest/* getTopList */.KR)(range.startContainer);
+        (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
+        var tempTopListElement = (0,hasClosest/* getTopList */.O9)(range.startContainer);
         if (tempTopListElement) {
             tempTopListElement.querySelectorAll(".vditor-".concat(vditor.currentMode, "__preview[data-render='2']"))
                 .forEach(function (item) {
@@ -10184,12 +10358,43 @@ var execAfterRender = function (vditor, options) {
         processAfterRender(vditor, options);
     }
 };
+var isEmptyListItem = function (liElement) {
+    if (liElement.textContent.split(constants/* Constants.ZWSP */.g.ZWSP).join("").trim() !== "") {
+        return false;
+    }
+    return !liElement.querySelector([
+        "audio", "canvas", "embed", "hr", "iframe", "img", "object", "ol", "pre", "svg", "table", "ul", "video",
+        "input:not([type='checkbox'])",
+    ].join(", "));
+};
+var exitEmptyListItem = function (liElement) {
+    var listElement = liElement.parentElement;
+    var listParent = listElement.parentElement;
+    var paragraphElement = document.createElement("p");
+    paragraphElement.setAttribute("data-block", "0");
+    paragraphElement.innerHTML = "<wbr>";
+    var trailingListElement;
+    if (liElement.nextElementSibling) {
+        trailingListElement = listElement.cloneNode(false);
+        while (liElement.nextElementSibling) {
+            trailingListElement.appendChild(liElement.nextElementSibling);
+        }
+        listParent.insertBefore(trailingListElement, listElement.nextSibling);
+    }
+    liElement.remove();
+    if (listElement.childElementCount === 0) {
+        listParent.replaceChild(paragraphElement, listElement);
+    }
+    else {
+        listParent.insertBefore(paragraphElement, trailingListElement || listElement.nextSibling);
+    }
+    return paragraphElement;
+};
 var fixList = function (range, vditor, pElement, event) {
-    var _a;
     var startContainer = range.startContainer;
-    var liElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "LI");
+    var liElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "LI");
     if (liElement) {
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && event.key === "Enter" &&
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && event.key === "Enter" &&
             // fix li 中有多个 P 时，在第一个 P 中换行会在下方生成新的 li
             (!event.shiftKey && pElement && liElement.contains(pElement) && pElement.nextElementSibling)) {
             if (liElement && !liElement.textContent.endsWith("\n")) {
@@ -10202,9 +10407,29 @@ var fixList = function (range, vditor, pElement, event) {
             event.preventDefault();
             return true;
         }
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && event.key === "Backspace" &&
+        // 嵌套列表末尾的空列表项回车后转为父列表项中的段落
+        // https://github.com/Vanessa219/vditor/issues/939
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && event.key === "Enter" && range.collapsed &&
+            !liElement.nextElementSibling && liElement.parentElement.parentElement.tagName === "LI" &&
+            isEmptyListItem(liElement)) {
+            var paragraphElement = exitEmptyListItem(liElement);
+            (0,selection/* setRangeByWbr */.ib)(paragraphElement, range);
+            execAfterRender(vditor);
+            event.preventDefault();
+            return true;
+        }
+        // 空列表项删除标记后退出当前列表
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && event.key === "Backspace" &&
+            liElement.textContent.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "" && range.toString() === "") {
+            var paragraphElement = exitEmptyListItem(liElement);
+            (0,selection/* setRangeByWbr */.ib)(paragraphElement, range);
+            execAfterRender(vditor);
+            event.preventDefault();
+            return true;
+        }
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && event.key === "Backspace" &&
             !liElement.previousElementSibling && range.toString() === "" &&
-            (0,selection/* getSelectPosition */.ED)(liElement, vditor[vditor.currentMode].element, range).start === 0) {
+            (0,selection/* getSelectPosition */.im)(liElement, vditor[vditor.currentMode].element, range).start === 0) {
             // 光标位于点和第一个字符中间时，无法删除 li 元素
             if (liElement.nextElementSibling) {
                 liElement.parentElement.insertAdjacentHTML("beforebegin", "<p data-block=\"0\"><wbr>".concat(liElement.innerHTML, "</p>"));
@@ -10213,25 +10438,12 @@ var fixList = function (range, vditor, pElement, event) {
             else {
                 liElement.parentElement.outerHTML = "<p data-block=\"0\"><wbr>".concat(liElement.innerHTML, "</p>");
             }
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             event.preventDefault();
             return true;
         }
-        // 空列表删除后与上一级段落对齐
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && event.key === "Backspace" &&
-            liElement.textContent.trim().replace(constants/* Constants */.Y.ZWSP, "") === "" &&
-            range.toString() === "" && ((_a = liElement.previousElementSibling) === null || _a === void 0 ? void 0 : _a.tagName) === "LI") {
-            liElement.previousElementSibling.insertAdjacentText("beforeend", "\n\n");
-            range.selectNodeContents(liElement.previousElementSibling);
-            range.collapse(false);
-            liElement.remove();
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
-            execAfterRender(vditor);
-            event.preventDefault();
-            return true;
-        }
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && event.key === "Tab") {
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && event.key === "Tab") {
             // 光标位于第一/零字符时，tab 用于列表的缩进
             var isFirst = false;
             if (range.startOffset === 0
@@ -10277,7 +10489,7 @@ var fixTab = function (vditor, range, event) {
                 range.collapse(false);
             }
         }
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
         execAfterRender(vditor);
         event.preventDefault();
         return true;
@@ -10287,7 +10499,7 @@ var fixMarkdown = function (event, vditor, pElement, range) {
     if (!pElement) {
         return;
     }
-    if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && event.key === "Enter") {
+    if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && event.key === "Enter") {
         var pText = String.raw(templateObject_1 || (templateObject_1 = __makeTemplateObject(["", ""], ["", ""])), pElement.textContent).replace(/\\\|/g, "").trim();
         var pTextList = pText.split("|");
         if (pText.startsWith("|") && pText.endsWith("|") && pTextList.length > 3) {
@@ -10296,7 +10508,7 @@ var fixMarkdown = function (event, vditor, pElement, range) {
             tableHeaderMD =
                 pElement.textContent + "\n" + tableHeaderMD.substring(3, tableHeaderMD.length - 3) + "\n|<wbr>";
             pElement.outerHTML = vditor.lute.SpinVditorDOM(tableHeaderMD);
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             scrollCenter(vditor);
             event.preventDefault();
@@ -10313,7 +10525,7 @@ var fixMarkdown = function (event, vditor, pElement, range) {
             }
             pElement.insertAdjacentHTML("afterend", "".concat(pInnerHTML, "<hr data-block=\"0\"><p data-block=\"0\"><wbr>\n</p>"));
             pElement.remove();
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             scrollCenter(vditor);
             event.preventDefault();
@@ -10327,7 +10539,7 @@ var fixMarkdown = function (event, vditor, pElement, range) {
             else {
                 pElement.outerHTML = vditor.lute.SpinVditorIRDOM(pElement.innerHTML + '<p data-block="0"><wbr>\n</p>');
             }
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             scrollCenter(vditor);
             event.preventDefault();
@@ -10336,16 +10548,16 @@ var fixMarkdown = function (event, vditor, pElement, range) {
     }
     // 软换行会被切割 https://github.com/Vanessa219/vditor/issues/220
     if (range.collapsed && pElement.previousElementSibling && event.key === "Backspace" &&
-        !(0,compatibility/* isCtrl */._0)(event) && !event.altKey && !event.shiftKey &&
+        !(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && !event.shiftKey &&
         pElement.textContent.trimRight().split("\n").length > 1 &&
-        (0,selection/* getSelectPosition */.ED)(pElement, vditor[vditor.currentMode].element, range).start === 0) {
-        var lastElement = (0,hasClosest/* getLastNode */.Rp)(pElement.previousElementSibling);
+        (0,selection/* getSelectPosition */.im)(pElement, vditor[vditor.currentMode].element, range).start === 0) {
+        var lastElement = (0,hasClosest/* getLastNode */.DX)(pElement.previousElementSibling);
         if (!lastElement.textContent.endsWith("\n")) {
             lastElement.textContent = lastElement.textContent + "\n";
         }
         lastElement.parentElement.insertAdjacentHTML("beforeend", "<wbr>".concat(pElement.innerHTML));
         pElement.remove();
-        (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+        (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
         return false;
     }
     return false;
@@ -10379,7 +10591,7 @@ var insertRowAbove = function (vditor, range, cellElement) {
         var theadHTML = cellElement.parentElement.innerHTML.replace(/<th>/g, "<td>").replace(/<\/th>/g, "</td>");
         cellElement.parentElement.parentElement.nextElementSibling.insertAdjacentHTML("afterbegin", theadHTML);
         cellElement.parentElement.parentElement.remove();
-        (0,selection/* setRangeByWbr */.ir)(vditor.ir.element, range);
+        (0,selection/* setRangeByWbr */.ib)(vditor.ir.element, range);
     }
     else {
         cellElement.parentElement.insertAdjacentHTML("beforebegin", "<tr>".concat(rowHTML, "</tr>"));
@@ -10420,7 +10632,7 @@ var deleteRow = function (vditor, range, cellElement) {
             cellElement.parentElement.remove();
         }
         range.collapse(false);
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
         execAfterRender(vditor);
     }
 };
@@ -10444,16 +10656,16 @@ var deleteColumn = function (vditor, range, tableElement, cellElement) {
         }
         cells[index].remove();
     }
-    (0,selection/* setSelectionFocus */.jl)(range);
+    (0,selection/* setSelectionFocus */.Hc)(range);
     execAfterRender(vditor);
 };
 var fixTable = function (vditor, event, range) {
     var startContainer = range.startContainer;
-    var cellElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TD") ||
-        (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "TH");
+    var cellElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TD") ||
+        (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "TH");
     if (cellElement) {
         // 换行或软换行：在 cell 中添加 br
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && event.key === "Enter") {
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && event.key === "Enter") {
             if (!cellElement.lastElementChild ||
                 (cellElement.lastElementChild && (!cellElement.lastElementChild.isSameNode(cellElement.lastChild) ||
                     cellElement.lastElementChild.tagName !== "BR"))) {
@@ -10491,7 +10703,7 @@ var fixTable = function (vditor, event, range) {
             }
             if (nextElement) {
                 range.selectNodeContents(nextElement);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
             event.preventDefault();
             return true;
@@ -10503,7 +10715,7 @@ var fixTable = function (vditor, event, range) {
                 if (tableElement.previousElementSibling) {
                     range.selectNodeContents(tableElement.previousElementSibling);
                     range.collapse(false);
-                    (0,selection/* setSelectionFocus */.jl)(range);
+                    (0,selection/* setSelectionFocus */.Hc)(range);
                 }
                 else {
                     insertEmptyBlock(vditor, "beforebegin");
@@ -10523,7 +10735,7 @@ var fixTable = function (vditor, event, range) {
             }
             range.selectNodeContents(previousElement.cells[m]);
             range.collapse(false);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             return true;
         }
         if (event.key === "ArrowDown") {
@@ -10533,7 +10745,7 @@ var fixTable = function (vditor, event, range) {
                 if (tableElement.nextElementSibling) {
                     range.selectNodeContents(tableElement.nextElementSibling);
                     range.collapse(true);
-                    (0,selection/* setSelectionFocus */.jl)(range);
+                    (0,selection/* setSelectionFocus */.Hc)(range);
                 }
                 else {
                     insertEmptyBlock(vditor, "afterend");
@@ -10552,12 +10764,12 @@ var fixTable = function (vditor, event, range) {
             }
             range.selectNodeContents(nextElement.cells[m]);
             range.collapse(true);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             return true;
         }
         // focus row input, only wysiwyg
         if (vditor.currentMode === "wysiwyg" &&
-            !(0,compatibility/* isCtrl */._0)(event) && event.key === "Enter" && !event.shiftKey && event.altKey) {
+            !(0,compatibility/* isCtrl */.yl)(event) && event.key === "Enter" && !event.shiftKey && event.altKey) {
             var inputElement = vditor.wysiwyg.popover.querySelector(".vditor-input");
             inputElement.focus();
             inputElement.select();
@@ -10565,13 +10777,13 @@ var fixTable = function (vditor, event, range) {
             return true;
         }
         // Backspace：光标移动到前一个 cell
-        if (!(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && event.key === "Backspace"
+        if (!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && event.key === "Backspace"
             && range.startOffset === 0 && range.toString() === "") {
             var previousCellElement = goPreviousCell(cellElement, range, false);
             if (!previousCellElement && tableElement) {
                 if (tableElement.textContent.trim() === "") {
                     tableElement.outerHTML = "<p data-block=\"0\"><wbr>\n</p>";
-                    (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+                    (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
                 }
                 else {
                     range.setStartBefore(tableElement);
@@ -10689,29 +10901,29 @@ var fixCodeBlock = function (vditor, event, codeRenderElement, range) {
         return true;
     }
     // Backspace: 光标位于第零个字符，仅删除代码块标签
-    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey) {
-        var codePosition = (0,selection/* getSelectPosition */.ED)(codeRenderElement, vditor[vditor.currentMode].element, range);
+    if (event.key === "Backspace" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey) {
+        var codePosition = (0,selection/* getSelectPosition */.im)(codeRenderElement, vditor[vditor.currentMode].element, range);
         if ((codePosition.start === 0 ||
             (codePosition.start === 1 && codeRenderElement.innerText === "\n")) // 空代码块，光标在 \n 后
             && range.toString() === "") {
             codeRenderElement.parentElement.outerHTML =
                 "<p data-block=\"0\"><wbr>".concat(codeRenderElement.firstElementChild.innerHTML, "</p>");
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             event.preventDefault();
             return true;
         }
     }
     // 换行
-    if (!(0,compatibility/* isCtrl */._0)(event) && !event.altKey && event.key === "Enter") {
+    if (!(0,compatibility/* isCtrl */.yl)(event) && !event.altKey && event.key === "Enter") {
         if (!codeRenderElement.firstElementChild.textContent.endsWith("\n")) {
             codeRenderElement.firstElementChild.insertAdjacentText("beforeend", "\n");
         }
         range.extractContents();
         range.insertNode(document.createTextNode("\n"));
         range.collapse(false);
-        (0,selection/* setSelectionFocus */.jl)(range);
-        if (!(0,compatibility/* isFirefox */.gm)()) {
+        (0,selection/* setSelectionFocus */.Hc)(range);
+        if (!(0,compatibility/* isFirefox */.vU)()) {
             if (vditor.currentMode === "wysiwyg") {
                 input_input(vditor, range);
             }
@@ -10726,31 +10938,52 @@ var fixCodeBlock = function (vditor, event, codeRenderElement, range) {
     return false;
 };
 var fixBlockquote = function (vditor, range, event, pElement) {
+    var _a;
     var startContainer = range.startContainer;
-    var blockquoteElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "BLOCKQUOTE");
+    var blockquoteElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "BLOCKQUOTE");
     if (blockquoteElement && range.toString() === "") {
-        if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey &&
-            (0,selection/* getSelectPosition */.ED)(blockquoteElement, vditor[vditor.currentMode].element, range).start === 0) {
-            // Backspace: 光标位于引用中的第零个字符，仅删除引用标签
-            range.insertNode(document.createElement("wbr"));
-            blockquoteElement.outerHTML = blockquoteElement.innerHTML;
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+        if (pElement && event.key === "Enter" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey &&
+            pElement.parentElement.isSameNode(blockquoteElement) &&
+            (0,hasClosest/* hasClosestByMatchTag */.lG)(blockquoteElement.parentElement, "LI") &&
+            (range.collapsed || !range.cloneContents().firstElementChild) &&
+            pElement.innerHTML.replace(constants/* Constants.ZWSP */.g.ZWSP, "") !== "\n" &&
+            pElement.innerHTML.replace(constants/* Constants.ZWSP */.g.ZWSP, "") !== "") {
+            // 列表内的引用由浏览器处理回车时会新建列表项 https://github.com/Vanessa219/vditor/issues/1925
+            var trailingRange = range.cloneRange();
+            trailingRange.setEnd(pElement, pElement.childNodes.length);
+            var paragraphElement = document.createElement("p");
+            paragraphElement.setAttribute("data-block", "0");
+            paragraphElement.appendChild(trailingRange.extractContents());
+            pElement.insertAdjacentElement("afterend", paragraphElement);
+            range.setStart(paragraphElement, 0);
+            range.collapse(true);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             execAfterRender(vditor);
             event.preventDefault();
             return true;
         }
-        if (pElement && event.key === "Enter" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey
+        if (event.key === "Backspace" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey &&
+            (0,selection/* getSelectPosition */.im)(blockquoteElement, vditor[vditor.currentMode].element, range).start === 0) {
+            // Backspace: 光标位于引用中的第零个字符，仅删除引用标签
+            range.insertNode(document.createElement("wbr"));
+            blockquoteElement.outerHTML = blockquoteElement.innerHTML;
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
+            execAfterRender(vditor);
+            event.preventDefault();
+            return true;
+        }
+        if (pElement && event.key === "Enter" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey
             && pElement.parentElement.tagName === "BLOCKQUOTE") {
             // Enter: 空行回车应逐层跳出
             var isEmpty = false;
-            if (pElement.innerHTML.replace(constants/* Constants */.Y.ZWSP, "") === "\n" ||
-                pElement.innerHTML.replace(constants/* Constants */.Y.ZWSP, "") === "") {
+            if (pElement.innerHTML.replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "\n" ||
+                pElement.innerHTML.replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "") {
                 // 空 P
                 isEmpty = true;
                 pElement.remove();
             }
             else if (pElement.innerHTML.endsWith("\n\n") &&
-                (0,selection/* getSelectPosition */.ED)(pElement, vditor[vditor.currentMode].element, range).start ===
+                (0,selection/* getSelectPosition */.im)(pElement, vditor[vditor.currentMode].element, range).start ===
                     pElement.textContent.length - 1) {
                 // 软换行
                 pElement.innerHTML = pElement.innerHTML.substr(0, pElement.innerHTML.length - 2);
@@ -10758,25 +10991,31 @@ var fixBlockquote = function (vditor, range, event, pElement) {
             }
             if (isEmpty) {
                 // 需添加零宽字符，否则的话无法记录 undo
-                blockquoteElement.insertAdjacentHTML("afterend", "<p data-block=\"0\">".concat(constants/* Constants */.Y.ZWSP, "<wbr>\n</p>"));
-                (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+                blockquoteElement.insertAdjacentHTML("afterend", "<p data-block=\"0\">".concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr>\n</p>"));
+                (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
                 execAfterRender(vditor);
                 event.preventDefault();
                 return true;
             }
         }
-        var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(startContainer);
+        var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(startContainer);
         if (vditor.currentMode === "wysiwyg" && blockElement && matchHotKey("⇧⌘;", event)) {
             // 插入 blockquote
             range.insertNode(document.createElement("wbr"));
             blockElement.outerHTML = "<blockquote data-block=\"0\">".concat(blockElement.outerHTML, "</blockquote>");
-            (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
             afterRenderEvent(vditor);
             event.preventDefault();
             return true;
         }
-        if (insertAfterBlock(vditor, event, range, blockquoteElement, blockquoteElement)) {
+        var itemElement = blockquoteElement.parentElement.tagName === "LI" ? blockquoteElement.parentElement : null;
+        var afterBlockElement = !blockquoteElement.nextElementSibling && ((_a = itemElement === null || itemElement === void 0 ? void 0 : itemElement.nextElementSibling) === null || _a === void 0 ? void 0 : _a.tagName) === "LI" ?
+            itemElement : blockquoteElement;
+        if (insertAfterBlock(vditor, event, range, blockquoteElement, afterBlockElement)) {
             return true;
+        }
+        if (event.key === "ArrowUp" && itemElement && !blockquoteElement.previousElementSibling) {
+            return false;
         }
         if (insertBeforeBlock(vditor, event, range, blockquoteElement, blockquoteElement)) {
             return true;
@@ -10786,7 +11025,7 @@ var fixBlockquote = function (vditor, range, event, pElement) {
 };
 var fixTask = function (vditor, range, event) {
     var startContainer = range.startContainer;
-    var taskItemElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(startContainer, "li");
+    var taskItemElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(startContainer, "LI");
     if (taskItemElement && taskItemElement.classList.contains("vditor-task")) {
         if (matchHotKey("⇧⌘J", event)) {
             // ctrl + shift: toggle checked
@@ -10802,7 +11041,7 @@ var fixTask = function (vditor, range, event) {
             return true;
         }
         // Backspace: 在选择框前进行删除
-        if (event.key === "Backspace" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && range.toString() === ""
+        if (event.key === "Backspace" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && range.toString() === ""
             && range.startOffset === 1
             && ((startContainer.nodeType === 3 && startContainer.previousSibling &&
                 startContainer.previousSibling.tagName === "INPUT")
@@ -10810,7 +11049,7 @@ var fixTask = function (vditor, range, event) {
             var previousElement = taskItemElement.previousElementSibling;
             taskItemElement.querySelector("input").remove();
             if (previousElement) {
-                var lastNode = (0,hasClosest/* getLastNode */.Rp)(previousElement);
+                var lastNode = (0,hasClosest/* getLastNode */.DX)(previousElement);
                 lastNode.parentElement.insertAdjacentHTML("beforeend", "<wbr>" + taskItemElement.innerHTML.trim());
                 taskItemElement.remove();
             }
@@ -10823,17 +11062,17 @@ var fixTask = function (vditor, range, event) {
                     taskItemElement.parentElement.remove();
                 }
             }
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             event.preventDefault();
             return true;
         }
-        if (event.key === "Enter" && !(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey) {
+        if (event.key === "Enter" && !(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey) {
             if (taskItemElement.textContent.trim() === "") {
                 // 当前任务列表无文字
-                if ((0,hasClosest/* hasClosestByClassName */.KJ)(taskItemElement.parentElement, "vditor-task")) {
+                if ((0,hasClosest/* hasClosestByClassName */.fb)(taskItemElement.parentElement, "vditor-task")) {
                     // 为子元素时，需进行反向缩进
-                    var topListElement = (0,hasClosest/* getTopList */.KR)(startContainer);
+                    var topListElement = (0,hasClosest/* getTopList */.O9)(startContainer);
                     if (topListElement) {
                         listOutdent(vditor, taskItemElement, range, topListElement);
                     }
@@ -10894,7 +11133,7 @@ var fixTask = function (vditor, range, event) {
                 taskItemElement.insertAdjacentHTML("afterend", "<li class=\"vditor-task\" data-marker=\"".concat(taskItemElement.getAttribute("data-marker"), "\"><input type=\"checkbox\"> <wbr></li>"));
                 document.querySelector("wbr").after(range.extractContents());
             }
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             scrollCenter(vditor);
             event.preventDefault();
@@ -10916,8 +11155,8 @@ var fixDelete = function (vditor, range, event, pElement) {
     }
     if (pElement) {
         var previousElement = pElement.previousElementSibling;
-        if (previousElement && (0,selection/* getSelectPosition */.ED)(pElement, vditor[vditor.currentMode].element, range).start === 0 &&
-            (((0,compatibility/* isFirefox */.gm)() && previousElement.tagName === "HR") || previousElement.tagName === "TABLE")) {
+        if (previousElement && (0,selection/* getSelectPosition */.im)(pElement, vditor[vditor.currentMode].element, range).start === 0 &&
+            (((0,compatibility/* isFirefox */.vU)() && previousElement.tagName === "HR") || previousElement.tagName === "TABLE")) {
             if (previousElement.tagName === "TABLE") {
                 // table 后删除 https://github.com/Vanessa219/vditor/issues/243
                 var lastCellElement = previousElement.lastElementChild.lastElementChild.lastElementChild;
@@ -10929,7 +11168,7 @@ var fixDelete = function (vditor, range, event, pElement) {
                 // 光标位于 hr 后进行删除
                 previousElement.remove();
             }
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
             execAfterRender(vditor);
             event.preventDefault();
             return true;
@@ -10938,7 +11177,7 @@ var fixDelete = function (vditor, range, event, pElement) {
     return false;
 };
 var fixHR = function (range) {
-    if ((0,compatibility/* isFirefox */.gm)() && range.startContainer.nodeType !== 3 &&
+    if ((0,compatibility/* isFirefox */.vU)() && range.startContainer.nodeType !== 3 &&
         range.startContainer.tagName === "HR") {
         range.setStartBefore(range.startContainer);
     }
@@ -10946,7 +11185,7 @@ var fixHR = function (range) {
 // firefox https://github.com/Vanessa219/vditor/issues/407
 var fixFirefoxArrowUpTable = function (event, blockElement, range) {
     var _a, _b;
-    if (!(0,compatibility/* isFirefox */.gm)()) {
+    if (!(0,compatibility/* isFirefox */.vU)()) {
         return false;
     }
     if (event.key === "ArrowUp" && blockElement && ((_a = blockElement.previousElementSibling) === null || _a === void 0 ? void 0 : _a.tagName) === "TABLE") {
@@ -10965,12 +11204,13 @@ var fixFirefoxArrowUpTable = function (event, blockElement, range) {
     return false;
 };
 var paste = function (vditor, event, callback) { return fixBrowserBehavior_awaiter(void 0, void 0, void 0, function () {
-    var textHTML, textPlain, files, renderers, renderLinkDest, doc, height, code, codeElement, position, tempElement, fileReader_1, file_1, range, blockElement, range;
+    var textHTML, textPlain, files, renderers, renderLinkDest, doc, height, code, codeElement, cellElement, position, tempElement, fileReader_1, file_1, selectedText, blockElement, range;
     var _a;
     return fixBrowserBehavior_generator(this, function (_b) {
         switch (_b.label) {
             case 0:
-                if (vditor[vditor.currentMode].element.getAttribute("contenteditable") !== "true") {
+                if (vditor.currentMode === "sv" ? vditor.sv.element.disabled :
+                    vditor[vditor.currentMode].element.getAttribute("contenteditable") !== "true") {
                     return [2 /*return*/];
                 }
                 event.stopPropagation();
@@ -10990,6 +11230,11 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                 renderers = {};
                 renderLinkDest = function (node, entering) {
                     if (!entering) {
+                        return ["", Lute.WalkContinue];
+                    }
+                    var parent = node.__internal_object__.Parent;
+                    // 链接引用的目标地址由定义节点提供，不在引用位置重复渲染
+                    if (parent.Type === 33 && parent.LinkType === 3) {
                         return ["", Lute.WalkContinue];
                     }
                     if (vditor.options.upload.renderLinkDest) {
@@ -11015,26 +11260,25 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                                     if (vditor.options.upload.linkToImgFormat) {
                                         responseText = vditor.options.upload.linkToImgFormat(xhr_1.responseText);
                                     }
-                                    var responseJSON_1 = JSON.parse(responseText);
-                                    if (responseJSON_1.code !== 0) {
-                                        vditor.tip.show(responseJSON_1.msg);
+                                    var responseJSON = JSON.parse(responseText);
+                                    if (responseJSON.code !== 0) {
+                                        vditor.tip.show(responseJSON.msg);
                                         return;
                                     }
-                                    var original_1 = responseJSON_1.data.originalURL;
+                                    var original = responseJSON.data.originalURL;
                                     if (vditor.currentMode === "sv") {
-                                        vditor.sv.element.querySelectorAll(".vditor-sv__marker--link")
-                                            .forEach(function (item) {
-                                            if (item.textContent === original_1) {
-                                                item.textContent = responseJSON_1.data.url;
-                                            }
-                                        });
+                                        var selectionStart = vditor.sv.element.selectionStart;
+                                        var selectionEnd = vditor.sv.element.selectionEnd;
+                                        vditor.sv.element.value = vditor.sv.element.value.split(original)
+                                            .join(responseJSON.data.url);
+                                        vditor.sv.element.setSelectionRange(selectionStart, selectionEnd);
                                     }
                                     else {
-                                        var imgElement = vditor[vditor.currentMode].element.querySelector("img[src=\"".concat(original_1, "\"]"));
-                                        imgElement.src = responseJSON_1.data.url;
+                                        var imgElement = vditor[vditor.currentMode].element.querySelector("img[src=\"".concat(original, "\"]"));
+                                        imgElement.src = responseJSON.data.url;
                                         if (vditor.currentMode === "ir") {
                                             imgElement.previousElementSibling.previousElementSibling.innerHTML =
-                                                responseJSON_1.data.url;
+                                                responseJSON.data.url;
                                         }
                                     }
                                     execAfterRender(vditor);
@@ -11056,7 +11300,7 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                         return ["", Lute.WalkContinue];
                     }
                     else {
-                        return ["<span class=\"vditor-sv__marker--link\">".concat(Lute.EscapeHTMLStr(src), "</span>"), Lute.WalkContinue];
+                        return ["", Lute.WalkContinue];
                     }
                 };
                 // 浏览器地址栏拷贝处理
@@ -11075,36 +11319,52 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                 height = vditor[vditor.currentMode].element.scrollHeight;
                 code = processPasteCode(textHTML, textPlain, vditor.currentMode);
                 codeElement = vditor.currentMode === "sv" ?
-                    (0,hasClosest/* hasClosestByAttribute */.Th)(event.target, "data-type", "code-block") :
-                    (0,hasClosest/* hasClosestByMatchTag */._Y)(event.target, "CODE");
-                if (!codeElement) return [3 /*break*/, 1];
+                    (0,hasClosest/* hasClosestByAttribute */.a1)(event.target, "data-type", "code-block") :
+                    (0,hasClosest/* hasClosestByMatchTag */.lG)(event.target, "CODE");
+                cellElement = vditor.currentMode === "wysiwyg" &&
+                    ((0,hasClosest/* hasClosestByMatchTag */.lG)((0,selection/* getEditorRange */.zh)(vditor).startContainer, "TD") ||
+                        (0,hasClosest/* hasClosestByMatchTag */.lG)((0,selection/* getEditorRange */.zh)(vditor).startContainer, "TH"));
+                if (!(cellElement && /[\r\n]/.test(textPlain))) return [3 /*break*/, 1];
+                // 表格单元格内的换行使用 br 表示，避免自旋时解析为新的表格行
+                (0,selection/* insertHTML */.oC)(Lute.EscapeHTMLStr(textPlain).replace(/\r\n|\r|\n/g, "<br>"), vditor);
+                return [3 /*break*/, 11];
+            case 1:
+                if (!codeElement) return [3 /*break*/, 2];
                 // 粘贴在代码位置
                 if (vditor.currentMode === "sv") {
                     document.execCommand("insertHTML", false, textPlain.replace(/&/g, "&amp;").replace(/</g, "&lt;"));
                 }
                 else {
-                    position = (0,selection/* getSelectPosition */.ED)(event.target, vditor[vditor.currentMode].element);
+                    position = (0,selection/* getSelectPosition */.im)(event.target, vditor[vditor.currentMode].element);
                     if (codeElement.parentElement.tagName !== "PRE") {
                         // https://github.com/Vanessa219/vditor/issues/463
-                        textPlain += constants/* Constants */.Y.ZWSP;
+                        textPlain += constants/* Constants.ZWSP */.g.ZWSP;
                     }
                     codeElement.textContent = codeElement.textContent.substring(0, position.start)
                         + textPlain + codeElement.textContent.substring(position.end);
-                    (0,selection/* setSelectionByPosition */.Fm)(position.start + textPlain.length, position.start + textPlain.length, codeElement.parentElement);
+                    (0,selection/* setSelectionByPosition */.$j)(position.start + textPlain.length, position.start + textPlain.length, codeElement.parentElement);
                     if ((_a = codeElement.parentElement) === null || _a === void 0 ? void 0 : _a.nextElementSibling.classList.contains("vditor-".concat(vditor.currentMode, "__preview"))) {
                         codeElement.parentElement.nextElementSibling.innerHTML = codeElement.outerHTML;
                         processCodeRender(codeElement.parentElement.nextElementSibling, vditor);
                     }
                 }
-                return [3 /*break*/, 8];
-            case 1:
-                if (!code) return [3 /*break*/, 2];
-                callback.pasteCode(code);
-                return [3 /*break*/, 8];
+                return [3 /*break*/, 11];
             case 2:
-                if (!(textHTML.trim() !== "")) return [3 /*break*/, 3];
+                if (!code) return [3 /*break*/, 3];
+                callback.pasteCode(code);
+                return [3 /*break*/, 11];
+            case 3:
+                if (!(textHTML.trim() !== "")) return [3 /*break*/, 6];
                 tempElement = document.createElement("div");
                 tempElement.innerHTML = textHTML;
+                if (!!vditor.options.upload.base64ToLink) return [3 /*break*/, 5];
+                // word 复制的图文混合，替换为 link: <v:imagedata src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" o:title="">
+                return [4 /*yield*/, processVMLImage(vditor, tempElement, ("clipboardData" in event ? event.clipboardData : event.dataTransfer).getData("text/rtf"))];
+            case 4:
+                // word 复制的图文混合，替换为 link: <v:imagedata src="file:///C:/Users/ADMINI~1/AppData/Local/Temp/msohtmlclip1/01/clip_image001.png" o:title="">
+                _b.sent();
+                _b.label = 5;
+            case 5:
                 tempElement.querySelectorAll("[style]").forEach(function (e) {
                     e.removeAttribute("style");
                 });
@@ -11114,28 +11374,26 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                 if (vditor.currentMode === "ir") {
                     renderers.HTML2VditorIRDOM = { renderLinkDest: renderLinkDest };
                     vditor.lute.SetJSRenderers({ renderers: renderers });
-                    (0,selection/* insertHTML */.Z2)(vditor.lute.HTML2VditorIRDOM(tempElement.innerHTML), vditor);
+                    (0,selection/* insertHTML */.oC)(vditor.lute.HTML2VditorIRDOM(tempElement.innerHTML), vditor);
                 }
                 else if (vditor.currentMode === "wysiwyg") {
                     renderers.HTML2VditorDOM = { renderLinkDest: renderLinkDest };
                     vditor.lute.SetJSRenderers({ renderers: renderers });
-                    (0,selection/* insertHTML */.Z2)(vditor.lute.HTML2VditorDOM(tempElement.innerHTML), vditor);
+                    (0,selection/* insertHTML */.oC)(vditor.lute.HTML2VditorDOM(tempElement.innerHTML), vditor);
                 }
                 else {
-                    renderers.Md2VditorSVDOM = { renderLinkDest: renderLinkDest };
-                    vditor.lute.SetJSRenderers({ renderers: renderers });
                     processPaste(vditor, vditor.lute.HTML2Md(tempElement.innerHTML).trimRight());
                 }
                 vditor.outline.render(vditor);
-                return [3 /*break*/, 8];
-            case 3:
-                if (!(files.length > 0)) return [3 /*break*/, 7];
-                if (!(vditor.options.upload.url || vditor.options.upload.handler)) return [3 /*break*/, 5];
+                return [3 /*break*/, 11];
+            case 6:
+                if (!(files.length > 0)) return [3 /*break*/, 10];
+                if (!(vditor.options.upload.url || vditor.options.upload.handler)) return [3 /*break*/, 8];
                 return [4 /*yield*/, uploadFiles(vditor, files)];
-            case 4:
+            case 7:
                 _b.sent();
-                return [3 /*break*/, 6];
-            case 5:
+                return [3 /*break*/, 9];
+            case 8:
                 fileReader_1 = new FileReader();
                 if ("clipboardData" in event) {
                     files = event.clipboardData.files;
@@ -11148,47 +11406,51 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                 if (file_1 && file_1.type.startsWith("image")) {
                     fileReader_1.readAsDataURL(file_1);
                     fileReader_1.onload = function () {
-                        var imgHTML = '';
+                        var imgHTML = "";
                         if (vditor.currentMode === "wysiwyg") {
                             imgHTML += "<img alt=\"".concat(file_1.name, "\" src=\"").concat(fileReader_1.result.toString(), "\">\n");
                         }
                         else {
                             imgHTML += "![".concat(file_1.name, "](").concat(fileReader_1.result.toString(), ")\n");
                         }
-                        document.execCommand("insertHTML", false, imgHTML);
+                        if (vditor.currentMode === "sv") {
+                            processPaste(vditor, imgHTML);
+                            execAfterRender(vditor);
+                        }
+                        else {
+                            document.execCommand("insertHTML", false, imgHTML);
+                        }
                     };
                 }
-                _b.label = 6;
-            case 6: return [3 /*break*/, 8];
-            case 7:
+                _b.label = 9;
+            case 9: return [3 /*break*/, 11];
+            case 10:
                 if (textPlain.trim() !== "" && files.length === 0) {
-                    range = (0,selection/* getEditorRange */.RN)(vditor);
-                    if (range.toString() !== "" && vditor.lute.IsValidLinkDest(textPlain)) {
-                        textPlain = "[".concat(range.toString(), "](").concat(textPlain, ")");
+                    selectedText = vditor.currentMode === "sv" ? vditor.sv.element.value.substring(vditor.sv.element.selectionStart, vditor.sv.element.selectionEnd) : (0,selection/* getEditorRange */.zh)(vditor).toString();
+                    if (selectedText !== "" && vditor.lute.IsValidLinkDest(textPlain)) {
+                        textPlain = "[".concat(selectedText, "](").concat(textPlain, ")");
                     }
                     if (vditor.currentMode === "ir") {
                         renderers.Md2VditorIRDOM = { renderLinkDest: renderLinkDest };
                         vditor.lute.SetJSRenderers({ renderers: renderers });
-                        (0,selection/* insertHTML */.Z2)(vditor.lute.Md2VditorIRDOM(textPlain), vditor);
+                        (0,selection/* insertHTML */.oC)(Lute.Sanitize(vditor.lute.Md2VditorIRDOM(textPlain)), vditor);
                     }
                     else if (vditor.currentMode === "wysiwyg") {
                         renderers.Md2VditorDOM = { renderLinkDest: renderLinkDest };
                         vditor.lute.SetJSRenderers({ renderers: renderers });
-                        (0,selection/* insertHTML */.Z2)(vditor.lute.Md2VditorDOM(textPlain), vditor);
+                        (0,selection/* insertHTML */.oC)(Lute.Sanitize(vditor.lute.Md2VditorDOM(textPlain)), vditor);
                     }
                     else {
-                        renderers.Md2VditorSVDOM = { renderLinkDest: renderLinkDest };
-                        vditor.lute.SetJSRenderers({ renderers: renderers });
                         processPaste(vditor, textPlain);
                     }
                     vditor.outline.render(vditor);
                 }
-                _b.label = 8;
-            case 8:
+                _b.label = 11;
+            case 11:
                 if (vditor.currentMode !== "sv") {
-                    blockElement = (0,hasClosest/* hasClosestBlock */.pt)((0,selection/* getEditorRange */.RN)(vditor).startContainer);
+                    blockElement = (0,hasClosest/* hasClosestBlock */.F9)((0,selection/* getEditorRange */.zh)(vditor).startContainer);
                     if (blockElement) {
-                        range = (0,selection/* getEditorRange */.RN)(vditor);
+                        range = (0,selection/* getEditorRange */.zh)(vditor);
                         vditor[vditor.currentMode].element.querySelectorAll("wbr").forEach(function (wbr) {
                             wbr.remove();
                         });
@@ -11199,7 +11461,7 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
                         else {
                             blockElement.outerHTML = vditor.lute.SpinVditorIRDOM(blockElement.outerHTML);
                         }
-                        (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, range);
+                        (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, range);
                     }
                     vditor[vditor.currentMode].element.querySelectorAll(".vditor-".concat(vditor.currentMode, "__preview[data-render='2']"))
                         .forEach(function (item) {
@@ -11216,6 +11478,81 @@ var paste = function (vditor, event, callback) { return fixBrowserBehavior_await
         }
     });
 }); };
+var processVMLImage = function (vditor, root, rtfData) { return fixBrowserBehavior_awaiter(void 0, void 0, void 0, function () {
+    var regexPictureHeader, regexPicture, regImages, images, _i, regImages_1, image, imageType, shapes, i, img, newSrc, imgs, i, src, _a;
+    return fixBrowserBehavior_generator(this, function (_b) {
+        switch (_b.label) {
+            case 0:
+                if (!rtfData) {
+                    return [2 /*return*/];
+                }
+                regexPictureHeader = /{\\pict[\s\S]+?\\bliptag-?\d+(\\blipupi-?\d+)?({\\\*\\blipuid\s?[\da-fA-F]+)?[\s}]*?/;
+                regexPicture = new RegExp("(?:(" + regexPictureHeader.source + "))([\\da-fA-F\\s]+)\\}", "g");
+                regImages = rtfData.match(regexPicture);
+                images = [];
+                if (regImages) {
+                    for (_i = 0, regImages_1 = regImages; _i < regImages_1.length; _i++) {
+                        image = regImages_1[_i];
+                        imageType = void 0;
+                        if (image.includes("\\pngblip")) {
+                            imageType = "image/png";
+                        }
+                        else if (image.includes("\\jpegblip")) {
+                            imageType = "image/jpeg";
+                        }
+                        if (imageType) {
+                            images.push({
+                                hex: image.replace(regexPictureHeader, "").replace(/[^\da-fA-F]/g, ""),
+                                type: imageType,
+                            });
+                        }
+                    }
+                }
+                shapes = [];
+                walk(root, function (child) {
+                    if (child.tagName === "V:SHAPE") {
+                        walk(child, function (sub) {
+                            if (sub.tagName === "V:IMAGEDATA")
+                                shapes.push({ shape: child, img: sub });
+                        });
+                        return false;
+                    }
+                });
+                for (i = 0; i < shapes.length; i++) {
+                    img = document.createElement("img");
+                    newSrc = "data:" + images[i].type + ";base64," + btoa((images[i].hex.match(/\w{2}/g) || []).map(function (char) {
+                        return String.fromCharCode(parseInt(char, 16));
+                    }).join(""));
+                    img.src = newSrc;
+                    img.title = shapes[i].img.getAttribute("title");
+                    shapes[i].shape.parentNode.replaceChild(img, shapes[i].shape);
+                }
+                imgs = root.querySelectorAll("img");
+                i = 0;
+                _b.label = 1;
+            case 1:
+                if (!(i < imgs.length)) return [3 /*break*/, 4];
+                src = imgs[i].src || "";
+                if (!src) return [3 /*break*/, 3];
+                _a = imgs[i];
+                return [4 /*yield*/, vditor.options.upload.base64ToLink(src)];
+            case 2:
+                _a.src = _b.sent();
+                _b.label = 3;
+            case 3:
+                i++;
+                return [3 /*break*/, 1];
+            case 4: return [2 /*return*/];
+        }
+    });
+}); };
+var walk = function (el, fn) {
+    var goNext = fn(el);
+    if (goNext !== false)
+        for (var i = 0; i < el.children.length; i++) {
+            walk(el.children[i], fn);
+        }
+};
 var templateObject_1;
 
 ;// CONCATENATED MODULE: ./src/ts/ir/process.ts
@@ -11228,23 +11565,24 @@ var templateObject_1;
 
 
 
+
 var processHint = function (vditor) {
     var _a, _b;
     vditor.hint.render(vditor);
-    var startContainer = (0,selection/* getEditorRange */.RN)(vditor).startContainer;
+    var startContainer = (0,selection/* getEditorRange */.zh)(vditor).startContainer;
     // 代码块语言提示
-    var preBeforeElement = (0,hasClosest/* hasClosestByAttribute */.Th)(startContainer, "data-type", "code-block-info");
+    var preBeforeElement = (0,hasClosest/* hasClosestByAttribute */.a1)(startContainer, "data-type", "code-block-info");
     if (preBeforeElement) {
-        if (preBeforeElement.textContent.replace(constants/* Constants */.Y.ZWSP, "") === "" && vditor.hint.recentLanguage) {
-            preBeforeElement.textContent = constants/* Constants */.Y.ZWSP + vditor.hint.recentLanguage;
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
+        if (preBeforeElement.textContent.replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "" && vditor.hint.recentLanguage) {
+            preBeforeElement.textContent = constants/* Constants.ZWSP */.g.ZWSP + vditor.hint.recentLanguage;
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
             range.selectNodeContents(preBeforeElement);
         }
         else {
             var matchLangData_1 = [];
-            var key_1 = preBeforeElement.textContent.substring(0, (0,selection/* getSelectPosition */.ED)(preBeforeElement, vditor.ir.element).start)
-                .replace(constants/* Constants */.Y.ZWSP, "");
-            (vditor.options.preview.hljs.langs || constants/* Constants */.Y.ALIAS_CODE_LANGUAGES.concat(((_b = (_a = window.hljs) === null || _a === void 0 ? void 0 : _a.listLanguages()) !== null && _b !== void 0 ? _b : []).sort())).forEach(function (keyName) {
+            var key_1 = preBeforeElement.textContent.substring(0, (0,selection/* getSelectPosition */.im)(preBeforeElement, vditor.ir.element).start)
+                .replace(constants/* Constants.ZWSP */.g.ZWSP, "");
+            (vditor.options.preview.hljs.langs || constants/* Constants.ALIAS_CODE_LANGUAGES.concat */.g.ALIAS_CODE_LANGUAGES.concat(((_b = (_a = window.hljs) === null || _a === void 0 ? void 0 : _a.listLanguages()) !== null && _b !== void 0 ? _b : []).sort())).forEach(function (keyName) {
                 if (keyName.indexOf(key_1.toLowerCase()) > -1) {
                     matchLangData_1.push({
                         html: keyName,
@@ -11262,6 +11600,7 @@ var process_processAfterRender = function (vditor, options) {
         enableHint: false,
         enableInput: true,
     }; }
+    (0,imageCaptionRender/* renderImageCaptions */.W)(vditor.ir.element, "ir", vditor.options.preview.markdown.imageCaption);
     if (options.enableHint) {
         processHint(vditor);
     }
@@ -11277,7 +11616,7 @@ var process_processAfterRender = function (vditor, options) {
         if (vditor.options.counter.enable) {
             vditor.counter.render(vditor, text);
         }
-        if (vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.D)()) {
+        if (vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.pK)()) {
             localStorage.setItem(vditor.options.cache.id, text);
             if (vditor.options.cache.after) {
                 vditor.options.cache.after(text);
@@ -11292,8 +11631,8 @@ var process_processAfterRender = function (vditor, options) {
     }, vditor.options.undoDelay);
 };
 var process_processHeading = function (vditor, value) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
-    var headingElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer) || range.startContainer;
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
+    var headingElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer) || range.startContainer;
     if (headingElement) {
         var headingMarkerElement = headingElement.querySelector(".vditor-ir__marker--heading");
         if (headingMarkerElement) {
@@ -11309,18 +11648,31 @@ var process_processHeading = function (vditor, value) {
     }
 };
 var removeInline = function (range, vditor, type) {
-    var inlineElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", type);
+    var inlineElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", type);
     if (inlineElement) {
+        var keepSelection = !range.collapsed;
         inlineElement.firstElementChild.remove();
         inlineElement.lastElementChild.remove();
+        if (keepSelection) {
+            var endRange = range.cloneRange();
+            endRange.collapse(false);
+            endRange.insertNode(document.createElement("wbr"));
+        }
         range.insertNode(document.createElement("wbr"));
         var tempElement = document.createElement("div");
         tempElement.innerHTML = vditor.lute.SpinVditorIRDOM(inlineElement.outerHTML);
         inlineElement.outerHTML = tempElement.firstElementChild.innerHTML.trim();
+        if (keepSelection) {
+            (0,selection/* setRangeByWbr */.ib)(vditor.ir.element, range);
+            var endWbrElement = vditor.ir.element.querySelector("wbr");
+            range.setEndBefore(endWbrElement);
+            endWbrElement.remove();
+            (0,selection/* setSelectionFocus */.Hc)(range);
+        }
     }
 };
 var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
-    var range = (0,selection/* getEditorRange */.RN)(vditor);
+    var range = (0,selection/* getEditorRange */.zh)(vditor);
     var commandName = actionBtn.getAttribute("data-type");
     var typeElement = range.startContainer;
     if (typeElement.nodeType === 3) {
@@ -11330,7 +11682,7 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
     // 移除
     if (actionBtn.classList.contains("vditor-menu--current")) {
         if (commandName === "quote") {
-            var quoteElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(typeElement, "BLOCKQUOTE");
+            var quoteElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(typeElement, "BLOCKQUOTE");
             if (quoteElement) {
                 range.insertNode(document.createElement("wbr"));
                 quoteElement.outerHTML = quoteElement.innerHTML.trim() === "" ?
@@ -11338,9 +11690,9 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
             }
         }
         else if (commandName === "link") {
-            var aElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", "a");
+            var aElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "a");
             if (aElement) {
-                var aTextElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-ir__link");
+                var aTextElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-ir__link");
                 if (aTextElement) {
                     range.insertNode(document.createElement("wbr"));
                     aElement.outerHTML = aTextElement.innerHTML;
@@ -11372,9 +11724,9 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
         // 添加
         if (vditor.ir.element.childNodes.length === 0) {
             vditor.ir.element.innerHTML = '<p data-block="0"><wbr></p>';
-            (0,selection/* setRangeByWbr */.ir)(vditor.ir.element, range);
+            (0,selection/* setRangeByWbr */.ib)(vditor.ir.element, range);
         }
-        var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+        var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
         if (commandName === "line") {
             if (blockElement) {
                 var hrHTML = '<hr data-block="0"><p data-block="0"><wbr>\n</p>';
@@ -11409,6 +11761,7 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
         else if (commandName === "italic" || commandName === "bold" || commandName === "strike"
             || commandName === "inline-code" || commandName === "code" || commandName === "table") {
             var html = void 0;
+            var keepSelection = false;
             if (range.toString() === "") {
                 html = "".concat(prefix, "<wbr>").concat(suffix);
             }
@@ -11420,7 +11773,8 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
                     html = "".concat(prefix).concat(range.toString(), "<wbr>").concat(suffix);
                 }
                 else {
-                    html = "".concat(prefix).concat(range.toString()).concat(suffix, "<wbr>");
+                    html = "".concat(prefix, "<wbr>").concat(range.toString(), "<wbr>").concat(suffix);
+                    keepSelection = true;
                 }
                 range.deleteContents();
             }
@@ -11431,9 +11785,15 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
             spanElement.innerHTML = html;
             range.insertNode(spanElement);
             input(vditor, range);
+            if (keepSelection) {
+                var endWbrElement = vditor.ir.element.querySelector("wbr");
+                range.setEndBefore(endWbrElement);
+                endWbrElement.remove();
+                (0,selection/* setSelectionFocus */.Hc)(range);
+            }
             if (commandName === "table") {
                 range.selectNodeContents(getSelection().getRangeAt(0).startContainer.parentElement);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
         }
         else if (commandName === "check" || commandName === "list" || commandName === "ordered-list") {
@@ -11443,7 +11803,7 @@ var process_processToolbar = function (vditor, actionBtn, prefix, suffix) {
             actionBtn.classList.add("vditor-menu--current");
         }
     }
-    (0,selection/* setRangeByWbr */.ir)(vditor.ir.element, range);
+    (0,selection/* setRangeByWbr */.ib)(vditor.ir.element, range);
     process_processAfterRender(vditor);
     if (useHighlight) {
         highlightToolbarIR(vditor);
@@ -11502,13 +11862,16 @@ var Hint = /** @class */ (function () {
         this.lastIndex = -1;
         this.fillEmoji = function (element, vditor) {
             _this.element.style.display = "none";
+            if (vditor.currentMode === "sv") {
+                return;
+            }
             var value = decodeURIComponent(element.getAttribute("data-value"));
             var range = window.getSelection().getRangeAt(0);
             // 代码提示
             if (vditor.currentMode === "ir") {
-                var preBeforeElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-type", "code-block-info");
+                var preBeforeElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-type", "code-block-info");
                 if (preBeforeElement) {
-                    preBeforeElement.textContent = constants/* Constants */.Y.ZWSP + value.trimRight();
+                    preBeforeElement.textContent = constants/* Constants.ZWSP */.g.ZWSP + value.trimRight();
                     range.selectNodeContents(preBeforeElement);
                     range.collapse(false);
                     process_processAfterRender(vditor);
@@ -11543,33 +11906,30 @@ var Hint = /** @class */ (function () {
             range.setStart(range.startContainer, _this.lastIndex);
             range.deleteContents();
             if (vditor.options.hint.parse) {
-                if (vditor.currentMode === "sv") {
-                    (0,selection/* insertHTML */.Z2)(vditor.lute.SpinVditorSVDOM(value), vditor);
-                }
-                else if (vditor.currentMode === "wysiwyg") {
-                    (0,selection/* insertHTML */.Z2)(vditor.lute.SpinVditorDOM(value), vditor);
+                if (vditor.currentMode === "wysiwyg") {
+                    (0,selection/* insertHTML */.oC)(vditor.lute.SpinVditorDOM(value), vditor);
                 }
                 else {
-                    (0,selection/* insertHTML */.Z2)(vditor.lute.SpinVditorIRDOM(value), vditor);
+                    (0,selection/* insertHTML */.oC)(vditor.lute.SpinVditorIRDOM(value), vditor);
                 }
             }
             else {
-                (0,selection/* insertHTML */.Z2)(value, vditor);
+                (0,selection/* insertHTML */.oC)(value, vditor);
             }
-            if (_this.splitChar === ":" && value.indexOf(":") > -1 && vditor.currentMode !== "sv") {
+            if (_this.splitChar === ":" && value.indexOf(":") > -1) {
                 range.insertNode(document.createTextNode(" "));
             }
             range.collapse(false);
-            (0,selection/* setSelectionFocus */.jl)(range);
+            (0,selection/* setSelectionFocus */.Hc)(range);
             if (vditor.currentMode === "wysiwyg") {
-                var preElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-wysiwyg__block");
+                var preElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-wysiwyg__block");
                 if (preElement && preElement.lastElementChild.classList.contains("vditor-wysiwyg__preview")) {
                     preElement.lastElementChild.innerHTML = preElement.firstElementChild.innerHTML;
                     processCodeRender(preElement.lastElementChild, vditor);
                 }
             }
             else if (vditor.currentMode === "ir") {
-                var preElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-ir__marker--pre");
+                var preElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-ir__marker--pre");
                 if (preElement && preElement.nextElementSibling.classList.contains("vditor-ir__preview")) {
                     preElement.nextElementSibling.innerHTML = preElement.innerHTML;
                     processCodeRender(preElement.nextElementSibling, vditor);
@@ -11585,6 +11945,10 @@ var Hint = /** @class */ (function () {
     }
     Hint.prototype.render = function (vditor) {
         var _this = this;
+        if (vditor.currentMode === "sv") {
+            this.element.style.display = "none";
+            return;
+        }
         if (!window.getSelection().focusNode) {
             return;
         }
@@ -11647,7 +12011,7 @@ var Hint = /** @class */ (function () {
             return;
         }
         var editorElement = vditor[vditor.currentMode].element;
-        var textareaPosition = (0,selection/* getCursorPosition */.Ey)(editorElement);
+        var textareaPosition = (0,selection/* getCursorPosition */.Ny)(editorElement);
         var x = textareaPosition.left +
             (vditor.options.outline.position === "left" ? vditor.outline.element.offsetWidth : 0);
         var y = textareaPosition.top;
@@ -11724,7 +12088,7 @@ var Hint = /** @class */ (function () {
             }
             return true;
         }
-        else if (!(0,compatibility/* isCtrl */._0)(event) && !event.shiftKey && !event.altKey && event.key === "Enter" && !event.isComposing) {
+        else if (!(0,compatibility/* isCtrl */.yl)(event) && !event.shiftKey && !event.altKey && event.key === "Enter" && !event.isComposing) {
             event.preventDefault();
             event.stopPropagation();
             this.fillEmoji(currentHintElement, vditor);
@@ -11756,7 +12120,7 @@ var Hint = /** @class */ (function () {
             }
             else {
                 var preChar = lineArray[lineArray.length - 2].slice(-1);
-                if ((0,code160to32/* code160to32 */.p)(preChar) === " " && lastItem.length < maxLength) {
+                if ((0,code160to32/* code160to32 */.X)(preChar) === " " && lastItem.length < maxLength) {
                     key = lastItem;
                 }
             }
@@ -11780,6 +12144,27 @@ var Hint = /** @class */ (function () {
 
 
 
+
+var getHeadingMarker = function (headingElement) {
+    return Array.from(headingElement.children).find(function (item) { return item.getAttribute("data-type") === "heading-marker"; });
+};
+var restoreHeadingMarker = function (sourceHeading, copiedHeading) {
+    if (!sourceHeading || !copiedHeading || sourceHeading.tagName !== copiedHeading.tagName ||
+        sourceHeading.getAttribute("data-marker") !== copiedHeading.getAttribute("data-marker") ||
+        copiedHeading.textContent.trim() === "" || getHeadingMarker(copiedHeading)) {
+        return;
+    }
+    var markerElement = getHeadingMarker(sourceHeading);
+    if (!markerElement) {
+        return;
+    }
+    if (sourceHeading.firstElementChild === markerElement) {
+        copiedHeading.insertBefore(markerElement.cloneNode(true), copiedHeading.firstChild);
+    }
+    else if (sourceHeading.lastElementChild === markerElement) {
+        copiedHeading.appendChild(markerElement.cloneNode(true));
+    }
+};
 var IR = /** @class */ (function () {
     function IR(vditor) {
         this.composingLock = false;
@@ -11806,6 +12191,9 @@ var IR = /** @class */ (function () {
         event.preventDefault();
         var tempElement = document.createElement("div");
         tempElement.appendChild(range.cloneContents());
+        var copiedHeadings = tempElement.querySelectorAll("h1, h2, h3, h4, h5, h6");
+        restoreHeadingMarker((0,hasClosestByHeadings/* hasClosestByHeadings */.W)(range.startContainer), copiedHeadings.item(0));
+        restoreHeadingMarker((0,hasClosestByHeadings/* hasClosestByHeadings */.W)(range.endContainer), copiedHeadings.item(copiedHeadings.length - 1));
         event.clipboardData.setData("text/plain", vditor.lute.VditorIRDOM2Md(tempElement.innerHTML).trim());
         event.clipboardData.setData("text/html", "");
     };
@@ -11825,7 +12213,7 @@ var IR = /** @class */ (function () {
             _this.composingLock = true;
         });
         this.element.addEventListener("compositionend", function (event) {
-            if (!(0,compatibility/* isFirefox */.gm)()) {
+            if (!(0,compatibility/* isFirefox */.vU)()) {
                 input(vditor, getSelection().getRangeAt(0).cloneRange());
             }
             _this.composingLock = false;
@@ -11861,11 +12249,11 @@ var IR = /** @class */ (function () {
                 process_processAfterRender(vditor);
                 return;
             }
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
             // 点击后光标落于预览区
-            var previewElement = (0,hasClosest/* hasClosestByClassName */.KJ)(event.target, "vditor-ir__preview");
+            var previewElement = (0,hasClosest/* hasClosestByClassName */.fb)(event.target, "vditor-ir__preview");
             if (!previewElement) {
-                previewElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-ir__preview");
+                previewElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-ir__preview");
             }
             if (previewElement) {
                 if (previewElement.previousElementSibling.firstElementChild) {
@@ -11876,7 +12264,7 @@ var IR = /** @class */ (function () {
                     range.selectNodeContents(previewElement.previousElementSibling);
                 }
                 range.collapse(true);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
                 scrollCenter(vditor);
             }
             // 点击图片光标选中图片地址
@@ -11884,11 +12272,11 @@ var IR = /** @class */ (function () {
                 var linkElement = event.target.parentElement.querySelector(".vditor-ir__marker--link");
                 if (linkElement) {
                     range.selectNode(linkElement);
-                    (0,selection/* setSelectionFocus */.jl)(range);
+                    (0,selection/* setSelectionFocus */.Hc)(range);
                 }
             }
             // 打开链接
-            var aElement = (0,hasClosest/* hasClosestByAttribute */.Th)(event.target, "data-type", "a");
+            var aElement = (0,hasClosest/* hasClosestByAttribute */.a1)(event.target, "data-type", "a");
             if (aElement && (!aElement.classList.contains("vditor-ir__node--expand"))) {
                 if (vditor.options.link.click) {
                     vditor.options.link.click(aElement.querySelector(":scope > .vditor-ir__marker--link"));
@@ -11902,13 +12290,13 @@ var IR = /** @class */ (function () {
                 var lastRect = _this.element.lastElementChild.getBoundingClientRect();
                 if (event.y > lastRect.top + lastRect.height) {
                     if (_this.element.lastElementChild.tagName === "P" &&
-                        _this.element.lastElementChild.textContent.trim().replace(constants/* Constants */.Y.ZWSP, "") === "") {
+                        _this.element.lastElementChild.textContent.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "") {
                         range.selectNodeContents(_this.element.lastElementChild);
                         range.collapse(false);
                     }
                     else {
-                        _this.element.insertAdjacentHTML("beforeend", "<p data-block=\"0\">".concat(constants/* Constants */.Y.ZWSP, "<wbr></p>"));
-                        (0,selection/* setRangeByWbr */.ir)(_this.element, range);
+                        _this.element.insertAdjacentHTML("beforeend", "<p data-block=\"0\">".concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr></p>"));
+                        (0,selection/* setRangeByWbr */.ib)(_this.element, range);
                     }
                 }
             }
@@ -11918,14 +12306,14 @@ var IR = /** @class */ (function () {
             else {
                 // https://github.com/Vanessa219/vditor/pull/681 当点击选中区域时 eventTarget 与 range 不一致，需延迟等待 range 发生变化
                 setTimeout(function () {
-                    expandMarker((0,selection/* getEditorRange */.RN)(vditor), vditor);
+                    expandMarker((0,selection/* getEditorRange */.zh)(vditor), vditor);
                 });
             }
             clickToc(event, vditor);
             highlightToolbarIR(vditor);
         });
         this.element.addEventListener("keyup", function (event) {
-            if (event.isComposing || (0,compatibility/* isCtrl */._0)(event)) {
+            if (event.isComposing || (0,compatibility/* isCtrl */.yl)(event)) {
                 return;
             }
             if (event.key === "Enter") {
@@ -11941,10 +12329,10 @@ var IR = /** @class */ (function () {
                 vditor.ir.element.innerHTML = "";
                 return;
             }
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
             if (event.key === "Backspace") {
                 // firefox headings https://github.com/Vanessa219/vditor/issues/211
-                if ((0,compatibility/* isFirefox */.gm)() && range.startContainer.textContent === "\n" && range.startOffset === 1) {
+                if ((0,compatibility/* isFirefox */.vU)() && range.startContainer.textContent === "\n" && range.startOffset === 1) {
                     range.startContainer.textContent = "";
                     expandMarker(range, vditor);
                 }
@@ -11966,7 +12354,7 @@ var IR = /** @class */ (function () {
                 // https://github.com/Vanessa219/vditor/issues/508 IR 删除到节点需展开
                 expandMarker(range, vditor);
             }
-            var previewRenderElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-ir__preview");
+            var previewRenderElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-ir__preview");
             if (previewRenderElement) {
                 if (event.key === "ArrowUp" || event.key === "ArrowLeft") {
                     if (previewRenderElement.previousElementSibling.firstElementChild) {
@@ -11984,7 +12372,7 @@ var IR = /** @class */ (function () {
                     (event.key === "ArrowDown" || event.key === "ArrowRight")) {
                     if (previewRenderElement.parentElement.getAttribute("data-type") === "html-entity") {
                         // html entity
-                        previewRenderElement.parentElement.insertAdjacentText("afterend", constants/* Constants */.Y.ZWSP);
+                        previewRenderElement.parentElement.insertAdjacentText("afterend", constants/* Constants.ZWSP */.g.ZWSP);
                         range.setStart(previewRenderElement.parentElement.nextSibling, 1);
                     }
                     else {
@@ -12003,22 +12391,25 @@ var IR = /** @class */ (function () {
 
 ;// CONCATENATED MODULE: ./src/ts/markdown/getHTML.ts
 
+
 var getHTML = function (vditor) {
+    var html = "";
     if (vditor.currentMode === "sv") {
-        return vditor.lute.Md2HTML(getMarkdown(vditor));
+        html = vditor.lute.Md2HTML(getMarkdown(vditor));
     }
     else if (vditor.currentMode === "wysiwyg") {
-        return vditor.lute.VditorDOM2HTML(vditor.wysiwyg.element.innerHTML);
+        html = vditor.lute.VditorDOM2HTML(vditor.wysiwyg.element.innerHTML);
     }
     else if (vditor.currentMode === "ir") {
-        return vditor.lute.VditorIRDOM2HTML(vditor.ir.element.innerHTML);
+        html = vditor.lute.VditorIRDOM2HTML(vditor.ir.element.innerHTML);
     }
+    return (0,imageCaptionRender/* renderImageCaptionHTML */.V)(html, vditor.options.preview.markdown.imageCaption);
 };
 
 // EXTERNAL MODULE: ./src/ts/markdown/setLute.ts
-var setLute = __webpack_require__(796);
+var setLute = __webpack_require__(214);
 // EXTERNAL MODULE: ./src/ts/markdown/outlineRender.ts
-var outlineRender = __webpack_require__(70);
+var outlineRender = __webpack_require__(436);
 ;// CONCATENATED MODULE: ./src/ts/outline/index.ts
 
 
@@ -12033,10 +12424,10 @@ var Outline = /** @class */ (function () {
     Outline.prototype.render = function (vditor) {
         var html = "";
         if (vditor.preview.element.style.display === "block") {
-            html = (0,outlineRender/* outlineRender */.N)(vditor.preview.previewElement, this.element.lastElementChild, vditor);
+            html = (0,outlineRender/* outlineRender */.k)(vditor.preview.previewElement, this.element.lastElementChild, vditor);
         }
         else {
-            html = (0,outlineRender/* outlineRender */.N)(vditor[vditor.currentMode].element, this.element.lastElementChild, vditor);
+            html = (0,outlineRender/* outlineRender */.k)(vditor[vditor.currentMode].element, this.element.lastElementChild, vditor);
         }
         return html;
     };
@@ -12045,7 +12436,7 @@ var Outline = /** @class */ (function () {
         if (show === void 0) { show = true; }
         if (focus === void 0) { focus = true; }
         var btnElement = (_a = vditor.toolbar.elements.outline) === null || _a === void 0 ? void 0 : _a.firstElementChild;
-        if (show && window.innerWidth >= constants/* Constants */.Y.MOBILE_WIDTH) {
+        if (show && window.innerWidth >= constants/* Constants.MOBILE_WIDTH */.g.MOBILE_WIDTH) {
             this.element.style.display = "block";
             this.render(vditor);
             btnElement === null || btnElement === void 0 ? void 0 : btnElement.classList.add("vditor-menu--current");
@@ -12057,7 +12448,7 @@ var Outline = /** @class */ (function () {
         if (focus && getSelection().rangeCount > 0) {
             var range = getSelection().getRangeAt(0);
             if (vditor[vditor.currentMode].element.contains(range.startContainer)) {
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
             }
         }
         setPadding(vditor);
@@ -12067,8 +12458,10 @@ var Outline = /** @class */ (function () {
 
 
 // EXTERNAL MODULE: ./src/ts/markdown/mediaRender.ts
-var mediaRender = __webpack_require__(0);
+var mediaRender = __webpack_require__(280);
 ;// CONCATENATED MODULE: ./src/ts/preview/index.ts
+
+
 
 
 
@@ -12111,8 +12504,8 @@ var Preview = /** @class */ (function () {
             event.preventDefault();
         });
         this.previewElement.addEventListener("click", function (event) {
-            var spanElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(event.target, "SPAN");
-            if (spanElement && (0,hasClosest/* hasClosestByClassName */.KJ)(spanElement, "vditor-toc")) {
+            var spanElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(event.target, "SPAN");
+            if (spanElement && (0,hasClosest/* hasClosestByClassName */.fb)(spanElement, "vditor-toc")) {
                 var headingElement = _this.previewElement.querySelector("#" + spanElement.getAttribute("data-target-id"));
                 if (headingElement) {
                     _this.element.scrollTop = headingElement.offsetTop;
@@ -12134,7 +12527,7 @@ var Preview = /** @class */ (function () {
                     vditor.options.image.preview(event.target);
                 }
                 else if (vditor.options.image.isPreview) {
-                    (0,preview_image/* previewImage */.o)(event.target, vditor.options.lang, vditor.options.theme);
+                    (0,preview_image/* previewImage */.E)(event.target, vditor.options.lang, vditor.options.theme);
                 }
             }
         });
@@ -12171,8 +12564,8 @@ var Preview = /** @class */ (function () {
             }
         }
         actionElement.innerHTML = actionHtml.join("");
-        actionElement.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
-            var btn = (0,hasClosestByHeadings/* hasClosestByTag */.f)(event.target, "BUTTON");
+        actionElement.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
+            var btn = (0,hasClosestByHeadings/* hasClosestByTag */.S)(event.target, "BUTTON");
             if (!btn) {
                 return;
             }
@@ -12217,6 +12610,7 @@ var Preview = /** @class */ (function () {
         }
         if (value) {
             this.previewElement.innerHTML = value;
+            (0,imageCaptionRender/* renderImageCaptions */.W)(this.previewElement, "preview", vditor.options.preview.markdown.imageCaption);
             return;
         }
         if (getMarkdown(vditor)
@@ -12268,6 +12662,7 @@ var Preview = /** @class */ (function () {
         }, vditor.options.preview.delay);
     };
     Preview.prototype.afterRender = function (vditor, startTime) {
+        (0,imageCaptionRender/* renderImageCaptions */.W)(this.previewElement, "preview", vditor.options.preview.markdown.imageCaption);
         if (vditor.options.preview.parse) {
             vditor.options.preview.parse(this.element);
         }
@@ -12285,19 +12680,20 @@ var Preview = /** @class */ (function () {
         if (cmtFocusElement) {
             cmtFocusElement.classList.remove("vditor-comment--focus");
         }
-        (0,codeRender/* codeRender */.o)(vditor.preview.previewElement, vditor.options.preview.hljs);
-        (0,highlightRender/* highlightRender */.$)(vditor.options.preview.hljs, vditor.preview.previewElement, vditor.options.cdn);
-        (0,mermaidRender/* mermaidRender */.e)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
+        (0,codeRender/* codeRender */.O)(vditor.preview.previewElement, vditor.options.preview.hljs);
+        (0,highlightRender/* highlightRender */.s)(vditor.options.preview.hljs, vditor.preview.previewElement, vditor.options.cdn);
+        (0,mermaidRender/* mermaidRender */.i)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
         (0,markmapRender/* markmapRender */.K)(vditor.preview.previewElement, vditor.options.cdn);
-        (0,SMILESRender/* SMILESRender */.Y)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
-        (0,flowchartRender/* flowchartRender */.D)(vditor.preview.previewElement, vditor.options.cdn);
-        (0,graphvizRender/* graphvizRender */.m)(vditor.preview.previewElement, vditor.options.cdn);
-        (0,chartRender/* chartRender */.v)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
-        (0,mindmapRender/* mindmapRender */.l)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
-        (0,plantumlRender/* plantumlRender */.M)(vditor.preview.previewElement, vditor.options.cdn);
-        (0,abcRender/* abcRender */.$)(vditor.preview.previewElement, vditor.options.cdn);
+        (0,SMILESRender/* SMILESRender */.J)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
+        (0,flowchartRender/* flowchartRender */.P)(vditor.preview.previewElement, vditor.options.cdn);
+        (0,graphvizRender/* graphvizRender */.v)(vditor.preview.previewElement, vditor.options.cdn);
+        (0,wavedromRender/* wavedromRender */.F)(vditor.preview.previewElement, vditor.options.cdn);
+        (0,chartRender/* chartRender */.p)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
+        (0,mindmapRender/* mindmapRender */.P)(vditor.preview.previewElement, vditor.options.cdn, vditor.options.theme);
+        (0,plantumlRender/* plantumlRender */.B)(vditor.preview.previewElement, vditor.options.cdn);
+        (0,abcRender/* abcRender */.Q)(vditor.preview.previewElement, vditor.options.cdn);
         if (vditor.options.preview.render.media.enable) {
-            (0,mediaRender/* mediaRender */.l)(vditor.preview.previewElement);
+            (0,mediaRender/* mediaRender */.Y)(vditor.preview.previewElement);
         }
         vditor.options.customRenders.forEach(function (item) {
             item.render(vditor.preview.previewElement, vditor);
@@ -12310,12 +12706,12 @@ var Preview = /** @class */ (function () {
         }
         editorElement.querySelectorAll('[data-type="toc-block"]').forEach(function (item) {
             item.innerHTML = tocHTML;
-            (0,mathRender/* mathRender */.T)(item, {
+            (0,mathRender/* mathRender */.H)(item, {
                 cdn: vditor.options.cdn,
                 math: vditor.options.preview.math,
             });
         });
-        (0,mathRender/* mathRender */.T)(vditor.preview.previewElement, {
+        (0,mathRender/* mathRender */.H)(vditor.preview.previewElement, {
             cdn: vditor.options.cdn,
             math: vditor.options.preview.math,
         });
@@ -12342,7 +12738,7 @@ var Preview = /** @class */ (function () {
         this.element.append(copyElement);
         var range = copyElement.ownerDocument.createRange();
         range.selectNode(copyElement);
-        (0,selection/* setSelectionFocus */.jl)(range);
+        (0,selection/* setSelectionFocus */.Hc)(range);
         document.execCommand("copy");
         copyElement.remove();
         vditor.tip.show(['zhihu', 'mp-wechat'].includes(type) ? "\u5DF2\u590D\u5236\uFF0C\u53EF\u5230".concat(type === "zhihu" ? "知乎" : "微信公众号平台", "\u8FDB\u884C\u7C98\u8D34") : "\u5DF2\u590D\u5236\u5230\u526A\u5207\u677F");
@@ -12409,35 +12805,31 @@ var Resize = /** @class */ (function () {
 
 
 
-
 var Editor = /** @class */ (function () {
     function Editor(vditor) {
         this.composingLock = false;
-        this.element = document.createElement("pre");
+        this.element = document.createElement("textarea");
         this.element.className = "vditor-sv vditor-reset";
-        this.element.setAttribute("placeholder", vditor.options.placeholder);
-        this.element.setAttribute("contenteditable", "true");
-        this.element.setAttribute("spellcheck", "false");
+        this.element.placeholder = vditor.options.placeholder;
+        this.element.spellcheck = false;
         this.bindEvent(vditor);
         focusEvent(vditor, this.element);
-        blurEvent(vditor, this.element);
         hotkeyEvent(vditor, this.element);
-        selectEvent(vditor, this.element);
-        dropEvent(vditor, this.element);
-        copyEvent(vditor, this.element, this.copy);
-        cutEvent(vditor, this.element, this.copy);
+        dropEvent(vditor, this.element, function (code) {
+            processPaste(vditor, code.replace(/&lt;/g, "<").replace(/&amp;/g, "&"));
+        });
     }
-    Editor.prototype.copy = function (event, vditor) {
-        event.stopPropagation();
-        event.preventDefault();
-        event.clipboardData.setData("text/plain", getSelectText(vditor[vditor.currentMode].element));
-    };
     Editor.prototype.bindEvent = function (vditor) {
         var _this = this;
+        this.element.addEventListener("blur", function () {
+            if (vditor.options.blur) {
+                vditor.options.blur(getMarkdown(vditor));
+            }
+        });
         this.element.addEventListener("paste", function (event) {
             paste(vditor, event, {
                 pasteCode: function (code) {
-                    document.execCommand("insertHTML", false, code);
+                    processPaste(vditor, code.replace(/&lt;/g, "<").replace(/&amp;/g, "&"));
                 },
             });
         });
@@ -12449,58 +12841,36 @@ var Editor = /** @class */ (function () {
             var textHeight = _this.element.clientHeight;
             var textScrollHeight = _this.element.scrollHeight - parseFloat(_this.element.style.paddingBottom || "0");
             var preview = vditor.preview.element;
-            if ((textScrollTop / textHeight > 0.5)) {
-                preview.scrollTop = (textScrollTop + textHeight) *
-                    preview.scrollHeight / textScrollHeight - textHeight;
+            if (textScrollTop / textHeight > 0.5) {
+                preview.scrollTop = (textScrollTop + textHeight) * preview.scrollHeight / textScrollHeight - textHeight;
             }
             else {
-                preview.scrollTop = textScrollTop *
-                    preview.scrollHeight / textScrollHeight;
+                preview.scrollTop = textScrollTop * preview.scrollHeight / textScrollHeight;
             }
         });
-        this.element.addEventListener("compositionstart", function (event) {
+        this.element.addEventListener("compositionstart", function () {
             _this.composingLock = true;
         });
-        this.element.addEventListener("compositionend", function (event) {
-            if (!(0,compatibility/* isFirefox */.gm)()) {
-                inputEvent(vditor, event);
-            }
+        this.element.addEventListener("compositionend", function () {
             _this.composingLock = false;
+            if (!(0,compatibility/* isFirefox */.vU)()) {
+                processAfterRender(vditor);
+            }
         });
-        this.element.addEventListener("input", function (event) {
-            if (event.inputType === "deleteByDrag" || event.inputType === "insertFromDrop") {
-                // https://github.com/Vanessa219/vditor/issues/801 编辑器内容拖拽问题
-                return;
+        this.element.addEventListener("input", function () {
+            if (!_this.composingLock) {
+                processAfterRender(vditor);
             }
-            if (_this.composingLock || event.data === "‘" || event.data === "“" || event.data === "《") {
-                return;
-            }
-            if (_this.preventInput) {
-                _this.preventInput = false;
-                processAfterRender(vditor, {
-                    enableAddUndoStack: true,
-                    enableHint: true,
-                    enableInput: true,
-                });
-                return;
-            }
-            inputEvent(vditor, event);
         });
-        this.element.addEventListener("keyup", function (event) {
-            if (event.isComposing || (0,compatibility/* isCtrl */._0)(event)) {
-                return;
+        this.element.addEventListener("select", function () {
+            var selectedText = _this.element.value.substring(_this.element.selectionStart, _this.element.selectionEnd);
+            if (selectedText.trim()) {
+                if (vditor.options.select) {
+                    vditor.options.select(selectedText);
+                }
             }
-            if ((event.key === "Backspace" || event.key === "Delete") &&
-                vditor.sv.element.innerHTML !== "" && vditor.sv.element.childNodes.length === 1 &&
-                vditor.sv.element.firstElementChild && vditor.sv.element.firstElementChild.tagName === "DIV"
-                && vditor.sv.element.firstElementChild.childElementCount === 2
-                && (vditor.sv.element.firstElementChild.textContent === "" || vditor.sv.element.textContent === "\n")) {
-                // 为空时显示 placeholder
-                vditor.sv.element.innerHTML = "";
-                return;
-            }
-            if (event.key === "Enter") {
-                scrollCenter(vditor);
+            else if (vditor.options.unSelect) {
+                vditor.options.unSelect();
             }
         });
     };
@@ -12603,9 +12973,9 @@ var Both = /** @class */ (function (_super) {
         if (vditor.options.preview.mode === "both") {
             _this.element.children[0].classList.add("vditor-menu--current");
         }
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             var btnElement = _this.element.firstElementChild;
-            if (btnElement.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (btnElement.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             event.preventDefault();
@@ -12636,7 +13006,7 @@ var Br = /** @class */ (function () {
 
 
 // EXTERNAL MODULE: ./src/ts/ui/setCodeTheme.ts
-var setCodeTheme = __webpack_require__(13);
+var setCodeTheme = __webpack_require__(580);
 ;// CONCATENATED MODULE: ./src/ts/toolbar/CodeTheme.ts
 var CodeTheme_extends = (undefined && undefined.__extends) || (function () {
     var extendStatics = function (d, b) {
@@ -12666,16 +13036,16 @@ var CodeTheme = /** @class */ (function (_super) {
         var panelElement = document.createElement("div");
         panelElement.className = "vditor-hint".concat(menuItem.level === 2 ? "" : " vditor-panel--arrow");
         var innerHTML = "";
-        constants/* Constants */.Y.CODE_THEME.forEach(function (theme) {
+        constants/* Constants.CODE_THEME.forEach */.g.CODE_THEME.forEach(function (theme) {
             innerHTML += "<button>".concat(theme, "</button>");
         });
         panelElement.innerHTML =
             "<div style=\"overflow: auto;max-height:".concat(window.innerHeight / 2, "px\">").concat(innerHTML, "</div>");
-        panelElement.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        panelElement.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             if (event.target.tagName === "BUTTON") {
                 hidePanel(vditor, ["subToolbar"]);
                 vditor.options.preview.hljs.style = event.target.textContent;
-                (0,setCodeTheme/* setCodeTheme */.h)(event.target.textContent, vditor.options.cdn);
+                (0,setCodeTheme/* setCodeTheme */.Y)(event.target.textContent, vditor.options.cdn);
                 event.preventDefault();
                 event.stopPropagation();
             }
@@ -12721,11 +13091,11 @@ var ContentTheme = /** @class */ (function (_super) {
         });
         panelElement.innerHTML =
             "<div style=\"overflow: auto;max-height:".concat(window.innerHeight / 2, "px\">").concat(innerHTML, "</div>");
-        panelElement.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        panelElement.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             if (event.target.tagName === "BUTTON") {
                 hidePanel(vditor, ["subToolbar"]);
                 vditor.options.preview.theme.current = event.target.getAttribute("data-type");
-                (0,setContentTheme/* setContentTheme */.H)(vditor.options.preview.theme.current, vditor.options.preview.theme.path);
+                (0,setContentTheme/* setContentTheme */.Z)(vditor.options.preview.theme.current, vditor.options.preview.theme.path);
                 event.preventDefault();
                 event.stopPropagation();
             }
@@ -12803,9 +13173,9 @@ var Custom = /** @class */ (function (_super) {
     function Custom(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
         _this.element.children[0].innerHTML = menuItem.icon;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (event.currentTarget.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (event.currentTarget.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             menuItem.click(event, vditor);
@@ -12840,9 +13210,9 @@ var Devtools = /** @class */ (function (_super) {
     Devtools_extends(Devtools, _super);
     function Devtools(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.firstElementChild.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.firstElementChild.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             var btnElement = _this.element.firstElementChild;
-            if (btnElement.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (btnElement.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             event.preventDefault();
@@ -12898,6 +13268,7 @@ var Emoji_extends = (undefined && undefined.__extends) || (function () {
 
 
 
+
 var Emoji = /** @class */ (function (_super) {
     Emoji_extends(Emoji, _super);
     function Emoji(vditor, menuItem) {
@@ -12922,12 +13293,18 @@ var Emoji = /** @class */ (function (_super) {
     }
     Emoji.prototype.bindEvent = function (vditor) {
         var _this = this;
-        this.element.lastElementChild.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
-            var btnElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(event.target, "BUTTON");
+        this.element.lastElementChild.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
+            var btnElement = (0,hasClosestByHeadings/* hasClosestByTag */.S)(event.target, "BUTTON");
             if (btnElement) {
                 event.preventDefault();
                 var value = btnElement.getAttribute("data-value");
-                var range = (0,selection/* getEditorRange */.RN)(vditor);
+                if (vditor.currentMode === "sv") {
+                    processPaste(vditor, value);
+                    _this.element.lastElementChild.style.display = "none";
+                    execAfterRender(vditor);
+                    return;
+                }
+                var range = (0,selection/* getEditorRange */.zh)(vditor);
                 var html = value;
                 if (vditor.currentMode === "wysiwyg") {
                     html = vditor.lute.SpinVditorDOM(value);
@@ -12935,27 +13312,27 @@ var Emoji = /** @class */ (function (_super) {
                 else if (vditor.currentMode === "ir") {
                     html = vditor.lute.SpinVditorIRDOM(value);
                 }
-                if (value.indexOf(":") > -1 && vditor.currentMode !== "sv") {
+                if (value.indexOf(":") > -1) {
                     var tempElement = document.createElement("div");
                     tempElement.innerHTML = html;
                     html = tempElement.firstElementChild.firstElementChild.outerHTML + " ";
-                    (0,selection/* insertHTML */.Z2)(html, vditor);
+                    (0,selection/* insertHTML */.oC)(html, vditor);
                 }
                 else {
                     range.extractContents();
                     range.insertNode(document.createTextNode(value));
-                    if (!(0,hasClosest/* hasClosestBlock */.pt)(range.startContainer)) {
+                    if (!(0,hasClosest/* hasClosestBlock */.F9)(range.startContainer)) {
                         modifyPre(vditor, range);
                     }
                 }
                 range.collapse(false);
-                (0,selection/* setSelectionFocus */.jl)(range);
+                (0,selection/* setSelectionFocus */.Hc)(range);
                 _this.element.lastElementChild.style.display = "none";
                 execAfterRender(vditor);
             }
         });
         this.element.lastElementChild.addEventListener("mouseover", function (event) {
-            var btnElement = (0,hasClosestByHeadings/* hasClosestByTag */.f)(event.target, "BUTTON");
+            var btnElement = (0,hasClosestByHeadings/* hasClosestByTag */.S)(event.target, "BUTTON");
             if (btnElement) {
                 _this.element.querySelector(".vditor-emojis__tip").innerHTML = btnElement.getAttribute("data-key");
             }
@@ -12990,7 +13367,7 @@ var exportPDF = function (vditor) {
     vditor.tip.show(window.VditorI18n.generate, 3800);
     var iframe = document.querySelector("#vditorExportIframe");
     iframe.contentDocument.open();
-    iframe.contentDocument.write("<link rel=\"stylesheet\" href=\"".concat(vditor.options.cdn, "/dist/index.css\"/>\n<script src=\"").concat(vditor.options.cdn, "/dist/method.min.js\"></script>\n<div id=\"preview\" style=\"width: 800px\"></div>\n<script>\nwindow.addEventListener(\"message\", (e) => {\n  if(!e.data) {\n    return;\n  }\n  Vditor.preview(document.getElementById('preview'), e.data, {\n    cdn: \"").concat(vditor.options.cdn, "\",\n    markdown: {\n      theme: ").concat(JSON.stringify(vditor.options.preview.theme), "\n    },\n    hljs: {\n      style: \"").concat(vditor.options.preview.hljs.style, "\"\n    }\n  });\n  setTimeout(() => {\n        window.print();\n    }, 3600);\n}, false);\n</script>"));
+    iframe.contentDocument.write("<link rel=\"stylesheet\" href=\"".concat(vditor.options.cdn, "/dist/index.css\"/>\n<script src=\"").concat(vditor.options.cdn, "/dist/method.min.js\"></script>\n<div id=\"preview\" style=\"width: 800px\"></div>\n<script>\nwindow.addEventListener(\"message\", (e) => {\n  if(!e.data) {\n    return;\n  }\n  Vditor.preview(document.getElementById('preview'), e.data, {\n    cdn: \"").concat(vditor.options.cdn, "\",\n    markdown: {\n      callout: ").concat(JSON.stringify(vditor.options.preview.markdown.callout), ",\n      theme: ").concat(JSON.stringify(vditor.options.preview.theme), "\n    },\n    hljs: {\n      style: \"").concat(vditor.options.preview.hljs.style, "\"\n    }\n  });\n  setTimeout(() => {\n        window.print();\n    }, 3600);\n}, false);\n</script>"));
     iframe.contentDocument.close();
     setTimeout(function () {
         iframe.contentWindow.postMessage(getMarkdown(vditor), "*");
@@ -12998,7 +13375,7 @@ var exportPDF = function (vditor) {
 };
 var exportHTML = function (vditor) {
     var content = getHTML(vditor);
-    var html = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"".concat(vditor.options.cdn, "/dist/index.css\"/>\n<script src=\"").concat(vditor.options.cdn, "/dist/js/i18n/").concat(vditor.options.lang, ".js\"></script>\n<script src=\"").concat(vditor.options.cdn, "/dist/method.min.js\"></script></head>\n<body><div class=\"vditor-reset\" id=\"preview\">").concat(content, "</div>\n<script>\n    const previewElement = document.getElementById('preview')\n    Vditor.setContentTheme('").concat(vditor.options.preview.theme.current, "', '").concat(vditor.options.preview.theme.path, "');\n    Vditor.codeRender(previewElement);\n    Vditor.highlightRender(").concat(JSON.stringify(vditor.options.preview.hljs), ", previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.mathRender(previewElement, {\n        cdn: '").concat(vditor.options.cdn, "',\n        math: ").concat(JSON.stringify(vditor.options.preview.math), ",\n    });\n    Vditor.mermaidRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.SMILESRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.markmapRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.flowchartRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.graphvizRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.chartRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.mindmapRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.abcRender(previewElement, '").concat(vditor.options.cdn, "');\n    ").concat(vditor.options.preview.render.media.enable ? 'Vditor.mediaRender(previewElement);' : "", "\n    Vditor.speechRender(previewElement);\n</script>\n<script src=\"").concat(vditor.options.cdn, "/dist/js/icons/").concat(vditor.options.icon, ".js\"></script></body></html>");
+    var html = "<html><head><link rel=\"stylesheet\" type=\"text/css\" href=\"".concat(vditor.options.cdn, "/dist/index.css\"/>\n<script src=\"").concat(vditor.options.cdn, "/dist/js/i18n/").concat(vditor.options.lang, ".js\"></script>\n<script src=\"").concat(vditor.options.cdn, "/dist/method.min.js\"></script></head>\n<body><div class=\"vditor-reset\" id=\"preview\">").concat(content, "</div>\n<script>\n    const previewElement = document.getElementById('preview')\n    Vditor.setContentTheme('").concat(vditor.options.preview.theme.current, "', '").concat(vditor.options.preview.theme.path, "');\n    Vditor.codeRender(previewElement);\n    Vditor.highlightRender(").concat(JSON.stringify(vditor.options.preview.hljs), ", previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.mathRender(previewElement, {\n        cdn: '").concat(vditor.options.cdn, "',\n        math: ").concat(JSON.stringify(vditor.options.preview.math), ",\n    });\n    Vditor.mermaidRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.SMILESRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.markmapRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.flowchartRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.graphvizRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.wavedromRender(previewElement, '").concat(vditor.options.cdn, "');\n    Vditor.chartRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.mindmapRender(previewElement, '").concat(vditor.options.cdn, "', '").concat(vditor.options.theme, "');\n    Vditor.abcRender(previewElement, '").concat(vditor.options.cdn, "');\n    ").concat(vditor.options.preview.render.media.enable ? 'Vditor.mediaRender(previewElement);' : "", "\n    Vditor.speechRender(previewElement);\n</script>\n<script src=\"").concat(vditor.options.cdn, "/dist/js/icons/").concat(vditor.options.icon, ".js\"></script></body></html>");
     download(vditor, html, content.substr(0, 10) + ".html");
 };
 
@@ -13030,7 +13407,7 @@ var Export = /** @class */ (function (_super) {
         var panelElement = document.createElement("div");
         panelElement.className = "vditor-hint".concat(menuItem.level === 2 ? "" : " vditor-panel--arrow");
         panelElement.innerHTML = "<button data-type=\"markdown\">Markdown</button>\n<button data-type=\"pdf\">PDF</button>\n<button data-type=\"html\">HTML</button>";
-        panelElement.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        panelElement.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             var btnElement = event.target;
             if (btnElement.tagName === "BUTTON") {
                 switch (btnElement.getAttribute("data-type")) {
@@ -13086,7 +13463,7 @@ var Fullscreen = /** @class */ (function (_super) {
         return _this;
     }
     Fullscreen.prototype._bindEvent = function (vditor, menuItem) {
-        this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
             if (vditor.element.className.includes("vditor--fullscreen")) {
                 if (!menuItem.level) {
@@ -13171,20 +13548,20 @@ var Headings = /** @class */ (function (_super) {
         var _this = _super.call(this, vditor, menuItem) || this;
         var panelElement = document.createElement("div");
         panelElement.className = "vditor-hint vditor-panel--arrow";
-        panelElement.innerHTML = "<button data-tag=\"h1\" data-value=\"# \">".concat(window.VditorI18n.heading1, " ").concat((0,compatibility/* updateHotkeyTip */.fG)("&lt;⌥⌘1>"), "</button>\n<button data-tag=\"h2\" data-value=\"## \">").concat(window.VditorI18n.heading2, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘2"), "></button>\n<button data-tag=\"h3\" data-value=\"### \">").concat(window.VditorI18n.heading3, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘3"), "></button>\n<button data-tag=\"h4\" data-value=\"#### \">").concat(window.VditorI18n.heading4, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘4"), "></button>\n<button data-tag=\"h5\" data-value=\"##### \">").concat(window.VditorI18n.heading5, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘5"), "></button>\n<button data-tag=\"h6\" data-value=\"###### \">").concat(window.VditorI18n.heading6, " &lt;").concat((0,compatibility/* updateHotkeyTip */.fG)("⌥⌘6"), "></button>");
+        panelElement.innerHTML = "<button data-tag=\"h1\" data-value=\"# \">".concat(window.VditorI18n.heading1, " ").concat((0,compatibility/* updateHotkeyTip */.ns)("&lt;⌥⌘1>"), "</button>\n<button data-tag=\"h2\" data-value=\"## \">").concat(window.VditorI18n.heading2, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘2"), "></button>\n<button data-tag=\"h3\" data-value=\"### \">").concat(window.VditorI18n.heading3, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘3"), "></button>\n<button data-tag=\"h4\" data-value=\"#### \">").concat(window.VditorI18n.heading4, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘4"), "></button>\n<button data-tag=\"h5\" data-value=\"##### \">").concat(window.VditorI18n.heading5, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘5"), "></button>\n<button data-tag=\"h6\" data-value=\"###### \">").concat(window.VditorI18n.heading6, " &lt;").concat((0,compatibility/* updateHotkeyTip */.ns)("⌥⌘6"), "></button>");
         _this.element.appendChild(panelElement);
         _this._bindEvent(vditor, panelElement);
         return _this;
     }
     Headings.prototype._bindEvent = function (vditor, panelElement) {
         var actionBtn = this.element.children[0];
-        actionBtn.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        actionBtn.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
             // https://github.com/Vanessa219/vditor/issues/1391
             clearTimeout(vditor.wysiwyg.afterRenderTimeoutId);
             clearTimeout(vditor.ir.processTimeoutId);
             clearTimeout(vditor.sv.processTimeoutId);
-            if (actionBtn.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (actionBtn.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             actionBtn.blur();
@@ -13204,7 +13581,7 @@ var Headings = /** @class */ (function (_super) {
             }
         });
         for (var i = 0; i < 6; i++) {
-            panelElement.children.item(i).addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+            panelElement.children.item(i).addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
                 event.preventDefault();
                 if (vditor.currentMode === "wysiwyg") {
                     setHeading(vditor, event.target.getAttribute("data-tag"));
@@ -13248,7 +13625,7 @@ var Help = /** @class */ (function (_super) {
     Help_extends(Help, _super);
     function Help(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
             vditor.tip.show("<div style=\"margin-bottom:14px;font-size: 14px;line-height: 22px;min-width:300px;max-width: 360px;display: flex;\">\n<div style=\"margin-top: 14px;flex: 1\">\n    <div>Markdown \u4F7F\u7528\u6307\u5357</div>\n    <ul style=\"list-style: none\">\n        <li><a href=\"https://ld246.com/article/1583308420519\" target=\"_blank\">\u8BED\u6CD5\u901F\u67E5\u624B\u518C</a></li>\n        <li><a href=\"https://ld246.com/article/1583129520165\" target=\"_blank\">\u57FA\u7840\u8BED\u6CD5</a></li>\n        <li><a href=\"https://ld246.com/article/1583305480675\" target=\"_blank\">\u6269\u5C55\u8BED\u6CD5</a></li>\n        <li><a href=\"https://ld246.com/article/1582778815353\" target=\"_blank\">\u952E\u76D8\u5FEB\u6377\u952E</a></li>\n    </ul>\n</div>\n<div style=\"margin-top: 14px;flex: 1\">\n    <div>Vditor \u652F\u6301</div>\n    <ul style=\"list-style: none\">\n        <li><a href=\"https://github.com/Vanessa219/vditor/issues\" target=\"_blank\">Issues</a></li>\n        <li><a href=\"https://ld246.com/tag/vditor\" target=\"_blank\">\u5B98\u65B9\u8BA8\u8BBA\u533A</a></li>\n        <li><a href=\"https://ld246.com/article/1549638745630\" target=\"_blank\">\u5F00\u53D1\u624B\u518C</a></li>\n        <li><a href=\"https://ld246.com/guide/markdown\" target=\"_blank\">\u6F14\u793A\u5730\u5740</a></li>\n    </ul>\n</div></div>", 0);
         });
@@ -13284,14 +13661,14 @@ var Indent = /** @class */ (function (_super) {
     Indent_extends(Indent, _super);
     function Indent(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED) ||
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED) ||
                 vditor.currentMode === "sv") {
                 return;
             }
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
-            var liElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "LI");
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
+            var liElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "LI");
             if (liElement) {
                 listIndent(vditor, liElement, range);
             }
@@ -13325,9 +13702,9 @@ var Info = /** @class */ (function (_super) {
     Info_extends(Info, _super);
     function Info(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            vditor.tip.show("<div style=\"max-width: 520px; font-size: 14px;line-height: 22px;margin-bottom: 14px;\">\n<p style=\"text-align: center;margin: 14px 0\">\n    <em>\u4E0B\u4E00\u4EE3\u7684 Markdown \u7F16\u8F91\u5668\uFF0C\u4E3A\u672A\u6765\u800C\u6784\u5EFA</em>\n</p>\n<div style=\"display: flex;margin-bottom: 14px;flex-wrap: wrap;align-items: center\">\n    <img src=\"https://unpkg.com/vditor/dist/images/logo.png\" style=\"margin: 0 auto;height: 68px\"/>\n    <div>&nbsp;&nbsp;</div>\n    <div style=\"flex: 1;min-width: 250px\">\n        Vditor \u662F\u4E00\u6B3E\u6D4F\u89C8\u5668\u7AEF\u7684 Markdown \u7F16\u8F91\u5668\uFF0C\u652F\u6301\u6240\u89C1\u5373\u6240\u5F97\u3001\u5373\u65F6\u6E32\u67D3\uFF08\u7C7B\u4F3C Typora\uFF09\u548C\u5206\u5C4F\u9884\u89C8\u6A21\u5F0F\u3002\n        \u5B83\u4F7F\u7528 TypeScript \u5B9E\u73B0\uFF0C\u652F\u6301\u539F\u751F JavaScript \u4EE5\u53CA Vue\u3001React\u3001Angular \u548C Svelte \u7B49\u6846\u67B6\u3002\n    </div>\n</div>\n<div style=\"display: flex;flex-wrap: wrap;\">\n    <ul style=\"list-style: none;flex: 1;min-width:148px\">\n        <li>\n        \u9879\u76EE\u5730\u5740\uFF1A<a href=\"https://b3log.org/vditor\" target=\"_blank\">b3log.org/vditor</a>\n        </li>\n        <li>\n        \u5F00\u6E90\u534F\u8BAE\uFF1AMIT\n        </li>\n    </ul>\n    <ul style=\"list-style: none;margin-right: 18px\">\n        <li>\n        \u7EC4\u4EF6\u7248\u672C\uFF1AVditor v".concat(constants/* VDITOR_VERSION */.g, " / Lute v").concat(Lute.Version, "\n        </li>\n        <li>\n        \u8D5E\u52A9\u6350\u8D60\uFF1A<a href=\"https://ld246.com/sponsor\" target=\"_blank\">https://ld246.com/sponsor</a>\n        </li>\n    </ul>\n</div>\n</div>"), 0);
+            vditor.tip.show("<div style=\"max-width: 520px; font-size: 14px;line-height: 22px;margin-bottom: 14px;\">\n<p style=\"text-align: center;margin: 14px 0\">\n    <em>\u4E0B\u4E00\u4EE3\u7684 Markdown \u7F16\u8F91\u5668\uFF0C\u4E3A\u672A\u6765\u800C\u6784\u5EFA</em>\n</p>\n<div style=\"display: flex;margin-bottom: 14px;flex-wrap: wrap;align-items: center\">\n    <img src=\"https://unpkg.com/vditor/dist/images/logo.png\" style=\"margin: 0 auto;height: 68px\"/>\n    <div>&nbsp;&nbsp;</div>\n    <div style=\"flex: 1;min-width: 250px\">\n        Vditor \u662F\u4E00\u6B3E\u6D4F\u89C8\u5668\u7AEF\u7684 Markdown \u7F16\u8F91\u5668\uFF0C\u652F\u6301\u6240\u89C1\u5373\u6240\u5F97\u3001\u5373\u65F6\u6E32\u67D3\uFF08\u7C7B\u4F3C Typora\uFF09\u548C\u5206\u5C4F\u9884\u89C8\u6A21\u5F0F\u3002\n        \u5B83\u4F7F\u7528 TypeScript \u5B9E\u73B0\uFF0C\u652F\u6301\u539F\u751F JavaScript \u4EE5\u53CA Vue\u3001React\u3001Angular \u548C Svelte \u7B49\u6846\u67B6\u3002\n    </div>\n</div>\n<div style=\"display: flex;flex-wrap: wrap;\">\n    <ul style=\"list-style: none;flex: 1;min-width:148px\">\n        <li>\n        \u9879\u76EE\u5730\u5740\uFF1A<a href=\"https://b3log.org/vditor\" target=\"_blank\">b3log.org/vditor</a>\n        </li>\n        <li>\n        \u5F00\u6E90\u534F\u8BAE\uFF1AMIT\n        </li>\n    </ul>\n    <ul style=\"list-style: none;margin-right: 18px\">\n        <li>\n        \u7EC4\u4EF6\u7248\u672C\uFF1AVditor v".concat(constants/* VDITOR_VERSION */.H, " / Lute v").concat(Lute.Version, "\n        </li>\n        <li>\n        \u8D5E\u52A9\u6350\u8D60\uFF1A<a href=\"https://ld246.com/sponsor\" target=\"_blank\">https://ld246.com/sponsor</a>\n        </li>\n    </ul>\n</div>\n</div>"), 0);
         });
         return _this;
     }
@@ -13359,9 +13736,9 @@ var InsertAfter = /** @class */ (function (_super) {
     InsertAfter_extends(InsertAfter, _super);
     function InsertAfter(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED) ||
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED) ||
                 vditor.currentMode === "sv") {
                 return;
             }
@@ -13397,9 +13774,9 @@ var InsertBefore = /** @class */ (function (_super) {
     InsertBefore_extends(InsertBefore, _super);
     function InsertBefore(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED) ||
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED) ||
                 vditor.currentMode === "sv") {
                 return;
             }
@@ -13437,14 +13814,14 @@ var Outdent = /** @class */ (function (_super) {
     Outdent_extends(Outdent, _super);
     function Outdent(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED) ||
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED) ||
                 vditor.currentMode === "sv") {
                 return;
             }
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
-            var liElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "LI");
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
+            var liElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "LI");
             if (liElement) {
                 listOutdent(vditor, liElement, range, liElement.parentElement);
             }
@@ -13481,10 +13858,10 @@ var Outline_Outline = /** @class */ (function (_super) {
         if (vditor.options.outline) {
             _this.element.firstElementChild.classList.add("vditor-menu--current");
         }
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
             var btnElement = vditor.toolbar.elements.outline.firstElementChild;
-            if (btnElement.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (btnElement.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             vditor.options.outline.enable = !_this.element.firstElementChild.classList.contains("vditor-menu--current");
@@ -13526,13 +13903,13 @@ var Preview_Preview = /** @class */ (function (_super) {
     }
     Preview.prototype._bindEvent = function (vditor) {
         var _this = this;
-        this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
             var btnElement = _this.element.firstElementChild;
-            if (btnElement.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (btnElement.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
-            var toolbars = constants/* Constants */.Y.EDIT_TOOLBARS.concat(["both", "edit-mode", "devtools"]);
+            var toolbars = constants/* Constants.EDIT_TOOLBARS.concat */.g.EDIT_TOOLBARS.concat(["both", "edit-mode", "devtools"]);
             if (btnElement.classList.contains("vditor-menu--current")) {
                 btnElement.classList.remove("vditor-menu--current");
                 if (vditor.currentMode === "sv") {
@@ -13751,9 +14128,9 @@ var Record = /** @class */ (function (_super) {
     Record.prototype._bindEvent = function (vditor) {
         var _this = this;
         var mediaRecorder;
-        this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             var editorElement = vditor[vditor.currentMode].element;
@@ -13772,7 +14149,12 @@ var Record = /** @class */ (function (_super) {
                     };
                     mediaRecorder.startRecordingNewWavFile();
                     vditor.tip.show(window.VditorI18n.recording);
-                    editorElement.setAttribute("contenteditable", "false");
+                    if (vditor.currentMode === "sv") {
+                        vditor.sv.element.disabled = true;
+                    }
+                    else {
+                        editorElement.setAttribute("contenteditable", "false");
+                    }
                     _this.element.children[0].classList.add("vditor-menu--current");
                 }).catch(function () {
                     vditor.tip.show(window.VditorI18n["record-tip"]);
@@ -13788,7 +14170,12 @@ var Record = /** @class */ (function (_super) {
             }
             else {
                 vditor.tip.show(window.VditorI18n.recording);
-                editorElement.setAttribute("contenteditable", "false");
+                if (vditor.currentMode === "sv") {
+                    vditor.sv.element.disabled = true;
+                }
+                else {
+                    editorElement.setAttribute("contenteditable", "false");
+                }
                 mediaRecorder.startRecordingNewWavFile();
                 _this.element.children[0].classList.add("vditor-menu--current");
             }
@@ -13823,9 +14210,9 @@ var Redo = /** @class */ (function (_super) {
     function Redo(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
         disableToolbar({ redo: _this.element }, ["redo"]);
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             vditor.undo.redo(vditor);
@@ -13861,9 +14248,9 @@ var Undo = /** @class */ (function (_super) {
     function Undo(vditor, menuItem) {
         var _this = _super.call(this, vditor, menuItem) || this;
         disableToolbar({ undo: _this.element }, ["undo"]);
-        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+        _this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
             event.preventDefault();
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 return;
             }
             vditor.undo.undo(vditor);
@@ -13911,15 +14298,15 @@ var Upload_Upload = /** @class */ (function (_super) {
     }
     Upload.prototype._bindEvent = function (vditor) {
         var _this = this;
-        this.element.children[0].addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+        this.element.children[0].addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 event.stopPropagation();
                 event.preventDefault();
                 return;
             }
         });
         this.element.querySelector("input").addEventListener("change", function (event) {
-            if (_this.element.firstElementChild.classList.contains(constants/* Constants */.Y.CLASS_MENU_DISABLED)) {
+            if (_this.element.firstElementChild.classList.contains(constants/* Constants.CLASS_MENU_DISABLED */.g.CLASS_MENU_DISABLED)) {
                 event.stopPropagation();
                 event.preventDefault();
                 return;
@@ -13976,7 +14363,7 @@ var Toolbar = /** @class */ (function () {
             if (menuItem.toolbar) {
                 var panelElement_1 = document.createElement("div");
                 panelElement_1.className = "vditor-hint vditor-panel--arrow";
-                panelElement_1.addEventListener((0,compatibility/* getEventName */.y3)(), function (event) {
+                panelElement_1.addEventListener((0,compatibility/* getEventName */.Le)(), function (event) {
                     panelElement_1.style.display = "none";
                 });
                 menuItem.toolbar.forEach(function (subMenuItem, subI) {
@@ -14110,6 +14497,9 @@ var Toolbar = /** @class */ (function () {
         if (!menuItemObj) {
             return;
         }
+        menuItemObj.element.querySelectorAll("button").forEach(function (button) {
+            button.setAttribute("type", "button");
+        });
         var key = menuItem.name;
         if (key === "br" || key === "|") {
             key = key + index;
@@ -14122,7 +14512,7 @@ var Toolbar = /** @class */ (function () {
 
 
 // EXTERNAL MODULE: ./node_modules/.pnpm/diff-match-patch@1.0.5/node_modules/diff-match-patch/index.js
-var diff_match_patch = __webpack_require__(192);
+var diff_match_patch = __webpack_require__(132);
 ;// CONCATENATED MODULE: ./src/ts/undo/index.ts
 
 
@@ -14162,7 +14552,8 @@ var undo_Undo = /** @class */ (function () {
         }
     };
     Undo.prototype.undo = function (vditor) {
-        if (vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
+        if (vditor.currentMode === "sv" ? vditor.sv.element.disabled :
+            vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
             return;
         }
         if (this[vditor.currentMode].undoStack.length < 2) {
@@ -14179,7 +14570,8 @@ var undo_Undo = /** @class */ (function () {
         hidePanel(vditor, ["hint"]);
     };
     Undo.prototype.redo = function (vditor) {
-        if (vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
+        if (vditor.currentMode === "sv" ? vditor.sv.element.disabled :
+            vditor[vditor.currentMode].element.getAttribute("contenteditable") === "false") {
             return;
         }
         var state = this[vditor.currentMode].redoStack.pop();
@@ -14190,18 +14582,18 @@ var undo_Undo = /** @class */ (function () {
         this.renderDiff(state, vditor, true);
     };
     Undo.prototype.recordFirstPosition = function (vditor, event) {
-        if (getSelection().rangeCount === 0) {
+        if (vditor.currentMode !== "sv" && getSelection().rangeCount === 0) {
             return;
         }
         if (this[vditor.currentMode].undoStack.length !== 1 || this[vditor.currentMode].undoStack[0].length === 0 ||
             this[vditor.currentMode].redoStack.length > 0) {
             return;
         }
-        if ((0,compatibility/* isFirefox */.gm)() && event.key === "Backspace") {
+        if ((0,compatibility/* isFirefox */.vU)() && event.key === "Backspace") {
             // Firefox 第一次删除无效
             return;
         }
-        if ((0,compatibility/* isSafari */.nr)()) {
+        if ((0,compatibility/* isSafari */.G6)()) {
             // Safari keydown 在 input 之后，不需要重复记录历史
             return;
         }
@@ -14253,8 +14645,16 @@ var undo_Undo = /** @class */ (function () {
             text = this.dmp.patch_apply(state, this[vditor.currentMode].lastText)[0];
         }
         this[vditor.currentMode].lastText = text;
-        vditor[vditor.currentMode].element.innerHTML = text;
-        if (vditor.currentMode !== "sv") {
+        if (vditor.currentMode === "sv") {
+            var caretIndex = text.indexOf("<wbr>");
+            vditor.sv.element.value = text.replace("<wbr>", "");
+            vditor.sv.element.focus();
+            if (caretIndex > -1) {
+                vditor.sv.element.setSelectionRange(caretIndex, caretIndex);
+            }
+        }
+        else {
+            vditor[vditor.currentMode].element.innerHTML = text;
             vditor[vditor.currentMode].element.querySelectorAll(".vditor-".concat(vditor.currentMode, "__preview"))
                 .forEach(function (blockElement) {
                 if (blockElement.parentElement.querySelector(".language-echarts")) {
@@ -14270,16 +14670,16 @@ var undo_Undo = /** @class */ (function () {
                 .forEach(function (blockElement) {
                 processCodeRender(blockElement, vditor);
             });
-        }
-        if (!vditor[vditor.currentMode].element.querySelector("wbr")) {
-            // Safari 第一次输入没有光标，需手动定位到结尾
-            var range = getSelection().getRangeAt(0);
-            range.setEndBefore(vditor[vditor.currentMode].element);
-            range.collapse(false);
-        }
-        else {
-            (0,selection/* setRangeByWbr */.ir)(vditor[vditor.currentMode].element, vditor[vditor.currentMode].element.ownerDocument.createRange());
-            scrollCenter(vditor);
+            if (!vditor[vditor.currentMode].element.querySelector("wbr")) {
+                // Safari 第一次输入没有光标，需手动定位到结尾
+                var range = getSelection().getRangeAt(0);
+                range.setEndBefore(vditor[vditor.currentMode].element);
+                range.collapse(false);
+            }
+            else {
+                (0,selection/* setRangeByWbr */.ib)(vditor[vditor.currentMode].element, vditor[vditor.currentMode].element.ownerDocument.createRange());
+                scrollCenter(vditor);
+            }
         }
         renderToc(vditor);
         execAfterRender(vditor, {
@@ -14287,7 +14687,9 @@ var undo_Undo = /** @class */ (function () {
             enableHint: false,
             enableInput: true,
         });
-        highlightToolbar(vditor);
+        if (vditor.currentMode !== "sv") {
+            highlightToolbar(vditor);
+        }
         vditor[vditor.currentMode].element.querySelectorAll(".vditor-".concat(vditor.currentMode, "__preview[data-render='2']"))
             .forEach(function (item) {
             processCodeRender(item, vditor);
@@ -14327,6 +14729,11 @@ var undo_Undo = /** @class */ (function () {
     };
     Undo.prototype.addCaret = function (vditor, setFocus) {
         if (setFocus === void 0) { setFocus = false; }
+        if (vditor.currentMode === "sv") {
+            var element = vditor.sv.element;
+            return element.value.substring(0, element.selectionStart) + "<wbr>" +
+                element.value.substring(element.selectionStart);
+        }
         var cloneRange;
         if (getSelection().rangeCount !== 0 && !vditor[vditor.currentMode].element.querySelector("wbr")) {
             var range = getSelection().getRangeAt(0);
@@ -14364,7 +14771,7 @@ var undo_Undo = /** @class */ (function () {
             // 使用 item.outerHTML = "" 会产生 https://github.com/Vanessa219/vditor/pull/686;
         });
         if (setFocus && cloneRange) {
-            (0,selection/* setSelectionFocus */.jl)(cloneRange);
+            (0,selection/* setSelectionFocus */.Hc)(cloneRange);
         }
         return text.replace('<span class="vditor-wbr"></span>', "<wbr>");
     };
@@ -14373,7 +14780,7 @@ var undo_Undo = /** @class */ (function () {
 
 
 // EXTERNAL MODULE: ./src/ts/util/merge.ts
-var merge = __webpack_require__(905);
+var merge = __webpack_require__(673);
 ;// CONCATENATED MODULE: ./src/ts/util/Options.ts
 
 
@@ -14385,7 +14792,7 @@ var Options = /** @class */ (function () {
             cache: {
                 enable: true,
             },
-            cdn: constants/* Constants */.Y.CDN,
+            cdn: constants/* Constants.CDN */.g.CDN,
             classes: {
                 preview: "",
             },
@@ -14414,7 +14821,7 @@ var Options = /** @class */ (function () {
                     "smile": "😄",
                     "tada": "🎉️",
                 },
-                emojiPath: "".concat(constants/* Constants */.Y.CDN, "/dist/images/emoji"),
+                emojiPath: "".concat(constants/* Constants.CDN */.g.CDN, "/dist/images/emoji"),
                 extend: [],
                 parse: true,
             },
@@ -14429,12 +14836,12 @@ var Options = /** @class */ (function () {
             preview: {
                 actions: ["desktop", "tablet", "mobile", "mp-wechat", "zhihu"],
                 delay: 1000,
-                hljs: constants/* Constants */.Y.HLJS_OPTIONS,
-                markdown: constants/* Constants */.Y.MARKDOWN_OPTIONS,
-                math: constants/* Constants */.Y.MATH_OPTIONS,
+                hljs: constants/* Constants.HLJS_OPTIONS */.g.HLJS_OPTIONS,
+                markdown: constants/* Constants.MARKDOWN_OPTIONS */.g.MARKDOWN_OPTIONS,
+                math: constants/* Constants.MATH_OPTIONS */.g.MATH_OPTIONS,
                 maxWidth: 800,
                 mode: "both",
-                theme: constants/* Constants */.Y.THEME_OPTIONS,
+                theme: constants/* Constants.THEME_OPTIONS */.g.THEME_OPTIONS,
                 render: {
                     media: {
                         enable: true,
@@ -14548,7 +14955,7 @@ var Options = /** @class */ (function () {
                 }
             }
         }
-        var mergedOptions = (0,merge/* merge */.h)(this.defaultOptions, this.options);
+        var mergedOptions = (0,merge/* merge */.T)(this.defaultOptions, this.options);
         if (mergedOptions.cache.enable && !mergedOptions.cache.id) {
             throw new Error("need options.cache.id, see https://ld246.com/article/1549638745630#options");
         }
@@ -14656,7 +15063,7 @@ var Options = /** @class */ (function () {
                 hotkey: "⇧⌘H",
                 icon: '<svg><use xlink:href="#vditor-icon-line"></use></svg>',
                 name: "line",
-                prefix: "---",
+                prefix: "***",
                 tipPosition: "n",
             },
             {
@@ -14901,23 +15308,23 @@ var WYSIWYG = /** @class */ (function () {
                         }
                     }
                 });
-                var startElement = (0,hasClosest/* hasClosestBlock */.pt)(rangeClone.startContainer);
+                var startElement = (0,hasClosest/* hasClosestBlock */.F9)(rangeClone.startContainer);
                 if (startElement) {
                     if (blockStartElement) {
                         startElement.insertAdjacentHTML("beforeend", blockStartElement.innerHTML);
                         blockStartElement.remove();
                     }
-                    else if (startElement.textContent.trim().replace(constants/* Constants */.Y.ZWSP, "") === "" && removeStart) {
+                    else if (startElement.textContent.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "" && removeStart) {
                         startElement.remove();
                     }
                 }
-                var endElement = (0,hasClosest/* hasClosestBlock */.pt)(rangeClone.endContainer);
+                var endElement = (0,hasClosest/* hasClosestBlock */.F9)(rangeClone.endContainer);
                 if (endElement) {
                     if (blockEndElement) {
                         endElement.insertAdjacentHTML("afterbegin", blockEndElement.innerHTML);
                         blockEndElement.remove();
                     }
-                    else if (endElement.textContent.trim().replace(constants/* Constants */.Y.ZWSP, "") === "" && removeEnd) {
+                    else if (endElement.textContent.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "" && removeEnd) {
                         endElement.remove();
                     }
                 }
@@ -14972,7 +15379,7 @@ var WYSIWYG = /** @class */ (function () {
         }
     };
     WYSIWYG.prototype.showComment = function () {
-        var position = (0,selection/* getCursorPosition */.Ey)(this.element);
+        var position = (0,selection/* getCursorPosition */.Ny)(this.element);
         this.selectPopover.setAttribute("style", "left:".concat(position.left, "px;display:block;top:").concat(Math.max(-8, position.top - 21), "px"));
     };
     WYSIWYG.prototype.hideComment = function () {
@@ -14988,8 +15395,8 @@ var WYSIWYG = /** @class */ (function () {
         }
         event.stopPropagation();
         event.preventDefault();
-        var codeElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "CODE");
-        var codeEndElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.endContainer, "CODE");
+        var codeElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "CODE");
+        var codeEndElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.endContainer, "CODE");
         if (codeElement && codeEndElement && codeEndElement.isSameNode(codeElement)) {
             var codeText = "";
             if (codeElement.parentElement.tagName === "PRE") {
@@ -15002,8 +15409,8 @@ var WYSIWYG = /** @class */ (function () {
             event.clipboardData.setData("text/html", "");
             return;
         }
-        var aElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.startContainer, "A");
-        var aEndElement = (0,hasClosest/* hasClosestByMatchTag */._Y)(range.endContainer, "A");
+        var aElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.startContainer, "A");
+        var aEndElement = (0,hasClosest/* hasClosestByMatchTag */.lG)(range.endContainer, "A");
         if (aElement && aEndElement && aEndElement.isSameNode(aElement)) {
             var aTitle = aElement.getAttribute("title") || "";
             if (aTitle) {
@@ -15070,18 +15477,18 @@ var WYSIWYG = /** @class */ (function () {
         this.element.addEventListener("paste", function (event) {
             paste(vditor, event, {
                 pasteCode: function (code) {
-                    var range = (0,selection/* getEditorRange */.RN)(vditor);
+                    var range = (0,selection/* getEditorRange */.zh)(vditor);
                     var node = document.createElement("template");
                     node.innerHTML = code;
                     range.insertNode(node.content.cloneNode(true));
-                    var blockElement = (0,hasClosest/* hasClosestByAttribute */.Th)(range.startContainer, "data-block", "0");
+                    var blockElement = (0,hasClosest/* hasClosestByAttribute */.a1)(range.startContainer, "data-block", "0");
                     if (blockElement) {
                         blockElement.outerHTML = vditor.lute.SpinVditorDOM(blockElement.outerHTML);
                     }
                     else {
                         vditor.wysiwyg.element.innerHTML = vditor.lute.SpinVditorDOM(vditor.wysiwyg.element.innerHTML);
                     }
-                    (0,selection/* setRangeByWbr */.ir)(vditor.wysiwyg.element, range);
+                    (0,selection/* setRangeByWbr */.ib)(vditor.wysiwyg.element, range);
                 },
             });
         });
@@ -15090,13 +15497,13 @@ var WYSIWYG = /** @class */ (function () {
             _this.composingLock = true;
         });
         this.element.addEventListener("compositionend", function (event) {
-            var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.c)(getSelection().getRangeAt(0).startContainer);
+            var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.W)(getSelection().getRangeAt(0).startContainer);
             if (headingElement && headingElement.textContent === "") {
                 // heading 为空删除 https://github.com/Vanessa219/vditor/issues/150
                 renderToc(vditor);
                 return;
             }
-            if (!(0,compatibility/* isFirefox */.gm)()) {
+            if (!(0,compatibility/* isFirefox */.vU)()) {
                 input_input(vditor, getSelection().getRangeAt(0).cloneRange(), event);
             }
             _this.composingLock = false;
@@ -15116,17 +15523,17 @@ var WYSIWYG = /** @class */ (function () {
                 return;
             }
             var range = getSelection().getRangeAt(0);
-            var blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+            var blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
             if (!blockElement) {
                 // 没有被块元素包裹
                 modifyPre(vditor, range);
-                blockElement = (0,hasClosest/* hasClosestBlock */.pt)(range.startContainer);
+                blockElement = (0,hasClosest/* hasClosestBlock */.F9)(range.startContainer);
             }
             if (!blockElement) {
                 return;
             }
             // 前后空格处理
-            var startOffset = (0,selection/* getSelectPosition */.ED)(blockElement, vditor.wysiwyg.element, range).start;
+            var startOffset = (0,selection/* getSelectPosition */.im)(blockElement, vditor.wysiwyg.element, range).start;
             // 开始可以输入空格
             var startSpace = true;
             for (var i = startOffset - 1; i > blockElement.textContent.substr(0, startOffset).lastIndexOf("\n"); i--) {
@@ -15152,7 +15559,7 @@ var WYSIWYG = /** @class */ (function () {
             if (endSpace && /^#{1,6} $/.test(blockElement.textContent)) {
                 endSpace = false;
             }
-            var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.c)(getSelection().getRangeAt(0).startContainer);
+            var headingElement = (0,hasClosestByHeadings/* hasClosestByHeadings */.W)(getSelection().getRangeAt(0).startContainer);
             if (headingElement && headingElement.textContent === "") {
                 // heading 为空删除 https://github.com/Vanessa219/vditor/issues/150
                 renderToc(vditor);
@@ -15183,7 +15590,7 @@ var WYSIWYG = /** @class */ (function () {
                 }
                 _this.preventInput = true;
                 if (getSelection().rangeCount > 0) {
-                    (0,selection/* setSelectionFocus */.jl)(getSelection().getRangeAt(0));
+                    (0,selection/* setSelectionFocus */.Hc)(getSelection().getRangeAt(0));
                 }
                 afterRenderEvent(vditor);
                 return;
@@ -15200,7 +15607,7 @@ var WYSIWYG = /** @class */ (function () {
                 return;
             }
             // 打开链接
-            var a = (0,hasClosest/* hasClosestByMatchTag */._Y)(event.target, "A");
+            var a = (0,hasClosest/* hasClosestByMatchTag */.lG)(event.target, "A");
             if (a) {
                 if (vditor.options.link.click) {
                     vditor.options.link.click(a);
@@ -15211,27 +15618,27 @@ var WYSIWYG = /** @class */ (function () {
                 event.preventDefault();
                 return;
             }
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
             if (event.target.isEqualNode(_this.element) && _this.element.lastElementChild && range.collapsed) {
                 var lastRect = _this.element.lastElementChild.getBoundingClientRect();
                 if (event.y > lastRect.top + lastRect.height) {
                     if (_this.element.lastElementChild.tagName === "P" &&
-                        _this.element.lastElementChild.textContent.trim().replace(constants/* Constants */.Y.ZWSP, "") === "") {
+                        _this.element.lastElementChild.textContent.trim().replace(constants/* Constants.ZWSP */.g.ZWSP, "") === "") {
                         range.selectNodeContents(_this.element.lastElementChild);
                         range.collapse(false);
                     }
                     else {
-                        _this.element.insertAdjacentHTML("beforeend", "<p data-block=\"0\">".concat(constants/* Constants */.Y.ZWSP, "<wbr></p>"));
-                        (0,selection/* setRangeByWbr */.ir)(_this.element, range);
+                        _this.element.insertAdjacentHTML("beforeend", "<p data-block=\"0\">".concat(constants/* Constants.ZWSP */.g.ZWSP, "<wbr></p>"));
+                        (0,selection/* setRangeByWbr */.ib)(_this.element, range);
                     }
                 }
             }
             highlightToolbarWYSIWYG(vditor);
             // 点击后光标落于预览区，需展开代码块
-            var previewElement = (0,hasClosest/* hasClosestByClassName */.KJ)(event.target, "vditor-wysiwyg__preview");
+            var previewElement = (0,hasClosest/* hasClosestByClassName */.fb)(event.target, "vditor-wysiwyg__preview");
             if (!previewElement) {
                 previewElement =
-                    (0,hasClosest/* hasClosestByClassName */.KJ)((0,selection/* getEditorRange */.RN)(vditor).startContainer, "vditor-wysiwyg__preview");
+                    (0,hasClosest/* hasClosestByClassName */.fb)((0,selection/* getEditorRange */.zh)(vditor).startContainer, "vditor-wysiwyg__preview");
             }
             if (previewElement) {
                 showCode(previewElement, vditor);
@@ -15239,7 +15646,7 @@ var WYSIWYG = /** @class */ (function () {
             clickToc(event, vditor);
         });
         this.element.addEventListener("keyup", function (event) {
-            if (event.isComposing || (0,compatibility/* isCtrl */._0)(event)) {
+            if (event.isComposing || (0,compatibility/* isCtrl */.yl)(event)) {
                 return;
             }
             // 除 md 处理、cell 内换行、table 添加新行/列、代码块语言切换、block render 换行、跳出/逐层跳出 blockquote、h6 换行、
@@ -15255,10 +15662,10 @@ var WYSIWYG = /** @class */ (function () {
                 // 为空时显示 placeholder
                 vditor.wysiwyg.element.innerHTML = "";
             }
-            var range = (0,selection/* getEditorRange */.RN)(vditor);
+            var range = (0,selection/* getEditorRange */.zh)(vditor);
             if (event.key === "Backspace") {
                 // firefox headings https://github.com/Vanessa219/vditor/issues/211
-                if ((0,compatibility/* isFirefox */.gm)() && range.startContainer.textContent === "\n" && range.startOffset === 1) {
+                if ((0,compatibility/* isFirefox */.vU)() && range.startContainer.textContent === "\n" && range.startOffset === 1) {
                     range.startContainer.textContent = "";
                 }
             }
@@ -15273,7 +15680,7 @@ var WYSIWYG = /** @class */ (function () {
                 vditor.hint.render(vditor);
             }
             // 上下左右，删除遇到块预览的处理
-            var previewElement = (0,hasClosest/* hasClosestByClassName */.KJ)(range.startContainer, "vditor-wysiwyg__preview");
+            var previewElement = (0,hasClosest/* hasClosestByClassName */.fb)(range.startContainer, "vditor-wysiwyg__preview");
             if (!previewElement && range.startContainer.nodeType !== 3 && range.startOffset > 0) {
                 // table 前删除遇到代码块
                 var blockRenderElement = range.startContainer;
@@ -15387,7 +15794,6 @@ var src_extends = (undefined && undefined.__extends) || (function () {
 
 
 
-
 var Vditor = /** @class */ (function (_super) {
     src_extends(Vditor, _super);
     /**
@@ -15396,7 +15802,8 @@ var Vditor = /** @class */ (function (_super) {
      */
     function Vditor(id, options) {
         var _this = _super.call(this) || this;
-        _this.version = constants/* VDITOR_VERSION */.g;
+        _this.isDestroyed = false;
+        _this.version = constants/* VDITOR_VERSION */.H;
         if (typeof id === "string") {
             if (!options) {
                 options = {
@@ -15421,7 +15828,7 @@ var Vditor = /** @class */ (function (_super) {
         var mergedOptions = getOptions.merge();
         // 支持自定义国际化
         if (!mergedOptions.i18n) {
-            if (!["en_US", "fr_FR", "pt_BR", "ja_JP", "ko_KR", "ru_RU", "sv_SE", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) {
+            if (!["de_DE", "en_US", "es_ES", "fr_FR", "ja_JP", "ko_KR", "pt_BR", "ru_RU", "sv_SE", "vi_VN", "zh_CN", "zh_TW"].includes(mergedOptions.lang)) {
                 throw new Error("options.lang error, see https://ld246.com/article/1549638745630#options");
             }
             else {
@@ -15432,7 +15839,7 @@ var Vditor = /** @class */ (function (_super) {
                         document.head.removeChild(el);
                     }
                 });
-                (0,addScript/* addScript */.Z)("".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js"), i18nScriptID_1).then(function () {
+                (0,addScript/* addScript */.G)("".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js"), i18nScriptID_1).then(function () {
                     _this.init(id, mergedOptions);
                 }).catch(function (error) {
                     _this.showErrorTip("GET ".concat(mergedOptions.cdn, "/dist/js/i18n/").concat(mergedOptions.lang, ".js net::ERR_ABORTED 404 (Not Found)"));
@@ -15459,11 +15866,11 @@ var Vditor = /** @class */ (function (_super) {
         setTheme(this.vditor);
         if (contentTheme) {
             this.vditor.options.preview.theme.current = contentTheme;
-            (0,setContentTheme/* setContentTheme */.H)(contentTheme, contentThemePath || this.vditor.options.preview.theme.path);
+            (0,setContentTheme/* setContentTheme */.Z)(contentTheme, contentThemePath || this.vditor.options.preview.theme.path);
         }
         if (codeTheme) {
             this.vditor.options.preview.hljs.style = codeTheme;
-            (0,setCodeTheme/* setCodeTheme */.h)(codeTheme, this.vditor.options.cdn);
+            (0,setCodeTheme/* setCodeTheme */.Y)(codeTheme, this.vditor.options.cdn);
         }
     };
     /** 获取 Markdown 内容 */
@@ -15501,14 +15908,24 @@ var Vditor = /** @class */ (function (_super) {
     /** 禁用编辑器 */
     Vditor.prototype.disabled = function () {
         hidePanel(this.vditor, ["subToolbar", "hint", "popover"]);
-        disableToolbar(this.vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"]));
-        this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "false");
+        disableToolbar(this.vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS.concat */.g.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"]));
+        if (this.vditor.currentMode === "sv") {
+            this.vditor.sv.element.disabled = true;
+        }
+        else {
+            this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "false");
+        }
     };
     /** 解除编辑器禁用 */
     Vditor.prototype.enable = function () {
-        enableToolbar(this.vditor.toolbar.elements, constants/* Constants */.Y.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"]));
+        enableToolbar(this.vditor.toolbar.elements, constants/* Constants.EDIT_TOOLBARS.concat */.g.EDIT_TOOLBARS.concat(["undo", "redo", "fullscreen", "edit-mode"]));
         this.vditor.undo.resetIcon(this.vditor);
-        this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "true");
+        if (this.vditor.currentMode === "sv") {
+            this.vditor.sv.element.disabled = false;
+        }
+        else {
+            this.vditor[this.vditor.currentMode].element.setAttribute("contenteditable", "true");
+        }
     };
     /** 返回选中的字符串 */
     Vditor.prototype.getSelection = function () {
@@ -15516,7 +15933,7 @@ var Vditor = /** @class */ (function (_super) {
             return getSelectText(this.vditor.wysiwyg.element);
         }
         else if (this.vditor.currentMode === "sv") {
-            return getSelectText(this.vditor.sv.element);
+            return this.vditor.sv.element.value.substring(this.vditor.sv.element.selectionStart, this.vditor.sv.element.selectionEnd);
         }
         else if (this.vditor.currentMode === "ir") {
             return getSelectText(this.vditor.ir.element);
@@ -15528,7 +15945,16 @@ var Vditor = /** @class */ (function (_super) {
     };
     /** 获取焦点位置 */
     Vditor.prototype.getCursorPosition = function () {
-        return (0,selection/* getCursorPosition */.Ey)(this.vditor[this.vditor.currentMode].element);
+        if (this.vditor.currentMode === "sv") {
+            var element = this.vditor.sv.element;
+            var lineHeight = parseInt(getComputedStyle(element).lineHeight, 10) || 22;
+            var line = element.value.substring(0, element.selectionStart).split("\n").length - 1;
+            return {
+                left: 0,
+                top: line * lineHeight - element.scrollTop,
+            };
+        }
+        return (0,selection/* getCursorPosition */.Ny)(this.vditor[this.vditor.currentMode].element);
     };
     /** 上传是否还在进行中 */
     Vditor.prototype.isUploading = function () {
@@ -15536,7 +15962,7 @@ var Vditor = /** @class */ (function (_super) {
     };
     /** 清除缓存 */
     Vditor.prototype.clearCache = function () {
-        if (this.vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.D)()) {
+        if (this.vditor.options.cache.enable && (0,compatibility/* accessLocalStorage */.pK)()) {
             localStorage.removeItem(this.vditor.options.cache.id);
         }
     };
@@ -15573,6 +15999,14 @@ var Vditor = /** @class */ (function (_super) {
     };
     /** 删除选中内容 */
     Vditor.prototype.deleteValue = function () {
+        if (this.vditor.currentMode === "sv") {
+            if (this.vditor.sv.element.selectionStart === this.vditor.sv.element.selectionEnd) {
+                return;
+            }
+            processPaste(this.vditor, "");
+            processAfterRender(this.vditor);
+            return;
+        }
         if (window.getSelection().isCollapsed) {
             return;
         }
@@ -15580,12 +16014,24 @@ var Vditor = /** @class */ (function (_super) {
     };
     /** 更新选中内容 */
     Vditor.prototype.updateValue = function (value) {
+        if (this.vditor.currentMode === "sv") {
+            processPaste(this.vditor, value);
+            processAfterRender(this.vditor);
+            return;
+        }
         document.execCommand("insertHTML", false, value);
     };
     /** 在焦点处插入内容，并默认进行 Markdown 渲染 */
     Vditor.prototype.insertValue = function (value, render) {
         if (render === void 0) { render = true; }
-        var range = (0,selection/* getEditorRange */.RN)(this.vditor);
+        if (this.vditor.currentMode === "sv") {
+            processPaste(this.vditor, value);
+            if (render) {
+                processAfterRender(this.vditor);
+            }
+            return;
+        }
+        var range = (0,selection/* getEditorRange */.zh)(this.vditor);
         range.collapse(true);
         // https://github.com/Vanessa219/vditor/issues/716
         // https://github.com/Vanessa219/vditor/issues/917
@@ -15593,13 +16039,7 @@ var Vditor = /** @class */ (function (_super) {
         tmpElement.innerHTML = value;
         range.insertNode(tmpElement.content.cloneNode(true));
         range.collapse(false);
-        if (this.vditor.currentMode === "sv") {
-            this.vditor.sv.preventInput = true;
-            if (render) {
-                inputEvent(this.vditor);
-            }
-        }
-        else if (this.vditor.currentMode === "wysiwyg") {
+        if (this.vditor.currentMode === "wysiwyg") {
             // 由于 https://github.com/Vanessa219/vditor/issues/1566 不能使用 this.vditor.wysiwyg.preventInput = true;
             if (render) {
                 input_input(this.vditor, getSelection().getRangeAt(0));
@@ -15616,10 +16056,10 @@ var Vditor = /** @class */ (function (_super) {
     Vditor.prototype.insertMD = function (md) {
         // https://github.com/Vanessa219/vditor/issues/1640
         if (this.vditor.currentMode === "ir") {
-            (0,selection/* insertHTML */.Z2)(this.vditor.lute.Md2VditorIRDOM(md), this.vditor);
+            (0,selection/* insertHTML */.oC)(this.vditor.lute.Md2VditorIRDOM(md), this.vditor);
         }
         else if (this.vditor.currentMode === "wysiwyg") {
-            (0,selection/* insertHTML */.Z2)(this.vditor.lute.Md2VditorDOM(md), this.vditor);
+            (0,selection/* insertHTML */.oC)(this.vditor.lute.Md2VditorDOM(md), this.vditor);
         }
         else {
             processPaste(this.vditor, md);
@@ -15632,7 +16072,7 @@ var Vditor = /** @class */ (function (_super) {
         var _this = this;
         if (clearStack === void 0) { clearStack = false; }
         if (this.vditor.currentMode === "sv") {
-            this.vditor.sv.element.innerHTML = "<div data-block='0'>".concat(this.vditor.lute.SpinVditorSVDOM(markdown), "</div>");
+            this.vditor.sv.element.value = markdown;
             processAfterRender(this.vditor, {
                 enableAddUndoStack: true,
                 enableHint: false,
@@ -15692,6 +16132,8 @@ var Vditor = /** @class */ (function (_super) {
         this.clearCache();
         UIUnbindListener();
         this.vditor.wysiwyg.unbindListener();
+        this.vditor.options.after = undefined;
+        this.isDestroyed = true;
     };
     /** 获取评论 ID */
     Vditor.prototype.getCommentIds = function () {
@@ -15767,7 +16209,7 @@ var Vditor = /** @class */ (function (_super) {
             });
             if (ids.length === 0) {
                 item.outerHTML = item.innerHTML;
-                (0,selection/* getEditorRange */.RN)(_this.vditor).collapse(true);
+                (0,selection/* getEditorRange */.zh)(_this.vditor).collapse(true);
             }
             else {
                 item.setAttribute("data-cmtids", ids.join(" "));
@@ -15795,6 +16237,9 @@ var Vditor = /** @class */ (function (_super) {
     };
     Vditor.prototype.init = function (id, mergedOptions) {
         var _this = this;
+        if (this.isDestroyed) {
+            return;
+        }
         this.vditor = {
             currentMode: mergedOptions.mode,
             element: id,
@@ -15819,10 +16264,11 @@ var Vditor = /** @class */ (function (_super) {
         if (mergedOptions.upload.url || mergedOptions.upload.handler) {
             this.vditor.upload = new Upload();
         }
-        (0,addScript/* addScript */.Z)(mergedOptions._lutePath ||
+        (0,addScript/* addScript */.G)(mergedOptions._lutePath ||
             "".concat(mergedOptions.cdn, "/dist/js/lute/lute.min.js"), "vditorLuteScript").then(function () {
             _this.vditor.lute = (0,setLute/* setLute */.X)({
                 autoSpace: _this.vditor.options.preview.markdown.autoSpace,
+                callout: _this.vditor.options.preview.markdown.callout,
                 gfmAutoLink: _this.vditor.options.preview.markdown.gfmAutoLink,
                 codeBlockPreview: _this.vditor.options.preview.markdown
                     .codeBlockPreview,
@@ -15841,6 +16287,8 @@ var Vditor = /** @class */ (function (_super) {
                 paragraphBeginningSpace: _this.vditor.options.preview.markdown
                     .paragraphBeginningSpace,
                 sanitize: _this.vditor.options.preview.markdown.sanitize,
+                sub: _this.vditor.options.preview.markdown.sub,
+                sup: _this.vditor.options.preview.markdown.sup,
                 toc: _this.vditor.options.preview.markdown.toc,
             });
             _this.vditor.preview = new Preview(_this.vditor);
@@ -15850,7 +16298,7 @@ var Vditor = /** @class */ (function (_super) {
             }
             if (mergedOptions.icon) {
                 // 防止初始化 2 个编辑器时加载 2 次
-                (0,addScript/* addScriptSync */.U)("".concat(mergedOptions.cdn, "/dist/js/icons/").concat(mergedOptions.icon, ".js"), "vditorIconScript");
+                (0,addScript/* addScriptSync */.J)("".concat(mergedOptions.cdn, "/dist/js/icons/").concat(mergedOptions.icon, ".js"), "vditorIconScript");
             }
         });
     };
