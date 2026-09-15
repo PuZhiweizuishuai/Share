@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div id="dplayer" ref="dplayer" />
+    <div ref="artplayer" class="artplayer-box" />
   </div>
 </template>
 
 <script>
-import DPlayer from 'dplayer'
+import Artplayer from 'artplayer'
 export default {
   name: 'Play',
   props: {
@@ -16,32 +16,38 @@ export default {
   },
   data() {
     return {
-      videoData: this.video
+      videoData: this.video,
+      art: null
     }
   },
   mounted() {
     this.init()
   },
+  beforeUnmount() {
+    if (this.art) {
+      this.art.destroy(false)
+      this.art = null
+    }
+  },
   methods: {
     init() {
-      new DPlayer({
-        container: document.querySelector('#dplayer'),
+      this.art = new Artplayer({
+        container: this.$refs.artplayer,
         lang: 'zh-cn',
         screenshot: true,
-        video: {
-          url: `${this.videoData.path}?filename=${encodeURIComponent(
-            this.videoData.uploadFilename
-          )}&type=inline&key=${encodeURIComponent(this.videoData.userSeeKey)}`
-        },
-        // logo: "/logo.png",
+        setting: true,
+        fullscreen: true,
+        fullscreenWeb: true,
+        pip: true,
+        url: `${this.videoData.path}?filename=${encodeURIComponent(
+          this.videoData.uploadFilename
+        )}&type=inline&key=${encodeURIComponent(this.videoData.userSeeKey)}`,
         contextmenu: [
           {
             text: '不挂高数',
             link: 'https://www.buguagaoshu.com'
           }
-        ],
-        bottom: '15%',
-        unlimited: true
+        ]
       })
     }
   }
@@ -49,7 +55,7 @@ export default {
 </script>
 
 <style>
-#dplayer {
+.artplayer-box {
   height: 500px;
 }
 </style>

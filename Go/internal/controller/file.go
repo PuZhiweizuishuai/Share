@@ -11,6 +11,7 @@ import (
 
 	"github.com/gin-gonic/gin"
 
+	"share-go/internal/cache"
 	"share-go/internal/middleware"
 	"share-go/internal/model"
 	"share-go/internal/service"
@@ -20,6 +21,7 @@ import (
 // FileController 对齐 Spring FileController
 type FileController struct {
 	FileService *service.FileService
+	IpCache     *cache.IpCache
 	IsProxy     bool
 }
 
@@ -39,6 +41,12 @@ func (f *FileController) DiskMessage(c *gin.Context) {
 		log.Printf("[ERROR] [DiskMessage] %v", err)
 		c.JSON(200, model.OkWithCode(500, err.Error()))
 		return
+	}
+	// 隐私保护：未登录且非白名单 IP 的访客不返回磁盘已用/剩余空间
+	if !middleware.Trusted(c, f.IpCache, f.IsProxy) {
+		log.Printf("[INFO] [DiskMessage] guest ip=%s, hide disk usage", utils.GetIpAddr(c.Request, f.IsProxy))
+		dm.UserDisk = new(int64)
+		dm.AvailableDisk = new(int64)
 	}
 	c.JSON(200, model.Ok().Put("data", dm))
 }

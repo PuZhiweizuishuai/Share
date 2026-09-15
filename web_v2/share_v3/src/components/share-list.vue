@@ -1,175 +1,183 @@
 <template>
-  <v-container>
-    <v-row>
-      <v-col v-for="item in shareList" :key="item.id" cols="12">
-        <v-card>
-          <v-card-actions style="padding-bottom: 0px; padding-top: 0px">
-            <v-row>
-              <v-col style="padding-bottom: 0px; padding-top: 0px">
-                <v-list-item-title
-                  >创建时间：
-                  <span v-text="formateTimeToChinese(item.createTime)" />
-                </v-list-item-title>
-              </v-col>
-              <v-col style="padding-bottom: 0px; padding-top: 0px">
-                <v-btn
-                  style="float: right"
-                  end
-                  text
-                  small
-                  color="error"
-                  @click="showDeleteDialog(item)"
-                >
-                  <v-icon icon="mdi-delete"></v-icon>
-                  删除
-                </v-btn>
-                <v-btn
-                  v-if="
-                    showShareBtn &&
-                    (item.publicUser == false || item.publicUser == null)
-                  "
-                  @click="showShareInfo(item)"
-                  style="float: right"
-                  end
-                  text
-                  small
-                  color="blue"
-                >
-                  <v-icon icon="mdi-share"></v-icon>
-                  分享
-                </v-btn>
-
-                <v-tooltip
-                  v-if="item.publicUser"
-                  location="top"
-                  text="点击查看共享状态"
-                >
-                  <template v-slot:activator="{ props }">
-                    <v-btn
-                      v-bind="props"
-                      @click="showShareStatus(item)"
-                      style="float: right"
-                      small
-                      color="deep-purple"
-                    >
-                      <v-icon icon="mdi-information-slab-symbol"></v-icon>
-                      已共享
-                    </v-btn>
-                  </template>
-                </v-tooltip>
-              </v-col>
-            </v-row>
-          </v-card-actions>
-          <v-divider />
-          <v-card-text>
-            <ShowHtml v-if="item.editType == 1" :text="item.data" />
-            <ShowMarkdown v-else :markdown="item.data" :speech="false" />
-          </v-card-text>
-        </v-card>
-      </v-col>
-    </v-row>
+  <v-container class="share-list-com">
+    <v-card v-for="item in shareList" :key="item.id" class="share-card" elevation="0">
+      <!-- 卡片头部：类型图标 + 时间/编辑器徽章 + 操作按钮 -->
+      <div class="share-card__head">
+        <!-- <div class="share-card__icon">
+          <v-icon icon="mdi-text-box-outline" size="20"></v-icon>
+        </div> -->
+        <div class="share-card__meta">
+          <span class="meta-pill">
+            <v-icon size="13" icon="mdi-clock-outline"></v-icon>
+            {{ formateTimeToChinese(item.createTime) }}
+          </span>
+          <!-- <span class="meta-pill">
+            <v-icon size="13" icon="mdi-pen-outline"></v-icon>
+            {{ item.editType == 1 ? '富文本' : 'Markdown' }}
+          </span> -->
+        </div>
+        <!-- <v-spacer /> -->
+        <div class="share-card__actions">
+          <v-tooltip v-if="item.publicUser" location="top" text="点击查看共享状态">
+            <template v-slot:activator="{ props }">
+              <v-btn
+                v-bind="props"
+                icon
+                variant="tonal"
+                size="small"
+                color="deep-purple"
+                @click="showShareStatus(item)"
+              >
+                <v-icon icon="mdi-share-variant-outline"></v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+          <v-tooltip
+            v-else-if="showShareBtn && (item.publicUser == false || item.publicUser == null)"
+            location="top"
+            text="分享"
+          >
+            <template v-slot:activator="{ props }">
+              <v-btn
+                v-bind="props"
+                icon
+                variant="text"
+                size="small"
+                color="primary"
+                @click="showShareInfo(item)"
+              >
+                <v-icon icon="mdi-share-variant-outline"></v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+          <v-tooltip location="top" text="删除">
+            <template v-slot:activator="{ props }">
+              <v-btn
+                v-bind="props"
+                icon
+                variant="text"
+                size="small"
+                color="error"
+                @click="showDeleteDialog(item)"
+              >
+                <v-icon icon="mdi-delete-outline"></v-icon>
+              </v-btn>
+            </template>
+          </v-tooltip>
+        </div>
+      </div>
+      <v-divider />
+      <v-card-text class="share-card__body">
+        <ShowHtml v-if="item.editType == 1" :text="item.data" />
+        <ShowMarkdown v-else :markdown="item.data" :speech="false" />
+      </v-card-text>
+    </v-card>
     <!-- 删除弹框 -->
-    <v-dialog v-model="showDelete" max-width="490">
-      <v-card>
-        <v-card-title class="headline">你确定要删除这条分享吗？</v-card-title>
-
+    <v-dialog v-model="showDelete" max-width="440">
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--error">
+            <v-icon icon="mdi-delete-alert-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">删除这条分享</div>
+          <div class="dlg__subtitle">删除后将无法恢复，请谨慎操作</div>
+        </div>
         <v-card-text>
-          <span v-text="subString(deleteData.data)" /> <br /><br />
-          删除后将无法恢复，请谨慎操作！！！
+          <div class="dlg__target" :title="deleteData.data">
+            <div class="dlg__target-icon dlg__target-icon--text">
+              <v-icon size="18" icon="mdi-text-box-outline"></v-icon>
+            </div>
+            <span class="dlg__target-name">{{ subString(deleteData.data) }}</span>
+          </div>
         </v-card-text>
-
         <v-card-actions>
           <v-spacer />
-
-          <v-btn color="green darken-1" text @click="showDelete = false">
-            放弃
-          </v-btn>
-
-          <v-btn color="error" text @click="deleteShare()"> 确认 </v-btn>
+          <v-btn variant="text" @click="showDelete = false">放弃</v-btn>
+          <v-btn color="error" variant="flat" @click="deleteShare()">确认删除</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
     <!-- 分享弹框 -->
-    <v-dialog v-model="showShareDialog" max-width="490">
-      <v-card>
-        <v-card-title class="headline">你要将这条分享出去吗？</v-card-title>
-
+    <v-dialog v-model="showShareDialog" max-width="460">
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--primary">
+            <v-icon icon="mdi-share-variant-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">分享这条内容</div>
+          <div class="dlg__subtitle">分享后任何人均可通过链接查看</div>
+        </div>
         <v-card-text>
-          <p>
-            <span v-text="subString(shareItem.data)" /><br />
-            分享后在任何人均可查看
-          </p>
-          <p>
-            <v-row justify="center">
-              <v-col>
-                <v-switch
-                  v-model="shareItem.haveUserSeeKey"
-                  color="blue"
-                  label="是否启用密码"
-                ></v-switch>
-              </v-col>
-            </v-row>
-            <v-row justify="center" v-show="shareItem.haveUserSeeKey">
-              <v-col>
-                <v-text-field
-                  v-model="shareItem.userSeeKey"
-                  placeholder="密码"
-                  label="密码"
-                  clearable
-                  variant="underlined"
-                />
-              </v-col>
-            </v-row>
-          </p>
+          <div class="dlg__target" :title="shareItem.data">
+            <div class="dlg__target-icon dlg__target-icon--text">
+              <v-icon size="18" icon="mdi-text-box-outline"></v-icon>
+            </div>
+            <span class="dlg__target-name">{{ subString(shareItem.data) }}</span>
+          </div>
+          <v-switch
+            v-model="shareItem.haveUserSeeKey"
+            class="mt-2"
+            color="primary"
+            inset
+            hide-details
+            label="启用访问密码"
+          ></v-switch>
+          <v-text-field
+            v-show="shareItem.haveUserSeeKey"
+            v-model="shareItem.userSeeKey"
+            class="mt-2"
+            variant="outlined"
+            density="compact"
+            label="访问密码"
+            prepend-inner-icon="mdi-key-variant"
+            clearable
+          />
         </v-card-text>
-
         <v-card-actions>
           <v-spacer />
-
-          <v-btn color="green darken-1" text @click="showShareDialog = false">
-            放弃
-          </v-btn>
-
-          <v-btn color="error" text @click="sendSaveShare()"> 确认 </v-btn>
+          <v-btn variant="text" @click="showShareDialog = false">放弃</v-btn>
+          <v-btn color="primary" variant="flat" @click="sendSaveShare()">立即分享</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
     <!-- 分享成功弹窗 -->
-    <v-dialog v-model="showseccussShareDialog" max-width="490">
-      <v-card>
-        <v-card-title class="headline"
-          >分享成功，复制下面内容给你的好友吧！</v-card-title
-        >
+    <v-dialog v-model="showseccussShareDialog" max-width="460">
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--success">
+            <v-icon icon="mdi-check-circle-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">分享成功</div>
+          <div class="dlg__subtitle">复制下面的内容发送给你的好友吧</div>
+        </div>
         <v-card-text>
-          <v-row>
-            <v-col>
-              {{ successShareInfo }}
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
-            </v-col>
-          </v-row>
+          <div class="dlg__link">{{ successShareInfo }}</div>
+          <v-btn class="mt-3" block variant="tonal" color="primary" @click="copy()">
+            <v-icon icon="mdi-content-copy" start></v-icon>
+            复制内容
+          </v-btn>
         </v-card-text>
       </v-card>
     </v-dialog>
     <!-- 取消分享 -->
     <v-dialog v-model="showShareStatusDilog" max-width="1000">
-      <v-card>
-        <v-card-title class="headline">分享状态</v-card-title>
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--purple">
+            <v-icon icon="mdi-share-circle-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">分享状态</div>
+          <div class="dlg__subtitle">任何人都可通过此链接查看这条分享</div>
+        </div>
         <v-card-text>
-          <v-row>
-            <v-col>
-              {{ successShareInfo }}
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
-            </v-col>
-          </v-row>
+          <div class="dlg__link">{{ successShareInfo }}</div>
+          <div class="text-center mt-3">
+            <v-btn variant="tonal" color="primary" size="small" @click="copy()">
+              <v-icon icon="mdi-content-copy" start></v-icon>
+              复制链接
+            </v-btn>
+          </div>
           <ViewLogTable
             :target="showShareStatusItem.id"
             :types="0"
@@ -177,16 +185,13 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-
+          <v-btn variant="text" @click="showShareStatusDilog = false">关闭</v-btn>
           <v-btn
-            color="green darken-1"
-            text
-            @click="showShareStatusDilog = false"
+            color="error"
+            variant="flat"
+            v-if="showShareBtn"
+            @click="cancelShare()"
           >
-            关闭
-          </v-btn>
-
-          <v-btn color="error" v-if="showShareBtn" text @click="cancelShare()">
             取消分享
           </v-btn>
         </v-card-actions>
@@ -254,16 +259,8 @@ export default {
   methods: {
     copy() {
       navigator.clipboard.writeText(this.successShareInfo)
-      // navigator.clipboard.writeText(this.successShareInfo).then(
-      //   function (message, snackbar) {
-      //     message = "复制成功";
-      //     snackbar = true;
-      //   },
-      //   function (message, snackbar) {
-      //     message = "复制失败，请手动复制";
-      //     snackbar = true;
-      //   }
-      // );
+      this.message = '已复制到剪贴板'
+      this.snackbar = true
     },
     cancelShare() {
       this.showShareStatusItem.data = "";
@@ -369,3 +366,198 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* ===== 分享卡片 ===== */
+.share-list-com {
+  padding: 0;
+  max-width: none;
+}
+
+.share-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  margin-bottom: 14px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.share-card:hover {
+  border-color: rgba(25, 118, 210, 0.35);
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.1);
+  transform: translateY(-1px);
+}
+
+.share-card__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  flex-wrap: wrap;
+}
+
+.share-card__icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: rgba(var(--v-theme-primary), 0.1);
+  color: rgb(var(--v-theme-primary));
+}
+
+.share-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.meta-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(0, 0, 0, 0.05);
+  font-size: 12.5px;
+  color: rgba(0, 0, 0, 0.55);
+  white-space: nowrap;
+}
+
+.share-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.share-card__body {
+  padding: 16px;
+}
+
+
+/* ===== 移动端适配 ===== */
+@media (max-width: 600px) {
+  .share-card__head {
+    gap: 10px;
+    padding: 10px 12px;
+  }
+
+
+  .share-card__icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+  }
+
+  .share-card__body {
+    padding: 12px;
+  }
+}
+
+/* ===== 通用弹框 ===== */
+.dlg {
+  border-radius: 16px;
+  padding-top: 8px;
+}
+
+.dlg__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.dlg__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+.dlg__icon--error {
+  background: rgba(var(--v-theme-error), 0.1);
+  color: rgb(var(--v-theme-error));
+}
+
+.dlg__icon--primary {
+  background: rgba(var(--v-theme-primary), 0.1);
+  color: rgb(var(--v-theme-primary));
+}
+
+.dlg__icon--success {
+  background: rgba(var(--v-theme-success), 0.12);
+  color: rgb(var(--v-theme-success));
+}
+
+.dlg__icon--purple {
+  background: rgba(103, 58, 183, 0.1);
+  color: #673ab7;
+}
+
+.dlg__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.dlg__subtitle {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.dlg__target {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dlg__target-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.dlg__target-icon--text {
+  background: rgba(var(--v-theme-primary), 0.1);
+  color: rgb(var(--v-theme-primary));
+}
+
+.dlg__target-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dlg__link {
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed rgba(0, 0, 0, 0.14);
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.65);
+  white-space: pre-line;
+  word-break: break-all;
+  user-select: all;
+}
+</style>

@@ -63,7 +63,7 @@ func New(d *Deps) *gin.Engine {
 		loginCtrl.SearchIp = d.IpSearcher.Search
 	}
 	shareCtrl := &controller.ShareController{ShareService: d.ShareService}
-	fileCtrl := &controller.FileController{FileService: d.FileService, IsProxy: d.IsProxy}
+	fileCtrl := &controller.FileController{FileService: d.FileService, IpCache: d.IpCache, IsProxy: d.IsProxy}
 	tagCtrl := &controller.TagController{Cache: d.TagCache}
 	viewCtrl := &controller.ViewCountController{Service: d.ViewCountSvc}
 	moveCtrl := &controller.MoveController{DB: nil, MoveService: d.MoveService}

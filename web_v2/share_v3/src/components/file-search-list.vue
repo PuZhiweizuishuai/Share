@@ -129,109 +129,119 @@
     </div>
 
     <!-- 删除弹框 -->
-    <v-dialog v-model="showDelete" max-width="490">
-      <v-card>
-        <v-card-title class="headline">你确定要删除这个文件吗？</v-card-title>
-
+    <v-dialog v-model="showDelete" max-width="440">
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--error">
+            <v-icon icon="mdi-delete-alert-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">删除文件</div>
+          <div class="dlg__subtitle">删除后将无法恢复，请谨慎操作</div>
+        </div>
         <v-card-text>
-          <span v-text="deleteItemDate.uploadFilename" /> <br /><br />
-          删除后将无法恢复，请谨慎操作！！！
+          <div class="dlg__target" :title="deleteItemDate.uploadFilename">
+            <div
+              class="dlg__target-icon"
+              :style="iconStyle(deleteItemDate.uploadFilename)"
+            >
+              <v-icon
+                size="18"
+                :icon="fileMeta(deleteItemDate.uploadFilename).icon"
+              ></v-icon>
+            </div>
+            <span class="dlg__target-name">{{ deleteItemDate.uploadFilename }}</span>
+          </div>
         </v-card-text>
-
         <v-card-actions>
           <v-spacer />
-
-          <v-btn color="green darken-1" text @click="showDelete = false">
-            放弃
-          </v-btn>
-
-          <v-btn color="error" text @click="deleteFile()"> 确认 </v-btn>
+          <v-btn variant="text" @click="showDelete = false">放弃</v-btn>
+          <v-btn color="error" variant="flat" @click="deleteFile()">确认删除</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
     <!-- 分享弹框 -->
-    <v-dialog v-model="showShareDialog" max-width="490">
-      <v-card>
-        <v-card-title class="headline">你要将这份文件分享出去吗？</v-card-title>
-
+    <v-dialog v-model="showShareDialog" max-width="460">
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--primary">
+            <v-icon icon="mdi-share-variant-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">分享这份文件</div>
+          <div class="dlg__subtitle">分享后任何人均可通过链接查看</div>
+        </div>
         <v-card-text>
-          <p>
-            <span v-text="shareItem.uploadFilename" /><br />
-            分享后在任何人均可查看
-          </p>
-          <p>
-            <v-row justify="center">
-              <v-col>
-                <v-switch
-                  v-model="shareItem.haveUserSeeKey"
-                  color="blue"
-                  label="是否启用密码"
-                ></v-switch>
-              </v-col>
-            </v-row>
-            <v-row justify="center" v-show="shareItem.haveUserSeeKey">
-              <v-col>
-                <v-text-field
-                  v-model="shareItem.userSeeKey"
-                  placeholder="密码"
-                  label="密码"
-                  clearable
-                  variant="underlined"
-                />
-              </v-col>
-            </v-row>
-          </p>
+          <div class="dlg__target" :title="shareItem.uploadFilename">
+            <div class="dlg__target-icon" :style="iconStyle(shareItem.uploadFilename)">
+              <v-icon size="18" :icon="fileMeta(shareItem.uploadFilename).icon"></v-icon>
+            </div>
+            <span class="dlg__target-name">{{ shareItem.uploadFilename }}</span>
+          </div>
+          <v-switch
+            v-model="shareItem.haveUserSeeKey"
+            class="mt-2"
+            color="primary"
+            inset
+            hide-details
+            label="启用访问密码"
+          ></v-switch>
+          <v-text-field
+            v-show="shareItem.haveUserSeeKey"
+            v-model="shareItem.userSeeKey"
+            class="mt-2"
+            variant="outlined"
+            density="compact"
+            label="访问密码"
+            prepend-inner-icon="mdi-key-variant"
+            clearable
+          />
         </v-card-text>
-
         <v-card-actions>
           <v-spacer />
-
-          <v-btn color="green darken-1" text @click="showShareDialog = false">
-            放弃
-          </v-btn>
-
-          <v-btn color="error" text @click="sendSaveShare()"> 确认 </v-btn>
+          <v-btn variant="text" @click="showShareDialog = false">放弃</v-btn>
+          <v-btn color="primary" variant="flat" @click="sendSaveShare()">立即分享</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
 
     <!-- 分享成功弹窗 -->
-    <v-dialog v-model="showseccussShareDialog" max-width="490">
-      <v-card>
-        <v-card-title class="headline"
-          >分享成功，复制下面内容给你的好友吧！</v-card-title
-        >
+    <v-dialog v-model="showseccussShareDialog" max-width="460">
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--success">
+            <v-icon icon="mdi-check-circle-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">分享成功</div>
+          <div class="dlg__subtitle">复制下面的内容发送给你的好友吧</div>
+        </div>
         <v-card-text>
-          <v-row>
-            <v-col>
-              {{ successShareInfo }}
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
-            </v-col>
-          </v-row>
+          <div class="dlg__link">{{ successShareInfo }}</div>
+          <v-btn class="mt-3" block variant="tonal" color="primary" @click="copy()">
+            <v-icon icon="mdi-content-copy" start></v-icon>
+            复制内容
+          </v-btn>
         </v-card-text>
       </v-card>
     </v-dialog>
 
     <!-- 查看取消分享弹窗 -->
     <v-dialog v-model="showShareStatusDilog" max-width="1000">
-      <v-card>
-        <v-card-title class="headline">分享状态</v-card-title>
+      <v-card class="dlg">
+        <div class="dlg__head">
+          <div class="dlg__icon dlg__icon--purple">
+            <v-icon icon="mdi-share-circle-outline" size="28"></v-icon>
+          </div>
+          <div class="dlg__title">分享状态</div>
+          <div class="dlg__subtitle">任何人都可通过此链接查看该文件</div>
+        </div>
         <v-card-text>
-          <v-row>
-            <v-col>
-              {{ successShareInfo }}
-            </v-col>
-          </v-row>
-          <v-row>
-            <v-col>
-              <v-btn color="blue-lighten-5" @click="copy()">复制</v-btn>
-            </v-col>
-          </v-row>
+          <div class="dlg__link">{{ successShareInfo }}</div>
+          <div class="text-center mt-3">
+            <v-btn variant="tonal" color="primary" size="small" @click="copy()">
+              <v-icon icon="mdi-content-copy" start></v-icon>
+              复制链接
+            </v-btn>
+          </div>
           <ViewLogTable
             :target="showShareStatusItem.id"
             :types="1"
@@ -239,16 +249,13 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer />
-
+          <v-btn variant="text" @click="showShareStatusDilog = false">关闭</v-btn>
           <v-btn
-            color="green darken-1"
-            text
-            @click="showShareStatusDilog = false"
+            color="error"
+            variant="flat"
+            v-if="showShareBtn"
+            @click="cancelShare()"
           >
-            关闭
-          </v-btn>
-
-          <v-btn color="error" v-if="showShareBtn" text @click="cancelShare()">
             取消分享
           </v-btn>
         </v-card-actions>
@@ -347,6 +354,8 @@ export default {
     },
     copy() {
       navigator.clipboard.writeText(this.successShareInfo);
+      this.message = "已复制到剪贴板";
+      this.snackbar = true;
     },
     checkLogin() {
       this.httpGet("/login/check", (json) => {
@@ -479,6 +488,105 @@ export default {
 </script>
 
 <style scoped>
+/* ===== 通用弹框 ===== */
+.dlg {
+  border-radius: 16px;
+  padding-top: 8px;
+}
+
+.dlg__head {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding-top: 20px;
+  text-align: center;
+}
+
+.dlg__icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-bottom: 6px;
+}
+
+.dlg__icon--error {
+  background: rgba(var(--v-theme-error), 0.1);
+  color: rgb(var(--v-theme-error));
+}
+
+.dlg__icon--primary {
+  background: rgba(var(--v-theme-primary), 0.1);
+  color: rgb(var(--v-theme-primary));
+}
+
+.dlg__icon--success {
+  background: rgba(var(--v-theme-success), 0.12);
+  color: rgb(var(--v-theme-success));
+}
+
+.dlg__icon--purple {
+  background: rgba(103, 58, 183, 0.1);
+  color: #673ab7;
+}
+
+.dlg__title {
+  font-size: 17px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.dlg__subtitle {
+  font-size: 13px;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.dlg__target {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.dlg__target-icon {
+  flex-shrink: 0;
+  width: 34px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+}
+
+.dlg__target-name {
+  font-size: 14px;
+  font-weight: 500;
+  color: rgba(0, 0, 0, 0.75);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dlg__link {
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px dashed rgba(0, 0, 0, 0.14);
+  font-size: 13px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.65);
+  white-space: pre-line;
+  word-break: break-all;
+  user-select: all;
+}
+
+/* ===== 文件卡片 ===== */
 .file-card {
   border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 12px;
@@ -596,6 +704,7 @@ export default {
   .file-item {
     gap: 10px;
     padding: 12px;
+    flex-wrap: wrap;
   }
 
   .file-icon {
@@ -606,6 +715,14 @@ export default {
 
   .file-meta {
     gap: 8px;
+  }
+
+  .file-actions {
+    /* 独占一行，避免挤压文件名/元信息；按钮靠右排列 */
+    flex: 1 1 100%;
+    justify-content: flex-end;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    padding-top: 8px;
   }
 }
 </style>
