@@ -342,7 +342,7 @@
       <v-card class="dlg">
         <div class="dlg__head">
           <div class="dlg__icon dlg__icon--purple">
-            <v-icon icon="mdi-share-circle-outline" size="28"></v-icon>
+            <v-icon icon="mdi-share-variant-outline" size="28"></v-icon>
           </div>
           <div class="dlg__title">分享状态</div>
           <div class="dlg__subtitle">任何人都可通过此链接查看该文件</div>
@@ -779,7 +779,6 @@ export default {
   color: rgba(0, 0, 0, 0.65);
   white-space: pre-line;
   word-break: break-all;
-  user-select: all;
 }
 
 /* ===== 页面头部 ===== */

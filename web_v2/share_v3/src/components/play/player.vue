@@ -44,8 +44,11 @@ export default {
         )}&type=inline&key=${encodeURIComponent(this.videoData.userSeeKey)}`,
         contextmenu: [
           {
-            text: '不挂高数',
-            link: 'https://www.buguagaoshu.com'
+            html: '不挂高数出品',
+            click: function (contextmenu) {
+              window.open('https://www.buguagaoshu.com')
+              contextmenu.show = false
+            }
           }
         ]
       })

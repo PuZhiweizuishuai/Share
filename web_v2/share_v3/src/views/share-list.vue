@@ -134,6 +134,13 @@ export default {
       }
       const url = `/share/list?page=${this.page}&size=${this.size}`
       this.httpGet(url, (json) => {
+        // 后端返回非 200（如登录失效），停止轮询并自动关闭自动更新
+        if (json.status !== 200) {
+          this.auto = false
+          this.stopAutoUpdate()
+          this.loading = false
+          return
+        }
         this.shareList = json.page.content
         this.total = json.page.page.totalElements
         this.length = json.page.page.totalPages

@@ -28,7 +28,7 @@ import (
 // 开发时 go run 使用此处默认值；build.ps1 跨平台编译时通过 -ldflags -X 注入覆盖
 var (
 	AppName    = "Share"
-	AppVersion = "3.8"
+	AppVersion = "3.8.1"
 	AppDesc    = "局域网文本共享服务"
 )
 
