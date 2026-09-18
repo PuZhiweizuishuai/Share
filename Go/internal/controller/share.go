@@ -25,6 +25,18 @@ func (s *ShareController) List(c *gin.Context) {
 	c.JSON(200, model.Ok().Put("page", res))
 }
 
+// ListPublic GET /api/shared/share/list 已共享文本列表（需登录）
+func (s *ShareController) ListPublic(c *gin.Context) {
+	page := atoiDefault(c.Query("page"), 1)
+	size := atoiDefault(c.Query("size"), 20)
+	res, err := s.ShareService.FindPublicShareList(page, size)
+	if err != nil {
+		c.JSON(200, model.OkWithCode(500, err.Error()))
+		return
+	}
+	c.JSON(200, model.Ok().Put("page", res))
+}
+
 // Save POST /api/share/save
 func (s *ShareController) Save(c *gin.Context) {
 	var sh model.Share

@@ -20,16 +20,14 @@
         <div class="share-card__actions">
           <v-tooltip v-if="item.publicUser" location="top" text="点击查看共享状态">
             <template v-slot:activator="{ props }">
-              <v-btn
+              <span
                 v-bind="props"
-                icon
-                variant="tonal"
-                size="small"
-                color="deep-purple"
+                class="shared-badge"
                 @click="showShareStatus(item)"
               >
-                <v-icon icon="mdi-share-variant-outline"></v-icon>
-              </v-btn>
+                <v-icon size="14" icon="mdi-share-variant-outline"></v-icon>
+                已共享
+              </span>
             </template>
           </v-tooltip>
           <v-tooltip
@@ -432,6 +430,28 @@ export default {
   gap: 2px;
   flex-shrink: 0;
   margin-left: auto;
+}
+
+/* ===== 已共享徽章 ===== */
+.shared-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 12px;
+  margin-right: 6px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 500;
+  color: #673ab7;
+  background: rgba(103, 58, 183, 0.1);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shared-badge:hover {
+  background: rgba(103, 58, 183, 0.2);
+  box-shadow: 0 2px 8px rgba(103, 58, 183, 0.25);
 }
 
 .share-card__body {

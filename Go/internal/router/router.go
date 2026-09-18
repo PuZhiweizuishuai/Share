@@ -135,6 +135,13 @@ func New(d *Deps) *gin.Engine {
 			admin.POST("/move/all/save", moveCtrl.SaveAll)
 		}
 
+		// ===== 已共享管理接口（必须登录）=====
+		sharedLogin := sec.Group("/shared", middleware.Login())
+		{
+			sharedLogin.GET("/share/list", shareCtrl.ListPublic)
+			sharedLogin.GET("/file/list", fileCtrl.ListPublic)
+		}
+
 		// AI 需登录的接口（/api/ai/save, /api/ai/invitation, /api/ai/invitation/**）
 		aiLogin := sec.Group("", middleware.Login())
 		{

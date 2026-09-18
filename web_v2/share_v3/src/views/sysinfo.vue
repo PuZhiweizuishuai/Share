@@ -35,6 +35,32 @@
     </v-row>
 
     <template v-if="showSysInfo">
+      <!-- 已共享管理入口 -->
+      <v-row justify="center">
+        <v-col cols="12" md="10" lg="10">
+          <v-card class="mx-auto" elevation="2">
+            <v-card-title class="text-h6">已共享管理</v-card-title>
+            <v-divider />
+            <v-card-text>
+              <v-alert type="info" density="compact" variant="tonal">
+                查看与管理当前已公开共享的文本与文件，支持取消分享。
+              </v-alert>
+            </v-card-text>
+            <v-card-actions>
+              <v-spacer />
+              <v-btn
+                color="deep-purple"
+                prepend-icon="mdi-share-variant-outline"
+                @click="$router.push('/shared')"
+              >
+                进入已共享管理
+              </v-btn>
+              <v-spacer />
+            </v-card-actions>
+          </v-card>
+        </v-col>
+      </v-row>
+
       <!-- IP 白名单 -->
       <v-row justify="center">
         <v-col cols="12" md="10" lg="10">

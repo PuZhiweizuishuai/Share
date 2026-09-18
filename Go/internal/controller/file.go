@@ -135,6 +135,19 @@ func (f *FileController) LoadAll(c *gin.Context) {
 	c.JSON(200, model.Ok().Put("page", res))
 }
 
+// ListPublic GET /api/shared/file/list 已共享文件列表（需登录）
+func (f *FileController) ListPublic(c *gin.Context) {
+	page := atoiDefault(c.Query("page"), 1)
+	size := atoiDefault(c.Query("size"), 20)
+	res, err := f.FileService.LoadPublicFiles(page, size)
+	if err != nil {
+		log.Printf("[ERROR] [ListPublic] page=%d size=%d %v", page, size, err)
+		c.JSON(200, model.OkWithCode(500, err.Error()))
+		return
+	}
+	c.JSON(200, model.Ok().Put("page", res))
+}
+
 // Delete DELETE /api/file/delete
 func (f *FileController) Delete(c *gin.Context) {
 	var fm model.FileMessage

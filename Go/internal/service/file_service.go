@@ -67,6 +67,37 @@ func (s *FileService) LoadAll(page, size int, key string) (*model.PageResult, er
 	}, nil
 }
 
+// LoadPublicFiles 分页查询已公开共享的文件列表（public_user = true），用于已共享管理
+func (s *FileService) LoadPublicFiles(page, size int) (*model.PageResult, error) {
+	if page <= 0 {
+		page = 1
+	}
+	if size <= 0 {
+		size = 20
+	}
+	if size > 100 {
+		size = 100
+	}
+	q := s.DB.Model(&model.FileMessage{}).Where("public_user = ?", true)
+	var total int64
+	if err := q.Count(&total).Error; err != nil {
+		return nil, err
+	}
+	var content []model.FileMessage
+	if err := q.Order("create_time DESC").Offset((page - 1) * size).Limit(size).Find(&content).Error; err != nil {
+		return nil, err
+	}
+	return &model.PageResult{
+		Content: content,
+		Page: model.PageMeta{
+			Size:          size,
+			Number:        page - 1,
+			TotalElements: total,
+			TotalPages:    totalPages(total, size),
+		},
+	}, nil
+}
+
 // Save 上传文件，对齐 FileRepositoryInLocalDiskImpl.save，返回 VditorFiles
 func (s *FileService) Save(files []*multipart.FileHeader) model.VditorFiles {
 	succMap := map[string]string{}

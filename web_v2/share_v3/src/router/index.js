@@ -66,6 +66,12 @@ const router = createRouter({
           meta: { title: '系统信息' }
         },
         {
+          path: '/shared',
+          name: 'SharedManage',
+          component: () => import('../views/shared-manage.vue'),
+          meta: { title: '已共享管理' }
+        },
+        {
           path: '/share/share/:id',
           name: 'ShareText',
           component: () => import('../views/share-text.vue'),
