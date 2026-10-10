@@ -17,6 +17,7 @@ type Config struct {
 		OpenIpAddress        bool   `yaml:"open-ip-address"`
 		IpDbPath             string `yaml:"ip-db-path"`
 		MaxFileSizeMB        int64  `yaml:"max-file-size-mb"`
+		PublicRateLimitPerMin int   `yaml:"public-rate-limit-per-min"`
 	} `yaml:"share"`
 	Database struct {
 		Driver string `yaml:"driver"`
@@ -56,6 +57,9 @@ func Load(path string) (*Config, error) {
 	}
 	if c.Share.MaxFileSizeMB <= 0 {
 		c.Share.MaxFileSizeMB = 1024000000000
+	}
+	if c.Share.PublicRateLimitPerMin <= 0 {
+		c.Share.PublicRateLimitPerMin = 30
 	}
 	if c.Database.Driver == "" {
 		c.Database.Driver = "sqlite"

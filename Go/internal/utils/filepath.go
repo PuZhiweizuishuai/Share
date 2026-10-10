@@ -1,9 +1,11 @@
 package utils
 
 import (
+	"fmt"
 	"os"
 	"path"
 	"path/filepath"
+	"regexp"
 	"strings"
 	"time"
 
@@ -15,6 +17,30 @@ import (
 const ROOT = "file"
 
 const dateFormat = "2006-01-02"
+
+// dateDirPattern 限定上传目录名只能是 yyyy-MM-dd，杜绝 date 参数携带 ../ 等穿越片段
+var dateDirPattern = regexp.MustCompile(`^\d{4}-\d{2}-\d{2}$`)
+
+// IsValidDateDir 判断路径片段是否为合法的日期目录名
+func IsValidDateDir(s string) bool { return dateDirPattern.MatchString(s) }
+
+// ResolveUnderRoot 将 elem... 拼接并解析为绝对路径，保证结果仍位于 ROOT 目录内。
+// 若发生路径穿越（如包含 ../ 逃逸出 ROOT）则返回 error，用于安全地按用户输入定位磁盘文件。
+func ResolveUnderRoot(elem ...string) (string, error) {
+	rootAbs, err := filepath.Abs(ROOT)
+	if err != nil {
+		return "", err
+	}
+	parts := append([]string{ROOT}, elem...)
+	abs, err := filepath.Abs(filepath.Join(parts...))
+	if err != nil {
+		return "", err
+	}
+	if abs != rootAbs && !strings.HasPrefix(abs, rootAbs+string(os.PathSeparator)) {
+		return "", fmt.Errorf("非法路径: %s", filepath.Join(elem...))
+	}
+	return abs, nil
+}
 
 // FilePath 返回相对存储目录（始终用 / 分隔），对齐 FilePathUtils.filePath() = ROOT/yyyy-MM-dd
 func FilePath() string {

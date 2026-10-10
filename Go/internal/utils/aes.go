@@ -1,84 +1,64 @@
 package utils
 
 import (
-	"bytes"
 	"crypto/aes"
+	"crypto/cipher"
+	"crypto/rand"
 	"crypto/sha256"
 	"encoding/base64"
+	"io"
 )
 
-// 对齐 Spring com.buguagaoshu.share.utils.AesUtil：
-// 密钥经 SHA-256 后取前 16 字节，AES/ECB/PKCS5Padding，Base64 输出。
+// 下载令牌/IP 绑定 key 的加解密。
+// AES-256-GCM 认证加密：随机 12 字节 nonce，密文自带完整性校验（篡改即解密失败）。
+// 密钥每次进程启动随机、令牌短时有效，故无需兼容历史密文，可安全替换旧 ECB 实现。
 
-// aesKey 由 secret 派生 16 字节密钥（SHA-256 截前 16 字节）
+// aesKey 由 secret 派生 32 字节密钥（SHA-256 全量），对应 AES-256
 func aesKey(secret string) []byte {
 	h := sha256.Sum256([]byte(secret))
-	return h[:16]
+	return h[:]
 }
 
-// Encrypt 加密，对齐 AesUtil.encrypt
+// Encrypt 加密，返回 Base64(nonce||ciphertext||tag)
 func Encrypt(strToEncrypt, secret string) string {
-	key := aesKey(secret)
-	block, err := aes.NewCipher(key)
+	block, err := aes.NewCipher(aesKey(secret))
 	if err != nil {
 		return ""
 	}
-	src := pkcs5Pad([]byte(strToEncrypt), block.BlockSize())
-	dst := make([]byte, len(src))
-	bs := block.BlockSize()
-	for i := 0; i < len(src); i += bs {
-		block.Encrypt(dst[i:i+bs], src[i:i+bs])
+	gcm, err := cipher.NewGCM(block)
+	if err != nil {
+		return ""
 	}
-	return base64.StdEncoding.EncodeToString(dst)
+	nonce := make([]byte, gcm.NonceSize())
+	if _, err := io.ReadFull(rand.Reader, nonce); err != nil {
+		return ""
+	}
+	sealed := gcm.Seal(nonce, nonce, []byte(strToEncrypt), nil)
+	return base64.StdEncoding.EncodeToString(sealed)
 }
 
-// Decrypt 解密，对齐 AesUtil.decrypt
+// Decrypt 解密，任何解码/认证失败一律返回空串
 func Decrypt(strToDecrypt, secret string) string {
-	key := aesKey(secret)
-	ciphertext, err := base64.StdEncoding.DecodeString(strToDecrypt)
+	raw, err := base64.StdEncoding.DecodeString(strToDecrypt)
 	if err != nil {
 		return ""
 	}
-	block, err := aes.NewCipher(key)
+	block, err := aes.NewCipher(aesKey(secret))
 	if err != nil {
 		return ""
 	}
-	if len(ciphertext)%block.BlockSize() != 0 {
-		return ""
-	}
-	dst := make([]byte, len(ciphertext))
-	bs := block.BlockSize()
-	for i := 0; i < len(ciphertext); i += bs {
-		block.Decrypt(dst[i:i+bs], ciphertext[i:i+bs])
-	}
-	out, err := pkcs5Unpad(dst)
+	gcm, err := cipher.NewGCM(block)
 	if err != nil {
 		return ""
 	}
-	return string(out)
-}
-
-// pkcs5Pad PKCS#5/PKCS#7 填充
-func pkcs5Pad(src []byte, blockSize int) []byte {
-	pad := blockSize - len(src)%blockSize
-	return append(src, bytes.Repeat([]byte{byte(pad)}, pad)...)
-}
-
-// pkcs5Unpad 去除填充
-func pkcs5Unpad(src []byte) ([]byte, error) {
-	n := len(src)
-	if n == 0 {
-		return nil, errInvalidPadding
+	ns := gcm.NonceSize()
+	if len(raw) < ns {
+		return ""
 	}
-	pad := int(src[n-1])
-	if pad <= 0 || pad > n {
-		return nil, errInvalidPadding
+	nonce, ciphertext := raw[:ns], raw[ns:]
+	plain, err := gcm.Open(nil, nonce, ciphertext, nil)
+	if err != nil {
+		return ""
 	}
-	return src[:n-pad], nil
+	return string(plain)
 }
-
-var errInvalidPadding = &paddingError{}
-
-type paddingError struct{}
-
-func (e *paddingError) Error() string { return "invalid padding" }

@@ -5,7 +5,6 @@ import (
 	"net/http"
 	"net/url"
 	"os"
-	"path"
 	"strconv"
 	"strings"
 
@@ -194,15 +193,25 @@ func (f *FileController) Get(c *gin.Context) {
 		username = user.Username
 	}
 
+	if !utils.IsValidDateDir(date) {
+		log.Printf("[WARN] [Get] illegal date param user=%s ip=%s date=%s", username, ip, date)
+		c.JSON(http.StatusNotFound, model.OkWithCode(404, "没有找到相应的资源！"))
+		return
+	}
 	if !f.FileService.CheckSeePower(key, ip, loggedIn) {
 		log.Printf("[WARN] [Get] access denied user=%s ip=%s date=%s file=%s", username, ip, date, filename)
 		c.JSON(http.StatusNotFound, model.OkWithCode(404, "没有找到相应的资源！").Put("error", "no power!"))
 		return
 	}
-	relPath := path.Join(utils.ROOT, date, filename)
-	absPath := utils.OsPath(relPath)
+	// 解析并约束路径必须位于 file 根目录内，杜绝 ../ 路径穿越读取任意文件
+	absPath, err := utils.ResolveUnderRoot(date, filename)
+	if err != nil {
+		log.Printf("[WARN] [Get] path traversal blocked user=%s ip=%s date=%s file=%s err=%v", username, ip, date, filename, err)
+		c.JSON(http.StatusNotFound, model.OkWithCode(404, "没有找到相应的资源！"))
+		return
+	}
 	if _, err := os.Stat(absPath); err != nil {
-		log.Printf("[WARN] [Get] file not found user=%s ip=%s path=%s err=%v", username, ip, relPath, err)
+		log.Printf("[WARN] [Get] file not found user=%s ip=%s path=%s err=%v", username, ip, absPath, err)
 		c.JSON(http.StatusNotFound, model.OkWithCode(404, "没有找到相应的资源！").Put("error", err.Error()))
 		return
 	}

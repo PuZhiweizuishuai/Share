@@ -2,6 +2,7 @@ package controller
 
 import (
 	"io"
+	"net/http"
 	"strings"
 
 	"github.com/gin-contrib/sessions"
@@ -70,7 +71,7 @@ func (l *LoginController) Login(c *gin.Context) {
 	if login != nil {
 		sess := sessions.Default(c)
 		sess.Set(middleware.SessionLoginUser, login)
-		sess.Options(sessions.Options{Path: "/", MaxAge: 0})
+		sess.Options(sessions.Options{Path: "/", HttpOnly: true, MaxAge: 0, SameSite: http.SameSiteLaxMode})
 		_ = sess.Save()
 		l.LoginCount.Delete(ip)
 		c.JSON(200, model.Ok().Put("data", login))

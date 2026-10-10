@@ -1,6 +1,7 @@
 package service
 
 import (
+	"crypto/subtle"
 	"errors"
 
 	"gorm.io/gorm"
@@ -8,6 +9,15 @@ import (
 	"share-go/internal/model"
 	"share-go/internal/utils"
 )
+
+// seeKeyMatches 常量时间比较提取码，杜绝按字符逐位比较产生的时序侧信道；
+// 任一侧为空即视为不匹配，避免未设置提取码时被空密码绕过。
+func seeKeyMatches(stored, input string) bool {
+	if stored == "" || input == "" {
+		return false
+	}
+	return subtle.ConstantTimeCompare([]byte(stored), []byte(input)) == 1
+}
 
 // PublicShareService 对齐 Spring PublicShareServiceImpl
 type PublicShareService struct {
@@ -74,7 +84,7 @@ func (s *PublicShareService) GetPublicShare(url, password, ip, ua string) (*mode
 		return nil, nil
 	}
 	if sh.HaveUserSeeKey {
-		if sh.UserSeeKey == password {
+		if seeKeyMatches(sh.UserSeeKey, password) {
 			s.ViewCount.AddViewCountLog(model.ViewLogTypeShare, idOf(sh.ID), ip, ua)
 			sh.ID = nil
 			sh.UserSeeKey = utils.Encrypt(utils.NowMillisStr()+"#"+ip, s.AesKey)
@@ -102,7 +112,7 @@ func (s *PublicShareService) GetPublicFile(url, password, ip, ua string) (*model
 		return nil, nil
 	}
 	if file.HaveUserSeeKey {
-		if password == file.UserSeeKey {
+		if seeKeyMatches(file.UserSeeKey, password) {
 			s.ViewCount.AddViewCountLog(model.ViewLogTypeFile, idOf(file.ID), ip, ua)
 			file.UserSeeKey = utils.Encrypt(utils.NowMillisStr()+"#"+ip, s.AesKey)
 			file.ID = nil

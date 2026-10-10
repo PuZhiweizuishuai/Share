@@ -26,6 +26,7 @@ type Deps struct {
 	TagCache      *cache.TagCache
 	AiConfigCache *cache.AiConfigCache
 	LoginCount    *cache.LoginCountCache
+	PublicLimiter *cache.Limiter
 	IpSearcher    *utils.IpSearcher
 	IsProxy       bool
 	OpenIpAddr    bool
@@ -46,8 +47,9 @@ func New(d *Deps) *gin.Engine {
 	r.Use(middleware.Header())
 
 	store := memstore.NewStore([]byte(utils.NewUUID()))
-	store.Options(sessions.Options{Path: "/", HttpOnly: true, MaxAge: 0})
+	store.Options(sessions.Options{Path: "/", HttpOnly: true, MaxAge: 0, SameSite: http.SameSiteLaxMode})
 	r.Use(sessions.Sessions(d.Config.Session.CookieName, store))
+	r.Use(middleware.Csrf())
 
 	// 构造控制器
 	testCtrl := &controller.TestController{}
@@ -89,15 +91,18 @@ func New(d *Deps) *gin.Engine {
 		// AI 公开接口
 		pub.POST("/ai/config", aiCtrl.GetAiConfig)
 		pub.GET("/ai/check", aiCtrl.CheckAiPower)
-		// 公开分享
-		pub.POST("/public/share", pubShareCtrl.CreatePublicShare)
-		pub.POST("/public/file", pubShareCtrl.CreatePublicFile)
-		pub.POST("/public/share/cancel", pubShareCtrl.CancelPublicShare)
-		pub.POST("/public/file/cancel", pubShareCtrl.CancelPublicFile)
-		pub.POST("/public/share/get", pubShareCtrl.GetShare)
-		pub.POST("/public/file/get", pubShareCtrl.GetFile)
-		pub.GET("/public/share/check", pubShareCtrl.CheckShare)
-		pub.GET("/public/file/check", pubShareCtrl.CheckFile)
+		// 公开分享：限流，阻止提取码暴力破解与匿名刷接口
+		pubShare := pub.Group("/public", middleware.RateLimit(d.PublicLimiter, d.IsProxy))
+		{
+			pubShare.POST("/share", pubShareCtrl.CreatePublicShare)
+			pubShare.POST("/file", pubShareCtrl.CreatePublicFile)
+			pubShare.POST("/share/cancel", pubShareCtrl.CancelPublicShare)
+			pubShare.POST("/file/cancel", pubShareCtrl.CancelPublicFile)
+			pubShare.POST("/share/get", pubShareCtrl.GetShare)
+			pubShare.POST("/file/get", pubShareCtrl.GetFile)
+			pubShare.GET("/share/check", pubShareCtrl.CheckShare)
+			pubShare.GET("/file/check", pubShareCtrl.CheckFile)
+		}
 	}
 
 	// ===== Security 拦截接口（IP 白名单或登录）=====

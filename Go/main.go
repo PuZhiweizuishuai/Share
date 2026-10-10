@@ -91,6 +91,7 @@ func main() {
 		log.Printf("警告：AI 配置缓存初始化失败: %v", err)
 	}
 	loginCount := cache.NewLoginCountCache(cfg.Share.MaxLoginCount)
+	publicLimiter := cache.NewLimiter(cfg.Share.PublicRateLimitPerMin, time.Minute)
 
 	// 4. 初始化 IP 地理位置查询（内嵌 xdb 或外部文件），对齐 Spring Searcher Bean
 	var ipSearcher *utils.IpSearcher
@@ -138,7 +139,7 @@ func main() {
 	initDiskMessage(db, cfg.Share.MaxFileSizeMB)
 
 	// 8. 启动定时任务，对齐 Spring @Scheduled
-	startScheduledTasks(loginCount, db)
+	startScheduledTasks(loginCount, publicLimiter, db)
 
 	// 9. 打印本机 IP，对齐 Spring "当前系统IP为：..."
 	printLocalIPs()
@@ -150,6 +151,7 @@ func main() {
 		TagCache:       tagCache,
 		AiConfigCache:  aiConfigCache,
 		LoginCount:     loginCount,
+		PublicLimiter:  publicLimiter,
 		IpSearcher:     ipSearcher,
 		IsProxy:        cfg.Share.IsTheProxyConfigured,
 		OpenIpAddr:     cfg.Share.OpenIpAddress,
@@ -247,7 +249,7 @@ func updateAvailableDisk(db *gorm.DB) {
 // startScheduledTasks 启动定时任务，对齐 Spring @Scheduled
 //   - LoginCountTasks.cleanLoginCount: 每 1 小时清理登录失败计数
 //   - DiskMessageTasks.setAvailableDisk: 每 6 小时更新磁盘可用空间
-func startScheduledTasks(loginCount *cache.LoginCountCache, db *gorm.DB) {
+func startScheduledTasks(loginCount *cache.LoginCountCache, publicLimiter *cache.Limiter, db *gorm.DB) {
 	// 登录失败计数清理：每 1 小时
 	go func() {
 		ticker := time.NewTicker(time.Hour)
@@ -255,6 +257,15 @@ func startScheduledTasks(loginCount *cache.LoginCountCache, db *gorm.DB) {
 		for range ticker.C {
 			loginCount.Clean()
 			log.Println("完成登录失败用户登录次数重置！")
+		}
+	}()
+
+	// 公开接口限流窗口清理：每 5 分钟
+	go func() {
+		ticker := time.NewTicker(5 * time.Minute)
+		defer ticker.Stop()
+		for range ticker.C {
+			publicLimiter.Clean()
 		}
 	}()
 

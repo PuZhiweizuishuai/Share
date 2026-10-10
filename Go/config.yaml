@@ -13,6 +13,8 @@ share:
   ip-db-path: ""
   # 默认最大上传文件大小（MB），与 Spring multipart max-file-size 对齐
   max-file-size-mb: 1024000000000
+  # 公开分享/文件接口每个 IP 每分钟请求上限，防止提取码暴力破解与刷接口
+  public-rate-limit-per-min: 30
 
 database:
   # 数据库驱动：sqlite（默认） | mysql
